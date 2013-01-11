@@ -38,8 +38,6 @@
 	</div>	
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
-		
-		<p align='center'><strong>All Referrals </strong></p>
 		<div id="dealerlist">
 		<?php 
 		include 'includes/referralFeed.php';
