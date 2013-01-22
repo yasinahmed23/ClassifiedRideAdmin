@@ -56,5 +56,6 @@
 				<div align="center"><img src="images/confCall.jpg" alt="Conference Call Times"></center>
 	</div>	
 </div>
+<?php require_once 'includes/footer.php'; ?>
 </body>
 </html>	

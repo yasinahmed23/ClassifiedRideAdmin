@@ -30,76 +30,80 @@
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
-		<div align="center">
-			<font size="+2"><strong>
-			<?php echo "Dealer Search Results"?></strong></font>
-		</div>
-		<div class="DealerFeed">
-<table cellpadding="10" cellspacing="0" border="0" align="center" class="table">
-	<tr valign="top">
-		<td align="center"><strong>ID</strong></td>		
-		<td align="center"><strong>Time Registered</strong></td>				
-		<td align="center"><strong>Dealership</strong></td>	
-		<td align="center"><strong>City</strong></td>		
-		<td align="center"><strong>State</strong></td>
-		<td align="center"><strong>Email</td>
-		<td align="center"><strong>Contact Person</td>
-		<td align="center"><strong>Phone Number</td>
-		<td align="center"><strong>Representative</td>
-	</tr>
+		<center><font size="+2"><strong><?php echo "Dealer Search Results"?></strong></font></center>
+			<table cellpadding="5" cellspacing="0" border="0" align="center" class="table">
+				<tr valign="top">
+					<td>
+					<div id="dealerlist">
+						<table cellpadding="5" cellspacing="0" border="0" align="center">
+							<tr valign="top">
+								<td align="center"><p><strong>ID</strong></td>		
+								<td align="center"><p><strong>Time Registered</strong></td>				
+								<td align="center"><p><strong>Dealership</strong></td>	
+								<td align="center"><p><strong>City</strong></td>		
+								<td align="center"><p><strong>State</strong></td>
+								<td align="center"><p><strong>Contact Person</td>
+								<td align="center"><p><strong>Phone Number</td>
+								<td align="center"><p><strong>Representative</td>
+							</tr>
 
-<?php
+						<?php
+						//Get data from database and assign to a variable
 
-//Get data from database and assign to a variable
+						$DealerName= $_POST['search_string'];
 
-$DealerName= $_POST['search_string'];
+						$sql = mysql_query("
+							SELECT *
+							FROM dealers
+							WHERE DealerName='".$DealerName."'");
 
-$sql = mysql_query("
-	SELECT *
-	FROM dealers
-	WHERE DealerName='".$DealerName."'
-");
-
-while ($row = mysql_fetch_array($sql)) 
-{
-$DealerID = $row['DealerID'];
-$TimeRegistered = $row['TimeRegistered'];
-$DealerCity = ($row['DealerCity']);
-$DealerState = $row['DealerState'];
-$DealerEmail = $row['DealerEmail'];
-$DealerContact = ($row['DealerMainContactFirst']) . " " . ($row['DealerMainContactLast']);
-$DealerContactPhone = ($row['DealerCellPhone1']) . "-" . ($row['DealerCellPhone2']) . "-" . ($row['DealerCellPhone3']);
-$RepName = $row['RepName'];
-
-
-?>
+						while ($row = mysql_fetch_array($sql)) 
+						{
+						$DealerID = $row['DealerID'];
+						$TimeRegistered = $row['TimeRegistered'];
+						$DealerCity = ($row['DealerCity']);
+						$DealerState = $row['DealerState'];
+						$DealerEmail = $row['DealerEmail'];
+						$DealerContact = ($row['DealerMainContactFirst']) . " " . ($row['DealerMainContactLast']);
+						$DealerContactPhone = ($row['DealerCellPhone1']) . "-" . ($row['DealerCellPhone2']) . "-" . ($row['DealerCellPhone3']);
+						$RepName = $row['RepName'];
+						?>
 	
-<!--Disply data from database into a table -->
-	<tr valign='top'>
-		<td colspan='9' align='center'><hr /></td>
-	</tr>
-	<tr valign="top">
-		<td align="center"><?php echo $DealerID;?></td>		
-		<td align="center"><?php echo $TimeRegistered;?></td>
-		<td align="center"><?php echo $DealerName;?></td>		
-		<td align="center"><?php echo $DealerCity;?></td>
-		<td align="center"><?php echo $DealerState;?></td>
-		<td align="center"><a href="mailto:<?php echo $DealerEmail; ?>"><?php echo $DealerEmail;?></a>
+						<!--Disply data from database into a table -->
+							<tr valign='top'>
+								<td colspan='9' align='center'><hr /></td>
+							</tr>
+							<tr valign="top">
+								<td align="center"><p><?php echo $DealerID;?></p></td>		
+								<td align="center"><p><?php echo $TimeRegistered;?></p></td>
+								<td align="center"><p><?php echo $DealerName;?></p></td>		
+								<td align="center"><p><?php echo $DealerCity;?></p></td>
+								<td align="center"><p><?php echo $DealerState;?></p></td>
+								<td align="center" width="75"><p><a href="mailto:<?php echo $DealerEmail; ?>"><?php echo $DealerContact;?></a>
 				
-		</td>
-		<td align="center"><?php echo $DealerContact;?></td>
-		<td align="center"><?php echo $DealerContactPhone;?></td>
-		<td align="center"><?php echo $RepName;?></td>
-	</tr>
-<?php } 
-?>
-
-
-</table>
-</div>
-
-
-			
+								</p></td>
+								<td align="center"><p><?php echo $DealerContactPhone;?></p></td>
+								<td align="center" width="75">
+								<?php 
+								//Get Dealer Rep's Email
+									$GetRepsEmail = mysql_query("
+										SELECT EmplEmail 	
+										FROM employees 
+										WHERE employee ='".$RepName."' ");
+									while ($row = mysql_fetch_array($GetRepsEmail)) {
+										$EmplEmail = $row['EmplEmail'];
+										}
+								echo "<p><a href='mailto:$EmplEmail'>" . $RepName . "</a></p>";
+								?>
+								</td>
+							</tr>
+						<?php } 
+						?>					
+						</table>
+					</div>
+				</td>
+			</tr>
+		</table>
 	</div>
 </div>
 </body>

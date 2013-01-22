@@ -1,22 +1,21 @@
-<table width="300" cellpadding="5" cellspacing="0" border="1" align="center">
-	<tr>
-		
-		<td align="center"><strong>NAME</strong></td>
-		<td align="center"><strong>PAYMENT METHOD</td>	
-		<td align="center"><strong>MONTHLY PMT</strong></td>	
+<table width=330" cellpadding="0" cellspacing="0" border="0" align="center">
+	<tr valign="top">
+		<td width="105"><strong>NAME</strong></td>
+		<td width="130"><strong>PAYMENT METHOD</td>	
+		<td width="95"><strong>MONTHLY PMT</strong></td>
+	</tr>
+	<tr valign="top">
+		<td colspan="3"><hr /></td>
 	</tr>
 
 <?php
-//Get dealer info from database and assign as a variable
-$DealerUserName = $_SESSION[DealerUser];
-
-$sql = mysql_query("
+//Get dealer info 
+$GetDealerInfo = mysql_query("
 	SELECT *
 	FROM dealers
-	WHERE DealerUserName='$DealerUserName'
-");
+	WHERE DealerUserName='$DealerUser'");
 
-while ($row = mysql_fetch_array($sql)) 
+while ($row = mysql_fetch_array($GetDealerInfo)) 
 {
 $DealerID = $row['DealerID'];
 $TimeRegistered = $row['TimeRegistered'];
@@ -28,14 +27,15 @@ $DealerContact = ($row['DealerMainContactFirst']) . " " . ($row['DealerMainConta
 $DealerContactPhone = ($row['DealerCellPhone1']) . "-" . ($row['DealerCellPhone2']) . "-" . ($row['DealerCellPhone3']);
 $RepName = $row['RepName'];
 $Program = $row['Program'];
+$MemberStatus = $row['MemberStatus'];
+$MthlyPmt = $row['MthlyPmt'];
 
-//Get employee Cell # from Full Name 
+
+//Get Rep Info for Dealer Usere 
 $GetRepInfo = mysql_query("
 	SELECT EmplCellPhone1, EmplCellPhone2, EmplCellPhone3, EmplEmail, pic
 	FROM employees
-	WHERE employee = '$RepName'
-");
-
+	WHERE employee = '$RepName'");
 while ($row = mysql_fetch_array($GetRepInfo)) 
 {
 $EmplCellPhone = ($row['EmplCellPhone1']) . "-" . ($row['EmplCellPhone2']) . "-" . ($row['EmplCellPhone3']);
@@ -44,52 +44,59 @@ $pic = ($row['pic']);
 }
 
 ?>
-	
+
 <!--Disply data from database into a table -->
-	<tr>
-		
-		<td align="center"><?php echo $DealerName;?></td>
-		<td align="center">&nbsp;</td>
-		<td align="center">$<?php echo $Program;?></td>	
-		
-	
+	<tr valign="top">
+		<td width="105"><?php echo $DealerName;?></td>
+		<td width="130" align="center">&nbsp;</td>
+		<td align="95">$ <?php echo $MthlyPmt;?></td>	
+
+
+	</tr>
+	<tr valign="top">
+		<td colspan="3"><hr /></td>
 	</tr>
 <?php } 
 ?>
 </table>
-<br /><br />
-<table width="300" cellpadding="0" cellspacing="0" align="center" border="0">
+<table width=330" cellpadding="0" cellspacing="0" border="0" align="center">
 	<tr valign="top">
 		<td align="center">
-			<table>
-				<tr>
-					<td align="center">
-						<p><font size="+1"><strong>My Rep: </strong>
-						<br />
-						<?php
-							if ($pic == null || $pic == "") {
-								printf("<img src='../images/No_Image_Available.gif' width='100'>");
-							}
-							else {
-								echo 
-									"<a href='mailto:" .  
-									$EmplEmail . 
-									"?subject=" . 
-									$DealerName . 
-									"'>" 										;
-								printf("<img src='../uploads/$pic' width='100'>");
-								echo "</a>";
-							}				
-							echo "<br />" . $RepName . "<br /><strong>" . $EmplCellPhone . "</strong>"; 			
-						?>
-						<br />
-						<a href="mailto:<?php echo $EmplEmail; ?>?subject=<?php echo 'Question about ' . $DealerName; ?>"><?php echo $EmplEmail; ?></a></font></p>
-					</td>
-				</tr>
-			</table>
+			<p><font size="+1"><strong>
+			Program:  $<?php echo $Program; ?>
+			<br /><br />
+			My Rep: </strong>
+			<br />
+			<?php
+				if ($pic == null || $pic == "") {
+					printf("<img src='../images/No_Image_Available.gif' width='100'>");
+				}
+				else {
+					echo 
+						"<a href='mailto:" .  
+						$EmplEmail . 
+						"?subject=" . 
+						$DealerName . 
+						"'>" 										;
+					printf("<img src='../uploads/$pic' width='100'>");
+					echo "</a>";
+				}				
+				echo "<br />" . $RepName . "<br /><strong>" . $EmplCellPhone . "</strong>"; 			
+			?>
+			<br />
+			<a href="mailto:<?php echo $EmplEmail; ?>?subject=<?php echo 'Question about ' . $DealerName; ?>"><?php echo $EmplEmail; ?></a></font></p>
 		</td>
 	</tr>
 </table>
+<table width=330" cellpadding="0" cellspacing="0" border="0" align="center">
+	<tr valign="top">
+		<td>
+		<?php
+		if ($MemberStatus="INACTIVE") {
+			echo "<p align='center'><font color='red'><strong>Account Status: INACTIVE.</strong></font><br /><a href='#'>Please Click Here To Make A Payment</a></p>";
+		}
 
+		?>
+		</td>
+	</tr>
 </table>
-<a href="mailto:$EmplEmail">

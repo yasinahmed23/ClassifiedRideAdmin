@@ -1,12 +1,15 @@
+<?php include_once("GoogleAnalyticsTracking.php") ?>
 <div id="logo">
-	<table>
-		<tr>
-			<td><h1>Welcome to the <img src="/images/logo2.png" width="200"> Employee/Dealer Database</h1>
+	<table cellpadding="0" cellspacing="0" border="0">
+		<tr valign="top">
+			<td><h1>Welcome to the <img src="/images/logo2.png" width="200"> Dealer Database</h1>
+				<div id="ClickDealer">
 		  	 	<?php
 			   		if (!isset($_SESSION[DealerUser])) {
 					echo "<font color='#FFFFFF'><a href='index.php'><font color='#FFFFFF'>Click Here if you are an Employee</font></a>";}
 					else {}
 			   	?>
+				</div>
           		</td>
 		</tr>
 	</table>

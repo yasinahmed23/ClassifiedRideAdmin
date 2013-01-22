@@ -34,16 +34,30 @@ $ReferredBy = $row['ReferredBy'];
 $EmplEmail = $row['EmplEmail'];
 $EmplPhone = ($row['EmplCellPhone1']) . "-" . ($row['EmplCellPhone2']) . "-" . ($row['EmplCellPhone3']);
 $pic= $row ['pic'];
+$EmplStreet1 = $row['EmplStreet1'];
+$EmplStreet2 = $row['EmplStreet2'];
 $EmplCity = $row['EmplCity'];
 $EmplState = $row['EmplState'];
+$EmplZip = $row['EmplZip'];
 $EmplCountry = $row['EmplCountry'];
+$ConfidentialityAgreement = $row['ConfidentialityAgreement'];
+$IndependentContractorAgreement = $row['IndependentContractorAgreement'];
+$w9 = $row['w9'];
 
 //Disply data from database into a table -->
+	echo $employeeID . ',';
 	echo $EmplFirstName . ',';
 	echo $EmplLastName . ',';
 	echo $EmplEmail . ',';
+	echo $EmplStreet1 . ',';
+	echo $EmplStreet2 . ',';
 	echo $EmplCity . ',';
-	echo $EmplState ;	
+	echo $EmplState . ',';
+	echo $EmplZip . ',';
+	echo $EmplPhone. ',';
+	echo $ConfidentialityAgreement. ',';
+	echo $IndependentContractorAgreement. ',';
+	echo $w9;
 	echo "\r\n";
 } 
 ?>

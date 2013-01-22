@@ -1,96 +1,121 @@
-<table cellpadding="5" cellspacing="0" border="0" align="center" width="850" class="table">
+<table cellpadding="5" cellspacing="0" border="0" align="center" width="850">
 	<tr>
-		<td align="center"><strong>Period Ending</strong></td>			
-<td align="center"><strong>Trans ID</strong></td>				
-		<td align="center"><strong>Empl ID</strong></td>		
-		<td align="center"><strong>Employee</strong></td>
-		<td align="center"><strong>Com</strong></td>
-		<td align="center"><strong>Dealer ID</td>
+		<td align="center"><strong>Date/Time</strong></td>		
+		<td align="center"><strong>Trans ID</strong></td>				
 		<td align="center"><strong>Dealership</td>
-		<td align="center"><strong>Reg</td>
+		<td align="center"><strong>Registered</td>
 		<td align="center"><strong>Renewed</td>
-		<td align="center"><strong>Member</td>
-		<td align="center"><strong>Referrals</td>
+		<td align="center"><strong>Employee</strong></td>
+		<td align="center"><strong>Commission</td>
+		<td align="center"><strong>Manager</td>
+		<td align="center"><strong>Referral</td>
 	</tr>
-<?php
+	<?php
+	//Display 10 newest posts
+	$GetTransactions = mysql_query("
+		SELECT *
+		FROM transactions 
+		ORDER BY TransactionID DESC");
 
-
-//Display 10 newest posts
-$sql = mysql_query("
-	SELECT *
-	FROM transactions 
-	ORDER BY TransactionID DESC
-");
-
-while ($row = mysql_fetch_array($sql)) 
-{
-$TransactionDate = $row['TransactionDate'];
-$TransactionID = $row['TransactionID'];
-$eID = $row['eID'];
-$employee = ($row['employee']);
-$DealerID = $row['DealerID'];
-$DealerName = $row['DealerName'];
-$member = $row['member'];
-$registered = $row['registered'];
-$EmplReferral = $row['EmplReferral'];
-$Renewed = $row['Renewed'];
-$Commission = $row['Commission'];
-?>
+	while ($row = mysql_fetch_array($GetTransactions)) {
+		$TransactionDate = $row['TransactionDate'];
+		$TransactionID = $row['TransactionID'];
+		$eID = $row['eID'];
+		$employee = ($row['employee']);
+		$DealerID = $row['DealerID'];
+		$DealerName = $row['DealerName'];
+		$member = $row['member'];
+		$registered = $row['registered'];
+		$EmplReferral = $row['EmplReferral'];
+		$Renewed = $row['Renewed'];
+		$Commission = $row['Commission'];
+		$ReferralAmount = $row['ReferralAmount'];
+	?>
 	<tr valign='top'>
 		<td colspan='11' align='center'><hr /></td>
 	</tr>
 	<tr>
-		<td align="center"><?php echo $TransactionDate; ?></td>		
-		<td align="center"><?php echo $TransactionID;?></td>	
-		<td align="center"><?php echo $eID;?></td>		
-		<td align="center"><?php echo $employee;?></td>
-		<td align="center">
-			<?php			
-			if (empty($Commission)) {
-    				echo "";
-			} else {
-    				echo $Commission;
-			}
-
-			?>
-		</td>
-		<td align="center"><?php echo $DealerID;?></td>
-		<td align="center"><?php echo $DealerName;?></td>
-		<td align="center">
+		<td align="center"><p><?php echo $TransactionDate;?></p></td>		
+		<td align="center"><p><?php echo $TransactionID;?></p></td>
+		<td align="center"><p>
+		<?php 
+		//Get Employee Referal's Email
+			$GetDealerEmail = mysql_query("
+				SELECT DealerEmail 	
+				FROM dealers
+				WHERE DealerName ='".$DealerName."' ");
+			while ($row = mysql_fetch_array($GetDealerEmail)) {
+				$DealerEmail = $row['DealerEmail'];
+				}
+		echo "<p><a href='mailto:$DealerEmail'>" . $DealerName . "</a></p>";
+		?>
+		</p></td>
+		<td align="center"><p>
 			<?php			
 			if (empty($registered)) {
-    				echo "";
+    				echo "----";
 			} else {
     				echo "$" . $registered;
 			}
 
-			?>
+			?></p></td>		
+		<td align="center"><p>
+		<?php			
+		if (empty($Renewed)) {
+			echo "----";
+		} else {
+			echo "$" . $Renewed;
+		}
+
+		?></p></td>
+		
+		<td align="center" width="75">
+		<?php 
+		//Get Dealer Rep's Email
+			$GetRepsEmail = mysql_query("
+				SELECT EmplEmail 	
+				FROM employees 
+				WHERE employee ='".$employee."' ");
+			while ($row = mysql_fetch_array($GetRepsEmail)) {
+				$EmplEmail = $row['EmplEmail'];
+				}
+		echo "<p><a href='mailto:$EmplEmail'>" . $employee . "</a></p>";
+		?>
 		</td>
-		<td align="center">
+		<td align="center"><p>
 			<?php			
-			if (empty($Renewed)) {
+			if (empty($Commission)) {
     				echo "";
 			} else {
-    				echo "$" . $Renewed;
+    				echo "$" . $Commission;
 			}
-
 			?>
+			</p>
 		</td>
-		<td align="center"><?php echo $member;?></td>
+		<td align="center" width="75">
+		<?php 
+		//Get Employee Referal's Email
+			$GetRefEmail = mysql_query("
+				SELECT EmplEmail 	
+				FROM employees 
+				WHERE employee ='".$EmplReferral."' ");
+			while ($row = mysql_fetch_array($GetRefEmail)) {
+				$EmplEmail = $row['EmplEmail'];
+				}
+		echo "<p><a href='mailto:$EmplEmail'>" . $EmplReferral . "</a></p>";
+		?>
+		</td>
 		<td align="center">
-			<?php			
-			if (empty($EmplReferral)) {
-    				echo "<font size='-2' color='#FF0000'><strong>" . $employee . " did not select the person who hired him.</strong></font>" ;
-			} else {
-    				echo $EmplReferral;
-			}
-
-			?>
-		</td>
+		<?php			
+		if (empty($ReferralAmount)) {
+			echo "----" ;
+		} else {
+			echo "$" . $ReferralAmount;
+		}
+		?>
+	</td>
 	</tr>
-<?php } 
-?>
-
-
+	<?php } 
+	?>
 </table>
 

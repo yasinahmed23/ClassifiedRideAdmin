@@ -61,12 +61,28 @@ $(document).ready(function(){
 	</div>	
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
-		<?php echo "<p align='center'><strong>Total # of Employees Found:" .  $num_rows . "</strong></p>"; ?>	
-		<div id="empllist">
 		<?php 
-		include 'includes/Employee_feed_Table.php';
+		if (isset($_SESSION[admin])) {
+			echo " 
+		<form id='SortEmployees' name='SortEmployees' method='post' action='EmployeesSorted.php'>
+			<p align='center'><font size='+1'><strong>Total # of Employees : " .  $num_rows . "</strong>&nbsp;&dash;&nbsp;View Employees Added in the last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
+			</font></p>
+		</form>
+		";	
+		}
+		else {
+			echo "<p align='center'><strong>" . $num_rows . " Employees Found </strong></p>";
+		}
 		?>
-		</div>
+		<table width="770" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
+			<tr>
+				<td>
+				<div id="empllist">
+				<?php include 'includes/Employee_feed_Table.php';?>
+				</div>
+				</td>
+			</tr>
+		</table>
 		<div id="export">	
 			<?php
 			if (isset($_SESSION[admin])) {
@@ -80,4 +96,4 @@ $(document).ready(function(){
 		</div>
 	</div>
 </div>	
-
+<?php require_once 'includes/footer.php'; ?>

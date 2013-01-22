@@ -29,7 +29,7 @@
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
-		<center><font size="+2"><strong><?php echo "Employee Search Results"?></strong></font></center>
+		<center><font size="+2"><strong><?php echo "Employee Transaction Search Results"?></strong></font></center>
 		<?php
 			//Count Transactions for selected employee
 			$employee= $_POST['search_string'];
@@ -45,104 +45,157 @@
 		?>
 		<?php 
 			if (mysql_num_rows( $CountTrans ) == 0) {
-				echo "<br /><center><font color='#FF0000'><strong>This Employee has not signed any dealerships yet.</strong></font></center>"; 
+				echo "<br /><center><font color='#FF0000'><strong>This Employee has not signed any dealerships or hired anyone that has.</strong></font></center>"; 
 			}
 			else {
-			?>
-		<table cellpadding="7" cellspacing="0" border="0" align="center" class="table">
+		?>
+		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table">
 			<tr>
-				<td align="center"><strong>Period Ending</strong></td>			
-				<td align="center"><strong>Trans ID</strong></td>				
-				<td align="center"><strong>Employee ID</strong></td>		
-				<td align="center"><strong>Employee</strong></td>
-				<td align="center"><strong>Commission</strong></td>
-				<td align="center"><strong>Dealer ID</td>
-				<td align="center"><strong>Dealer Name</td>
-				<td align="center"><strong>Registered</td>
-				<td align="center"><strong>Renewed</td>
-				<td align="center"><strong>Referrals</td>
+				<td>
+				<div id="referral">
+					<table cellpadding="7" cellspacing="0" border="0" align="center" width="850">
+						<tr>
+							<td align="center"><strong>Date/Time</strong></td>		
+							<td align="center"><strong>Trans ID</strong></td>				
+							<td align="center"><strong>Dealership</td>
+							<td align="center"><strong>Registered</td>
+							<td align="center"><strong>Renewed</td>
+							<td align="center"><strong>Representative</strong></td>
+							<td align="center"><strong>Commission</td>
+							<td align="center"><strong>Manager</td>
+							<td align="center"><strong>Referral</td>
+						</tr>
+						<?php
+						//Get data from database and assign to a variable
+						$employee= $_POST['search_string'];
+
+						$sql = mysql_query("
+							SELECT *
+							FROM transactions
+							WHERE employee='".$employee."'");
+
+						while ($row = mysql_fetch_array($sql)) 
+						{
+						$TransactionDate = $row['TransactionDate'];
+						$TransactionID = $row['TransactionID'];
+						$eID = $row['eID'];
+						$employee = ($row['employee']);
+						$DealerID = $row['DealerID'];
+						$DealerName = $row['DealerName'];
+						$member = $row['member'];
+						$registered = $row['registered'];
+						$EmplReferral = $row['EmplReferral'];
+						$Renewed = $row['Renewed'];
+						$Commission = $row['Commission'];
+						$ReferralAmount = $row['ReferralAmount'];
+						?>
+
+						<!--Disply data from database into a table -->
+						<tr><td colspan="10" align="center"><hr></td></tr>
+						<tr>
+							<td align="center"><?php echo $TransactionDate; ?></td>		
+							<td align="center"><?php echo $TransactionID;?></td>	
+							
+							<td align="center">
+							<?php 
+							//Get Employee Referal's Email
+								$GetDealerEmail = mysql_query("
+									SELECT DealerEmail 	
+									FROM dealers
+									WHERE DealerName ='".$DealerName."' ");
+								while ($row = mysql_fetch_array($GetDealerEmail)) {
+									$DealerEmail = $row['DealerEmail'];
+									}
+							echo "<p><a href='mailto:$DealerEmail'>" . $DealerName . "</a></p>";
+							?>
+							</td>
+							<td align="center">
+								<?php			
+								if (empty($registered)) {
+					    				echo "----";
+								} else {
+					    				echo "$" . $registered;
+								}
+
+								?>
+							</td>
+							<td align="center">
+								<?php			
+								if (empty($Renewed)) {
+					    				echo "----";
+								} else {
+					    				echo "$" . $Renewed;
+								}
+
+								?>
+							</td>
+							<td align="center">
+							<?php 
+							//Get Dealer Rep's Email
+								$GetRepsEmail = mysql_query("
+									SELECT EmplEmail 	
+									FROM employees 
+									WHERE employee ='".$employee."' ");
+								while ($row = mysql_fetch_array($GetRepsEmail)) {
+									$EmplEmail = $row['EmplEmail'];
+									}
+							echo "<p><a href='mailto:$EmplEmail'>" . $employee . "</a></p>";
+							?>
+							</td>
+							<td align="center">
+								<?php			
+								if (empty($Commission)) {
+					    				echo "";
+								} else {
+					    				echo "$" . $Commission;
+								}
+
+								?>
+							</td>
+							<td align="center">
+								<?php			
+								if (empty($EmplReferral)) {
+					    				echo "----";
+								} else {
+					    				
+									//Get Employee Referal's Email
+									$GetRefEmail = mysql_query("
+										SELECT EmplEmail 	
+										FROM employees 
+										WHERE employee ='".$EmplReferral."' ");
+									while ($row = mysql_fetch_array($GetRefEmail)) {
+										$EmplEmail = $row['EmplEmail'];
+										}
+								echo "<p><a href='mailto:$EmplEmail'>" . $EmplReferral . "</a></p>";
+									}
+
+								?>
+							</td>
+							<td align="center">
+								<?php			
+								if (empty($ReferralAmount)) {
+									echo "----" ;
+								} else {
+									echo "$" . $ReferralAmount;
+								}
+								?>
+							</td>
+						</tr>
+						<?php } 
+						?>
+						</table>
+					<?php }?>
+					</div>
+				</td>
 			</tr>
-
-			<?php
-			//Get data from database and assign to a variable
-			$employee= $_POST['search_string'];
-
-			$sql = mysql_query("
-				SELECT *
-				FROM transactions
-				WHERE employee='".$employee."'
-			");
-			
-
-			while ($row = mysql_fetch_array($sql)) 
-			{
-			$TransactionDate = $row['TransactionDate'];
-			$TransactionID = $row['TransactionID'];
-			$eID = $row['eID'];
-			$employee = ($row['employee']);
-			$DealerID = $row['DealerID'];
-			$DealerName = $row['DealerName'];
-			$member = $row['member'];
-			$registered = $row['registered'];
-			$EmplReferral = $row['EmplReferral'];
-			$Renewed = $row['Renewed'];
-			$Commission = $row['Commission'];
-			?>
-
-			<!--Disply data from database into a table -->
-			<tr><td colspan="10" align="center"><hr></td></tr>
-			<tr>
-				<td align="center"><?php echo $TransactionDate; ?></td>		
-				<td align="center"><?php echo $TransactionID;?></td>	
-				<td align="center"><?php echo $eID;?></td>		
-				<td align="center"><?php echo $employee;?></td>
-				<td align="center">
-					<?php			
-					if (empty($Commission)) {
-		    				echo "";
-					} else {
-		    				echo "$" . $Commission;
-					}
-
-					?>
-				</td>
-				<td align="center"><?php echo $DealerID;?></td>
-				<td align="center"><?php echo $DealerName;?></td>
-				<td align="center">
-					<?php			
-					if (empty($registered)) {
-		    				echo "";
-					} else {
-		    				echo "$" . $registered;
-					}
-
-					?>
-				</td>
-				<td align="center">
-					<?php			
-					if (empty($Renewed)) {
-		    				echo "";
-					} else {
-		    				echo "$" . $Renewed;
-					}
-
-					?>
-				</td>
-				<td align="center">
-					<?php			
-					if (empty($EmplReferral)) {
-		    				echo "";
-					} else {
-		    				echo $EmplReferral;
-					}
-
-					?>
-				</td>
-			</tr>
-			<?php } 
-			?>
+		</table>
+		<div id="export">
+			<table width="300" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td><p align="center"><a href="#">Export Search Results</a></p></td>
+				</tr>
 			</table>
-		<?php }?>
+		<div>	
 	</div>
 </div>
 </body>

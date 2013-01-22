@@ -32,24 +32,20 @@ $employee = ($row['employee']);
 $DealerID = $row['DealerID'];
 $DealerName = $row['DealerName'];
 $member = $row['member'];
-$registered = "$" . $row['registered'];
+$registered = $row['registered'];
 $EmplReferral = $row['EmplReferral'];
-$Renewed = "$" . $row['Renewed'];
-$Commission = "$" . $row['Commission'];
+$Renewed = $row['Renewed'];
+$Commission = $row['Commission'];
+$ReferralAmount = $row['ReferralAmount'];
 
 //Disply data from database into a table -->
 	echo $TransactionDate . ',';
 	echo $TransactionID . ',';
-	echo $eID . ',';
+	echo $DealerName . ',';
 	echo $employee . ',';
-	echo $DealerID ;
-	echo $DealerName ;
-	echo $registered ;
-	echo $Renewed  ;
-	echo $Commission ;	
+	echo $Commission . ',';
+	echo $EmplReferral . ',';
+	echo $ReferralAmount;
 	echo "\r\n";
 } 
 ?>
-
-
-

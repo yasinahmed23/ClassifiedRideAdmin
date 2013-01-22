@@ -1,6 +1,6 @@
 <!--View My Profile-->
 <div>
-	<a href="/index.php"><strong>MY PROFILE</strong></a>
+	<a href="index.php"><strong>MY PROFILE</strong></a>
 	<br />
 	<form action="NewHireForms.php
 "><input class="Button" type="submit" value="New Hire Forms" /></form>

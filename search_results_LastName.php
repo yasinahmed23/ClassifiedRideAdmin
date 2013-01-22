@@ -48,76 +48,81 @@
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
 		<center><font size="+2"><strong><?php echo "Employee Search Results"?></strong></font></center>
-			<table cellpadding="0" cellspacing="0" border="0" align="center" class="table"><tr valign="top"><td><table cellpadding="10" cellspacing="0" border="0" align="center">
-				<tr>
-					<td align="center"><strong>ID</strong></td>				
-					<td align="center"><strong>First Name</strong></td>	
-					<td align="center"><strong>MI</strong></td>		
-					<td align="center"><strong>Last Name</strong></td>
-					<td align="center"><strong>Referred By</td>
-					<td align="center"><strong>Email</td>
-					<td align="center"><strong>Cell Phone</td>
-					<td align="center"><strong>Profile Pic</td>
-				</tr>
+			<table cellpadding="5" cellspacing="0" border="0" align="center" class="table" width="550">
+				<tr valign="top">
+					<td>
+					<div id="dealerlist">
+					<table cellpadding="10" cellspacing="0" border="0" align="center" width="530">
+						<tr>
+							<td align="center" width="30"><strong>ID</strong></td>				
+							<td align="center" width="30"><strong>First Name</strong></td>	
+							<td align="center" width="30"><strong>MI</strong></td>		
+							<td align="center" width="30"><strong>Last Name</strong></td>
+							<td align="center" width="75"><strong>Manager</td>
+							<td align="center" width="150"><strong>Email</strong></td>
+							<td align="center" width="75"><strong>Cell Phone</td>
+							<td align="center" width="100"><strong>Profile Pic</td>
+						</tr>
 
-				<?php
-				//Get data from database and assign to a variable
+						<?php
+						//Get data from database and assign to a variable
 
-				$EmplLast_name = $_POST['search_string'];
-				$sql = mysql_query("
-					SELECT *
-					FROM employees 
-					WHERE EmplLastName='".$EmplLast_name."'
-				");
+						$EmplLast_name = $_POST['search_string'];
+						$sql = mysql_query("
+							SELECT *
+							FROM employees 
+							WHERE EmplLastName='".$EmplLast_name."'
+						");
 
-				while ($row = mysql_fetch_array($sql)) 
-				{
-				$employeeID = $row['employeeID'];
-				$EmplFirstName = $row['EmplFirstName'];
-				$EmplMiddleInitial = $row['EmplMiddleInitial'];
-				$ReferredBy = $row['ReferredBy'];
-				$EmplEmail = $row['EmplEmail'];
-				$EmplPhone = ($row['EmplCellPhone1']) . "-" . ($row['EmplCellPhone2']) . "-" . ($row['EmplCellPhone3']);
-				$pic= $row ['pic'];
-				?>
+						while ($row = mysql_fetch_array($sql)) 
+						{
+						$employeeID = $row['employeeID'];
+						$EmplFirstName = $row['EmplFirstName'];
+						$EmplMiddleInitial = $row['EmplMiddleInitial'];
+						$ReferredBy = $row['ReferredBy'];
+						$EmplEmail = $row['EmplEmail'];
+						$EmplPhone = ($row['EmplCellPhone1']) . "-" . ($row['EmplCellPhone2']) . "-" . ($row['EmplCellPhone3']);
+						$pic= $row ['pic'];
+						?>
 
-				<!--Disply data from database into a table -->
-				<tr valign='top'>
-						<td colspan='8' align='center'><hr /></td>
-					</tr>
-				<tr>
-					<td align="center"><?php echo $employeeID?></td>
-					<td align="center"><?php echo $EmplFirstName;?></td>		<td align="center"><?php echo $EmplMiddleInitial;?></td>		
-					<td align="center"><?php echo $EmplLast_name;?></td>
-					<td align="center"><?php echo $ReferredBy;?></td>
-					<td align="center"><a href="mailto:<?php echo $EmplEmail; ?>"><?php echo $EmplEmail;?></a>
-		
+						<!--Disply data from database into a table -->
+						<tr valign='top'>
+								<td colspan='8' align='center'><hr /></td>
+							</tr>
+						<tr>
+							<td align="center" width="30"><?php echo $employeeID?></td>
+							<td align="center" width="30"><?php echo $EmplFirstName;?></td>		
+							<td align="center" width="30"><?php echo $EmplMiddleInitial;?></td>		
+							<td align="center" width="30"><?php echo $EmplLast_name;?></td>
+							<td align="center" width="75"><?php echo $ReferredBy;?></td>
+							<td align="center" width="150"><p><?php echo "<a href='mailto:'" . $EmplEmail . ">" . $EmplEmail . "</a>";?></p></td>
+							</td>
+							<td align="center" width="75"><?php echo $EmplPhone;?></td>
+							<td align="center"><?php printf("<img src='/uploads/$pic' width='100'>"); ?></td>
+						</tr>
+						<?php } 
+						?>
+					</table>
+					</div>
 					</td>
-					<td align="center"><?php echo $EmplPhone;?></td>
-					<td align="center"><?php printf("<img src='/uploads/$pic' width='100'>"); ?></td>
 				</tr>
-				<?php } 
-				?>
 			</table>
-		</td>
-	</tr>
-</table>
-<?php
-//Get Employee ID from Lastname
-$GetEmployeeID = mysql_query("
-	SELECT employeeID
-	FROM  employees
-	WHERE EmplLastName='$EmplLast_name'
-");
+			<?php
+			//Get Employee ID from Lastname
+			$GetEmployeeID = mysql_query("
+				SELECT employeeID
+				FROM  employees
+				WHERE EmplLastName='$EmplLast_name'
+			");
 
-while ($row = mysql_fetch_array($GetEmployeeID)) 
-{
-	$employeeID = $row['employeeID'];
-}
-?>
-
-</table></td></tr></table>
-			
+			while ($row = mysql_fetch_array($GetEmployeeID)) 
+			{
+				$employeeID = $row['employeeID'];
+			}
+			?>
+			</td>
+		</tr>
+	</table>	
 </div>
 </div>
 </body>

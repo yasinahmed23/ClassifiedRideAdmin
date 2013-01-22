@@ -19,7 +19,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Search | ClassifiedRide</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/jquery-1.8.2.js"></script>
 <script src="autocomplete/search_DealerName.js"></script>
 </head>
 <body>

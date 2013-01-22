@@ -30,17 +30,28 @@ $TimeRegistered = $row['TimeRegistered'];
 $DealerName = $row['DealerName'];
 $DealerCity = ($row['DealerCity']);
 $DealerState = $row['DealerState'];
-$DealerEmail = $row['DealerEmail'];
+$DealerState = $row['DealerState'];
+$DealerZip = $row['DealerZip'];
+$DealerCountry = $row['DealerCountry'];
 $DealerContact = ($row['DealerMainContactFirst']) . " " . ($row['DealerMainContactLast']);
 $DealerContactPhone = ($row['DealerCellPhone1']) . "-" . ($row['DealerCellPhone2']) . "-" . ($row['DealerCellPhone3']);
 $RepName = $row['RepName'];
+$Program = $row['Program'];
+$MemberStatus = $row['MemberStatus'];
+$DealerEmail = $row['DealerEmail'];
 
 //Disply data from database into a table -->
 	echo $DealerName . ',';
 	echo $DealerCity . ',';
 	echo $DealerState . ',';
+	echo $DealerZip . ',';
+	echo $DealerCountry . ',';
+	echo $DealerContact . ',';
 	echo $DealerEmail . ',';
-	echo $RepName ;	
+	echo $DealerContactPhone . ',';
+	echo $RepName . ',';
+	echo $Program . ',';
+	echo $MemberStatus ;	
 	echo "\r\n";
 } 
 ?>

@@ -10,9 +10,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Dealer Signup | ClassifiedRide</title>
+<title>Dealers | ClassifiedRide</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/jquery-1.8.2.js"></script>
 <script src="autocomplete/searchFullName.js"></script>
 <SCRIPT TYPE="text/javascript" SRC="js/verifynotify.js"></SCRIPT>
 </head>
@@ -24,7 +24,7 @@
 	<div id="Dealermain">
 		<?php include 'includes/Dealer_main.php'?>
 	</div>
-	<div id="spacer">&nbsp;</div>
+	<div id="spacer2">&nbsp;</div>
 	<div id="profile">
 		<?php	
 		if (!isset($_SESSION[DealerUser])) {
@@ -37,7 +37,7 @@
 		?>
 	</div>
 </div>	
-<br /><br />
+<?php require_once 'includes/footer.php'; ?>
 </body>
 </html>	
 

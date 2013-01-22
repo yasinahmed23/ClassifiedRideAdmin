@@ -10,7 +10,6 @@
 	require_once 'includes/db_config.php';
 
 	$user = $_SESSION['user'];
-	//echo $user;
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -19,7 +18,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Search | ClassifiedRide</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/jquery-1.8.2.js"></script>
 <script src="autocomplete/search.js"></script>
 </head>
 <body>
@@ -45,7 +44,7 @@
 		</form>
 		</center>
 	</div>
-	
 </div> 	
+<?php require_once 'includes/footer.php'; ?>
 </body>
 </html>

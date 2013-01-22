@@ -1,7 +1,8 @@
+<?php include_once("GoogleAnalyticsTracking.php") ?>
 <div id="logo">
 	<table cellpadding="0" cellspacing="0" border="0">
 		<tr valign="top">
-			<td><h1>Welcome to the <img src="/images/logo2.png" width="200"> Employee/Dealer Database</h1>
+			<td><h1>Welcome to the <img src="/images/logo2.png" width="200"> Employee Database</h1>
 			<div id="ClickDealer">
           	 	<?php
 		   		if (!isset($_SESSION[user])) {

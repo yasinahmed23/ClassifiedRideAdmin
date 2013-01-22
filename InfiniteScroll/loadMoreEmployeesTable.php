@@ -18,8 +18,7 @@
 		FROM employees 
 		WHERE employeeID > "'.mysql_real_escape_string($_GET['lastEmployee']).'" 
 		AND employeeID <= "'.$num_rows.'" 
-		ORDER BY employeeID ASC		
-		');
+		ORDER BY employeeID ASC');
 
 		$val = $_GET['lastEmployee'];
 
@@ -36,17 +35,14 @@
 	
 			echo "
 			<div class='postedEmployee' employeeID=\"$data->employeeID \">
-				<table width='700' cellpadding='0' cellspacing='0' border='0' align='center'>
+				<table cellpadding='0' cellspacing='0' border='0' width='770'>
 					<tr valign='top'>
-						<td colspan='7' align='center'><hr /></td>
-					</tr>
-					<tr>					
-						<td align='center'><li>"."$employeeID </li></td>
-						<td align='center'><li>"."$EmplFirstName </li></td>
-						<td align='center'><li>"."$EmplLastName</li> </td>
-						<td align='center'><li>"."<a href='mailto:$EmplEmail'>$EmplEmail</a></li></td>	
-						<td align='center'><li>"."$EmplCity </li></td>		
-						<td align='center'><li>"."$EmplState </li></td>			
+					<td colspan='7' align='center'><hr /></td>
+				</tr>
+				<tr>					
+					<td align='center'><li>"."$employeeID </li></td>
+						<td align='center'><li><p><a href='mailto:$EmplEmail'>" . "$EmplFirstName $EmplLastName</a></p></li></td>
+						<td align='center'><li>" . "$EmplCity $EmplState </li></td>			
 						<td align='center'><li>";if ($pic == null || $pic == "") {
 								printf("<img src='/images/No_Image_Available.gif' width='100'>");
 							}

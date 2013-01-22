@@ -14,6 +14,8 @@
 	$Password = stripslashes($Password);
 	$UserName = mysql_real_escape_string($UserName);
 	$Password = mysql_real_escape_string($Password);
+
+	$Password= hash( 'sha256', $Password );	
 	
 	//Run query - select user from database	
 	$sel_user="SELECT * FROM members WHERE username='$UserName' and password='$Password'";
@@ -28,7 +30,7 @@
 	//Create session variable from data and redirect page
 	$_SESSION['admin']=$UserName;
 
-	header( 'Location: transactions.php' ) ;
+	header( 'Location: Referrals.php' ) ;
 	}
 	else {
 		header( 'Location: index.php' ) ;

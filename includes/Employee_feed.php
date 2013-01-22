@@ -16,24 +16,21 @@
 $sql = mysql_query("
 	SELECT *
 	FROM employees 
-	ORDER BY employeeID DESC
-");
+	ORDER BY employeeID DESC");
 
-while ($row = mysql_fetch_array($sql)) 
-{
-$TimeRegistered = $row['TimeRegistered'];
-$employeeID = $row['employeeID'];
-$EmplFirstName = $row['EmplFirstName'];
-$EmplMiddleInitial = $row['EmplMiddleInitial'];
-$EmplLastName = ($row['EmplLastName']);
-$ReferredBy = $row['ReferredBy'];
-$EmplEmail = $row['EmplEmail'];
-$EmplPhone = ($row['EmplCellPhone1']) . "-" . ($row['EmplCellPhone2']) . "-" . ($row['EmplCellPhone3']);
-$pic= $row ['pic'];
-$EmplCity = $row['EmplCity'];
-$EmplState = $row['EmplState'];
-$EmplCountry = $row['EmplCountry'];
-
+while ($row = mysql_fetch_array($sql)) {
+	$TimeRegistered = $row['TimeRegistered'];
+	$employeeID = $row['employeeID'];
+	$EmplFirstName = $row['EmplFirstName'];
+	$EmplMiddleInitial = $row['EmplMiddleInitial'];
+	$EmplLastName = ($row['EmplLastName']);
+	$ReferredBy = $row['ReferredBy'];
+	$EmplEmail = $row['EmplEmail'];
+	$EmplPhone = ($row['EmplCellPhone1']) . "-" . ($row['EmplCellPhone2']) . "-" . ($row['EmplCellPhone3']);
+	$pic= $row ['pic'];
+	$EmplCity = $row['EmplCity'];
+	$EmplState = $row['EmplState'];
+	$EmplCountry = $row['EmplCountry'];
 ?>
 	
 <!--Disply data from database into a table -->

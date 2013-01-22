@@ -14,9 +14,9 @@
 
 	$GetTrans = mysql_query("
 	SELECT TransactionID
-	FROM transactions
-	");
+	FROM transactions");
 	$num_rows = mysql_num_rows($GetTrans);
+
 	
 ?>
 
@@ -41,14 +41,25 @@
 		
 		<?php 
 		if (isset($_SESSION[admin])) {
-			echo "<p align='center'><strong>Total # of Transactions Found:" .  $num_rows . "</strong></p>";	
+			echo " 
+		<form id='SortTrans' name='SortTrans' method='post' action='TransactionsSorted.php'>
+			<p align='center'><font size='+1'><strong>Total # of Transactions : " .  $num_rows . "</strong>&nbsp;&dash;&nbsp;View Transactions from last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
+			</font></p>
+		</form>
+		";	
 		}
 		?>
-		<div id="dealerlist">
-		<?php 
-		include 'includes/transactionFeed.php';
-		?>
-		</div>
+		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
+			<tr>
+				<td>
+				<div id="referral">
+					<?php 
+					include 'includes/transactionFeed.php';
+					?>
+				</div>
+				</td>
+			</tr>
+		</table>
 		<div id="export">
 			<?php if (isset($_SESSION[admin])) {
 			echo "
@@ -58,9 +69,10 @@
 				</tr>
 			</table>";
 			}
-			?>
-		</div>	
+		?>	
+		</div>
 	</div>
 </div>
+<?php require_once 'includes/footer.php'; ?>
 </body>
 </html>	

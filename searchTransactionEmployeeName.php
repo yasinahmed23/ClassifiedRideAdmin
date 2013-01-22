@@ -2,15 +2,15 @@
 	//Enable Session Variables	
 	session_start();
 	
-	if (!isset($_SESSION[user])) {
-	header("location: index.php");
+	if (!isset($_SESSION[admin])) {
+	header("location: login_error_admin.php");
 	}
 	
 	//Connect to Database	
 	require_once 'includes/db_config.php';
 
 	$user = $_SESSION['user'];
-	//echo $user;
+	$admin = $_SESSION['admin'];
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -19,7 +19,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Search | ClassifiedRide</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/jquery-1.8.2.js"></script>
 <script src="autocomplete/search_EmployeeName.js"></script>
 </head>
 <body>
@@ -45,7 +45,7 @@
 			</div>
 		</form>
 	</div>
-	
 </div> 	
+<?php require_once 'includes/footer.php'; ?>
 </body>
 </html>

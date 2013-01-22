@@ -22,7 +22,7 @@
 <body>
 <div id="top">
 	<div id="logo">
-		<h1>Welcome to the ClassifiedRide Employee/<a href="Dealers.php">Dealer Database</a></h1>
+		<h1>Welcome to the ClassifiedRide Employee/Dealer Database</a></h1>
 	</div>
 		
 	<div id="login">
@@ -44,8 +44,17 @@
 		?>
 	</div>
 	<div id="employees">
-		<?php echo "Please Login as Admin to View That Page";
+		<?php echo "<p align='center'>Please Login as Admin to View That Page</p>";
 		?>
+		
+		<table align="center" cellspacing="0" cellpadding="0">
+			<tr valign="top">
+				<td>
+				<strong>ADMIN ACCESS</strong>
+				<?php include 'includes/login_form_admin.php'; ?>
+				</td>
+			</tr>
+		</table>	
 	</div>
 	
 	

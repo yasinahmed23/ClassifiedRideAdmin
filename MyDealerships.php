@@ -10,7 +10,6 @@
 	require_once 'includes/db_config.php';
 
 	$user = $_SESSION['user'];
-	//echo $user;
 
 
 //Get Employee ID from Username
@@ -41,11 +40,13 @@ $num_rows = mysql_num_rows($CountDeal);
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>
+	<?php include 'includes/header.php'; ?>           
 </div>
 <div id="container">
 	<div id="main">
-		<?php include 'includes/Employee_main.php'?>
+		<?php 
+		include 'includes/main.php';
+		?>
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
@@ -64,62 +65,25 @@ $num_rows = mysql_num_rows($CountDeal);
 		?>
 
 		<?php echo "<p align='center'><strong>Showing " . $num_rows . " Dealerships for " . $employee . "</p></strong>"; ?>
-		<div id="dealerlist">
-		<table cellpadding="7" cellspacing="0" border="0" align="center" width="850" class="table">
-			<tr>
-				<td align="center"><strong>ID</strong></td>		
-				<td align="center"><strong>Time Registered</strong></td>				
-				<td align="center"><strong>DealerName</strong></td>	
-				<td align="center"><strong>DealerCity</strong></td>		
-				<td align="center"><strong>DealerState</strong></td>
-				<td align="center"><strong>DealerEmail</td>
-				<td align="center"><strong>Main Contact</td>
-				<td align="center"><strong>Main Contact's Job Title </td>
-				<td align="center"><strong>Phone Number</td>
-			</tr>
-			<?php
-			while ($row = mysql_fetch_array($sql)) {
-			$DealerID = $row['DealerID'];
-			$TimeRegistered = $row['TimeRegistered'];
-			$DealerName = $row['DealerName'];
-			$DealerCity = ($row['DealerCity']);
-			$DealerState = $row['DealerState'];
-			$DealerEmail = $row['DealerEmail'];
-			$DealerContact = ($row['DealerMainContactFirst']) . " " . ($row['DealerMainContactLast']);
-			$ContactPosition = $row['ContactPosition'];
-			$DealerContactPhone = ($row['DealerCellPhone1']) . "-" . ($row['DealerCellPhone2']) . "-" . ($row['DealerCellPhone3']);
-			$RepName = $row['RepName'];
-			?>
 
-			<!--Disply data from database into a table -->
-			<tr valign="top">
-				<td colspan="9" align="center"><hr /></td>
-			</tr>
+		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
-				<td align="center"><?php echo $DealerID;?></td>		
-				<td align="center"><?php echo $TimeRegistered;?></td>
-				<td align="center"><?php echo $DealerName;?></td>		
-				<td align="center"><?php echo $DealerCity;?></td>
-				<td align="center"><?php echo $DealerState;?></td>
-				<td align="center"><a href="mailto:<?php echo $DealerEmail; ?>"><?php echo $DealerEmail;?></a>
-		
+				<td>
+				<div id="referral">	
+				<?php include 'includes/MyDealerFeed.php' ; ?>
+				<?php } ?>
+				</div>
 				</td>
-				<td align="center"><?php echo $DealerContact;?></td>
-				<td align="center"><?php echo $ContactPosition;?></td>
-				<td align="center"><?php echo $DealerContactPhone;?></td>
-			</tr>
-			<?php }  
-			?>
-		</table>
-<?php } ?>
-	</div>
-	<div id="export">
-		<table width="300" border="0" cellpadding="0" cellspacing="0" align="center">
-			<tr>
-				<td><p align="center"><a href="ExportCSV_MY-Dealers.php">Export all <?php echo $num_rows; ?> of  my Dealers to .csv</a></p></td>
 			</tr>
 		</table>
+		<div id="export">
+			<table width="300" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td><p align="center"><a href="ExportCSV_MY-Dealers.php">Export all <?php echo $num_rows; ?> of  my Dealers to .csv</a></p></td>
+				</tr>
+			</table>
+		</div>	
 	</div>
-</div>
-</body>
-</html>	
+</div>	
+<?php require_once 'includes/footer.php'; ?>
+</html>

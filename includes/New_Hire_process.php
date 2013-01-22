@@ -7,7 +7,6 @@
 	include 'db_config2.php';
 
 	//Save user input as variable	
-
 	$EmplFirstName = stripslashes($_POST['EmplFirstName']);
 	$EmplMiddleInitial = stripslashes($_POST['EmplMiddleInitial']);
 	$EmplLastName = stripslashes($_POST['EmplLastName']);
@@ -92,49 +91,27 @@
     		die('Invalid query: ' . mysql_error());
 		}
 
-	//Get Employee ID of Referral
+	//Get Employee ID of New Hire's Manager
 	$GetEmployeeID = mysql_query("
 		SELECT employeeID
 		FROM  employees
-		WHERE employee='$ReferredBy'
-	");
+		WHERE employee='$ReferredBy'");
 
-	while ($row = mysql_fetch_array($GetEmployeeID)) 
-	{
-		$RefemployeeID = $row['employeeID'];
-	}
-	
-
-	//UPDATE REFERRAL TABLE
-
-	//Get Employee ID from Username
-	$GetRefemployeeID = mysql_query("
-		SELECT employeeID
-		FROM  employees
-		WHERE employee='$ReferredBy'
-	");
-
-	while ($row = mysql_fetch_array($GetRefemployeeID)) 
-	{
+	while ($row = mysql_fetch_array($GetEmployeeID)) {
 		$RefemployeeID = $row['employeeID'];
 	}
 
-
 	//UPDATE REFERRAL TABLE
-
 	$addReferal = "
 	INSERT INTO Referrals (EmployeeID, EmployeeName, NewEmpEmail, NewEmplName)
-	VALUES ('$RefemployeeID', '$ReferredBy', '$EmplEmail', '$employee'
-	)";
+	VALUES ('$RefemployeeID', '$ReferredBy', '$EmplEmail', '$employee')";
 
 	$result= mysql_query($addReferal);
 	if (!$result) {
     		die('Invalid query: ' . mysql_error());
 		}
 
-
 	//Create session variable from data and redirect page
-
 	$_SESSION['user']=$EmplUserName;
 	$EmplPassword= hash( 'sha256', $EmplPassword );	
 	$_SESSION['pass']=$EmplPassword;
@@ -143,12 +120,32 @@
 		$to = "classifiedridewebsite@gmail.com";
 		$subject = $employee . " Registered";
 		$message = "
-		New Employee Added: " . $employee . "!" ;
+		New Employee Added: " . $employee . "!  Hired by " .  $ReferredBy;
 		$from = "classifiedridewebsite@gmail.com";
 		$headers = "From:" . $from;
 		mail($to,$subject,$message,$headers);
 
-	//SEND NEW HIRE NOTIFICATION VIA EMAIL
+	//SEND NEW HIRE NOTIFICATION VIA EMAIL TO MANAGER
+
+		//Get Managers email address
+			$GetManagersEmail = mysql_query("
+				SELECT EmplEmail
+				FROM  employees
+				WHERE employee='$ReferredBy'");
+
+			while ($row = mysql_fetch_array($GetManagersEmail)) {
+				$ManagersEmail = $row['EmplEmail'];
+			}
+
+		$to = $ManagersEmail;
+		$subject = $employee . " Registered";
+		$message = 
+		$employee . " registered !" ;
+		$from = "classifiedridewebsite@gmail.com";
+		$headers = "From:" . $from;
+		mail($to,$subject,$message,$headers);
+	
+	//SEND LOGIN INFO VIA EMAIL TO NEW HIRE
 		$to = $EmplEmail; 
 		$subject = "Welcome Aboard " . $EmplFirstName . "!";
 		$message = 
