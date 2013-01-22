@@ -2,7 +2,7 @@
 	<tr>
 		<td>
 		
-			<form id="AddARForm" name="AddARForm" method="post" action="/includes/AddMemberProcess.php" onsubmit="return validateForm()">
+			<form id="AddARForm" name="AddARForm" method="post" action="/includes/AddARProcess.php" onsubmit="return validateForm()">
 			<table width="600" border="0" align="center" cellpadding="0" cellspacing="0">
 				<tr valign="top">
 			    		<td>
