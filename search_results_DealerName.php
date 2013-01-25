@@ -10,13 +10,12 @@
 	require_once 'includes/db_config.php';
 
 	$user = $_SESSION['user'];
-
+	
+	$DealerName= $_POST['search_string'];
 	$sql = mysql_query("
 		SELECT *
 		FROM dealers
 		WHERE DealerName='".$DealerName."'");
-
-
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -60,7 +59,7 @@
 						<?php
 						//Get data from database and assign to a variable
 
-						$DealerName= $_POST['search_string'];
+						
 
 						while ($row = mysql_fetch_array($sql)) 
 						{

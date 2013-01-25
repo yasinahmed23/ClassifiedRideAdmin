@@ -15,6 +15,7 @@
 </div>
 
 <!--Admin Access-->
+<a href="/AdminDashboard.php"><strong>ADMIN DASHBOARD</strong></a>
 <div>
 <?php	
 	if (!isset($_SESSION[admin])) {

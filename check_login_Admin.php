@@ -30,7 +30,7 @@
 	//Create session variable from data and redirect page
 	$_SESSION['admin']=$UserName;
 
-	header( 'Location: Referrals.php' ) ;
+	header( 'Location: /AdminDashboard.php' ) ;
 	}
 	else {
 		header( 'Location: index.php' ) ;

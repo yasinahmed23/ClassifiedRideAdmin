@@ -10,8 +10,10 @@
 	require_once 'includes/db_config.php';
 
 	$user = $_SESSION['user'];
+
+	$DealerName= $_POST['search_string'];
 	
-	$sql = mysql_query("
+	$GetDealerInfo = mysql_query("
 		SELECT *
 		FROM  transactions
 		WHERE DealerName='".$DealerName."'");
@@ -64,9 +66,7 @@
 
 					//Get data from database and assign to a variable
 
-					$DealerName= $_POST['search_string'];
-
-					while ($row = mysql_fetch_array($sql)) 
+					while ($row = mysql_fetch_array($GetDealerInfo)) 
 					{
 					$TransactionDate = $row['TransactionDate'];
 					$TransactionID = $row['TransactionID'];

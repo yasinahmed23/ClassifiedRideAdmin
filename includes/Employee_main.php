@@ -31,12 +31,13 @@
 	<br />
 
 </div>
-
-	<a href="/AccountsReceivable/"><strong>ACCOUNTS RECEIVABLE </strong></a>
-<br /><br />
-
-
 <!--Admin Access-->
+<form action="/AccountsReceivable" name="receivable" id="receivable">
+		<input class="Button" type="submit" id="receivable" name="receivable" value="ACCOUNTS RECEIVABLE"  />
+</form>
+<br />
+<a href="/AdminDashboard.php"><strong>ADMIN DASHBOARD</strong></a>
+
 <div>
 <?php	
 	if (!isset($_SESSION[admin])) {

@@ -28,7 +28,14 @@
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>
+	<?php 
+	if (isset($_SESSION[admin])) {
+		include 'includes/header_Admin.php'; 
+	}
+	else {
+		include 'includes/header.php'; 
+	}
+	?>
 </div>
 <div id="container">
 	<div id="main">

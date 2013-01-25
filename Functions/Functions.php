@@ -45,12 +45,12 @@
 
 
 	//Get Employee First Name from Username
-	$GetEmployeeName = mysql_query("
+	$GetEmployeeFirstName = mysql_query("
 		SELECT EmplFirstName
 		FROM  employees
 		WHERE EmplUserName='$user'");
 
-	while ($row = mysql_fetch_array($GetEmployeeName)) {
+	while ($row = mysql_fetch_array($GetEmployeeFirstName)) {
 		$EmplFirstName= $row['EmplFirstName'];
 	}	
 	
