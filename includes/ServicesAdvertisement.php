@@ -1,0 +1,3 @@
+You should register with us becuase......
+
+<a href="../Dealer_Registration.php">Click Here to Sign Up</a>

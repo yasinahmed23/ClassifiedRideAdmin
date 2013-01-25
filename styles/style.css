@@ -1,0 +1,861 @@
+body {
+
+	font: 0.8em Verdana, Arial, Helvetica, sans-serif;
+	color: #000000;
+	margin: 10px;
+	padding: 0px;
+	background-color: #383838 ;
+}
+
+.table {
+	border: 1px solid #151515;
+	box-shadow: 2px 2px 2px #151515;
+	opacity: 1.0;
+	filter: alpha(opacity=100);
+	-khtml-opacity: 1.0;
+	border-radius: 10px;
+}
+
+.table2 {
+	border: 1px solid #151515;
+	opacity: 1.0;
+	filter: alpha(opacity=100);
+	-khtml-opacity: 1.0;
+	border-radius: 5px;
+}
+
+.FeatureEnabled {
+	
+}
+
+.FeatureDisabled {
+	background-color: #E0E0E0  ;
+	color: #666666;
+}
+
+#top {
+
+	position:relative;
+	width: 1300px;
+	height: auto;
+	padding: 0px;
+	overflow: hidden;
+	margin-left:auto;
+	margin-right:auto;	
+	color: #FFFFFF;	
+	border: 0px solid #000000;
+	top:-8px;
+}
+
+#logo {
+
+	position: relative;	
+	float: left;
+	width: 825px;
+	height: auto;
+	overflow: hidden;
+	border: 0px solid #000000;
+	margin-top: 0px;
+	padding: 0px;
+}
+
+
+#logo a:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+
+
+#logo a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+#logo a:hover {
+	font-weight:bold;
+	color: #CCCCCC;
+	text-decoration: none;
+	font-weight: bold
+	
+}
+
+#ClickDealer {
+	position: relative;
+	top: -10px;
+	float: left;
+}
+
+
+#login {
+	padding: 0px;
+	color: #FFFFFF;
+	position: relative;
+	float: right;
+	width: 460px;
+	height: 78px;
+	overflow: hidden;
+	border: 0px solid #000000;
+} 
+
+#login-contents {
+	position:absolute;	
+	height: 68px;	
+	position: relative; 
+    	right:0px;
+	top:-10px;
+	
+}
+
+#login-contents a:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+
+
+#login-contents a:visited {
+	color: #FFFFFF;
+}
+
+
+
+#login-contents a:hover {
+	color: #CCCCCC;
+	font: 1.0em Verdana, Arial, Helvetica, sans-serif;
+}
+
+#container {
+
+	background: #FFFFFF;
+	color: #000000;
+	position:relative;
+	width: 1300px;
+	height: 460px;
+	padding: 5px;	
+	overflow: hidden;
+	margin-left:auto;
+	margin-right:auto;
+	border: 4px solid #151515;
+	box-shadow: 5px 5px 5px #151515;
+	opacity: 1.0;
+	filter: alpha(opacity=100);
+	-khtml-opacity: 1.0;
+	border-radius: 20px;
+	top:-19px;
+}
+
+
+
+#main {
+	padding: 10px;
+	position: relative;
+	float: left;
+	width: 185px;
+	height: 435px;	
+	background: #383838 ;
+	border: 2px solid #000000;
+	font: 1.1em Verdana, Arial, Helvetica, sans-serif;
+	color: #E6E6E6;
+	box-shadow:inset 0px 0px 85px rgba(0,0,0,.7);
+	-webkit-box-shadow:inset 0px 0px 85px rgba(0,0,0,.7);
+	border-radius: 10px;
+}
+
+
+
+#main a:link {
+	color: #E6E6E6;
+	text-decoration: none;
+}
+
+
+
+#main a:visited {
+	color: #E6E6E6;
+}
+
+
+
+#main a:hover {
+	color: #FFFFFF;
+	font: 1.0em Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold
+}
+
+
+
+#Dealermain {
+
+	padding: 10px;
+	position: relative;
+	float: left;
+	width: 185px;
+	height: 150px;	
+	background: #383838 ;
+	border: 2px solid #000000;
+	font: 1.1em Verdana, Arial, Helvetica, sans-serif;
+	color: #E6E6E6;
+	box-shadow:inset 0px 0px 85px rgba(0,0,0,.5);
+	-webkit-box-shadow:inset 0px 0px 85px rgba(0,0,0,.5);
+	border-radius: 10px;
+
+}
+
+
+
+#Dealermain a:link {
+	color: #E6E6E6;
+	text-decoration: none;
+}
+
+
+
+#Dealermain a:visited {
+	color: #E6E6E6;
+
+}
+
+
+
+#Dealermain a:hover {
+	color: #FFFFFF;
+	font: 1.0em Verdana, Arial, Helvetica, sans-serif;
+	font-weight: bold
+
+}
+
+
+
+#spacer {
+	padding: 0px;
+	position: relative;
+	float: left;
+	width: 75px;
+	height: 460;	
+}
+
+#spacer2 {
+	padding: 0px;
+	position: relative;
+	float: left;
+	width: 50px;
+	height: 460;	
+	border: 0px solid #000000;
+}
+
+#DownloadFiles {
+	padding: 10px;
+	position: relative;
+	float: left;
+	width: 430px;
+	height:400px;
+	margin-top: 0px;
+}
+
+#MyTrans {
+	padding: 10px;
+	position: relative;
+	float: left;
+	width: 530px;
+	height:400px;
+	margin-top: 0px;
+	border: 0px solid #000000;
+}
+
+#MyTransFeed {
+	height:300px;
+	overflow-y:scroll;
+	
+}
+
+#profile{	
+
+	padding: 5px;
+	position: relative;
+	float: left;
+	width: 960px;
+	height: 460px;
+	margin-top: 0px;
+	border: 0px solid #000000;
+	margin-left: auto ;
+  	margin-right: auto ;	
+	
+}
+
+#profile li{	
+
+	list-style-type:none; 	
+}
+
+#Feeds {
+	height: 400px;
+	overflow-y:scroll;
+	border: 0px solid #000000;
+}
+
+#NewHireForm {
+	height: 440px;
+	overflow-y:scroll;
+	border: 0px solid #000000;
+	
+}
+
+
+
+#UploadNewHire{	
+	position: relative;
+	float: right;
+	padding: 10px;
+	width: 330px;
+	height: auto;
+	margin-top: 0px;	
+	margin-left: auto ;
+  	margin-right: auto ;
+	border: 0px solid #000000;
+
+}
+
+#DealerProfile{	
+	position: relative;
+	float: right;
+	padding: 0px;
+	width: 330px;
+	height: auto;
+	border: 0px solid #000000;
+
+}
+
+#DealerDash{	
+	position: relative;
+	float: left;
+	padding: 0px;
+	width: 570px;
+	height:420px;
+	border: 0px solid #000000;
+	margin-top: 0px;
+}
+
+#Referrals{	
+	position: relative;
+	float: right;
+	padding: 0px;
+	width: 380px;
+	height: 400px;
+	margin-top: 0px;	
+	border: 0px solid #000000;
+	top:10px;
+	
+	
+
+}
+
+#DashboardContent {	
+	height: 380px;
+	overflow-y:scroll;
+}
+
+#FormLableLeft{	
+	position: relative;
+	float: left;
+	padding: 0px;
+	border: 0px solid #000000;
+
+}
+
+
+#FormLableRight{	
+	position: relative;
+	float:left;
+	padding: 0px;
+	border: 0px solid #000000;
+	Left:  125px;
+
+}
+
+
+#FormLableEmailRight{	
+	position: relative;
+	float:left;
+	padding: 0px;
+	border: 0px solid #000000;
+	Left:  157px;
+
+}
+
+#FormLableStreetRight{	
+	position: relative;
+	float:left;
+	padding: 0px;
+	border: 0px solid #000000;
+	Left:  180px;
+
+}
+#FormLableState{	
+	position: relative;
+	float:left;
+	padding: 0px;
+	border: 0px solid #000000;
+	Left:  115px;
+
+}
+
+#FormLableMI{	
+	position: relative;
+	float:left;
+	padding: 0px;
+	border: 0px solid #000000;
+	Left:  110px;
+
+}
+#FormLableLast{	
+	position: relative;
+	float:left;
+	padding: 0px;
+	border: 0px solid #000000;
+	Left:  122px;
+
+}
+
+#FormLableCountry{	
+	position: relative;
+	float:left;
+	padding: 0px;
+	border: 0px solid #000000;
+	Left:  40px;
+
+}
+
+#FormLabelExt{	
+	position: relative;
+	float:left;
+	padding: 0px;
+	border: 0px solid #000000;
+	Left:  160px;
+
+}
+
+
+#dealerlist{	
+	height:390px;
+	overflow-y:scroll;
+	border: 0px solid #000000;
+}
+
+
+#translist{	
+	height:390px;
+	border: 0px solid #000000;
+}
+
+
+#referral{	
+	height:350px;
+	overflow-y:scroll;
+	border: 0px solid #000000;
+}
+
+#RegistrationForm{	
+	height:420px;
+	overflow-y:scroll;
+	border: 0px solid #000000;
+}
+
+#empllist{	
+	height:350px;
+	border: 0px solid #000000;
+}
+
+
+
+#content {
+
+	padding: 0px;
+
+	position: absolute;
+
+	width:  55%;
+
+	}
+
+#register {
+
+	padding: 0px;
+	position: absolute;
+	right: 10px;
+}	
+
+
+
+#home {
+
+	position: absolute;
+	left: 15px;	
+	top: 46px;
+	padding: 0px;
+}
+
+
+
+#dealers {
+
+	padding: 0px;
+	position: relative;
+	float: left;
+	width: auto;
+}
+
+
+#search {
+
+	position: relative;
+	float: right;
+	right: 0px;
+	top: 40px;
+}
+
+
+
+#about {
+
+	margin-left:-150px;
+	padding: 5px;
+	position: relative;
+	float: left;
+	border: 0px;
+}
+
+
+
+
+
+#footer {
+
+	position: absolute;
+	margin-top: 50px;
+	color: #FFF;	
+
+}
+
+
+
+#footer a:link {
+	color: #FFF;	
+}
+
+
+
+#footer a:hover {
+
+	color: #FFF;	
+	font-weight: bold
+
+}
+
+
+
+#footer a:visited {
+	color: #FFF;	
+}
+
+
+
+#AdminAccess {
+	background:#666666;
+}
+
+#Admin {
+	background:#666666;
+}
+
+
+.textfield {
+
+	font-size: 12px;
+	color: #333333;
+	background: #F0F0F0  ;
+	border: 1px solid #CCCCCC;
+	padding: 2px;
+	border-radius: 5px;
+	margin: 1px;
+	box-shadow:inset 0px 0px 85px  	rgb(240,240,240);
+}
+
+
+
+.nav {
+	cursor:pointer;
+}
+
+
+
+.dropdown, .result, .searchbar {
+
+	margin: 0;	
+	padding: 0;
+	border: 0;
+	width: 250px;
+
+}
+
+
+.autocomplete {
+
+	margin: 1px;	
+	padding: 0;
+	width: 250px;
+	font-size: 12px;
+	color: #333333;
+	background: #F7F7F7;
+	border: 1px solid #CCCCCC;
+	padding-left: 1px;
+	padding: 2px;
+	border-radius: 5px;
+	box-shadow:inset 0px 0px 85px  	rgb(240,240,240);
+}
+
+
+
+.dropdown {
+
+	padding: 0;
+	border: 0;	
+	position: relative;
+	
+}
+
+
+
+.searchbar {
+	width:  350px;
+}
+
+
+
+.searchbutton {
+	width:  350px;
+	padding: 0;
+	border: 0;	
+	position: relative;
+	float: right;
+}
+
+
+
+.autocomplete {
+	padding: 4px;
+
+}
+
+
+.result {
+
+	width: 260px;
+	list-style:none;
+
+}
+
+
+
+.result li {
+
+	padding: 5px;
+	border: 0px solid #000;
+	border-top:0;
+	cursor:pointer;
+	background: #F7F7F7;
+	border-radius: 1px;
+}
+
+
+
+.result li:hover {
+	background:#F0F0F0;
+	color:#000000;
+	font-weight: bold;
+	border: 1px solid #CCCCCC;
+	
+}
+
+
+h1 {
+	color: #FFFFFF;
+	margin: 0px 0px 5px;
+	padding: 0px 0px 3px;
+	font: bold 20px Verdana, Arial, Helvetica, sans-serif;
+	-webkit-text-stroke: 1px black;
+   	color: white;
+   	text-shadow:
+       3px 3px 0 #191919,
+       -1px -1px 0 #191919,  
+       1px -1px 0 #191919,
+       -1px 1px 0 #191919,
+       1px 1px 0 #191919;
+}
+
+h1 a:link {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+
+
+h1 a:visited {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+h1 a:hover {
+	font-weight:bold;
+	color: #CCCCCC;
+	text-decoration: none;
+	font-weight: bold
+}
+
+h2 {
+	color: #000000;
+	margin: 0px 0px 5px;
+	padding: 0px 0px 3px;
+	font: bold 20px Verdana, Arial, Helvetica, sans-serif;
+}
+
+p {
+
+	color: #000000;
+
+	
+
+}
+
+
+
+p a:link {
+
+	color: #151515;
+
+	text-decoration: none;
+
+
+
+
+
+}
+
+
+
+p a:visited {
+
+	color: #151515;
+
+	text-decoration: none;
+
+
+
+
+
+}
+
+
+
+p a:hover {
+
+	font-weight:bold;
+	color: #000000;
+	text-decoration: none;
+}
+
+p a:active{ 
+
+	font-weight:bold;
+	color: #000000;
+	text-decoration: none;
+}
+
+#id {
+	width: 100%
+}
+
+#change_password {
+	position: relative;
+	float: left;
+	width: 280px;
+	margin-left: auto ;
+  	margin-right: auto ;
+	border: 0px solid #000000;
+	padding:5px;
+}
+
+#upload_pic {
+	position: relative;
+	float: left;
+	width: 280px;
+	margin-left: auto;
+  	margin-right: auto;
+	border: 0px solid #000000;
+	padding:5px;
+	margin-top: 30px;
+}
+
+#export {
+	position: relative;
+	float: left;
+	height: 20px;
+	border: 0px solid #000000;
+	margin-left: auto;
+  	margin-right: auto;
+	width:930px;
+}
+
+.fsSubmitButton
+{
+	border: 1px solid #CCCCCC;
+	padding:		5px 10px !important;
+	font-size:		14px !important;
+	background-color:	#F7F7F7;
+	font-weight:		bold;
+	color:			#000000;
+	box-shadow: 1px 1px 1px #666666;
+	cursor:pointer;
+	border-radius: 8px;
+}
+
+.fsSubmitButton:hover
+{
+	border: 1px solid #000000;	
+	background-color:	#BDBDBD;
+	color:			#000000;
+	box-shadow:inset 0px 0px 5px rgba(0,0,0,.3);
+	-webkit-box-shadow:inset 0px 0px 5px rgba(0,0,0,.3);
+}
+
+
+.Button
+{
+	border: 1px solid #CCCCCC;
+	padding:		2px 5px !important;
+	font-size:		11px !important;
+	background-color:	#F0F0F0  ;
+	font-weight:		bold;
+	color:			#000000;
+	box-shadow: 1px 1px 1px #666666;
+	cursor:pointer;
+	border-radius: 4px;
+	margin: 3px;
+}
+
+.Button:hover
+{	
+	color:	#F0F0F0;
+	font-weight: bold;
+	background-color: #BDBDBD  ;
+	border: .5px solid #000000;
+	box-shadow:inset 0px 0px 5px rgba(0,0,0,.3);
+	-webkit-box-shadow:inset 0px 0px 5px rgba(0,0,0,.3);
+
+}
+
+TD.highlight {
+background-color: #CCCCCC;
+font-weight: bold;
+color: #999999;
+}
