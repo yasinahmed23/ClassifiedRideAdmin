@@ -21,6 +21,33 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Search Results | ClassifiedRide</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" title="Style CSS" href="styles/calendar.css" type="text/css" media="all" />
+<script type="text/javascript">
+  var formatSplitter = "/";
+  var monthFormat = "mmm";
+  var yearFormat = "yyyy";
+</script>
+<script type="text/javascript" src="js/calendar.js"></script>
+<!--VALIDATE NO EMPTY FIELDS & VALIDATE EMAILL ADDRESES UPON FORM SUBMISSION-->
+<script type="text/javascript">
+function validateForm()
+{
+	var date=document.forms["SetStartDate"]["date"].value;
+
+	if (date==null || date=="")
+	{alert("You must select a date before you can update it.");
+	return false;}
+}
+
+function validateForm2()
+{
+	var Notes=document.forms["AddNote"]["Notes"].value;
+
+	if (Notes==null || Notes=="")
+	{alert("You must type the note before you can replace the current note.");
+	return false;}
+}
+</script>
 </head>
 <body>
 <div id="top">
@@ -38,7 +65,7 @@
 			$count=mysql_num_rows($GetDealerInfo);
 			if ($count==1) {
 			?>
-			<table cellpadding="2" cellspacing="0" border="0" align="center" class="table">
+			<table cellpadding="2" cellspacing="0" border="0" align="center" class="table" width="100%">
 				<tr valign="top">
 					<td>
 					
@@ -53,12 +80,13 @@
 								<td align="center" width="90"><strong>Rep</td>
 								<td align="center" width="20"><strong>Plan</td>
 								<td align="center" width="70"><strong>Mthly Pmt</td>
-								<td align="center" width="20"><strong>Due Date</td>
+								<td align="center" width="20"><strong>Date Due </td>
+								<td align="center" width="20"><strong>Last Payment</td>
 								<td align="center" width="150"><strong>Notes</td>
 							</tr>
 							<!--Disply data from database into a table -->
 							<tr valign='top'>
-								<td colspan='11' align='center'><hr /></td>
+								<td colspan='12' align='center'><hr /></td>
 							</tr>
 							<tr>
 								<td align="center"><?php echo $CountDealers;?></td>		
@@ -84,7 +112,15 @@
 								</td>
 								<td align="center"><?php echo "$" . $Program;?></td>
 								<td align="center"><?php echo "$" . $MthlyPmt;?></td>
-								<td align="center"><?php echo $DueDate;?></td>
+								<td align="center"><?php 
+											$start  = strpos($StartDate, '/');
+											$end    = strpos($StartDate, '/', $start + 1);
+											$length = $end - $start;
+											$DateDue = substr($StartDate, $start + 1, $length - 1);
+											echo $DateDue;
+										?>
+								</td>
+								<td align="center"><font size="-2">No Payments made</font></td>
 								<td align="center"><?php echo $Notes;?></td>
 							</tr>					
 						</table>
@@ -95,9 +131,27 @@
 		<br />
 		<table width="100" cellpadding="0" cellspacing="0" border="0" align="center">
 			<tr valign="top">
+				<?php if ($StartDate == "" || $StartDate == null) {
+					?>
+					<td>
+					<form id='SetStartDate' name='SetStartDate' method='post' action='/AccountsReceivable/SetStartDate.php' onsubmit='return validateForm()'>
+						<input type='text' name='date' id='date' class='textfield' onclick='fPopCalendar("date")'/>
+						<input type='hidden' name='DealerName' id='DealerName' class='textfield' value='<?php echo $DealerName; ?>' />
+						<input type='submit' name='submit' id='submit' class='Button' value='Set Start Date' />
+					</form>
+					</td>
+					<td>&nbsp;</td>
+				<?php
+					
+				}
+						
+				else {
+					echo "";				
+				}
+				?>
 				<td>
 
-				<form id="AddNote" name="AddNote" method="post" action="/AccountsReceivable/AddNote.php">
+				<form id="AddNote" name="AddNote" method="post" action="/AccountsReceivable/AddNote.php"  onsubmit="return validateForm2()">
 					<input type="text" name="Notes" id="Notes" class="textfield" size="30" />
 					<input type="hidden" name="DealerName" id="DealerName" class="textfield" value="<?php echo $DealerName; ?>" />
 					<input type="submit" name="submit" id="submit" class="Button" value="UPDATE NOTE" />

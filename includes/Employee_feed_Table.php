@@ -1,10 +1,10 @@
 <ul id="infinite_scroll">
 	<div id="postedEmployees">
-		<table cellpadding="0" cellspacing="0" border="0" width="770" align="center">
+		<table cellpadding="0" cellspacing="0" border="0" width="750" align="center">
 			<tr valign="top">
 				<td align="center" width="22">&nbsp;</td>
 				<td align="center" width="256"><strong>Name</strong></td>
-				<td align="center" width="256"><strong>Location</strong></td>
+				<td align="center" width="236"><strong>Location</strong></td>
 				<td align="center" width="236"><strong>Pic</strong></td>
 			</tr>			
 			<?php 

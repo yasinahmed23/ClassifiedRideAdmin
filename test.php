@@ -1,38 +1,33 @@
 <?php
-	//Enable Session Variables	
-	session_start();
-	$DealerUser = $_SESSION['DealerUser'];
+//Calculate Commission & Referral Fee
+	$Program="798";
+	if ($Program == "798") {
+		$Commission = "300";
+		$ReferralAmount="60";
+	}
+	else {
+		$Commission = "150";
+		$ReferralAmount="30";
+	}
+
+	$DirPrice=(99*.2);
+	$FBPrice=(1490*.2);
+	$SMSPrice=(990*.2);
+	$YouTubePrice=(199*.2);
+	$CaBIDPrice=(399*.2);
 	
-	//Connect to Database	
-	require_once 'includes/db_config2.php';
+	echo "Dir Commission: " . $DirPrice . "<br />";	
+	echo "FB Commission: " . $FBPrice . "<br />";
+	echo "SMS Commission: " . $SMSPrice . "<br />";
+	echo "YT Commission: " . $YouTubePrice . "<br />";
+	echo "Cabid Commission: " . $CaBIDPrice . "<br /><br />";
+	
+	$Total= $DirPrice + $FBPrice + $SMSPrice + $YouTubePrice + $CaBIDPrice;
+	
+	echo "Total Feature Comm " . $Total . "<br /><br />";
+	echo "Commission before Features is :  " . $Commission;
 
-	$DealerUser="ThisDealer";
-?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Dealer Signup | ClassifiedRide</title>
-<link href="styles/style.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.8.2.js"></script>
-<script src="autocomplete/searchFullName.js"></script>
-<SCRIPT TYPE="text/javascript" SRC="js/verifynotify.js"></SCRIPT>
-</head>
-<body>
-<div id="top">
-	<?php include 'includes/headerDealer.php'; ?>
-</div>
-<div id="container">
-	<div id="Dealermain">
-		<?php include 'includes/Dealer_main.php'?>
-	</div>
-	<div id="spacer2">&nbsp;</div>
-	<div id="profile">
-		
-	</div>	
-</div>
-<br /><br />
-</body>
-</html>	
+	$Commission=$Commission+($DirPrice)+($FBPrice)+($SMSPrice)+($YouTubePrice)+($CaBIDPrice);
 
-
+	echo "<br />Commission AFTER Features is :  " . $Commission;
+?>	

@@ -186,6 +186,17 @@
 		$employeeID= $row ['employeeID'];			
 	}
 
+	//retrieve employee email info from Employee Table	
+	$SelEmpl = mysql_query("
+	SELECT EmplEmail FROM employees
+	WHERE employee='".$RepName."'
+	");
+
+	while ($row = mysql_fetch_array($SelEmpl))
+	{
+		$EmplEmail= $row ['EmplEmail'];			
+	}
+
 	//Get employee name from Referral Table (to receive bonus for their empl signing a dealership
 	
 	$SelEmplReferral = mysql_query("
@@ -222,6 +233,8 @@
 		$Commission = "150";
 		$ReferralAmount="30";
 	}
+	
+	$Commission=($Commission+($DirPrice*.2)+($FBPrice*.2)+($SMSPrice*.2)+($YouTubePrice*.2)+($CaBIDPrice*.2));
 	
 
 	//retrieve Dealer ID info from Dealer Table
@@ -261,7 +274,7 @@
 		$headers = "From:" . $from;
 		mail($to,$subject,$message,$headers);
 
-		//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO DEALER
+	//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO DEALER
 		$to = $DealerEmail;
 		$subject = "Thank you for registering with us" ;
 		$message = " Thanks for registering for the $" .  $Program . " program.  Your rep is: " . $RepName;
@@ -269,7 +282,7 @@
 		$headers = "From:" . $from;
 		mail($to,$subject,$message,$headers);
 
-		//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO REFERRAL
+	//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO REFERRAL
 		$to = $EmplReferralEmail;
 		$subject = $RepName . " Signed " . $DealerName . ".";
 		$message = $RepName . " Signed " . $DealerName . ".";
@@ -278,6 +291,16 @@
 		mail($to,$subject,$message,$headers);
 			
 		header( 'Location: /Dealers.php' ) ;
+
+	//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO EMPLOYEE
+		$to = $EmplEmail;
+		$subject = "You Signed " . $DealerName . ".";
+		$message = "You Signed " . $DealerName . ".";
+		$from = "classifiedridewebsite@gmail.com";
+		$headers = "From:" . $from;
+		mail($to,$subject,$message,$headers);
+			
+	header( 'Location: /Dealers.php' ) ;
 ?>
 
 

@@ -8,6 +8,7 @@
 		<td align="center"><strong>Main Contact</td>
 		<td align="center"><strong>Representative</td>
 		<td align="center"><strong>Program</td>
+		<td align="center"><strong>Monthly Payment</td>
 	</tr>
 
 <?php
@@ -27,12 +28,13 @@ while ($row = mysql_fetch_array($sql)) {
 	$DealerContactPhone = ($row['DealerCellPhone1']) . "-" . ($row['DealerCellPhone2']) . "-" . ($row['DealerCellPhone3']);
 	$RepName = $row['RepName'];
 	$Program = $row['Program'];
+	$MthlyPmt = $row['MthlyPmt'];	
 	$CountDealers++;
 ?>
 	
 <!--Disply Dealers from database into a table -->
 	<tr valign='top'>
-		<td colspan='8' align='center'><hr /></td>
+		<td colspan='9' align='center'><hr /></td>
 	</tr>
 	<tr>
 		<td align="center"><?php echo $CountDealers;?></td>		
@@ -57,6 +59,7 @@ while ($row = mysql_fetch_array($sql)) {
 			?>
 		</td>
 		<td align="center"><?php echo "$" . $Program;?></td>
+		<td align="center"><?php echo "$" . $MthlyPmt;?></td>
 	</tr>
 <?php } 
 ?>

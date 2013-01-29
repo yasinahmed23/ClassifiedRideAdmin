@@ -27,7 +27,7 @@
 				$RepName = $row['RepName'];
 				$Program = $row['Program'];
 				$MthlyPmt = $row['MthlyPmt'];
-				$DueDate = $row['DueDate'];
+				$StartDate = $row['StartDate'];
 				$Notes = $row['Notes'];
 				$directory = $row['directory'];
 				$facebook = $row['facebook'];

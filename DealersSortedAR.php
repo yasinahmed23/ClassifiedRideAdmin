@@ -44,12 +44,14 @@
 	<div id="profile">
 		
 		<?php 
+		if ($num_rows == 0) {
+			echo "<p align='center'><font color='red'>No Dealers have been added in the last " . $numdays . " days</font></p>" ;
+		}
+		else {
 		if (isset($_SESSION[ARadmin])) {
 			echo " 
 			<p align='center'><font size='+1'><strong>You are viewing the Dealerships added in the past  " . $numdays . " Days</strong>
-			</font></p>
-		
-		";	
+			</font></p>";	
 		}
 		?>
 		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
@@ -63,16 +65,24 @@
 				</td>
 			</tr>
 		</table>
+		<?php } ?>
 		<div id="export">
-			<?php if (isset($_SESSION[ARadmin])) {
-			echo "
-			<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'>
-				<tr>
-					<td align='center'><form name='SortTrans' method='post' action='#'>
-					<input type='hidden' id='days' name='days' value='$numdays' />
-					<input class='Button' type='submit' value='Export View of $num_rows Dealers to .csv' /></form></td>
-				</tr>
-			</table>";
+			<?php 
+				if ($num_rows == 0) {
+					echo " " ;
+			}
+			else {
+				if (isset($_SESSION[ARadmin])) {
+				echo "
+				<table width='300' border='0' cellpadding='0' cellspacing='0' align='ce
+	nter'>
+					<tr>
+						<td align='center'><form name='SortTrans' method='post' action='#'>
+						<input type='hidden' id='days' name='days' value='$numdays' />
+						<input class='Button' type='submit' value='Export View of $num_rows Dealers to .csv' /></form></td>
+					</tr>
+				</table>";
+				}
 			}
 		?>
 			
