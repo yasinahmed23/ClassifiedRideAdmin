@@ -255,7 +255,7 @@
 
 	$add_transaction = "
 	INSERT INTO transactions (eID, employee, registered, Commission, DealerName, DealerID, member, EmplReferral, ReferralAmount)
-	VALUES ('$employeeID', '$RepName', '$Program', '$Commission', '$DealerName', '$DealerID', '$member', '$EmplReferral', '$ReferralAmount')
+	VALUES ('$employeeID', '$RepName', '$MthlyPmt', '$Commission', '$DealerName', '$DealerID', '$member', '$EmplReferral', '$ReferralAmount')
 	";
 
 	$result2= mysql_query($add_transaction);
