@@ -7,11 +7,15 @@
 <!--View Dealers-->
 <div>
 	<a href="/AccountsReceivable/index.php"><strong>DEALERS</strong></a>
-	<form action="/searchDealerNameAR.php" name="search_blog" id="search_blog">
-		<input class="Button" type="submit" id="search_blog" name="search_blog" value="Search Dealers"  />
-</form>	
+	<form action="/searchDealerNameAR.php" name="searchDealers" id="searchDealers">
+		<input class="Button" type="submit" id="searchDealers" name="searchDealers" value="Search Dealers"  />
+	</form>	
 	<br />
-
+	<a href="/AccountsReceivable/Invoices.php"><strong>INVOICES</strong></a>
+	<form action="/AccountsReceivable/OverDueInvoices.php" name="OverDueInvoices" id="OverDueInvoices">
+		<input class="Button" type="submit" id="OverDueInvoices" name="OverDueInvoices" value="Over Due"  />
+	</form>	
+	<br />
 </div>
 
 <!--Admin Access-->

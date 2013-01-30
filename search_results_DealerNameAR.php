@@ -113,12 +113,18 @@ function validateForm2()
 								<td align="center"><?php echo "$" . $Program;?></td>
 								<td align="center"><?php echo "$" . $MthlyPmt;?></td>
 								<td align="center"><?php 
-											$start  = strpos($StartDate, '/');
-											$end    = strpos($StartDate, '/', $start + 1);
-											$length = $end - $start;
-											$DateDue = substr($StartDate, $start + 1, $length - 1);
-											echo $DateDue;
-										?>
+											if ($StartDate==null) {
+												echo "<font color='red'>Please Set Below</font>";
+											}
+											else {
+												$start  = strpos($StartDate, '/');
+												$end    = strpos($StartDate, '/', $start + 1);
+												$length = $end - $start;
+												$DateDue = substr($StartDate, $start + 1, $length - 1);
+												echo $DateDue;
+											}
+											?>
+										
 								</td>
 								<td align="center"><font size="-2">No Payments made</font></td>
 								<td align="center"><?php echo $Notes;?></td>
@@ -129,7 +135,7 @@ function validateForm2()
 			</tr>
 		</table>
 		<br />
-		<table width="100" cellpadding="0" cellspacing="0" border="0" align="center">
+		<table width="500" cellpadding="0" cellspacing="0" border="0" align="center">
 			<tr valign="top">
 				<?php if ($StartDate == "" || $StartDate == null) {
 					?>
@@ -146,7 +152,7 @@ function validateForm2()
 				}
 						
 				else {
-					echo "";				
+					echo "<td width='300' align='center'><p><em>Start Date was set to " . $StartDate . "</em></p></td><td>&nbsp;</td>";				
 				}
 				?>
 				<td>

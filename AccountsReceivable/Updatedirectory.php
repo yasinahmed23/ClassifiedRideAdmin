@@ -52,7 +52,8 @@
 		while ($row = mysql_fetch_array($GetPmt)) {
 			$MthlyPmt = $row['MthlyPmt'];
 		}
-	
+		
+		//UPDATE MONTHLY PAYMENT	
 		$MthlyPmt=$MthlyPmt-99;
 
 		$UpdatePmt=mysql_query("

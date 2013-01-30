@@ -53,6 +53,7 @@
 			$MthlyPmt = $row['MthlyPmt'];
 		}
 	
+		//UPDATE MONTHLY PAYMENT
 		$MthlyPmt=$MthlyPmt-399;
 
 		$UpdatePmt=mysql_query("
