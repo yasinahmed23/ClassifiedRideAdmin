@@ -8,9 +8,6 @@
 	
 	//Connect to Database	
 	require_once 'includes/db_config.php';
-
-	$user = $_SESSION['user'];
-	
 	require_once 'Functions/Functions.php';
 ?>
 

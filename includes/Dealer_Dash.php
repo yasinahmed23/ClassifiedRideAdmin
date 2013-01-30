@@ -80,7 +80,7 @@ else if ($directory=="directoryON") {
 					Email Leads
 					</td>
 					<td width="10" align="center">
-					&nbsp;
+					On
 					</td>
 				</tr>
 	
@@ -90,7 +90,7 @@ else if ($directory=="directoryON") {
 					</td>
 					<td width="10" align="center" class="<?php echo $SMSclass; ?>">
 					<?php
-					if ($SMS=="SMSDeclined") {
+					if ($SMS=="SMSDeclined" || $SMS=="") {
 						echo "Off";
 					}
 					else {
@@ -106,7 +106,7 @@ else if ($directory=="directoryON") {
 					</td>
 					<td width="10" align="center" class="<?php echo $CaBIDclass; ?>">
 					<?php
-					if ($CaBID=="CaBIDDeclined") {
+					if ($CaBID=="" || $CaBID=="CaBIDDeclined" ) {
 						echo "Off";
 					}
 					else if ($CaBID=="CaBIDON") {
@@ -125,7 +125,7 @@ else if ($directory=="directoryON") {
 					if ($YouTube=="YouTubeON") {			
 						echo "On";
 					}
-					else {
+					else if ($YouTube=="" || $YouTube=="YouTubeDeclined") {	
 						echo "<br />Off";
 					}
 					?>
@@ -141,7 +141,7 @@ else if ($directory=="directoryON") {
 					if ($facebook=="facebookON") {			
 						echo "On";
 					}
-					else if ($facebook=="FacebookDeclined") {
+					else if ($facebook=="" ||$facebook=="FacebookDeclined") {
 						echo "<br />Off";
 					}
 					?>
@@ -157,7 +157,7 @@ else if ($directory=="directoryON") {
 					if ($directory=="directoryON") {			
 						echo "On";
 					}
-					else if ($directory=="DirectoryDeclined") {
+					else if ($directory=="" || $directory=="DirectoryDeclined" ) {
 						echo "<br />Off";
 					}
 					?>

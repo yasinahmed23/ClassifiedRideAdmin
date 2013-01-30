@@ -1,4 +1,13 @@
 <?php
+	$user = $_SESSION['user'];
+	$admin = $_SESSION['admin'];
+
+	//Count All Employees
+	$GetEmployees = mysql_query("
+		SELECT employeeID
+		FROM employees");
+	$numEmployees = mysql_num_rows($GetEmployees);
+		
 	//Get employees
 	$GetEmployees = mysql_query("
 		SELECT *
@@ -126,6 +135,25 @@
 
 	$RenewCommissionTotal = mysql_fetch_assoc($RenewCountComm);
 
-	$CommTOTAL = ($RegCommissionTotal['total']) + ($RenewCommissionTotal['total'])
+	$CommTOTAL = ($RegCommissionTotal['total']) + ($RenewCommissionTotal['total']);
+
+	//Get All Dealers
+	$GetDealers = mysql_query("
+	SELECT DealerID, Program
+	FROM dealers");
+	$num_rows = mysql_num_rows($GetDealers);
+
+	//Count Monthly Revenue from Dealer Registrations
+	$CountDealers = mysql_query(" 
+		SELECT SUM(Program) 
+		AS total FROM dealers ");
+	$DealerTotal = mysql_fetch_assoc($CountDealers);
+	
+	//Count Dealerships for User
+	$CountDealersForUser = mysql_query("
+		SELECT DealerID
+		FROM dealers
+		WHERE RepName='$employee' ");
+	$numDealersUser = mysql_num_rows($CountDealersForUser);
 
 ?>

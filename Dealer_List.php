@@ -8,19 +8,7 @@
 	
 	//Connect to Database	
 	require_once 'includes/db_config.php';
- 
-	$user = $_SESSION['user'];
-
-	$GetDealers = mysql_query("
-	SELECT DealerID, Program
-	FROM dealers");
-	$num_rows = mysql_num_rows($GetDealers);
-
-	//Count Monthly Revenue from Dealer Registrations
-	$CountDealers = mysql_query(" 
-		SELECT SUM(Program) 
-		AS total FROM dealers ");
-	$DealerTotal = mysql_fetch_assoc($CountDealers);
+ 	require_once 'Functions/Functions.php';
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">

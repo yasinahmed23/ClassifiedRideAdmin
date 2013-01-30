@@ -106,9 +106,7 @@ function validateDealerForm()
 	var Authorization=document.forms["DealerRegisterForm"]["Authorization"].value;
 	var AgentFirstName=document.forms["DealerRegisterForm"]["AgentFirstName"].value;	
 	var AgentLastName=document.forms["DealerRegisterForm"]["AgentLastName"].value;
-	var DateSigned1=document.forms["DealerRegisterForm"]["DateSigned1"].value;
-	var DateSigned2=document.forms["DealerRegisterForm"]["DateSigned2"].value;
-	var DateSigned3=document.forms["DealerRegisterForm"]["DateSigned3"].value;	
+	var DateSigned=document.forms["DealerRegisterForm"]["date"].value;	
 	
 	if (username==null || username=="")
 	{alert("UserName must be filled out");
@@ -332,16 +330,8 @@ function validateDealerForm()
 	{alert("Please enter the agent's lastname.");
 	return false;}
 
-	if (DateSigned1==null || DateSigned1=="")
-	{alert("Please enter the agent's lastname.");
-	return false;}
-
-	if (DateSigned2==null || DateSigned2=="")
-	{alert("Please enter the agent's lastname.");
-	return false;}
-		
-	if (DateSigned3==null || DateSigned3=="")
-	{alert("Please enter the agent's lastname.");
+	if (DateSigned==null || DateSigned=="")
+	{alert("Please Select Today's Date.");
 	return false;}
 	
 	if(!DealerRegisterForm.Authorization.checked){alert('You must Authorize first.');return false}

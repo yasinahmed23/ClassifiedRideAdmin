@@ -177,7 +177,7 @@ function validateForm2()
 							<strong>Email Leads</strong>
 							</td>
 							<td  align="center">
-							ON
+							On
 							</td>
 							<td align="center">
 				&nbsp;														
@@ -190,10 +190,10 @@ function validateForm2()
 							</td>
 							<td  align="center">
 							<?php
-							if ($SMS=="SMSDeclined") {
+							if ($SMS=="") {
 								echo "Off";
 							}
-							else {
+							else if ($SMS=="SMSON") {
 							echo "On";
 							}
 							?>
@@ -202,10 +202,10 @@ function validateForm2()
 							<form id="SMS" name="SMS" method="post" action="/AccountsReceivable/UpdateSMS.php">
 							<input type="hidden" name="DealerName" id="DealerName" value="<?php echo $DealerName; ?>" />
 							<?php
-							if ($SMS=="SMSDeclined") {
+							if ($SMS=="") {
 								echo "<input type='submit' class='Button' name='SMS' id='SMS' value='Turn On'>";
 							}
-							else {
+							else if ($SMS=="SMSON") {
 							echo "<input type='submit' class='Button' name='SMS' id='SMS' value='Turn Off'>";
 							}
 							?>
@@ -219,7 +219,7 @@ function validateForm2()
 							</td>
 							<td  align="center">
 							<?php
-							if ($CaBID=="CaBIDDeclined") {
+							if ($CaBID=="") {
 								echo "Off";
 							}
 							else if ($CaBID=="CaBIDON") {
@@ -260,7 +260,7 @@ function validateForm2()
 							<form id='YouTube' name='YouTube' method='post' action='/AccountsReceivable/UpdateYouTube.php'>
 							<input type="hidden" name="DealerName" id="DealerName" value="<?php echo $DealerName; ?>" />
 							<?php
-							if ($YouTube=="YouTubeDeclined") {
+							if ($YouTube=="") {
 								echo "<input type='submit' class='Button' name='YouTube' id='YouTube' value='Turn On'>";
 							}
 							else {
@@ -280,7 +280,7 @@ function validateForm2()
 							if ($facebook=="facebookON") {			
 								echo "On";
 							}
-							else if ($facebook=="FacebookDeclined") {
+							else if ($facebook=="") {
 								echo "Off";
 							}
 							?>
@@ -289,7 +289,7 @@ function validateForm2()
 							<form id='facebook' name='facebook' method='post' action='/AccountsReceivable/UpdateFacebook.php'>
 							<input type="hidden" name="DealerName" id="DealerName" value="<?php echo $DealerName; ?>" />
 							<?php
-							if ($facebook=="FacebookDeclined") {
+							if ($facebook=="") {
 								echo "<input type='submit' class='Button' name='facebook' id='facebook' value='Turn On'>";
 							}
 							else {
@@ -309,7 +309,7 @@ function validateForm2()
 							if ($directory=="directoryON") {			
 								echo "On";
 							}
-							else if ($directory=="DirectoryDeclined") {
+							else if ($directory=="") {
 								echo "Off";
 							}
 							?>
@@ -331,9 +331,9 @@ function validateForm2()
 					</table>
 				</td>
 				<td>
-					<table width="430" cellpadding="0" cellspacing="0" border="0">
+					<table width="480" cellpadding="0" cellspacing="0" border="0">
 						<tr valign="top">		
-							
+							<td width="50">&nbsp;</td>
 							<td>
 								<table align="center">
 									<tr valign="top">

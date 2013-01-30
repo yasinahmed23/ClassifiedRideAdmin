@@ -20,13 +20,12 @@
 			<td align="right">
 				<div id="login-contents"><br />
 				<?php	
-					if (!isset($_SESSION[user])) {
+					if (!isset($_SESSION[admin])) {
 						include 'login_form.php';
-						echo "<center><a href='/ResetEmplPass.php'>Reset Password</a></center>";
 						}
-					else {echo "<br />" . $user . " you are logged in.";
+					else {echo "<br />" . $admin . " you are logged in as Admin";
 					echo "<br />";
-					echo "<form action='logout.php' onSubmit='alert('You are now logged out');' name='logout' id='logout'><input type='submit' value='Log Out' id='logout' name='logout' class='Button' /></form>";}
+					echo "<form action='logout.php' onSubmit='alert('You are now logged in as an employee');' name='logout' id='logout'><input type='submit' value='Log Out' id='logout' name='logout' class='Button' /></form>";}
 
 				?></div>
 			</td>

@@ -1,6 +1,9 @@
 <?php
-	//Get data from database and assign to a variable
+	$user = $_SESSION['user'];
+	$admin = $_SESSION['admin'];
+	$ARadmin = $_SESSION['ARadmin'];
 
+	//Get data from database and assign to a variable
 	$DealerName= $_POST['search_string'];
 
 	$GetDealerInfo = mysql_query("

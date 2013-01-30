@@ -11,12 +11,7 @@
 	$admin = $_SESSION['admin'];
 	
 	require_once 'includes/db_config2.php';
-
-	$NumTotalReferrals = mysql_query("
-	SELECT RefID
-	FROM Referrals");
-	$num_rows = mysql_num_rows($NumTotalReferrals);
-	
+	require_once 'Functions/AdminFunctions.php';	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -46,7 +41,7 @@
 	<div id="profile">
 		<?php 
 		if (isset($_SESSION[admin])) {
-			echo "<p align='center'><strong>Total # of Referral Relationships Found:" .  $num_rows . "</strong></p>";	
+			echo "<p align='center'><strong>Total # of Referral Relationships Found:" .  $num_Referrals . "</strong></p>";	
 		}
 		?>
 		

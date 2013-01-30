@@ -1385,11 +1385,8 @@
 									<tr valign="top">
 										<td>Date</td>
 										<td>
-											<input name="DateSigned1" type="text" class="textfield" id="DateSigned1" size="2" maxlength="2" onblur="validateNumericValues(DateSigned1);lengthRestriction(DateSigned1, 2, 2)" />
-											<input name="DateSigned2" type="text" class="textfield" id="DateSigned2" size="2" maxlength="2" onblur="validateNumericValues(DateSigned2);lengthRestriction(DateSigned2, 2, 2)" />
-											<input name="DateSigned3" type="text" class="textfield" id="DateSigned3" size="4" maxlength="4" onblur="validateNumericValues(DateSigned3);lengthRestriction(DateSigned3, 4, 4)" />
+											<input type='text' name='date' id='date' class='textfield' onclick='fPopCalendar("date")'/>
 											<br />
-											<font size="-2">MM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YYYY</font>
 											</td>
 									</tr>
 									<tr><td><br /></td></tr>								

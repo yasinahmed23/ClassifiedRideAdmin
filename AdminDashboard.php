@@ -23,11 +23,11 @@
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header_Admin.php'; ?>
+	<?php require_once 'includes/header_Admin.php'; ?>
 </div>
 <div id="container">
 	<div id="main">
-		<?php include 'includes/main.php';
+		<?php require_once 'includes/main.php';
 		?>
 	</div>	
 	<div id="spacer">&nbsp;</div>
@@ -45,14 +45,14 @@
 										<td colspan="2">&nbsp;</td>
 									</tr>									
 									<tr>
-										<td>Total Employees:  </td>
+										<td>Total Employees:&nbsp;  </td>
 										<td width="90"><?php echo $NumEmployees; ?></td>
 									</tr>
 									<tr>
 										<td colspan="2"><hr /></td>
 									</tr>
 									<tr>
-										<td>Total Hired in past 7 days:  </td>
+										<td>Total Hired in past 7 days:&nbsp;</td>
 										<td width="90"><?php echo $NumEmployees7Days; ?></td>
 									</tr>
 									<tr>
@@ -75,14 +75,14 @@
 										<td colspan="2">&nbsp;</td>
 									</tr>									
 									<tr>
-										<td>Total Dealers:  </td>
+										<td>Total Dealers: &nbsp; </td>
 										<td><?php echo $NumDealers; ?></td>
 									</tr>
 									<tr>
 										<td colspan="2"><hr /></td>
 									</tr>
 									<tr>
-										<td>Total Signed in past 7 days:  </td>
+										<td>Total Signed in past 7 days: &nbsp; </td>
 										<td width="90"><?php echo $NumDealers7Days; ?></td>
 									</tr>
 									<tr>
@@ -106,14 +106,14 @@
 										<td colspan="2">&nbsp;</td>
 									</tr>									
 									<tr>
-										<td>Total Transactions:  </td>
+										<td>Total Transactions:&nbsp;  </td>
 										<td><?php echo $NumTransactions; ?></td>
 									</tr>
 									<tr>
 										<td colspan="2"><hr /></td>
 									</tr>
 									<tr>
-										<td>Total from New Reg ( <?php echo $NumRegistrations; ?> ):  </td>
+										<td>Total from New Reg ( <?php echo $NumRegistrations; ?> ): &nbsp; </td>
 										<td width="90">$<?php
 												echo number_format($RegestrationTotal[total]);
 											?></td>
@@ -122,7 +122,7 @@
 										<td colspan="2"><hr /></td>
 									</tr>
 									<tr>
-										<td>Total from Renewals ( <?php echo $NumRenewals; ?> ):  </td>
+										<td>Total from Renewals ( <?php echo $NumRenewals; ?> ): &nbsp; </td>
 										<td width="90">$<?php
 												echo number_format($RenewalTotal[total]);
 											?></td>
@@ -131,7 +131,7 @@
 										<td colspan="2"><hr /></td>
 									</tr>
 									<tr>
-										<td><strong>Total Revenue:</strong>  </td>
+										<td><strong>Total Revenue:&nbsp;</strong>  </td>
 										<td width="90"><strong>$<?php echo number_format($TotalRevenue); ?></strong>
 										</td>
 									</tr>
@@ -139,7 +139,7 @@
 										<td colspan="2"><hr /></td>
 									</tr>
 									<tr>
-										<td>Total Commission:  </td>
+										<td>Total Commission:&nbsp;  </td>
 										<td width="90">$<?php
 												echo number_format($CommTotal[total]);
 											?></td>
@@ -148,10 +148,10 @@
 										<td colspan="2"><hr /></td>
 									</tr>
 									<tr>
-										<td><strong>Net:</strong></td>
+										<td><strong>Net:&nbsp;</strong></td>
 										<td width="90"><strong>$<?php
 												echo number_format($NetProfit);
-											?></strong></td>
+											?></strong>	</td>
 									</tr>
 									<tr>
 										<td colspan="2"><hr /><hr /></td>
@@ -167,8 +167,8 @@
 		<br /><br />
 		<table width="1000" cellpadding="5" cellspacing="0" align="center" border="0" class="table">
 			<tr valign="top">
-				<td><br /><br />
-				<br /><br /><br /><br /><br /><br /><br /></td>
+				<td align="center"><br />
+				<br /><br /><em>WHAT WOULD YOU LIKE TO SEE HERE?</em><br /><br /><br /><br /></td>
 			</tr>
 		</table>
 	</div>

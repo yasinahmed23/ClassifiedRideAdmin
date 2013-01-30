@@ -83,11 +83,11 @@
 								<td align="center"><p><?php echo $DealerName;?></p></td>		
 								<td align="center"><p><?php echo $DealerCity;?></p></td>
 								<td align="center"><p><?php echo $DealerState;?></p></td>
-								<td align="center" width="75"><p><a href="mailto:<?php echo $DealerEmail; ?>"><?php echo $DealerContact;?></a>
+								<td align="center" width="150"><p><a href="mailto:<?php echo $DealerEmail; ?>"><?php echo $DealerContact;?></a>
 				
 								</p></td>
 								<td align="center"><p><?php echo $DealerContactPhone;?></p></td>
-								<td align="center" width="75">
+								<td align="center" width="150">
 								<?php 
 								//Get Dealer Rep's Email
 									$GetRepsEmail = mysql_query("

@@ -99,9 +99,7 @@
 	$AgentFirstName = stripslashes($_POST['AgentFirstName']);
 	$AgentLastName = stripslashes($_POST['AgentLastName']);
 	$Signature = stripslashes($_POST['Signature']);
-	$DateSigned1 = stripslashes($_POST['DateSigned1']);
-	$DateSigned2 = stripslashes($_POST['DateSigned2']);
-	$DateSigned3 = stripslashes($_POST['DateSigned3']);
+	$DateSigned = stripslashes($_POST['date']);
 	$DealerUserName = stripslashes($_POST['DealerUserName']);
 	$DealerPassword = stripslashes($_POST['DealerPassword']);
  
@@ -153,9 +151,7 @@
 	$AgentFirstName = mysql_real_escape_string($AgentFirstName);
 	$AgentLastName = mysql_real_escape_string($AgentLastName);
 	$Signature = mysql_real_escape_string($Signature);
-	$DateSigned1 = mysql_real_escape_string($DateSigned1);
-	$DateSigned2 = mysql_real_escape_string($DateSigned2);
-	$DateSigned3 = mysql_real_escape_string($DateSigned3);
+	$DateSigned = mysql_real_escape_string($DateSigned);
 	$DealerUserName = mysql_real_escape_string($DealerUserName);
 	$DealerPassword = mysql_real_escape_string($DealerPassword);
 
@@ -166,8 +162,8 @@
 
 	//Run query to Add Dealership to database	
 	$add_dealer = "
-	INSERT INTO dealers (DealerUserName, DealerPassword, RepName, DealerName, DealerStreet1, DealerStreet2, DealerCity, DealerState, DealerZip, DealerCountry, DealerWebsite, Franchise, DealerMainContactFirst, DealerMainContactLast, DealerCellPhone1, DealerCellPhone2, DealerCellPhone3, DealerOfficePhone1, DealerOfficePhone2, DealerOfficePhone3, OfficePhoneExt, DealerEmail, ContactPosition, AccountPayFirstName, AccountPayLastName, AccountPayableEmail, AccountPayableCell1, AccountPayableCell2, AccountPayableCell3, LeadCell1, LeadCell2, LeadCell3, LeadEmail, DataFeedProvider, OtherDataFeedProvider, DataFeedMainContactFirst, DataFeedMainContactLast, DataFeedMainPhone1, DataFeedMainPhone2, DataFeedMainPhone3, DataFeedMainEmail, UsedCarsInStock, Rep, Program, Authorization, AgentFirstName, AgentLastName, Signature, DateSigned1, DateSigned2, DateSigned3, directory, facebook, YouTube, CaBID, SMS, MthlyPmt)
-	VALUES ('$DealerUserName', '$DealerPassword','$RepName', '$DealerName', '$DealerStreet1', '$DealerStreet2', '$DealerCity', '$DealerState', '$DealerZip', '$DealerCountry', '$DealerWebsite', '$Franchise', '$DealerMainContactFirst', '$DealerMainContactLast', '$DealerCellPhone1', '$DealerCellPhone2', '$DealerCellPhone3', '$OfficePhoneExt', '$DealerOfficePhone1', '$DealerOfficePhone2', '$DealerOfficePhone3', '$DealerEmail', '$ContactPosition', '$AccountPayFirstName', '$AccountPayLastName', '$AccountPayableEmail', '$AccountPayableCell1', '$AccountPayableCell2', '$AccountPayableCell3', '$LeadCell1', '$LeadCell2', '$LeadCell3', '$LeadEmail', '$DataFeedProvider', '$OtherDataFeedProvider', '$DataFeedMainContactFirst', '$DataFeedMainContactLast', '$DataFeedMainPhone1', '$DataFeedMainPhone2', '$DataFeedMainPhone3', '$DataFeedMainEmail', '$UsedCarsInStock', '$Rep', '$Program', '$Authorization', '$AgentFirstName', '$AgentLastName', '$Signature', '$DateSigned1', '$DateSigned2', '$DateSigned3', '$directory', '$facebook', '$YouTube', '$CaBID', '$SMS', '$MthlyPmt')
+	INSERT INTO dealers (DealerUserName, DealerPassword, RepName, DealerName, DealerStreet1, DealerStreet2, DealerCity, DealerState, DealerZip, DealerCountry, DealerWebsite, Franchise, DealerMainContactFirst, DealerMainContactLast, DealerCellPhone1, DealerCellPhone2, DealerCellPhone3, DealerOfficePhone1, DealerOfficePhone2, DealerOfficePhone3, OfficePhoneExt, DealerEmail, ContactPosition, AccountPayFirstName, AccountPayLastName, AccountPayableEmail, AccountPayableCell1, AccountPayableCell2, AccountPayableCell3, LeadCell1, LeadCell2, LeadCell3, LeadEmail, DataFeedProvider, OtherDataFeedProvider, DataFeedMainContactFirst, DataFeedMainContactLast, DataFeedMainPhone1, DataFeedMainPhone2, DataFeedMainPhone3, DataFeedMainEmail, UsedCarsInStock, Rep, Program, Authorization, AgentFirstName, AgentLastName, Signature, DateSigned, directory, facebook, YouTube, CaBID, SMS, MthlyPmt)
+	VALUES ('$DealerUserName', '$DealerPassword','$RepName', '$DealerName', '$DealerStreet1', '$DealerStreet2', '$DealerCity', '$DealerState', '$DealerZip', '$DealerCountry', '$DealerWebsite', '$Franchise', '$DealerMainContactFirst', '$DealerMainContactLast', '$DealerCellPhone1', '$DealerCellPhone2', '$DealerCellPhone3', '$OfficePhoneExt', '$DealerOfficePhone1', '$DealerOfficePhone2', '$DealerOfficePhone3', '$DealerEmail', '$ContactPosition', '$AccountPayFirstName', '$AccountPayLastName', '$AccountPayableEmail', '$AccountPayableCell1', '$AccountPayableCell2', '$AccountPayableCell3', '$LeadCell1', '$LeadCell2', '$LeadCell3', '$LeadEmail', '$DataFeedProvider', '$OtherDataFeedProvider', '$DataFeedMainContactFirst', '$DataFeedMainContactLast', '$DataFeedMainPhone1', '$DataFeedMainPhone2', '$DataFeedMainPhone3', '$DataFeedMainEmail', '$UsedCarsInStock', '$Rep', '$Program', '$Authorization', '$AgentFirstName', '$AgentLastName', '$Signature', '$DateSigned', '$directory', '$facebook', '$YouTube', '$CaBID', '$SMS', '$MthlyPmt')
 	";
 
 	$result= mysql_query($add_dealer);

@@ -11,12 +11,6 @@
 		<td align="center"><strong>Referral</td>
 	</tr>
 	<?php
-	//Display 10 newest posts
-	$GetTransactions = mysql_query("
-		SELECT *
-		FROM transactions 
-		ORDER BY TransactionID DESC");
-
 	while ($row = mysql_fetch_array($GetTransactions)) {
 		$TransactionDate = $row['TransactionDate'];
 		$TransactionID = $row['TransactionID'];

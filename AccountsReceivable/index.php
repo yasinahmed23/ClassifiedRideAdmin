@@ -10,10 +10,6 @@
 	//Connect to Database	
 	require_once '../includes/db_config2.php';
 
-	$user = $_SESSION['user'];
-	$admin = $_SESSION['admin'];
-	$ARadmin = $_SESSION['ARadmin'];
-
 	$GetDealers = mysql_query("
 	SELECT DealerID, Program
 	FROM dealers");
@@ -40,12 +36,7 @@
 <body>
 <div id="top">
 	<?php 
-	if (isset($_SESSION[admin])) {
-		include '../includes/header_Admin.php'; 
-	}
-	else {
-		include '../includes/header_AR.php'; 
-	}
+	include '../includes/header_AR.php'; 
 	?>
 </div>
 <div id="container">	

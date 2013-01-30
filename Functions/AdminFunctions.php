@@ -1,4 +1,8 @@
 <?php
+	$user = $_SESSION['user'];
+	$admin = $_SESSION['admin'];
+	$ARadmin = $_SESSION['ARadmin'];
+
 	//Count Total Employees
 	$CountEmployees = mysql_query("
 		SELECT  employeeID
@@ -30,15 +34,14 @@
 	$CountTransactions = mysql_query("
 		SELECT  TransactionID
 		FROM     transactions");
-		$NumTransactions = mysql_num_rows($CountTransactions);
+	$NumTransactions = mysql_num_rows($CountTransactions);
 
 	//Count Number of Registrations
 	$CountNumRegs = mysql_query("
 		SELECT  registered
 		FROM     transactions
 		WHERE registered != ' '");
-		$NumRegistrations = mysql_num_rows($CountNumRegs);
-
+	$NumRegistrations = mysql_num_rows($CountNumRegs);
 
 	//Count Revenue from  Registrations
 	$CountRegistrations = mysql_query(" 
@@ -78,5 +81,36 @@
 
 	//Calculate Net 
 	$NetProfit=($TotalRevenue-$CommTotal[total]);
+	
+
+
 		
+	//Count Num of Referrals
+	$CountTotalReferrals = mysql_query("
+	SELECT RefID
+	FROM Referrals");
+	$num_Referrals = mysql_num_rows($CountTotalReferrals);
+
+	//Get Employee List from Referral Tbl so we can count # hired for each one
+	$GetEmployees = mysql_query("
+		SELECT DISTINCT EmployeeName
+		FROM Referrals 
+		ORDER BY EmployeeName ASC");
+
+	//Count the num the current employee has hired
+	$CountHired = mysql_query("
+		SELECT *
+		FROM Referrals
+		WHERE EmployeeName='".$EmployeeName."'");
+
+	$num_Hired = mysql_num_rows($CountHired);
+	
+	
+
+
+	//Get All Transaction Data and Sort by ID Desc
+	$GetTransactions = mysql_query("
+		SELECT *
+		FROM transactions 
+		ORDER BY TransactionID DESC");
 ?>

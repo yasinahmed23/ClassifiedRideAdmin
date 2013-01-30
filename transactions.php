@@ -10,14 +10,9 @@
 	require_once 'includes/db_config.php';
 
 	$user = $_SESSION['user'];
-	$admin = $_SESSION['admin'];
-
-	$GetTrans = mysql_query("
-	SELECT TransactionID
-	FROM transactions");
-	$num_rows = mysql_num_rows($GetTrans);
-
+	$admin = $_SESSION['admin'];	
 	
+	require_once 'Functions/AdminFunctions.php';
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -50,7 +45,7 @@
 		if (isset($_SESSION[admin])) {
 			echo " 
 		<form id='SortTrans' name='SortTrans' method='post' action='TransactionsSorted.php'>
-			<p align='center'><font size='+1'><strong>Total # of Transactions : " .  $num_rows . "</strong>&nbsp;&dash;&nbsp;View Transactions from last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
+			<p align='center'><font size='+1'><strong>Total # of Transactions : " .  $NumTransactions . "</strong>&nbsp;&dash;&nbsp;View Transactions from last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
 			</font></p>
 		</form>
 		";	
@@ -72,7 +67,7 @@
 			echo "
 			<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'>
 				<tr>
-					<td align='center'><form action='/ExportCSV_Transactions.php'><input class='Button' type='submit' value='Export All $num_rows Transactions to .csv' /></form></td>
+					<td align='center'><form action='/ExportCSV_Transactions.php'><input class='Button' type='submit' value='Export All $num_Trans Transactions to .csv' /></form></td>
 				</tr>
 			</table>";
 			}

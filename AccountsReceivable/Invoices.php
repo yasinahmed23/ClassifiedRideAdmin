@@ -25,7 +25,7 @@
 		AS total FROM dealers ");
 	$DealerTotal = mysql_fetch_assoc($CountDealers);
 
-	include '../Functions/Functions.php';
+	require_once '../Functions/Functions.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -40,12 +40,7 @@
 <body>
 <div id="top">
 	<?php 
-	if (isset($_SESSION[admin])) {
-		include '../includes/header_Admin.php'; 
-	}
-	else {
-		include '../includes/header_AR.php'; 
-	}
+	include '../includes/header_AR.php'; 
 	?>
 </div>
 <div id="container">	

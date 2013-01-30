@@ -60,20 +60,20 @@
 			$count=mysql_num_rows($GetEmployeeInfo);
 			if ($count>=1) {
 			?>
-			<table cellpadding="5" cellspacing="0" border="0" align="center" class="table" width="550">
+			<table cellpadding="5" cellspacing="0" border="0" align="center" class="table" width=100%>
 				<tr valign="top">
 					<td>
 					<div id="dealerlist">
-					<table cellpadding="10" cellspacing="0" border="0" align="center" width="530">
+					<table cellpadding="10" cellspacing="0" border="0" align="center">
 						<tr>
-							<td align="center" width="30"><strong>ID</strong></td>				
-							<td align="center" width="30"><strong>First Name</strong></td>	
-							<td align="center" width="30"><strong>MI</strong></td>		
-							<td align="center" width="30"><strong>Last Name</strong></td>
-							<td align="center" width="75"><strong>Manager</td>
-							<td align="center" width="150"><strong>Email</strong></td>
-							<td align="center" width="75"><strong>Cell Phone</td>
-							<td align="center" width="100"><strong>Profile Pic</td>
+							<td align="center"><strong>ID</strong></td>				
+							<td align="center"><strong>First Name</strong></td>	
+							<td align="center"><strong>MI</strong></td>		
+							<td align="center"><strong>Last Name</strong></td>
+							<td align="center"><strong>Manager</td>
+							<td align="center"><strong>Email</strong></td>
+							<td align="center"><strong>Cell Phone</td>
+							<td align="center"><strong>Profile Pic</td>
 						</tr>
 
 						<?php
@@ -97,14 +97,14 @@
 								<td colspan='8' align='center'><hr /></td>
 							</tr>
 						<tr>
-							<td align="center" width="30"><?php echo $employeeID?></td>
-							<td align="center" width="30"><?php echo $EmplFirstName;?></td>		
-							<td align="center" width="30"><?php echo $EmplMiddleInitial;?></td>		
-							<td align="center" width="30"><?php echo $EmplLast_name;?></td>
-							<td align="center" width="75"><?php echo $ReferredBy;?></td>
-							<td align="center" width="150"><p><?php echo "<a href='mailto:'" . $EmplEmail . ">" . $EmplEmail . "</a>";?></p></td>
+							<td align="center"><?php echo $employeeID?></td>
+							<td align="center"><?php echo $EmplFirstName;?></td>		
+							<td align="center"><?php echo $EmplMiddleInitial;?></td>		
+							<td align="center"><?php echo $EmplLast_name;?></td>
+							<td align="center"><?php echo $ReferredBy;?></td>
+							<td align="center"><p><?php echo "<a href='mailto:'" . $EmplEmail . ">" . $EmplEmail . "</a>";?></p></td>
 							</td>
-							<td align="center" width="75"><?php echo $EmplPhone;?></td>
+							<td align="center"><?php echo $EmplPhone;?></td>
 							<td align="center"><?php printf("<img src='/uploads/$pic' width='100'>"); ?></td>
 						</tr>
 						<?php } 
