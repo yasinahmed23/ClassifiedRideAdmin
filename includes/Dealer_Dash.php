@@ -152,7 +152,7 @@ else if ($directory=="directoryON") {
 					<td width="90" align="center" class="<?php echo $Directoryclass; ?>">
 					Dealer Directory 
 					</td>
-					<td width="10" class="<?php echo $Facebookclass; ?>">
+					<td width="10" class="<?php echo $Directoryclass; ?>">
 					<?php
 					if ($directory=="directoryON") {			
 						echo "On";
@@ -210,9 +210,10 @@ else if ($directory=="directoryON") {
 								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
-										<img src="/images/Cabid.jpg" width="86" alt="Cabid: Bid-Offer Negotiation Leads">
-										<!--RETURN SCRIPT FOR CABID HERE -->
-										<p><font size="-2">(This will come from Josh)<font><p>
+										<strong>Dealer Directory</strong>
+										<!--RETURN SCRIPT FOR DEALER DIRECTORY HERE -->
+										<p><font size="-2">(This will come from Tommy)<font><p>
+													
 										</td>
 									</tr>
 								</table>
@@ -257,10 +258,9 @@ else if ($directory=="directoryON") {
 								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
-										<strong>Dealer Directory</strong>
-										<!--RETURN SCRIPT FOR DEALER DIRECTORY HERE -->
-										<p><font size="-2">(This will come from Tommy)<font><p>
-													
+										<img src="/images/Cabid.jpg" width="86" alt="Cabid: Bid-Offer Negotiation Leads">
+										<!--RETURN SCRIPT FOR CABID HERE -->
+										<p><font size="-2">(This will come from Josh)<font><p>
 										</td>
 									</tr>
 								</table>

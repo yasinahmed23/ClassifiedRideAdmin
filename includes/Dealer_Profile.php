@@ -29,7 +29,7 @@ $RepName = $row['RepName'];
 $Program = $row['Program'];
 $MemberStatus = $row['MemberStatus'];
 $MthlyPmt = $row['MthlyPmt'];
-
+$MthlyPmt = number_format($MthlyPmt);
 
 //Get Rep Info for Dealer Usere 
 $GetRepInfo = mysql_query("
