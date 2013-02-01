@@ -52,6 +52,8 @@
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
 		Here You will be able to easily see who has paid and who hasn't....and sort
+		<br /><br />
+		Currently Tim sends out the bills.  We need to automate this process
 	</div>
 </div>	
 <?php require_once '../includes/footer.php'; ?>
