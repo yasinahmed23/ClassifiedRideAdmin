@@ -5,14 +5,10 @@
 
 	//Connect to Database	
 	require_once 'includes/db_config2.php';
+	require_once 'Functions/Functions.php';
 
 
 //Get data from database and assign to a variable
-$sql = mysql_query("
-	SELECT *
-	FROM employees 
-	ORDER BY employeeID DESC
-");
 
 // these are the content type headers to send in php that
 // 1) force the type to be CSV
@@ -23,7 +19,7 @@ header("Content-Disposition: attachment; filename=Employees.csv");
 header("Pragma: no-cache");
 header("Expires: 0"); 
 
-while ($row = mysql_fetch_array($sql)) 
+while ($row = mysql_fetch_array($GetEmployees)) 
 {
 $TimeRegistered = $row['TimeRegistered'];
 $employeeID = $row['employeeID'];
@@ -40,6 +36,21 @@ $EmplCity = $row['EmplCity'];
 $EmplState = $row['EmplState'];
 $EmplZip = $row['EmplZip'];
 $EmplCountry = $row['EmplCountry'];
+
+$EmplPayFirstName = $row['EmplPayFirstName'];
+$EmplPayLastName = $row['EmplPayLastName'];
+$BusPayName = $row['BusPayName'];
+$EmplPayStreet1 = $row['EmplPayStreet1'];
+$EmplPayStreet2 = $row['EmplPayStreet2'];
+$EmplPayCity = $row['EmplPayCity'];
+$EmplPayState = $row['EmplPayState'];
+$EmplPayZip = $row['EmplPayZip'];
+$EmplPayCountry = $row['EmplPayCountry'];
+$EmplPayPhone = ($row['EmplPayCell1']) . "-" . ($row['EmplPayCell2']) . "-" . ($row['EmplPayCell3']);
+$EmplPayEmail = $row['EmplPayEmail'];
+$EmplCountry = $row['EmplCountry'];
+
+
 $ConfidentialityAgreement = $row['ConfidentialityAgreement'];
 $IndependentContractorAgreement = $row['IndependentContractorAgreement'];
 $w9 = $row['w9'];

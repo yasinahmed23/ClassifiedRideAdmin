@@ -16,12 +16,19 @@
 <head>
 <SCRIPT TYPE="text/javascript" SRC="js/verifynotify.js"></SCRIPT>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>ClassifiedRide Database Home</title>
+<title>My Transactions | ClassifiedRide</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>
+	<?php 
+	if (isset($_SESSION[admin])) {
+		include 'includes/header_Admin.php'; 
+	}
+	else {
+		include 'includes/header.php'; 
+	}
+	?>
 </div>
 <div id="container">
 	<div id="main"><?php include 'includes/main.php';?></div>	

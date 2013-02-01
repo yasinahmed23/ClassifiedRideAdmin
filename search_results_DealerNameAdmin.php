@@ -45,11 +45,11 @@
 			$count=mysql_num_rows($GetDealerInfo);
 			if ($count==1) {
 			?>
-		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
+		<table width="850" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
 				<div id="referral">
-					<table cellpadding="5" cellspacing="0" border="0" align="center">
+					<table cellpadding="5" cellspacing="0" border="0" align="center" width=100%>
 						<tr valign="top">
 							<td align="center"><strong>Date/Time</strong></td>		
 							<td align="center"><strong>Trans ID</strong></td>				
@@ -80,6 +80,8 @@
 					$Renewed = $row['Renewed'];
 					$Commission = $row['Commission'];
 					$ReferralAmount = $row['ReferralAmount'];
+					$MthlyPmt = $row['MthlyPmt'];					
+						
 					?>
 	
 					<!--Disply data from database into a table -->
@@ -153,7 +155,12 @@
 								while ($row = mysql_fetch_array($GetRefEmail)) {
 									$EmplEmail = $row['EmplEmail'];
 									}
-							echo "<p><a href='mailto:$EmplEmail'>" . $EmplReferral . "</a></p>";
+							if (empty($EmplReferral)) {
+								echo "No Referral Listed";
+							}
+							else {
+								echo "<p><a href='mailto:$EmplEmail'>" . $EmplReferral . "</a></p>";
+							}
 							?>
 							</td>
 							<td align="center">

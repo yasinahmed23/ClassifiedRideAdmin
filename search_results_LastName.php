@@ -60,22 +60,16 @@
 			$count=mysql_num_rows($GetEmployeeInfo);
 			if ($count>=1) {
 			?>
-			<table cellpadding="5" cellspacing="0" border="0" align="center" class="table" width=100%>
+			<table cellpadding="5" cellspacing="0" border="0" align="center" class="table" width="750">
 				<tr valign="top">
 					<td>
 					<div id="dealerlist">
-					<table cellpadding="10" cellspacing="0" border="0" align="center">
-						<tr>
-							<td align="center"><strong>ID</strong></td>				
-							<td align="center"><strong>First Name</strong></td>	
-							<td align="center"><strong>MI</strong></td>		
-							<td align="center"><strong>Last Name</strong></td>
-							<td align="center"><strong>Manager</td>
-							<td align="center"><strong>Email</strong></td>
-							<td align="center"><strong>Cell Phone</td>
+					<table cellpadding="0" cellspacing="0" border="0" align="center" width=100%>
+						<tr valign="top">
+							<td align="center"><strong>Name</strong></td>
+							<td align="center"><strong>Location</td>
 							<td align="center"><strong>Profile Pic</td>
 						</tr>
-
 						<?php
 						//Get data from database and assign to a variable
 
@@ -88,24 +82,20 @@
 						$EmplMiddleInitial = $row['EmplMiddleInitial'];
 						$ReferredBy = $row['ReferredBy'];
 						$EmplEmail = $row['EmplEmail'];
+						$EmplCity = $row['EmplCity'];
+						$EmplState = $row['EmplState'];
 						$EmplPhone = ($row['EmplCellPhone1']) . "-" . ($row['EmplCellPhone2']) . "-" . ($row['EmplCellPhone3']);
 						$pic= $row ['pic'];
 						?>
-
 						<!--Disply data from database into a table -->
 						<tr valign='top'>
-								<td colspan='8' align='center'><hr /></td>
+								<td colspan='3' align='center'><hr /></td>
 							</tr>
-						<tr>
-							<td align="center"><?php echo $employeeID?></td>
-							<td align="center"><?php echo $EmplFirstName;?></td>		
-							<td align="center"><?php echo $EmplMiddleInitial;?></td>		
-							<td align="center"><?php echo $EmplLast_name;?></td>
-							<td align="center"><?php echo $ReferredBy;?></td>
-							<td align="center"><p><?php echo "<a href='mailto:'" . $EmplEmail . ">" . $EmplEmail . "</a>";?></p></td>
+						<tr valign="top">
+							<td align="center"><p><?php echo "<a href='mailto:'" . $EmplEmail . ">" . $EmplFirstName . " " . $EmplLast_name . "</a>";?></p></td>
+							<td align="center"><p><?php echo $EmplCity . ", " . $EmplState;?></p></td>
 							</td>
-							<td align="center"><?php echo $EmplPhone;?></td>
-							<td align="center"><?php printf("<img src='/uploads/$pic' width='100'>"); ?></td>
+							<td align="center"><p><?php printf("<img src='/uploads/$pic' width='100'>"); ?></p></td>
 						</tr>
 						<?php } 
 						?>

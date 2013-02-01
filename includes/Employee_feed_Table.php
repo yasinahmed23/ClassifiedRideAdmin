@@ -30,7 +30,7 @@
 			<?php echo "
 			<div class='postedEmployee' employeeID=\"$data->employeeID \">
 				<tr valign='top'>
-					<td colspan='7' align='center'><hr /></td>
+					<td colspan='4' align='center'><hr /></td>
 				</tr>
 				<tr valign='top'>				
 					<td align='center' width='22'><li>"."$rowNumber </li></td>

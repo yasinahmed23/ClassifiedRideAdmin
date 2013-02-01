@@ -10,6 +10,7 @@
 	require_once 'includes/db_config.php';
 
 	$user = $_SESSION['user'];
+	$admin = $_SESSION['admin'];
 	
 	$DealerName= $_POST['search_string'];
 	$sql = mysql_query("
@@ -26,7 +27,14 @@
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>
+	<?php 
+	if (isset($_SESSION[admin])) {
+		include 'includes/header_Admin.php'; 
+	}
+	else {
+		include 'includes/header.php'; 
+	}
+	?>
 </div>
 
 <div id="container">
@@ -40,20 +48,18 @@
 			$count=mysql_num_rows($sql);
 			if ($count==1) {
 			?>
-			<table cellpadding="5" cellspacing="0" border="0" align="center" class="table">
+			<table cellpadding="5" cellspacing="0" border="0" align="center" class="table" width="750">
 				<tr valign="top">
 					<td>
 					<div id="dealerlist">
-						<table cellpadding="5" cellspacing="0" border="0" align="center">
+						<table cellpadding="0" cellspacing="0" border="0" align="center" width="100%">
 							<tr valign="top">
-								<td align="center"><p><strong>ID</strong></td>		
-								<td align="center"><p><strong>Time Registered</strong></td>				
-								<td align="center"><p><strong>Dealership</strong></td>	
-								<td align="center"><p><strong>City</strong></td>		
-								<td align="center"><p><strong>State</strong></td>
-								<td align="center"><p><strong>Contact Person</td>
-								<td align="center"><p><strong>Phone Number</td>
-								<td align="center"><p><strong>Representative</td>
+								<td align="center"><strong>Start Date</strong></td>				
+								<td align="center"><strong>Name</strong></td>	
+								<td align="center"><strong>Location</strong></td>		
+								<td align="center" width="70"><strong>Representative</td>
+								<td align="center"><strong>Program</td>
+								<td align="center"><strong>Monthly Payment</td>
 							</tr>
 
 						<?php
@@ -70,24 +76,30 @@
 						$DealerEmail = $row['DealerEmail'];
 						$DealerContact = ($row['DealerMainContactFirst']) . " " . ($row['DealerMainContactLast']);
 						$DealerContactPhone = ($row['DealerCellPhone1']) . "-" . ($row['DealerCellPhone2']) . "-" . ($row['DealerCellPhone3']);
+						$MthlyPmt = $row['MthlyPmt'];
+						$Program = $row['Program'];
+						$StartDate = $row['StartDate'];
 						$RepName = $row['RepName'];
 						?>
 	
 						<!--Disply data from database into a table -->
 							<tr valign='top'>
-								<td colspan='9' align='center'><hr /></td>
+								<td colspan='6' align='center'><hr /></td>
 							</tr>
 							<tr valign="top">
-								<td align="center"><p><?php echo $DealerID;?></p></td>		
-								<td align="center"><p><?php echo $TimeRegistered;?></p></td>
+								<td align="center"><p>
+									<?php 
+									if ($StartDate!="") {
+									echo $StartDate;
+									}
+									else {
+										echo "<font color='red' size='-2'>Start Date Not Set Yet</font>";
+									}
+									?></p>
+								</td>
 								<td align="center"><p><?php echo $DealerName;?></p></td>		
-								<td align="center"><p><?php echo $DealerCity;?></p></td>
-								<td align="center"><p><?php echo $DealerState;?></p></td>
-								<td align="center" width="150"><p><a href="mailto:<?php echo $DealerEmail; ?>"><?php echo $DealerContact;?></a>
-				
-								</p></td>
-								<td align="center"><p><?php echo $DealerContactPhone;?></p></td>
-								<td align="center" width="150">
+								<td align="center"><p><?php echo $DealerCity . ", " . $DealerState;?></p></td>
+								<td align="center" width="70">
 								<?php 
 								//Get Dealer Rep's Email
 									$GetRepsEmail = mysql_query("
@@ -100,6 +112,9 @@
 								echo "<p><a href='mailto:$EmplEmail'>" . $RepName . "</a></p>";
 								?>
 								</td>
+								<td align="center"><p><?php echo $Program; ?></p></td>
+								
+								<td align="center"><p><?php echo $MthlyPmt; ?></p></td>
 							</tr>
 						<?php } 
 						?>					

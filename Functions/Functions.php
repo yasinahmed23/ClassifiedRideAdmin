@@ -19,8 +19,7 @@
 	$GetEmployeeInfo = mysql_query("
 		SELECT *
 		FROM employees 
-		WHERE EmplLastName='".$EmplLast_name."'
-	");
+		WHERE EmplLastName='".$EmplLast_name."'");
 
 	while ($row = mysql_fetch_array($GetEmployeeInfo)) 
 	{
@@ -61,7 +60,14 @@
 
 	while ($row = mysql_fetch_array($GetEmployeeFirstName)) {
 		$EmplFirstName= $row['EmplFirstName'];
-	}	
+	}
+		
+	//Check and see if New Hire Paperwork has been uploaded
+	$GetNewHireInfo = mysql_query("
+	SELECT ConfidentialityAgreement, IndependentContractorAgreement, w9
+	FROM  employees
+	WHERE EmplUserName='$user'
+	");
 	
 	//Count Transactions for User
 	$CountTrans = mysql_query("
@@ -137,7 +143,7 @@
 
 	$CommTOTAL = ($RegCommissionTotal['total']) + ($RenewCommissionTotal['total']);
 
-	//Get All Dealers
+	//Count All Dealers
 	$GetDealers = mysql_query("
 	SELECT DealerID, Program
 	FROM dealers");
@@ -156,4 +162,8 @@
 		WHERE RepName='$employee' ");
 	$numDealersUser = mysql_num_rows($CountDealersForUser);
 
+	//Get All Dealer info for employee view
+	$GetDealerInfo = mysql_query("
+		SELECT *
+		FROM dealers ");
 ?>
