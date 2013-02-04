@@ -2,6 +2,18 @@
 	$user = $_SESSION['user'];
 	$admin = $_SESSION['admin'];
 
+	function error_handler($errno, $error, $file, $line, $context) {
+		//Email me if there is an error
+		$to = "ClassifiedRideWebsite@gmail.com";
+		$subject = "Error";
+		$message = "Error # " . $errno . " - " . $error . " / " . $file . "Line # " . $line . " / " . $context;
+		$from = "error@ClassifiedRide.com/Admin";
+		$headers = "From:" . $from;
+		mail($to,$subject,$message,$headers);
+		//printf("The error handler got the error! The error says %s", $error);
+		return true;
+	} 
+
 	//Count All Employees
 	$GetEmployees = mysql_query("
 		SELECT employeeID

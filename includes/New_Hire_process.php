@@ -5,6 +5,9 @@
 
 	//Connect to Database	
 	include 'db_config2.php';
+	require_once '../Functions/Functions.php';
+
+	set_error_handler('error_handler');
 
 	//Save user input as variable	
 	$EmplFirstName = stripslashes($_POST['EmplFirstName']);
@@ -86,9 +89,11 @@
 	INSERT INTO employees (EmplFirstName, EmplMiddleInitial, EmplLastName, employee, EmplStreet1, EmplStreet2, EmplCity, EmplState, EmplZip, EmplCountry, EmplEmail, EmplCellPhone1, EmplCellPhone2, EmplCellPhone3, EmplHome1, EmplHome2, EmplHome3, EmplPayFirstName, EmplPayMiddleInitial, EmplPayLastName, BusPayName, EmplPayStreet1, EmplPayStreet2, EmplPayCity, EmplPayState, EmplPayZip, EmplPayCountry, EmplPayCell1, EmplPayCell2, EmplPayCell3, EmplPayEmail, ReferredBy, EmplUserName, EmplPassword)
 	VALUES ('$EmplFirstName', '$EmplMiddleInitial', '$EmplLastName', '$employee', '$EmplStreet1', '$EmplStreet2', '$EmplCity', '$EmplState', '$EmplZip', '$EmplCountry', '$EmplEmail', '$EmplCellPhone1', '$EmplCellPhone2', '$EmplCellPhone3', '$EmplHome1', '$EmplHome2', '$EmplHome3', '$EmplPayFirstName', '$EmplPayMiddleInitial', '$EmplPayLastName', '$BusPayName', '$EmplPayStreet1', '$EmplPayStreet2', '$EmplPayCity', '$EmplPayState', '$EmplPayZip', '$EmplPayCountry', '$EmplPayCell1', '$EmplPayCell2', '$EmplPayCell3', '$EmplPayEmail', '$ReferredBy', '$EmplUserName', '$EmplPassword')";
 
+	restore_error_handler();
+
 	$result= mysql_query($add_employee);
 	if (!$result) {
-    		die('Invalid query: ' . mysql_error());
+    		die('There was an error- Please go back and try again.  We have been notified of this error');
 		}
 
 	//Get Employee ID of New Hire's Manager
