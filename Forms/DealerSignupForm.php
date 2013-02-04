@@ -14,7 +14,7 @@
 										<font size="-2">
 										Create Username & Password
 										</font></td>		
-										<td width="155"><input name="DealerUserName" type="text" class="textfield" id="DealerUserName" size="20" maxlength="20" />
+										<td width="155"><input name="DealerUserName" type="text" class="textfield" id="DealerUserName" size="20" maxlength="20"onblur="validateUsernameUnique(DealerUserName)" />
 										<br />
 										<font size="-2">Username<strong>*</strong><font>
 										<br />
@@ -59,7 +59,7 @@
 									     	<td width="155">&nbsp;</td>
 										<td width="155">
 										<input name="DealerZip" type="text" class="textfield" id="DealerZip" size="5" maxlength="5" onblur="validateNumericValues(DealerZip);lengthRestriction(DealerZip, 5, 5)" />
-										<select id="DealerCountry" name="DealerCountry" clas="textfield">
+										<select id="DealerCountry" name="DealerCountry" class="textfield">
 											<option value=''>
 											  &nbsp;
 											</option>

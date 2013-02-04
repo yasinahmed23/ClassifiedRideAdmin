@@ -255,3 +255,37 @@ function lengthRestriction(elem, min, max){
 }
 </script>
 
+
+<!-- VALIDATE Username is Unique-->
+<?php
+	/*
+	//See if username exists	
+	$sel_user="SELECT DealerUserName FROM dealers WHERE DealerUserName=''";
+	$result=mysql_query($sel_user); 
+	
+	// Count # of rows returned by query
+	$count=mysql_num_rows($result);
+
+	//If only one row was returned...
+	if ($count==0) {
+		$node="Unique";
+	}
+	else {
+		$node="NotUnique";
+	}
+	
+?>
+
+<script type="text/javascript">
+function validateUsernameUnique(node) {
+	var node = (node.value); 
+
+	if ()
+		{alert("Username is already taken");
+	return false;}	
+}
+</script>
+*/
+
+
+

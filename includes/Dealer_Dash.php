@@ -29,35 +29,35 @@ while ($row = mysql_fetch_array($GetDealerInfo))
 }
 
 
-if ($SMS=="SMSDeclined") {
+if ($SMS=="SMSDeclined"|| $SMS=="") {
 	$SMSclass="FeatureDisabled";
 }
 else if ($SMS=="SMSON") {
 	$SMSclass="FeatureEnabled";
 }
 
-if ($CaBID=="CaBIDDeclined") {
+if ($CaBID=="CaBIDDeclined" || $CaBID=="") {
 	$CaBIDclass="FeatureDisabled";
 }
 else if ($CaBID=="CaBIDON") {
 	$CaBIDclass="FeatureEnabled";
 }
 
-if ($YouTube=="YouTubeDeclined") {
+if ($YouTube=="YouTubeDeclined" || $YouTube=="") {
 	$YouTubeclass="FeatureDisabled";
 }
 else if ($YouTube=="CaBIDON") {
 	$YouTubeclass="FeatureEnabled";
 }
 
-if ($facebook=="FacebookDeclined") {
+if ($facebook=="FacebookDeclined" || $facebook=="") {
 	$Facebookclass="FeatureDisabled";
 }
 else if ($facebook=="FacebookON") {
 	$Facebookclass="FeatureEnabled";
 }
 
-if ($directory=="DirectoryDeclined") {
+if ($directory=="DirectoryDeclined" || $directory=="") {
 	$Directoryclass="FeatureDisabled";
 }
 else if ($directory=="directoryON") {

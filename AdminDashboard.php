@@ -88,6 +88,13 @@
 									<tr>
 										<td colspan="2"><hr /></td>
 									</tr>
+									<tr>
+										<td>Total Inactive: </td>
+										<td width="90"><?php echo $NumDealersInactive; ?></td>
+									</tr>
+									<tr>
+										<td colspan="2"><hr /></td>
+									</tr>
 									
 								</table>							
 							</td>

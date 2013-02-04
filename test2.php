@@ -1,10 +1,14 @@
 <?php
-$var1 = "01/08/2013";
-
-$month = substr($var1, 0, 2);
-$day = substr($var1, 3, 2);
-$year = substr($var1, 6, 4);
-$sep = "-";
-echo $var1 . "<br />";
-echo $newdate = $year . $sep . $month . $sep . $day;
+	$errno = "1";	
+	$error = "Your Mom";
+	$file = "blah.php";
+	$line= "5";
+	$context = "Not Good";
+	
+	$to = "stephmcglathery@gmail.com";
+	$subject = "Error";
+	$message = "Error # " . $errno . " - " . $error . " / " . $file . "Line # " . $line . " / " . $context;
+	$from = "error@ClassifiedRide.com/Admin";
+	$headers = "From:" . $from;
+	mail($to,$subject,$message,$headers);
 ?>

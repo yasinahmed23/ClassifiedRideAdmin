@@ -29,6 +29,13 @@
 		where TimeRegistered between date_sub(now(),INTERVAL 7 DAY) and now()");
 		$NumDealers7Days= mysql_num_rows($CountDealers7Days);
 
+	//Count Dealers Who are Inactive
+	$CountDealersInactive = mysql_query("
+		SELECT  MemberStatus
+		FROM    dealers
+		where MemberStatus = 'INACTIVE'");
+		$NumDealersInactive= mysql_num_rows($CountDealersInactive);
+
 
 	//Count Total Transactions
 	$CountTransactions = mysql_query("

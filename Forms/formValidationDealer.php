@@ -100,9 +100,9 @@ function validateDealerForm()
 	var DataFeedMainPhone3=document.forms["DealerRegisterForm"]["DataFeedMainPhone3"].value;
 	var DataFeedMainEmail=document.forms["DealerRegisterForm"]["DataFeedMainEmail"].value;
 	var UsedCarsInStock=document.forms["DealerRegisterForm"]["UsedCarsInStock"].value;
-	var Rep=document.forms["DealerRegisterForm"]["Rep"].value;
+	var Rep=document.forms["DealerRegisterForm"]["search_string"].value;
 	var searchEmployees=document.forms["DealerRegisterForm"]["Program"].value;
-	var Program=document.forms["DealerRegisterForm"]["Program"].value;
+	var Program=document.forms["DealerRegist	erForm"]["Program"].value;
 	var Authorization=document.forms["DealerRegisterForm"]["Authorization"].value;
 	var AgentFirstName=document.forms["DealerRegisterForm"]["AgentFirstName"].value;	
 	var AgentLastName=document.forms["DealerRegisterForm"]["AgentLastName"].value;
@@ -363,4 +363,5 @@ function lengthRestriction(elem, min, max){
 	}
 }
 </script>
+
 

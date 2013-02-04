@@ -1,12 +1,24 @@
 <?php	
 
-	//Enable Session Variables	
+		//Enable Session Variables	
 	session_start();
 
 	//Connect to Database	
 	include 'db_config2.php';
 
+	function error_handler($errno, $error, $file, $line, $context) {
+		//Email me if there is an error
+		$to = "ClassifiedRideWebsite@gmail.com";
+		$subject = "Error";
+		$message = "Error # " . $errno . " - " . $error . " / " . $file . "Line # " . $line . " / " . $context;
+		$from = "error@ClassifiedRide.com/Admin";
+		$headers = "From:" . $from;
+		mail($to,$subject,$message,$headers);
+		//printf("The error handler got the error! The error says %s", $error);
+		return true;
+	}
 	
+		set_error_handler('error_handler');
 
 	//Save user input as variable
 	$DealerName = stripslashes($_POST['DealerName']);$DealerStreet1 = stripslashes($_POST['DealerStreet1']);
@@ -164,139 +176,16 @@
 	$add_dealer = "
 	INSERT INTO dealers (DealerUserName, DealerPassword, RepName, DealerName, DealerStreet1, DealerStreet2, DealerCity, DealerState, DealerZip, DealerCountry, DealerWebsite, Franchise, DealerMainContactFirst, DealerMainContactLast, DealerCellPhone1, DealerCellPhone2, DealerCellPhone3, DealerOfficePhone1, DealerOfficePhone2, DealerOfficePhone3, OfficePhoneExt, DealerEmail, ContactPosition, AccountPayFirstName, AccountPayLastName, AccountPayableEmail, AccountPayableCell1, AccountPayableCell2, AccountPayableCell3, LeadCell1, LeadCell2, LeadCell3, LeadEmail, DataFeedProvider, OtherDataFeedProvider, DataFeedMainContactFirst, DataFeedMainContactLast, DataFeedMainPhone1, DataFeedMainPhone2, DataFeedMainPhone3, DataFeedMainEmail, UsedCarsInStock, Rep, Program, Authorization, AgentFirstName, AgentLastName, Signature, DateSigned, directory, facebook, YouTube, CaBID, SMS, MthlyPmt)
 	VALUES ('$DealerUserName', '$DealerPassword','$RepName', '$DealerName', '$DealerStreet1', '$DealerStreet2', '$DealerCity', '$DealerState', '$DealerZip', '$DealerCountry', '$DealerWebsite', '$Franchise', '$DealerMainContactFirst', '$DealerMainContactLast', '$DealerCellPhone1', '$DealerCellPhone2', '$DealerCellPhone3', '$OfficePhoneExt', '$DealerOfficePhone1', '$DealerOfficePhone2', '$DealerOfficePhone3', '$DealerEmail', '$ContactPosition', '$AccountPayFirstName', '$AccountPayLastName', '$AccountPayableEmail', '$AccountPayableCell1', '$AccountPayableCell2', '$AccountPayableCell3', '$LeadCell1', '$LeadCell2', '$LeadCell3', '$LeadEmail', '$DataFeedProvider', '$OtherDataFeedProvider', '$DataFeedMainContactFirst', '$DataFeedMainContactLast', '$DataFeedMainPhone1', '$DataFeedMainPhone2', '$DataFeedMainPhone3', '$DataFeedMainEmail', '$UsedCarsInStock', '$Rep', '$Program', '$Authorization', '$AgentFirstName', '$AgentLastName', '$Signature', '$DateSigned', '$directory', '$facebook', '$YouTube', '$CaBID', '$SMS', '$MthlyPmt')
-	";
+	";	
 
 	$result= mysql_query($add_dealer);
+	
+	restore_error_handler();
+	
 	if (!$result) {
-    		die('Invalid query: ' . mysql_error());
-		}		
-
-	//retrieve employee ID info from Employee Table	
-	$SelEmpl = mysql_query("
-	SELECT employeeID FROM employees
-	WHERE employee='".$RepName."'
-	");
-
-	while ($row = mysql_fetch_array($SelEmpl))
-	{
-		$employeeID= $row ['employeeID'];			
-	}
-
-	//retrieve employee email info from Employee Table	
-	$SelEmpl = mysql_query("
-	SELECT EmplEmail FROM employees
-	WHERE employee='".$RepName."'
-	");
-
-	while ($row = mysql_fetch_array($SelEmpl))
-	{
-		$EmplEmail= $row ['EmplEmail'];			
-	}
-
-	//Get employee name from Referral Table (to receive bonus for their empl signing a dealership
-	
-	$SelEmplReferral = mysql_query("
-	SELECT EmployeeName  
-	FROM  Referrals
-	WHERE NewEmplName ='".$RepName."'
-	");
-
-	while ($row = mysql_fetch_array($SelEmplReferral))
-	{
-		$EmplReferral= $row ['EmployeeName'];			
-	}
-
-	//Get email address of EmplReferral
-	
-	$SelEmplReferralEmail = mysql_query("
-	SELECT EmplEmail
-	FROM  employees
-	WHERE employee ='".$EmplReferral."'
-	");
-
-	while ($row = mysql_fetch_array($SelEmplReferralEmail))
-	{
-		$EmplReferralEmail= $row ['EmplEmail'];			
-	}
-
-	
-	//Calculate Commission & Referral Fee
-	if ($Program == "798") {
-		$Commission = "300";
-		$ReferralAmount="60";
-	}
-	else {
-		$Commission = "150";
-		$ReferralAmount="30";
-	}
-	
-	$Commission=($Commission+($DirPrice*.2)+($FBPrice*.2)+($SMSPrice*.2)+($YouTubePrice*.2)+($CaBIDPrice*.2));
-	
-
-	//retrieve Dealer ID info from Dealer Table
-
-	$SelDealer = mysql_query("
-	SELECT DealerID FROM dealers
-	WHERE DealerName='".$DealerName."'
-	");
-	while ($row = mysql_fetch_array($SelDealer))
-
-	{
-		$DealerID= $row ['DealerID'];			
-	}
-
-
-
-	//Run query to Add Transaction to database	
-
-	$add_transaction = "
-	INSERT INTO transactions (eID, employee, registered, Commission, DealerName, DealerID, member, EmplReferral, ReferralAmount)
-	VALUES ('$employeeID', '$RepName', '$MthlyPmt', '$Commission', '$DealerName', '$DealerID', '$member', '$EmplReferral', '$ReferralAmount')
-	";
-
-	$result2= mysql_query($add_transaction);
-	if (!$result2) {
-    		die('Invalid query: ' . mysql_error());
-		}
-
-	//Create session variable from data and redirect page
-	$_SESSION['DealerUser']=$DealerUserName;
-
-	//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO SYSTEM
-		$to = "classifiedridewebsite@gmail.com";
-		$subject = $DealerName . " registered for the $" .  $Program . "program." ;
-		$message = $DealerName . " registered for the $" .  $Program . " program.  Their rep is: " . $RepName . ".  Their email is: " . $DealerEmail . ".  " . $EmplReferral . "(" . $EmplReferralEmail . ") should receive a referral bonus.";
-		$from = $DealerEmail;
-		$headers = "From:" . $from;
-		mail($to,$subject,$message,$headers);
-
-	//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO DEALER
-		$to = $DealerEmail;
-		$subject = "Thank you for registering with us" ;
-		$message = " Thanks for registering for the $" .  $Program . " program.  Your rep is: " . $RepName;
-		$from = "classifiedridewebsite@gmail.com";
-		$headers = "From:" . $from;
-		mail($to,$subject,$message,$headers);
-
-	//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO REFERRAL
-		$to = $EmplReferralEmail;
-		$subject = $RepName . " Signed " . $DealerName . ".";
-		$message = $RepName . " Signed " . $DealerName . ".";
-		$from = "classifiedridewebsite@gmail.com";
-		$headers = "From:" . $from;
-		mail($to,$subject,$message,$headers);
-			
-		header( 'Location: /Dealers.php' ) ;
-
-	//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO EMPLOYEE
-		$to = $EmplEmail;
-		$subject = "You Signed " . $DealerName . ".";
-		$message = "You Signed " . $DealerName . ".";
-		$from = "classifiedridewebsite@gmail.com";
-		$headers = "From:" . $from;
-		mail($to,$subject,$message,$headers);
-			
-	header( 'Location: /Dealers.php' ) ;
+    		die('There was an error- Please go back and try again.  We have been notified of this error.');
+		}				
+	require_once '../Forms/DealerPaymentForm.php';
 ?>
 
 
