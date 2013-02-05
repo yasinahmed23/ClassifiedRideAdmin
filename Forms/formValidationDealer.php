@@ -102,14 +102,15 @@ function validateDealerForm()
 	var UsedCarsInStock=document.forms["DealerRegisterForm"]["UsedCarsInStock"].value;
 	var Rep=document.forms["DealerRegisterForm"]["search_string"].value;
 	var searchEmployees=document.forms["DealerRegisterForm"]["Program"].value;
-	var Program=document.forms["DealerRegist	erForm"]["Program"].value;
+	var Program=document.forms["DealerRegisterForm"]["Program"].value;
 	var Authorization=document.forms["DealerRegisterForm"]["Authorization"].value;
 	var AgentFirstName=document.forms["DealerRegisterForm"]["AgentFirstName"].value;	
 	var AgentLastName=document.forms["DealerRegisterForm"]["AgentLastName"].value;
 	var DateSigned=document.forms["DealerRegisterForm"]["date"].value;	
+		
 	
 	if (username==null || username=="")
-	{alert("UserName must be filled out");
+	{alert("DealerUserName must be filled out");
 	return false;}
 	
 	if (password==null || password=="")
@@ -335,7 +336,6 @@ function validateDealerForm()
 	return false;}
 	
 	if(!DealerRegisterForm.Authorization.checked){alert('You must Authorize first.');return false}
-
 }
 </script>
 

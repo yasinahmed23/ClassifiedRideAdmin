@@ -11,6 +11,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Dealers | ClassifiedRide</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" title="Style CSS" href="styles/calendar.css" type="text/css" media="all" />
 <script type="text/javascript">
@@ -22,10 +23,18 @@
 <script src="js/jquery-1.8.2.js"></script>
 <script src="autocomplete/searchFullName.js"></script>
 <SCRIPT TYPE="text/javascript" SRC="js/verifynotify.js"></SCRIPT>
+<SCRIPT TYPE="text/javascript" SRC="js/CheckDealerUserName.js"></SCRIPT>
+<style>
+#DealerUserName{
+}
+
+#tick{display:none}
+#cross{display:none}
+</style>
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/headerDealer.php'; ?>
+	<?php include 'includes/headerDealer.php'?>
 </div>
 <div id="container">
 	<div id="Dealermain">
@@ -42,10 +51,10 @@
 		include 'includes/contentDealer.php';
 		};
 		?>
+		
 	</div>
-</div>	
+</div>
 <?php require_once 'includes/footer.php'; ?>
 </body>
-</html>	
-
+</html>
 

@@ -14,7 +14,8 @@
 										<font size="-2">
 										Create Username & Password
 										</font></td>		
-										<td width="155"><input name="DealerUserName" type="text" class="textfield" id="DealerUserName" size="20" maxlength="20"onblur="validateUsernameUnique(DealerUserName)" />
+										<td width="155"><input name="DealerUserName" type="text" class="textfield" id="DealerUserName" size="20" maxlength="20" /><img id="tick" src="/images/tick.png" width="16" height="16"/>
+<img id="cross" src="/images/cross.png" width="16" height="16"/>
 										<br />
 										<font size="-2">Username<strong>*</strong><font>
 										<br />
@@ -1399,7 +1400,7 @@
 									<tr><td><br /></td></tr>
 									<!--DEALER AUTHORIZATION -->				
 									
-									<!--SUBMIT -->				
+									<!--SUBMIT -->					
 									<tr>
 									      	<td colspan="2" width="155" align="center"><input name="Submit" type="submit" value="Make Payment" class="fsSubmitButton" /></td>
 									</tr>	

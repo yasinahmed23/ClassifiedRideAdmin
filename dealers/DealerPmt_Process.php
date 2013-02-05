@@ -1,10 +1,36 @@
 <?php
-$TransID = $_POST['TransID'];
-$RefNo = $_POST['RefNo'];
-$AVSCode =$_POST['AVSCode'];
-$CVV2ResponseMsg = $_POST['CVV2ResponseMsg'];
-$Auth = $_POST['Auth'];
-$Notes = $_POST['Notes'];
+$rspCode = $_GET['rspCode'];
+$TranNr = $_GET['TranNr'];
+$Date =$_GET['Date'];
+$amount = $_GET['amount'];
+$auth = $_GET['auth'];
+$AVSRslt = $_GET['AVSRslt'];
+$SecRslt = $_GET['SecRslt'];
+$PmtType = $_GET['PmtType'];
+$ACI = $_GET['ACI'];
+$ValCode = $_GET['ValCode'];
+$SwchKey = $_GET['SwchKey'];
+$STAN = $_GET['STAN'];
+$CardType = $_GET['CardType'];
+$AddlAmount = $_GET['AddlAmount'];
+$AmountType = $_GET['AmountType'];
+$ShipToZip = $_GET['ShipToZip'];
+$AccountHoldername = $_GET['AccountHoldername'];
+$CustomerReferenceID = $_GET['CustomerReferenceID'];
+$TaxAmount = $_GET['TaxAmount'];
+$TaxIndicator = $_GET['TaxIndicator'];
+$AddressLine1 = $_GET['AddressLine1'];
+$AddressLine2 = $_GET['AddressLine2'];
+$City = $_GET['City'];
+$State = $_GET['State'];
+$Zip = $_GET['Zip'];
+$SECC = $_GET['SECC'];
+$Email = $_GET['Email'];
+$Phone = $_GET['Phone'];
+$PONumber = $_GET['PONumber'];
+$Description = $_GET['Description'];
+$mapCAID = $_GET['mapCAID'];
+$IndCode = $_GET['IndCode'];
 
 if ($Auth=="Declined") {
 	echo "Trans ID: " . $TransID . " was declined.  Reason:  " . $Notes;

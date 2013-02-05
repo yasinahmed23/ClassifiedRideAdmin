@@ -1,4 +1,4 @@
-<form id="loginForm" name="loginForm" method="post" action="/check_login_Admin.php">
+<form id="loginForm" name="AdminloginForm" method="post" action="/check_login_Admin.php">
 		
 	<input name="UserName" type="text" class="textfield" id="UserName" size="15"/>	
 	<br /><font size="-2">Username:</font>

@@ -3,11 +3,16 @@
 	<a href="/index.php"><strong>MY PROFILE</strong></a>
 	<br />
 	<form action="NewHireForms.php
-"><input class="Button" type="submit" value="New Hire Forms" /></form>
-	<form action="/Training.php"><input class="Button" type="submit" value="Training" /></form>
-	<form action="MyTransactions.php"><input class="Button" type="submit" value="My Transactions" /></form>	
+		<input class="Button" type="submit" value="New Hire Forms" />
+	</form>
+	<form action="/Training.php">
+		<input class="Button" type="submit" value="Training" />
+	</form>
+	<form action="MyTransactions.php">
+		<input class="Button" type="submit" value="My Transactions" />
+	</form>	
 	<form action="/MyDealerships.php" name="MyDealerships" id="MyDealerships">
-		<input class="Button" type="submit" id="MyDealerships" name="MyDealerships" value="My Dealerships" /></form>
+		<input class="Button" type="submit" id="MyDealers" name="MyDealers" value="My Dealerships" /></form>
 	<br />
 
 </div>
@@ -25,15 +30,15 @@
 <!--View Dealers-->
 <div>
 	<a href="/Dealer_List.php"><strong>DEALERS</strong></a>
-	<form action="/searchDealerName.php" name="search_blog" id="search_blog">
-		<input class="Button" type="submit" id="search_blog" name="search_blog" value="Search Dealers"  />
+	<form action="/searchDealerName.php" name="search_Dealer" id="search_Dealer">
+		<input class="Button" type="submit" id="search_DealerName" name="search_DealerName" value="Search Dealers"  />
 </form>	
 	<br />
 
 </div>
 <!--Admin Access-->
 <form action="/AccountsReceivable" name="receivable" id="receivable">
-		<input class="Button" type="submit" id="receivable" name="receivable" value="ACCOUNTS RECEIVABLE"  />
+		<input class="Button" type="submit" id="Actsreceivable" name="Actsreceivable" value="ACCOUNTS RECEIVABLE"  />
 </form>
 <br />
 <a href="/AdminDashboard.php"><strong>ADMIN DASHBOARD</strong></a>

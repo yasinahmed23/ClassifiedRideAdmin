@@ -1,9 +1,7 @@
 <?php
-	
 	//Enable Session Variables	
 	session_start();
 	
-		
 	//Connect to Database	
 	require_once 'includes/db_config2.php';
 	require_once 'Functions/Functions.php';
@@ -11,9 +9,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<SCRIPT TYPE="text/javascript" SRC="js/verifynotify.js"></SCRIPT>
-<SCRIPT TYPE="text/javascript" SRC="js/jquery-1.8.2.js"></SCRIPT>
-<script src="autocomplete/searchFullName.js"></script>
+<script type="text/javascript" src="js/verifynotify.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="autocomplete/searchFullName.js"></script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>ClassifiedRide Database</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />

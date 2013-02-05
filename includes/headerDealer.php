@@ -21,11 +21,13 @@
 			if (!isset($_SESSION[DealerUser])) {
 				include 'Dealer_login_form.php';
 				echo "<center><a href='dealers/ResetDealerPass.php'>Reset Password</a></center>";
-				}
-			else {echo $DealerUser . " you are logged in.";
-			echo "<br />";
-			echo "<form action='logoutDealer.php' onSubmit='alert('You are now logged out');' name='logout' id='logout'><input type='submit' value='Log Out' id='logout' name='logout' class='Button' /></form>";}
-
-		?></div>
+			}
+			else {
+				echo $DealerUser . " you are logged in.";
+				echo "<br />";
+				echo "<form action='logoutDealer.php' onSubmit='alert('You are now logged out');' name='logout' id='logout'><input type='submit' value='Log Out' id='logout' name='logout' class='Button' /></form>";
+			}
+		?>
+		</div>
 	</td></tr></table>
 </div>

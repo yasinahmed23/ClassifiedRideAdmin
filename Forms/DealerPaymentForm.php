@@ -22,8 +22,8 @@ $startDate = $year . $sep . $month . $sep . $day;
 <form action="https://hosted.cert.transactionexpress.com/Transaction/Transaction/Index" method="post" name="z_form">
 	<input type="hidden" name="Gateway_ID" size="20" value ="7777777865"> 
 	<input type="hidden" name="HostedKey" size="20" value = "9cd9aab0-6785-451f-b4a0-9f90436d2c05">
-	<input type="hidden" name="RURL" size="20" value = "stephmcglathery.com/dealers/DealerPmt_Process.php">
-	<input type="hidden" name="CURL" size="20" value = "stephmcglathery.com/dealers/DealerPmt_Cancel.php">
+	<input type="hidden" name="RURL" size="20" value = "http://stephmcglathery.com/dealers/DealerPmt_Process.php?rspCode=(rspCode)&TranNr=(TranNr)&Date=(Date)&amount=(amount)&cardBalance=(cardBalance)&auth=(auth)&AVSRslt=(AVSRslt)&SecRslt=(SecRslt)&PmtType=(PmtType)&ACI=(ACI)&ValCode=(ValCode)&SwchKey=(SwchKey)&STAN=(STAN)&CardType=(CardType)&AddlAmount=(AddlAmount)&AmountType=(AmountType)&ShipToZip=(ShipToZip)&AccountHoldername=(AccountHoldername)&CustomerReferenceID=(CustomerReferenceID)&TaxAmount=(TaxAmount)&TaxIndicator=(TaxIndicator)&AddressLine1=(AddressLine1)&AddressLine2=(AddressLine2)&City=(City)&State=(State)&Zip=(Zip)&SECC=(SECC)& Email=(Email)&Phone=(Phone)">
+	<input type="hidden" name="CURL" size="20" value = "http://stephmcglathery.com/dealers/DealerPmt_Cancel.php">
 	<input type='hidden' name='EmailRequired' id='EmailRequired' value='Y' />
 	<input type="hidden" name="RecurringType" id="RecurringType" value="A" />
 	<input type="hidden" name="AVSRequired" size="20" value = "Y">
