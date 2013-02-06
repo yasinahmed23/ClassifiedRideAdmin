@@ -8,11 +8,6 @@
 	
 	//Connect to Database	
 	require_once 'includes/db_config.php';
-
-	$user = $_SESSION['user'];
-	$admin = $_SESSION['admin'];
-	$ARadmin = $_SESSION['ARadmin'];
-
 	require_once 'Functions/ARFunctions.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -190,7 +185,7 @@ function validateForm2()
 							</td>
 							<td  align="center">
 							<?php
-							if ($SMS=="") {
+							if ($SMS=="" || $SMS=="SMSDeclined") {
 								echo "Off";
 							}
 							else if ($SMS=="SMSON") {
@@ -202,7 +197,7 @@ function validateForm2()
 							<form id="SMS" name="SMS" method="post" action="/AccountsReceivable/UpdateSMS.php">
 							<input type="hidden" name="DealerName" id="DealerName" value="<?php echo $DealerName; ?>" />
 							<?php
-							if ($SMS=="") {
+							if ($SMS=="" || $SMS=="SMSDeclined") {
 								echo "<input type='submit' class='Button' name='SMS' id='SMS' value='Turn On'>";
 							}
 							else if ($SMS=="SMSON") {
@@ -219,7 +214,7 @@ function validateForm2()
 							</td>
 							<td  align="center">
 							<?php
-							if ($CaBID=="") {
+							if ($CaBID=="" ||$CaBID=="CaBIDDeclined") {
 								echo "Off";
 							}
 							else if ($CaBID=="CaBIDON") {
@@ -260,7 +255,7 @@ function validateForm2()
 							<form id='YouTube' name='YouTube' method='post' action='/AccountsReceivable/UpdateYouTube.php'>
 							<input type="hidden" name="DealerName" id="DealerName" value="<?php echo $DealerName; ?>" />
 							<?php
-							if ($YouTube=="") {
+							if ($YouTube=="" || $YouTube=="YouTubeDeclined") {
 								echo "<input type='submit' class='Button' name='YouTube' id='YouTube' value='Turn On'>";
 							}
 							else {
@@ -289,7 +284,7 @@ function validateForm2()
 							<form id='facebook' name='facebook' method='post' action='/AccountsReceivable/UpdateFacebook.php'>
 							<input type="hidden" name="DealerName" id="DealerName" value="<?php echo $DealerName; ?>" />
 							<?php
-							if ($facebook=="") {
+							if ($facebook=="" ||$facebook=="FacebookDeclined") {
 								echo "<input type='submit' class='Button' name='facebook' id='facebook' value='Turn On'>";
 							}
 							else {
@@ -309,7 +304,7 @@ function validateForm2()
 							if ($directory=="directoryON") {			
 								echo "On";
 							}
-							else if ($directory=="") {
+							else if ($directory=="" || $directory=="DirectoryDeclined") {
 								echo "Off";
 							}
 							?>

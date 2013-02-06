@@ -11,7 +11,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Dealers | ClassifiedRide</title>
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.js"></script>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" title="Style CSS" href="styles/calendar.css" type="text/css" media="all" />
 <script type="text/javascript">
@@ -20,16 +19,19 @@
   var yearFormat = "yyyy";
 </script>
 <script type="text/javascript" src="js/calendar.js"></script>
-<script src="js/jquery-1.8.2.js"></script>
-<script src="autocomplete/searchFullName.js"></script>
-<SCRIPT TYPE="text/javascript" SRC="js/verifynotify.js"></SCRIPT>
-<SCRIPT TYPE="text/javascript" SRC="js/CheckDealerUserName.js"></SCRIPT>
+<script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="autocomplete/searchFullName.js"></script>
+<script type="text/javascript" src="js/verifynotify.js"></script>
+
 <style>
 #DealerUserName{
 }
 
 #tick{display:none}
 #cross{display:none}
+
+#tick2{display:none}
+#cross2{display:none}
 </style>
 </head>
 <body>

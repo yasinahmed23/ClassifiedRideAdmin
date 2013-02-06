@@ -11,7 +11,7 @@ $('#tick').hide();
 
 jQuery.ajax({
    type: "POST",
-   url: "checkDealerUsername.php",
+   url: "Functions/checkDealerUsername.php",
    data: 'DealerUserName='+ DealerUserName,
    cache: false,
    success: function(response){
@@ -20,7 +20,7 @@ if(response == 1){
 	$('#tick').hide();
 	$('#cross').fadeIn();
 	}else{
-	$('#DealerUserName').css('border', '3px #090 solid');
+	$('#DealerUserName').css('border', '1px #CCC solid');
 	$('#cross').hide();
 	$('#tick').fadeIn();
 	     }

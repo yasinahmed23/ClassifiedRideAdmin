@@ -2,7 +2,7 @@
 <div id="logo">
 	<table cellpadding="0" cellspacing="0" border="0">
 		<tr valign="top">
-			<td><h1>Welcome to the <img src="/images/logo2.png" width="200"> Dealer Database</h1>
+			<td><td><h1>Welcome to the<img src="/images/logo3.png" width="200" height="50" alt="Classified Ride Admin" />Dealer Database </h1>
 				<div id="ClickDealer">
 		  	 	<?php
 			   		if (!isset($_SESSION[DealerUser])) {

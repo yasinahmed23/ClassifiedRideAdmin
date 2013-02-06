@@ -6,7 +6,7 @@
 	include 'includes/db_config.php';
 	
 	// create variables out of user input
-	$EmplUserName=$_POST['EmplUserName']; 
+	$EmplUserName=$_POST['EmplUName']; 
 	$EmplPassword=$_POST['EmplPassword'];
 
 	// Protect MySQL injection

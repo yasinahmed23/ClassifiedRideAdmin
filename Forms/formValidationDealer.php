@@ -318,14 +318,10 @@ function validateDealerForm()
 	if (UsedCarsInStock==null || UsedCarsInStock=="")
 	{alert("Please enter the used cars in stock that you would be wanting to list");
 	return false;}
-
-	
-	
 	
 	if (AgentFirstName==null || AgentFirstName=="")
 	{alert("Please enter the agent's firstname.");
 	return false;}
-
 
 	if (AgentLastName==null || AgentLastName=="")
 	{alert("Please enter the agent's lastname.");

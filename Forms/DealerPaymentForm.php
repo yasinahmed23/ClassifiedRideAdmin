@@ -48,11 +48,8 @@ $startDate = $year . $sep . $month . $sep . $day;
 
 	<!--00 = Daily 10 = Weekly 20 = Bi-Monthly 30 = Every 4 weeks 40 = Every 8 Weeks 51 = Specified Day of the Month 70 = Quarterly 80 = Yearly 90 = Single-->
 	<input type="hidden" name="PaymentFrequency" size="10" value = "51">
-
 	<input type="hidden" name="NumberOfPayments" size="10" value = "">
-
 	<input type="hidden" name="StartDate" size="10" value = "<?php echo $startDate; ?>">
-
 	<input type="hidden" name="ShipToZip" size="20" value = "<?php echo $zip; ?>" >
 	<input type="hidden" name="FullName" size="20" value = "<?php echo $name; ?>">
 	<input type="hidden" name="Address1" size="50" value = "<?php echo $address1; ?>">
@@ -71,13 +68,14 @@ $startDate = $year . $sep . $month . $sep . $day;
 			<td width="150">Payment Type:</td>
 			<td width="150">
 				<!--CC = Credit Card (Default) PC = Purchase Card ACHC = ACH Checking ACHS = ACH Savings-->   
-				<select name="PaymentType" class="textfield">
+				<!--<select name="PaymentType" class="textfield">
 					<option Selected = "selected" value="PC"></option>
 					<option value="CC">Credit Card </option>
 					<option value="PC">Business Card</option>
 					<option value="ACHC">EFT Checking</option>
 					<option value="ACHS">EFT Savings</option>
-				</select>
+				</select>-->
+				<input type="text" name="PaymentType" size="20" value = "CC">
 			</td>
 		</tr>
 		<tr valign="top"><td colspan="2"><font size="-2"><em>For your convenience, your payment method will be saved for automatic payments.  Today's Date will be your due date every month.  <br />You can cancel at any time.</em></font></td></tr>

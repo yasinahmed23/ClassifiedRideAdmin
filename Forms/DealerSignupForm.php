@@ -17,7 +17,7 @@
 										<td width="155"><input name="DealerUserName" type="text" class="textfield" id="DealerUserName" size="20" maxlength="20" /><img id="tick" src="/images/tick.png" width="16" height="16"/>
 <img id="cross" src="/images/cross.png" width="16" height="16"/>
 										<br />
-										<font size="-2">Username<strong>*</strong><font>
+										<font size="-2">Username (must be unique) <strong>*</strong><font>
 										<br />
 										<input name="DealerPassword" type="password" class="textfield" id="DealerPassword" size="20" maxlength="20" onKeyUp="verify.check()" /><input name="DealerPassword2" type="password" class="textfield" id="DealerPassword2" size="20" maxlength="20" onKeyUp="verify.check()" />
 										<br />
@@ -36,8 +36,12 @@
 									</tr>
 									<tr><td><br /></td></tr>			
 									<tr>
-								      		<td width="155">Dealership Name</td>		
-										<td width="155"><input name="DealerName" type="text" class="textfield" id="DealerName" size="30" maxlength="30" />
+								      		<td width="155">Dealership</td>		
+										<td width="155"><input name="DealerName" type="text" class="textfield" id="DealerName" size="30" maxlength="30" /><img id="tick2" src="/images/tick.png" width="16" height="16"/>
+<img id="cross2" src="/images/cross.png" width="16" height="16"/>
+										
+										<br />
+										<font size="-2">Dealership Name (must be unique) <strong>*</strong><font>
 										<br />
 										</td>
 									</tr>

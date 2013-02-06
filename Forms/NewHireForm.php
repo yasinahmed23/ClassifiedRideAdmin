@@ -19,7 +19,7 @@
 							<tr valign="top">
 								<td width="150">Login Info:</td>
 								<td>
-								<input name="EmplUserName" type="text" class="textfield" id="EmplUserName" size="20" maxlength="20" />
+								<input name="EmplUserName" type="text" class="textfield" id="EmplUserName" size="20" maxlength="20" /><img id="tick" src="/images/tick.png" width="16" height="16"/><img id="cross" src="/images/cross.png" width="16" height="16"/>
 								<br />
 								<div id="login_length"></div>
 								<font size="-2">Username*<font>

@@ -41,7 +41,10 @@
 	$EmplPayCell3 = stripslashes($_POST['EmplPayCell3']);
 	$EmplPayEmail = stripslashes($_POST['EmplPayEmail']);
 	$ReferredBy = stripslashes($_POST['search_string']);
-	$EmplUserName = stripslashes($_POST['EmplUserName']);
+
+	$EmplUserName = trim(strtolower($_POST['EmplUserName']));
+	$EmplUserName = stripslashes($EmplUserName);
+	
 	$EmplPassword = stripslashes($_POST['EmplPassword']);
 	$EmplPassword2 = stripslashes($_POST['EmplPassword2']);	
 
