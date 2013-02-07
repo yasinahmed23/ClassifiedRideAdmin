@@ -39,7 +39,7 @@
 		$MemberStatus = $row['MemberStatus'];
 	}
 
-	//Get Rep Info for Dealer Usere 
+	//Get Rep Info for Dealer User 
 	$GetRepInfo = mysql_query("
 		SELECT EmplCellPhone1, EmplCellPhone2, EmplCellPhone3, EmplEmail, pic
 		FROM employees	

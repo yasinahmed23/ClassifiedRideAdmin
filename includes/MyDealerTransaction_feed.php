@@ -40,19 +40,25 @@ $employee = $row['employee'];
 $registered = $row['registered'];
 $Renewed = $row['Renewed'];
 
+$sep="/";
+$month=substr($TransactionDate, 5, 2);
+$date=substr($TransactionDate, 8, 2);
+$year=substr($TransactionDate, 0, 4);
+$newDate=$month . $sep . $date . $sep . $year;
+
 ?>
 	
 <!--Disply data from database into a table -->
 	<tr>
 		
-		<td align="center"><?php echo $TransactionDate?></td>		
+		<td align="center"><?php echo $newDate?></td>		
 		<td align="center"><?php echo $TransactionID;?></td>		
 		<td align="center"><?php echo $employee;?></td>
 		<td align="center"><?php			
 				if (empty($registered)) {
 	    				echo "";
 				} else {
-	    				echo "$" . $registered;
+	    				echo "$" . number_format($registered, 2);
 				}
 
 				?></td>
@@ -61,7 +67,7 @@ $Renewed = $row['Renewed'];
 				if (empty($Renewed)) {
 	    				echo "";
 				} else {
-	    				echo "$" . $Renewed;
+	    				echo "$" . number_format($Renewed, 2);
 				}
 
 				?></td>

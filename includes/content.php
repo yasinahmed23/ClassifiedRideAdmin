@@ -1,3 +1,20 @@
+<?php
+	while ($row = mysql_fetch_array($GetNewHireInfo)) 
+	{
+		$ConfidentialityAgreement = $row['ConfidentialityAgreement'];
+		$IndependentContractorAgreement = $row['IndependentContractorAgreement'];
+		$w9= $row['w9'];
+
+	}
+if(!($ConfidentialityAgreement == NULL)&& !($IndependentContractorAgreement == NULL) && !($w9 == NULL))
+	{
+	echo "";
+	
+	}
+	else {
+	echo "<center><font color='#FF0000'><strong><em>You have not uploaded your New Hire Paperwork yet! You need to do this to get paid!  <br /><a href='/NewHireForms.php'><font color='#FF0000'>CLICK HERE TO UPLOAD NOW</font></a></em></center></strong></font>";
+	}
+?>
 <div id="DownloadFiles">
 	<p><font size="+1"><strong>MY PROFILE: </strong></font></p>	
 	<?php include 'profile.php';?>	

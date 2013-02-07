@@ -2654,7 +2654,6 @@
 					</td>
 				</tr>
 			</table>
-			<h3 id="results"></h3>
 			</form>
 		</div>
 	</td>

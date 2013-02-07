@@ -68,7 +68,7 @@ while ($row = mysql_fetch_array($sql)) {
 			?>
 		</td>
 		<td align="center"><?php echo "$" . $Program;?></td>
-		<td align="center"><?php echo "$" . $MthlyPmt;?></td>
+		<td align="center"><?php echo "$" . number_format($MthlyPmt, 2);?></td>
 	</tr>
 <?php } 
 ?>

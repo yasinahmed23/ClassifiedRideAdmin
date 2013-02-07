@@ -33,7 +33,7 @@
 						include 'login_form.php';
 						echo "<center><a href='/ResetEmplPass.php'>Reset Password</a></center>";
 						}
-					else {echo "<br />" . $user . " you are logged in as AR.";
+					else {echo "<br />" . $_SESSION[ARadmin] . " you are logged in as AR.";
 					echo "<br />";?>
 				<form action="/logoutAR.php" name="Logout" id="Logout" onSubmit="alert('You are now logged in as an employee');">
 							<input class="Button" type="submit" id="LogoutAdmin" name="LogoutAdmin" value="Logout AR"  />

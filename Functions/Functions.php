@@ -140,21 +140,21 @@
 		SELECT SUM(Commission) 
 		AS total FROM transactions
 		WHERE employee='$employee'
-		AND (registered='798' OR registered='399')");
+		AND (registered!='')");
 
 	$RegCommissionTotal = mysql_fetch_assoc($RegCountComm);
-	
+
 	//Calculate Renewal Commission for User
 	$RenewCountComm = mysql_query(" 
 		SELECT SUM(Commission) 
 		AS total FROM transactions
 		WHERE employee='$employee'
-		AND (Renewed='798' OR Renewed='399')");
+		AND (Renewed!='')");
 
 	$RenewCommissionTotal = mysql_fetch_assoc($RenewCountComm);
 
-	$CommTOTAL = ($RegCommissionTotal['total']) + ($RenewCommissionTotal['total']);
-
+	$CommTOTAL = ($RegCommissionTotal['total']) + ($RenewCommissionTotal['total']);	
+	
 	//Count All Dealers
 	$GetDealers = mysql_query("
 	SELECT DealerID, Program

@@ -24,8 +24,7 @@ while ($row = mysql_fetch_array($GetDealerInfo))
 	$DealerContactPhone = ($row['DealerCellPhone1']) . "-" . ($row['DealerCellPhone2']) . "-" . ($row['DealerCellPhone3']);
 	$RepName = $row['RepName'];
 	$Program = $row['Program'];
-	$MemberStatus = $row['MemberStatus'];
-					
+	$MemberStatus = $row['MemberStatus'];		
 }
 
 
@@ -67,9 +66,9 @@ else if ($directory=="directoryON") {
 ?>
 <div id="DashboardContent">
 <br />
-<table>
+<table width=100% border="0" cellspacing="0" cellpadding="0">
 	<tr valign="top">
-		<td colspan="2"><strong>Add-On Features</strong></td>
+		<td colspan="2">Add-On Features</td>
 	</tr>
 	<tr valign="top">
 	
@@ -171,14 +170,15 @@ else if ($directory=="directoryON") {
 				</tr>
 			</table>
 		</td>
-		<td>
-			<table width="430" cellpadding="0" cellspacing="0" border="0">
+		<td width="10">&nbsp;</td>
+		<td width="330">
+			<table width="330" cellpadding="0" cellspacing="0" border="0">
 				<tr valign="top">		
-					<td>
-						<table align="center">
+					<td width="150">
+						<table align="center" width=100%>
 							
 							<tr valign="top">
-								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
+								<td align="center"><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
 										<strong>Email Leads</strong>	
@@ -207,7 +207,7 @@ else if ($directory=="directoryON") {
 								<td>&nbsp;</td>
 							</tr>
 							<tr valign="top">
-								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
+								<td align="center"><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
 										<strong>Dealer Directory</strong>
@@ -221,11 +221,12 @@ else if ($directory=="directoryON") {
 							</tr>
 						</table>
 					</td>
-					<td>
+					<td width="10">&nbsp;</td>
+					<td width="150">
 						<table align="center">
 							
 							<tr valign="top">
-								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
+								<td align="center"><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
 										<img src="/images/youtube.jpg" width="75" alt="YOU TUBE: Inventory Videos" border="0">
@@ -235,12 +236,12 @@ else if ($directory=="directoryON") {
 									</tr>
 								</table>
 								</td>
-							</tr
+							</tr>
 							<tr valign="top">
 								<td>&nbsp;</td>
 							</tr>
 							<tr valign="top">
-								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
+								<td align="center"><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
 										<img src="/images/Facebook2.jpg" width="75" alt="FACEBOOK: 25,000 'LIKES' Fan Page">
@@ -255,7 +256,7 @@ else if ($directory=="directoryON") {
 								<td>&nbsp;</td>
 							</tr>
 							<tr valign="top">
-								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
+								<td align="center"><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
 										<img src="/images/Cabid.jpg" width="86" alt="Cabid: Bid-Offer Negotiation Leads">

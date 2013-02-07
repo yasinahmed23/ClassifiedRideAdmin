@@ -250,42 +250,43 @@ function lengthRestriction(elem, min, max){
 	}else{
 		alert("Please enter the correct amount of #'s");
 		elem.focus();
-		return false;
-	}
+		return false;}
 }
 </script>
-
 
 <!-- VALIDATE Username is Unique-->
-<?php
-	/*
-	//See if username exists	
-	$sel_user="SELECT DealerUserName FROM dealers WHERE DealerUserName=''";
-	$result=mysql_query($sel_user); 
+<script type='text/javascript'>
+$(document).ready(function(){
+$('#EmplUserName').keyup(EmplUserName_check);
+});
 	
-	// Count # of rows returned by query
-	$count=mysql_num_rows($result);
+function EmplUserName_check(){	
+var EmplUserName = $('#EmplUserName').val();
+if(EmplUserName == "" || EmplUserName.length < 4){
+$('#EmplUserName').css('border', '3px #CCC solid');
+$('#tick').hide();
+}else{
 
-	//If only one row was returned...
-	if ($count==0) {
-		$node="Unique";
-	}
-	else {
-		$node="NotUnique";
-	}
-	
-?>
-
-<script type="text/javascript">
-function validateUsernameUnique(node) {
-	var node = (node.value); 
-
-	if ()
-		{alert("Username is already taken");
-	return false;}	
+jQuery.ajax({
+   type: "POST",
+   url: "Functions/checkEmployeeUsername.php",
+   data: 'EmplUserName='+ EmplUserName,
+   cache: false,
+   success: function(response){
+if(response == 1){
+	$('#EmplUserName').css('border', '3px #C33 solid');	
+	$('#tick').hide();
+	$('#cross').fadeIn();
+	}else{
+	$('#EmplUserName').css('border', '1px #CCC solid');
+	$('#cross').hide();
+	$('#tick').fadeIn();
+	     }
+}
+});
+}
 }
 </script>
-*/
 
 
 

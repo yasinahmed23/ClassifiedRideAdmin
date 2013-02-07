@@ -122,7 +122,7 @@
 									<tr>
 										<td>Total from New Reg ( <?php echo $NumRegistrations; ?> ): &nbsp; </td>
 										<td width="90">$<?php
-												echo number_format($RegestrationTotal[total]);
+												echo number_format($RegestrationTotal[total], 2);
 											?></td>
 									</tr>
 									<tr>
@@ -131,7 +131,7 @@
 									<tr>
 										<td>Total from Renewals ( <?php echo $NumRenewals; ?> ): &nbsp; </td>
 										<td width="90">$<?php
-												echo number_format($RenewalTotal[total]);
+												echo number_format($RenewalTotal[total], 2);
 											?></td>
 									</tr>
 									<tr>
@@ -139,7 +139,7 @@
 									</tr>
 									<tr>
 										<td><strong>Total Revenue:&nbsp;</strong>  </td>
-										<td width="90"><strong>$<?php echo number_format($TotalRevenue); ?></strong>
+										<td width="90"><strong>$<?php echo number_format($TotalRevenue, 2); ?></strong>
 										</td>
 									</tr>
 									<tr>
@@ -148,7 +148,7 @@
 									<tr>
 										<td>Total Commission:&nbsp;  </td>
 										<td width="90">$<?php
-												echo number_format($CommTotal[total]);
+												echo number_format($CommTotal[total], 2);
 											?></td>
 									</tr>
 									<tr>
@@ -157,7 +157,7 @@
 									<tr>
 										<td><strong>Net:&nbsp;</strong></td>
 										<td width="90"><strong>$<?php
-												echo number_format($NetProfit);
+												echo number_format($NetProfit, 2);
 											?></strong>	</td>
 									</tr>
 									<tr>

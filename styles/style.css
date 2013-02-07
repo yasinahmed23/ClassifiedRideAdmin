@@ -351,7 +351,7 @@ body {
 }
 
 #DashboardContent {	
-	height: 380px;
+	height: 360px;
 	overflow-y:scroll;
 }
 
@@ -844,6 +844,7 @@ p a:active{
 	cursor:pointer;
 	border-radius: 4px;
 	margin: 3px;
+	border: .5px solid #000000;
 }
 
 .Button:hover

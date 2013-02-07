@@ -1,10 +1,8 @@
 <div id="MyTrans">
 <?php 
-	$user = $_SESSION['user'];
-
 	//Check to see if any transactions exist by employeeID if so, proceed
 	if ( mysql_num_rows( $GetTrans ) == 0 ){
-		echo ""; 
+		echo "<p align='center'><em>Once you start signing dealerships, you can view here</em></p>"; 
 	}
 	else {
 	?>
@@ -49,7 +47,7 @@
 							if (empty($Commission)) {
 				    				echo "";
 							} else {
-				    				echo "$" . $Commission;
+				    				echo "$" . number_format($Commission, 2);
 							}
 
 							?>
@@ -67,7 +65,7 @@
 	<tr>
 		<td>
 		<?php 
-		echo "<p align='center'><font size='-2'>Total from Registration (" . $num_Regs . "):  $" . $RegCommissionTotal['total'] . "<br />Total From Renewals (" . $num_Renewals . "):  $" . $RenewCommissionTotal['total'] . "<br /><strong>TOTAL COMMISSION EARNED FROM MY DEALERSHIPS  : $" . $CommTOTAL . "</strong></font></p>";
+		echo "<p align='center'><font size='-2'>Total from Registration (" . $num_Regs . "):  $" . number_format($RegCommissionTotal['total'], 2) . "<br />Total From Renewals (" . $num_Renewals . "):  $" . number_format($RenewCommissionTotal['total'], 2) . "<br /><strong>TOTAL COMMISSION EARNED FROM MY DEALERSHIPS  : $" . number_format($CommTOTAL, 2) . "</strong></font></p>";
 		?></strong></font></p>
 		</td>
 	</tr>
@@ -78,7 +76,7 @@
 	<?php 
 	//Check to see if rep has hired any employees and if so, check if they have signed any dealerships
 	if ( mysql_num_rows( $GetMyReferrals ) == 0 ){
-		echo ""; 
+		echo "<p align='center'><em>Once you hire someone, you can view them here</em></p>"; 
 	}
 	else {
 	?>
@@ -143,7 +141,7 @@
 								echo "----";
 							}
 							else {
-							echo "<p>$" . $RefCommissionTotal['total'] . " </p>";
+							echo "<p>$" . number_format($RefCommissionTotal['total'], 2) . " </p>";
 							}
 							?>
 						</td>
@@ -159,7 +157,7 @@
 	<tr>
 		<td>
 		<?php
-		echo "<p align='center'><font size='-2'><strong>TOTAL RESIDUALS EARNED FROM BEING A MANAGER: $" . $RefCommTotal['total'] . "</strong></font></p>";
+		echo "<p align='center'><font size='-2'><strong>TOTAL RESIDUALS EARNED FROM BEING A MANAGER: $" . number_format($RefCommTotal['total'], 2) . "</strong></font></p>";
 		?>
 		</td>
 	</tr>
