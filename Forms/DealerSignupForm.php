@@ -789,7 +789,8 @@
 									<tr>
 									     	<td width="155">Account Payable Email:</td>
 										<td width="155">
-											<input name="AccountPayableEmail" type="text" class="textfield" id="AccountPayableEmail" size="30" onKeyUp="verify3.check()" /><input name="AccountPayableEmail2" type="text" class="textfield" id="AccountPayableEmail2" size="30" onKeyUp="verify3.check()" />			<br />
+											<input name="AccountPayableEmail" type="text" class="textfield" id="AccountPayableEmail" size="30" onKeyUp="verify3.check()" /><input name="AccountPayableEmail2" type="text" class="textfield" id="AccountPayableEmail2" size="30" onKeyUp="verify3.check()" /><img id="tick3" src="/images/tick.png" width="16" height="16"/>
+<img id="cross3" src="/images/cross.png" width="16" height="16"/>			<br />
 											<font size="-2"><div id="FormLableLeft">Enter Email Address<strong>*</strong></div><div id="FormLableEmailRight">Re-Enter Email Address<strong>*</strong></div><br /><div id="Payemail_result">&nbsp;</div><font>
 										</td>
 								    	</tr>

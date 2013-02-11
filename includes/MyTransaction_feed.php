@@ -10,7 +10,6 @@
 	<table cellpadding="5" cellspacing="0" border="0" width="530" class="table">
 		<tr valign="top">
 			<td>
-				<div id="MyTransFeed">
 				<table cellpadding="0" cellspacing="0" border="0" align="center" width="440">
 					<tr valign="top">
 						<td width="10" align="right">&nbsp;</td>
@@ -19,6 +18,9 @@
 						<td align="center" width="130"><strong>Type</strong></td>
 						<td align="center" width="100"><strong>Commission</strong></td>
 					</tr>
+				</table>
+				<div id="MyTransFeed">
+				<table cellpadding="0" cellspacing="0" border="0" align="center" width="440">
 					<?php
 					$CountTrans=0;
 					while ($row = mysql_fetch_array($GetTrans)) 
@@ -84,13 +86,15 @@
 	<table border="0" cellspacing="0" cellpadding="5" class="table" width="380" align="right">
 		<tr valign="top">
 			<td>
-				<div id="MyTransFeed">
 				<table border="0" cellpadding="0" cellspacing="0" align="center" width="350">
 					<tr valign="top">
-						<td width="10" align="left">&nbsp;</td>
-						<td align="center"><strong>Name</strong></td>
-						<td align="center"><strong>Total Residuals</strong></td>
+						<td width="20" align="left">&nbsp;</td>
+						<td align="center" width="220"><strong>Name</strong></td>
+						<td align="center" width="110"><strong>Total Residuals</strong></td>
 					</tr>
+				</table>
+				<div id="MyTransFeed">
+				<table border="0" cellpadding="0" cellspacing="0" align="center" width="350">
 					<?php
 					$GetMyReferrals = mysql_query("
 					SELECT *
@@ -109,8 +113,8 @@
 						<td colspan="3" align="center"><hr /></td>
 					</tr>
 					<tr valign="top">
-						<td width="10" align="right"><p><?php echo $CountNumManaged . ")&nbsp;"; ?></p></td>
-						<td>
+						<td width="20" align="right"><p><?php echo $CountNumManaged . ")&nbsp;"; ?></p></td>
+						<td width="220">
 							<?php
 							$GetNumDealers = mysql_query("
 							SELECT RepName
@@ -127,9 +131,9 @@
 
 							$num_HiredByReferral = mysql_num_rows($GetNumHired);
 							?>
-							<p><a href="mailto:<?php echo $NewEmpEmail; ?>"><?php echo $NewEmplName;?></a> <br />(signed <?php echo $num_DealersReferred . " Dealers and hired " . $num_HiredByReferral . " people)";?></p>
+							<p><a href="mailto:<?php echo $NewEmpEmail; ?>"><?php echo $NewEmplName;?></a> <br />(signed <?php echo $num_DealersReferred . " Dealers and hired " . $num_HiredByReferral . " ppl)";?></p>
 						</td>
-						<td align="center">
+						<td align="center" width="110">
 							<?php
 							$GetRefComm = mysql_query("
 							SELECT SUM(ReferralAmount) 

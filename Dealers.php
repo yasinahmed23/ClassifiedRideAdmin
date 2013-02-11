@@ -32,6 +32,9 @@
 
 #tick2{display:none}
 #cross2{display:none}
+
+#tick3{display:none}
+#cross3{display:none}
 </style>
 </head>
 <body>

@@ -41,6 +41,15 @@ $(document).ready(function(){
 
 });
 </script>
+<script type="text/javascript">
+function validateForm()
+{
+	var numdays=document.forms["SortEmployees"]["numdays"].value;
+	if (numdays==null || numdays=="")
+	{alert("You must enter the # of Days that you want to search");
+	return false;}
+}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>ClassifiedRide Database Home</title>
 <link href="/styles/InfiniteScrollStyle.css" rel="stylesheet" type="text/css" />
@@ -63,19 +72,10 @@ $(document).ready(function(){
 	</div>	
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
-		<?php 
-		if (isset($_SESSION[admin])) {
-			echo " 
-		<form id='SortEmployees' name='SortEmployees' method='post' action='EmployeesSorted.php'>
-			<p align='center'><font size='+1'><strong>Total # of Employees : " .  $numEmployees . "</strong>&nbsp;&dash;&nbsp;View Employees Added in the last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
-			</font></p>
+		<form id="SortEmployees" name="SortEmployees" method="post" action="EmployeesSorted.php" onsubmit="return validateForm()">
+			<p align='center'><font size='+1'><strong>Total # of Employees : <?php echo $numEmployees; ?></strong>&nbsp;&dash;&nbsp;View Employees Added in the last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength="3"/> Days. <input name="submit" type="submit" class="Button" id="submit" value="GO" /></font></p>
 		</form>
-		";	
-		}
-		else {
-			echo "<p align='center'><strong>" . $numEmployees . " Employees Found </strong></p>";
-		}
-		?>
+		
 		<table width="770" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>

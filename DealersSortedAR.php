@@ -20,8 +20,6 @@
 	FROM dealers
 	where TimeRegistered between date_sub(now(),INTERVAL '$numdays' DAY) and now()");
 	$num_rows = mysql_num_rows($GetDealers);
-
-	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -57,11 +55,9 @@
 		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
-				<div id="referral">
-					<?php 
+				<?php 
 					include 'includes/DealerFeedSortedAR.php';
-					?>
-				</div>
+				?>
 				</td>
 			</tr>
 		</table>
@@ -74,8 +70,7 @@
 			else {
 				if (isset($_SESSION[ARadmin])) {
 				echo "
-				<table width='300' border='0' cellpadding='0' cellspacing='0' align='ce
-	nter'>
+				<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'>
 					<tr>
 						<td align='center'><form name='SortTrans' method='post' action='#'>
 						<input type='hidden' id='days' name='days' value='$numdays' />

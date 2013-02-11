@@ -27,7 +27,14 @@
     		die('Query Error');
 		}
 
-	header( 'Location: /AccountsReceivable/index.php' ) ;
-	
-	
+	$GetDealerID = mysql_query("
+		SELECT DealerID
+		FROM dealers
+		WHERE DealerName='$DealerName'");
+
+	while ($row = mysql_fetch_array($GetDealerID)) 
+	{
+	$DealerID = $row['DealerID'];
+	}
+	header("location: ViewDealer.php?id=$DealerID");
 ?>

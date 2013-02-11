@@ -1,10 +1,3 @@
-<table width='900' cellpadding='0' cellspacing='0' align='center'>
-				<tr valign='top'>
-					<td align='center'>		
-					<p><strong>Accounts Receivable</strong></p>
-					</td>
-				</tr>
-			</table>
 <table cellpadding="5" cellspacing="0" border="0" align="center" width="900">
 	<tr>
 		<td align="center">&nbsp;</td>		
@@ -17,7 +10,8 @@
 		<td align="center" width="50"><strong>Monthly Bill</td>
 		<td align="center" width="150"><strong>Notes</td>
 	</tr>
-
+</table>
+<div id="referral">
 <?php
 //Get data from database and assign to a variable
 $sql = mysql_query("
@@ -58,12 +52,13 @@ while ($row = mysql_fetch_array($sql)) {
 ?>
 	
 <!--Disply Dealers from database into a table -->
+<table width='900' cellpadding='0' cellspacing='0' align='center'>
 	<tr valign='top'>
 		<td colspan='9' align='center'><hr /></td>
 	</tr>
 	<tr>
 		<td align="center"><?php echo $CountDealers;?></td>		
-		<td align="center"><?php echo $DealerName;?></td>
+		<td align="center"><p><a href="/AccountsReceivable/ViewDealer.php?id=<?php echo $DealerID; ?>"><?php echo $DealerName;?></a></p></td>
 		<td align="center"><?php echo $Contact;?></td>		
 		<td align="center"><?php echo $DealerAddress;?></td>
 		<td align="center"><?php echo $AccountPayableCell;?></td>
@@ -89,4 +84,4 @@ while ($row = mysql_fetch_array($sql)) {
 <?php } 
 ?>
 </table>
-			
+</div>		

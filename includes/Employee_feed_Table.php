@@ -1,4 +1,3 @@
-<ul id="infinite_scroll">
 	<div id="postedEmployees">
 		<table cellpadding="0" cellspacing="0" border="0" width="750" align="center">
 			<tr valign="top">
@@ -6,7 +5,10 @@
 				<td align="center" width="256"><strong>Name</strong></td>
 				<td align="center" width="236"><strong>Location</strong></td>
 				<td align="center" width="236"><strong>Pic</strong></td>
-			</tr>			
+			</tr>	
+		</table>
+		<ul id="infinite_scroll">
+		<table cellpadding="0" cellspacing="0" border="0" width="750" align="center">		
 			<?php 
 			$SQLquery = mysql_query("
 				SELECT *
@@ -69,5 +71,5 @@
 				</script>
 			</div>
 		</table>
+		</ul>
 	</div>
-</ul>

@@ -1,14 +1,16 @@
 <table cellpadding="5" cellspacing="0" border="0" align="center" width="100%">
 	<tr>
-		<td align="center">&nbsp;</td>		
-		<td align="center"><strong>Start Date</strong></td>				
-		<td align="center"><strong>Name</strong></td>	
-		<td align="center"><strong>Location</strong></td>		
-		<td align="center"><strong>Representative</td>
-		<td align="center"><strong>Program</td>
-		<td align="center"><strong>Monthly Payment</td>
+		<td align="center" width="20">&nbsp;</td>		
+		<td align="center" width="80"><strong>Start Date</strong></td>				
+		<td align="center" width="170"><strong>Name</strong></td>	
+		<td align="center" width="150"><strong>Location</strong></td>		
+		<td align="center" width="170"><strong>Representative</td>
+		<td align="center" width="60"><strong>Program</td>
+		<td align="center" width="100"><strong>Monthly Payment</td>
 	</tr>
-
+</table>
+<div id="referral">
+<table cellpadding="5" cellspacing="0" border="0" align="center" width="100%">
 <?php
 //Get data from database and assign to a variable
 $CountDealers=0;
@@ -34,8 +36,8 @@ while ($row = mysql_fetch_array($GetDealerInfo)) {
 		<td colspan='9' align='center'><hr /></td>
 	</tr>
 	<tr>
-		<td align="center"><?php echo $CountDealers;?></td>		
-		<td align="center"><?php 
+		<td align="center" width="20"><?php echo $CountDealers;?></td>		
+		<td align="center" width="80"><?php 
 					if ($StartDate!="") {
 					echo $StartDate;
 					}
@@ -44,10 +46,10 @@ while ($row = mysql_fetch_array($GetDealerInfo)) {
 					}
 				?>
 		</td>
-		<td align="center"><?php echo $DealerName;?></td>		
-		<td align="center"><?php echo $DealerCity . ", " . $DealerState;?></td>
+		<td align="center" width="170"><?php echo $DealerName;?></td>		
+		<td align="center" width="150"><?php echo $DealerCity . ", " . $DealerState;?></td>
 		<!--<td align="center"><?php echo "<p><a href='mailto:$DealerEmail'>" . $DealerContact . "</a></p>";?></td>-->
-		<td align="center" width="70">
+		<td align="center" width="170">
 			<?php 
 				//Get Dealer Rep's Email
 				$GetRepsEmail = mysql_query("
@@ -62,9 +64,10 @@ while ($row = mysql_fetch_array($GetDealerInfo)) {
 				
 			?>
 		</td>
-		<td align="center"><?php echo "$" . $Program;?></td>
-		<td align="center"><?php echo "$" . $MthlyPmt;?></td>
+		<td align="center" width="60"><?php echo "$" . $Program;?></td>
+		<td width="100" align="center"><?php echo "$" . $MthlyPmt;?></td>
 	</tr>
 <?php } 
 ?>
 </table>
+</div>

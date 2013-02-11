@@ -18,12 +18,8 @@ $year = substr($var1, 6, 4);
 $sep = "-";
 $startDate = $year . $sep . $month . $sep . $day;
 ?>
-
-<form action="https://hosted.cert.transactionexpress.com/Transaction/Transaction/Index" method="post" name="z_form">
-	<input type="hidden" name="Gateway_ID" size="20" value ="7777777865"> 
-	<input type="hidden" name="HostedKey" size="20" value = "9cd9aab0-6785-451f-b4a0-9f90436d2c05">
-	<input type="hidden" name="RURL" size="20" value = "http://stephmcglathery.com/dealers/DealerPmt_Process.php?rspCode=(rspCode)&TranNr=(TranNr)&Date=(Date)&amount=(amount)&cardBalance=(cardBalance)&auth=(auth)&AVSRslt=(AVSRslt)&SecRslt=(SecRslt)&PmtType=(PmtType)&ACI=(ACI)&ValCode=(ValCode)&SwchKey=(SwchKey)&STAN=(STAN)&CardType=(CardType)&AddlAmount=(AddlAmount)&AmountType=(AmountType)&ShipToZip=(ShipToZip)&AccountHoldername=(AccountHoldername)&CustomerReferenceID=(CustomerReferenceID)&TaxAmount=(TaxAmount)&TaxIndicator=(TaxIndicator)&AddressLine1=(AddressLine1)&AddressLine2=(AddressLine2)&City=(City)&State=(State)&Zip=(Zip)&SECC=(SECC)& Email=(Email)&Phone=(Phone)">
-	<input type="hidden" name="CURL" size="20" value = "http://stephmcglathery.com/dealers/DealerPmt_Cancel.php">
+<script type="text/javascript">function cs() {document.cookie = "fam=barn"}</script>
+<form action="02txpmid.php" method="post" name="z_form"  onsubmit="cs()">
 	<input type='hidden' name='EmailRequired' id='EmailRequired' value='Y' />
 	<input type="hidden" name="RecurringType" id="RecurringType" value="A" />
 	<input type="hidden" name="AVSRequired" size="20" value = "Y">
@@ -43,7 +39,9 @@ $startDate = $year . $sep . $month . $sep . $day;
 
 	<input type="hidden" name="CustRefID" size="20" value = "PCNoAVS" class="textfield">
 	<input type="hidden" name="PONumber" size="20" value = "123" class="textfield">
-	<input type="hidden" name="Amount" size="5" value = "<?php echo $amount; ?>" class="textfield">
+<table width="300" cellpadding="0" cellspacing="0" border="0" align="center">
+		<tr valign="top">
+			<td width="150">AMOUNT:<input type="text" name="Amount" size="5" value = "" class="textfield">
 	<input type="hidden" name="WalletDescription" size="10" value = "test">
 
 	<!--00 = Daily 10 = Weekly 20 = Bi-Monthly 30 = Every 4 weeks 40 = Every 8 Weeks 51 = Specified Day of the Month 70 = Quarterly 80 = Yearly 90 = Single-->
@@ -81,7 +79,7 @@ $startDate = $year . $sep . $month . $sep . $day;
 		<tr valign="top"><td colspan="2"><font size="-2"><em>For your convenience, your payment method will be saved for automatic payments.  Today's Date will be your due date every month.  <br />You can cancel at any time.</em></font></td></tr>
 		<tr><td>&nbsp;</td></tr>
 		<tr valign="top">
-			<td colspan="2" align="center"><input type="submit" name="Go" value="Get Started" class="Button"></td>
+			<td colspan="2" align="center"><input type="submit" name="Go" value="Make Payment"  style="background-color: #cc0000; font-weight: bold; font-size: 12px; color: white;" /></td>
 		</tr>
 	</table>
 </form>

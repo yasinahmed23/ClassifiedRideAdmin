@@ -101,32 +101,12 @@
 	//Calculate Net 
 	$NetProfit=($TotalRevenue-$CommTotal[total]);
 	
-
-
-		
 	//Count Num of Referrals
 	$CountTotalReferrals = mysql_query("
 	SELECT RefID
 	FROM Referrals");
 	$num_Referrals = mysql_num_rows($CountTotalReferrals);
-
-	//Get Employee List from Referral Tbl so we can count # hired for each one
-	$GetEmployees = mysql_query("
-		SELECT DISTINCT EmployeeName
-		FROM Referrals 
-		ORDER BY EmployeeName ASC");
-
-	//Count the num the current employee has hired
-	$CountHired = mysql_query("
-		SELECT *
-		FROM Referrals
-		WHERE EmployeeName='".$EmployeeName."'");
-
-	$num_Hired = mysql_num_rows($CountHired);
 	
-	
-
-
 	//Get All Transaction Data and Sort by ID Desc
 	$GetTransactions = mysql_query("
 		SELECT *

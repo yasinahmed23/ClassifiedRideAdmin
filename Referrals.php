@@ -7,10 +7,8 @@
 	}
 	
 	//Connect to Database	
-	$user = $_SESSION['user'];
-	$admin = $_SESSION['admin'];
-	
 	require_once 'includes/db_config2.php';
+
 	require_once 'Functions/AdminFunctions.php';	
 ?>
 
@@ -45,11 +43,19 @@
 		}
 		?>
 		
-		<table align="center" cellpadding="10" cellspacing="0" border="0" width="550" class="table">
+		<table align="center" cellpadding="10" cellspacing="0" border="0" width="600" class="table">
 			<tr valign="top">
 				<td>
 					<div id="referral">
-						<?php include 'includes/referralFeed.php';?>
+						<table cellpadding="0" cellspacing="0" border="0" align="center">
+							<tr valign="top">
+								<td>
+								<?php 
+									include 'includes/referralFeed.php';
+								?>
+								</td>
+							</tr>
+						</table>						
 					</div>
 				</td>
 			</tr>	

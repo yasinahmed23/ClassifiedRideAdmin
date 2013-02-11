@@ -67,6 +67,8 @@ There are 4 Main Log-in Systems.
   as well as by Dealer Name)
 - Search Results Page will list more detailed info (Dealer Dash)
 - AR can write and update notes (ex: Main Contact is off on Monday's)
+- AR can cancel services for the dealership and/or override payments
+  and issue refunds
 - AR will set the start date for services (once coordinate the feeds)
 - AR can turn features on and off
 - AR can assist with manual payments (ex: mailed check)
@@ -97,7 +99,8 @@ There are 4 Main Log-in Systems.
 	- Transactions Overview breaks down totals from Registration's
 	  & Renewals as well as total Revenue, Total Commission paid, 
 	  and Net
-- Referrals page summarizes who hired who and what they sold (/Referrals.php)
+- Referrals page summarizes who hired who and how many dealerships they
+  signed as well as how many of those are still active (/Referrals.php)
 - Calculate and Handle Payroll
 
 	*Demo Log in for Admin :
@@ -108,10 +111,10 @@ Technologies Used
 **********************************************************************************
 - LAMP
 - Ajax Log-in Systems
+- Sessions
 - Javascript Form Validation
 - jQuery auto-complete search
 - jQuery infinite scroll 
-- Sessions
 - Password Hashing
 - Error Handling / Error Logging
 - Google Analytics

@@ -314,6 +314,10 @@ function validateDealerForm()
 	if (DataFeedMainEmail==null || DataFeedMainEmail=="")
 	{alert("Please enter the emailfor the Data Feed Provider Main Contact");
 	return false;}
+	
+	if (Rep==null || Rep=="")
+	{alert("Please tell us who your Rep is.");
+	return false;}
 
 	if (UsedCarsInStock==null || UsedCarsInStock=="")
 	{alert("Please enter the used cars in stock that you would be wanting to list");
@@ -383,6 +387,7 @@ if(response == 1){
 	$('#DealerUserName').css('border', '3px #C33 solid');	
 	$('#tick').hide();
 	$('#cross').fadeIn();
+	return false;
 	}else{
 	$('#DealerUserName').css('border', '1px #CCC solid');
 	$('#cross').hide();
@@ -421,6 +426,40 @@ if(response == 1){
 	$('#DealerName').css('border', '1px #CCC solid');
 	$('#cross2').hide();
 	$('#tick2').fadeIn();
+	     }
+}
+});
+}
+}
+</script>
+
+<!-- VALIDATE PayEmail is Unique-->
+<script type='text/javascript'>
+$(document).ready(function(){
+$('#AccountPayableEmail').keyup(AccountPayableEmail_check);
+});
+	
+function AccountPayableEmail_check(){	
+var AccountPayableEmail = $('#AccountPayableEmail').val();
+if(AccountPayableEmail == "" || AccountPayableEmail.length < 3){
+$('#AccountPayableEmail').css('border', '3px #CCC solid');
+$('#tick3').hide();
+}else{
+
+jQuery.ajax({
+   type: "POST",
+   url: "Functions/CheckAccountPayableEmail.php",
+   data: 'AccountPayableEmail='+ AccountPayableEmail,
+   cache: false,
+   success: function(response){
+if(response == 1){
+	$('#AccountPayableEmail').css('border', '3px #C33 solid');	
+	$('#tick3').hide();
+	$('#cross3').fadeIn();
+	}else{
+	$('#AccountPayableEmail').css('border', '1px #CCC solid');
+	$('#cross3').hide();
+	$('#tick3').fadeIn();
 	     }
 }
 });

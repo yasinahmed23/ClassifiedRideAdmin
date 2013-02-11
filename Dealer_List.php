@@ -14,8 +14,17 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script type="text/javascript">
+function validateForm()
+{
+	var numdays=document.forms["SortDealers"]["numdays"].value;
+	if (numdays==null || numdays=="")
+	{alert("You must enter the # of Days that you want to search");
+	return false;}
+}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Dealer Profile | ClassifiedRide</title>
+<title>All Dealers | ClassifiedRide</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
@@ -31,29 +40,19 @@
 </div>
 <div id="container">
 	<div id="main">
-		<?php include 'includes/Employee_main.php'?>
+		<?php include 'includes/main.php'?>
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
-		<?php 
-		if (isset($_SESSION[admin])) {
-			echo " 
-		<form id='SortTrans' name='SortTrans' method='post' action='/DealersSorted.php'>
-			<p align='center'><font size='+1'><strong>Total # of Dealerships : " .  $num_rows . "</strong>&nbsp;&dash;&nbsp;View Dealers added in last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
+		<form id="SortDealers" name="SortDealers" method="post" action="/DealersSorted.php" onsubmit="return validateForm()">
+			<p align="center"><font size="+1"><strong>Total # of Dealerships <?php echo $num_rows; ?></strong>&nbsp;&dash;&nbsp;View Dealers added in last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
 			</font></p>
 		</form>
-		";	 
-		}
-		else {
-			echo "<p align='center'><strong>" . $num_rows . " Dealerships Found </strong></p>";
-		}
-		?>
 		<table width="750" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
-				<div id="referral">
-					<?php include 'includes/Dealer_feed.php'?>
-				</div>
+				<?php include 'includes/Dealer_feed.php'?>
+				
 				</td>
 			</tr>
 		</table>

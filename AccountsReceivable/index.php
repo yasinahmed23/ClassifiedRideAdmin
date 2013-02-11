@@ -75,14 +75,11 @@
 			</form>
 			<table width='900' cellpadding='0' cellspacing='0' align='center' class='table' border='0'>
 				<tr valign='top'>
-					<td>
-					<div id='referral'>";
+					<td>";
 					include '../includes/ARContent.php';
-					echo "</div>
-					</td>
+					echo "</td>
 				</tr>
-			</table>
-		";
+			</table>";
 		}
 		?>
 	</div>

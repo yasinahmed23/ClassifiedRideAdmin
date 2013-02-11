@@ -112,9 +112,9 @@
 								echo "<p><a href='mailto:$EmplEmail'>" . $RepName . "</a></p>";
 								?>
 								</td>
-								<td align="center"><p><?php echo $Program; ?></p></td>
+								<td align="center"><p><?php echo "$" . number_format($Program); ?></p></td>
 								
-								<td align="center"><p><?php echo $MthlyPmt; ?></p></td>
+								<td align="center"><p><?php echo "$" . number_format($MthlyPmt, 2); ?></p></td>
 							</tr>
 						<?php } 
 						?>					

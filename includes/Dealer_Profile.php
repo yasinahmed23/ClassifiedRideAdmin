@@ -21,8 +21,8 @@
 <table width=100% cellpadding="0" cellspacing="0" border="0" align="center">
 	<tr valign="top">
 		<td width="150"><strong>PAYMENT METHOD</td>	
-		<td width="150"><strong>MONTHLY PMT</strong></td>
-		<td width="150"><strong>Last PMT</strong></td>
+		<td width="150"><strong>MONTHLY PAYMENT</strong></td>
+		<td width="150"><strong>Last PAYMENT</strong></td>
 	</tr>
 	<tr valign="top">
 		<td colspan="4"><hr /></td>
@@ -80,10 +80,17 @@ $pic = ($row['pic']);
 <table width=330" cellpadding="0" cellspacing="0" border="0" align="center">
 	<tr valign="top">
 		<td align="center">
-			<p><font size="+1"><strong>
-			Program:  $<?php echo $Program; ?>
+			<p><font size="+1">
+			<strong>Program:  <?php 
+				if ($Program=="399"){
+					echo "$" . $Program . "</strong>"; 
+				}
+				else {
+					echo "$" . $Program . "</strong><br />(Competition Killer Package)"; 
+				}
+			?>
 			<br /><br />
-			My Rep: </strong>
+			<strong>My Rep: </strong>
 			<br />
 			<?php
 				if ($pic == null || $pic == "") {
