@@ -4,6 +4,7 @@
 	
 	//Connect to Database	
 	include 'includes/db_config.php';
+	require_once'Functions/Functions.php';
 	
 	// create variables out of user input
 	$EmplUserName=$_POST['EmplUName']; 
@@ -27,8 +28,22 @@
 	//If only one row was returned...
 	if ($count==1) {
 	
-	//Create session variable from data and redirect page
+	//Create session variable from data
 	$_SESSION['user']=$EmplUserName;	
+
+	//Update Database with User's IP address and timestamp
+	$setIP = mysql_query("
+		UPDATE employees 
+		SET LastLoginLocation='".$ip."'
+		WHERE EmplUserName='".$EmplUserName."'");
+
+	//Update Database with TimeStamp of last login
+	$setLoginTime = mysql_query("
+		UPDATE employees 
+		SET LastLogin='".$date."'
+		WHERE EmplUserName='".$EmplUserName."'");
+
+	//Redirect Page
 	header( 'Location: MyDealerships.php' ) ;
 	}
 	else {

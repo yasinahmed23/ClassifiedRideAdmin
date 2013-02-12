@@ -23,9 +23,12 @@
 		$DealerName = $row['DealerName'];
 		$member = $row['member'];
 		$registered = $row['registered'];
+		$registered = number_format($registered, 2);
 		$EmplReferral = $row['EmplReferral'];
 		$Renewed = $row['Renewed'];
+		$Renewed = number_format($Renewed, 2);
 		$Commission = $row['Commission'];
+		$Commission = number_format($Commission, 2);
 		$ReferralAmount = $row['ReferralAmount'];
 	?>
 	<tr valign='top'>

@@ -8,7 +8,6 @@
 	
 	//Connect to Database	
 	require_once 'includes/db_config2.php';
-
 	require_once 'Functions/AdminFunctions.php';	
 ?>
 
@@ -60,18 +59,17 @@
 				</td>
 			</tr>	
 		</table>
-		<div id="export">
-			<?php if (isset($_SESSION[admin])) {
-			echo "
-			<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'>
-				<tr><td>&nbsp;</td></tr>				
-				<tr>
-					<td align='center'><form action='/ExportCSV_Referrals.php'><input class='Button' type='submit' value='Export All Referral Data to .csv' /></form></td>
-				</tr>
-			</table>";
-			}
+		<div id="export">	
+			<?php
+			if (isset($_SESSION[admin])) {
 			?>
-		</div>	
+			<table width="300" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td><center><form action='/ExportCSV_Referrals.php'><input class='Button' type='submit' value='Export All  <?php echo $num_Referrals; ?> Referrals' /></form></center></td>
+				</tr>
+			</table>
+			<?php } ?>
+		</div>
 	</div>
 </div>
 <?php require_once 'includes/footer.php'; ?>

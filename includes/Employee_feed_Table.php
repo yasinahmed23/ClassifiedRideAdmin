@@ -25,6 +25,7 @@
 				$EmplCity = $data->EmplCity ;
 				$EmplState = $data->EmplState ;
 				$pic = $data->pic ;
+				$location = $EmplCity . ",&nbsp;" . $EmplState;
 				$rowNumber++;
 			?>
 			<!--Disply data from database into a table -->
@@ -37,7 +38,7 @@
 				<tr valign='top'>				
 					<td align='center' width='22'><li>"."$rowNumber </li></td>
 					<td align='center' width='256'><li><p><a href='mailto:$EmplEmail'>" . "$EmplFirstName $EmplLastName</a></p></li></td>
-					<td align='center' width='256'><li>" . "$EmplCity $EmplState </li></td>		
+					<td align='center' width='256'><li>" . "$location </li></td>		
 					<td align='center' width='236'><li>";if ($pic == null || $pic == "") {
 							printf("<img src='/images/No_Image_Available.gif' width='100'>");
 						}

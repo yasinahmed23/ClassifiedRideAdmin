@@ -6,7 +6,7 @@
 		<td align="center" width="150"><strong>Location</strong></td>		
 		<td align="center" width="170"><strong>Representative</td>
 		<td align="center" width="60"><strong>Program</td>
-		<td align="center" width="100"><strong>Monthly Payment</td>
+		<td align="center" width="190"><strong>Monthly Payment</td>
 	</tr>
 </table>
 <div id="referral">
@@ -26,6 +26,7 @@ while ($row = mysql_fetch_array($GetDealerInfo)) {
 	$RepName = $row['RepName'];
 	$Program = $row['Program'];
 	$MthlyPmt = $row['MthlyPmt'];
+	$MthlyPmt = number_format($MthlyPmt, 2);
 	$StartDate = $row['StartDate'];
 	
 	$CountDealers++;
@@ -65,7 +66,7 @@ while ($row = mysql_fetch_array($GetDealerInfo)) {
 			?>
 		</td>
 		<td align="center" width="60"><?php echo "$" . $Program;?></td>
-		<td width="100" align="center"><?php echo "$" . $MthlyPmt;?></td>
+		<td width="190" align="center"><?php echo "$" . $MthlyPmt;?></td>
 	</tr>
 <?php } 
 ?>

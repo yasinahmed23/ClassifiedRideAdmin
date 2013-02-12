@@ -4,6 +4,7 @@
 	
 	//Connect to Database	
 	include 'includes/db_config.php';
+	require_once'Functions/ARFunctions.php';
 	
 	// create variables out of user input
 	$ARusername=$_POST['ARusername']; 
@@ -27,9 +28,22 @@
 	//If only one row was returned...
 	if ($count==1) {
 	
-	//Create session variable from data and redirect page
+	//Create session variable from data 
 	$_SESSION['ARadmin']=$ARusername;
 
+	//Update Database with User's IP address and timestamp
+	$setIP = mysql_query("
+		UPDATE AccountsReceivable
+		SET LastLoginLocation='".$ip."'
+		WHERE ARusername='".$ARusername."'");
+
+	//Update Database with TimeStamp of last login
+	$setLoginTime = mysql_query("
+		UPDATE AccountsReceivable
+		SET LastLogin='".$date."'
+		WHERE ARusername='".$ARusername."'");
+
+	//Redirect Page
 	header( 'Location: AccountsReceivable/index.php' ) ;
 	}
 	else {

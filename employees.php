@@ -91,7 +91,7 @@ function validateForm()
 			?>
 			<table width="300" border="0" cellpadding="0" cellspacing="0" align="center">
 				<tr>
-					<td><center><form action='/ExportCSV_Employees.php'><input class='Button' type='submit' value='Export All  <?php echo $numEmployees; ?> Employees' /></form></center></td>
+					<td><center><form action='/includes/ExportCSV_Employees.php'><input class='Button' type='submit' value='Export All  <?php echo $numEmployees; ?> Employees' /></form></center></td>
 				</tr>
 			</table>
 			<?php } ?>

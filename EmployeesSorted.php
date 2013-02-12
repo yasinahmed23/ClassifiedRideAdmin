@@ -96,7 +96,7 @@ $(document).ready(function(){
 			echo "
 			<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'>
 				<tr>
-					<td align='center'><form name='SortEmployees' method='post' action='/ExportCSV_EmployeesVIEW.php'>
+					<td align='center'><form name='SortEmployees' method='post' action='/includes/ExportCSV_EmployeesVIEW.php'>
 					<input type='hidden' id='days' name='days' value='$numdays' />
 					<input class='Button' type='submit' value='Export View of $num_rows Employees to .csv' /></form></td>
 				</tr>

@@ -89,7 +89,7 @@ $pic = ($row['pic']);
 					echo "$" . $Program . "</strong><br />(Competition Killer Package)"; 
 				}
 			?>
-			<br /><br />
+			<br />
 			<strong>My Rep: </strong>
 			<br />
 			<?php
@@ -106,21 +106,33 @@ $pic = ($row['pic']);
 					printf("<img src='../uploads/$pic' width='100'>");
 					echo "</a>";
 				}				
-				echo "<br />" . $RepName . "<br /><strong>" . $EmplCellPhone . "</strong>"; 			
+				echo "<br /><a href='mailto:" .  
+						$EmplEmail . 
+						"?subject=" . 
+						$DealerName . 
+						"'>" . $RepName . "</a><br /><strong>" . $EmplCellPhone . "</strong>"; 			
 			?>
-			<br />
-			<a href="mailto:<?php echo $EmplEmail; ?>?subject=<?php echo 'Question about ' . $DealerName; ?>"><?php echo $EmplEmail; ?></a></font></p>
 		</td>
 	</tr>
 </table>
 <table width=330" cellpadding="0" cellspacing="0" border="0" align="center">
 	<tr valign="top">
-		<td>
+		<td align="center">
 		<?php
 		if ($MemberStatus="INACTIVE") {
-			echo "<p align='center'><font color='red'><strong>Account Status: INACTIVE.</strong></font><br /><a href='#'>Please Click Here To Make A Payment</a></p>";
+			echo "<p><font size='-2'><font color='red'><strong>Account Status: INACTIVE.&nbsp;&nbsp;</strong></font><a href='#'>Please Click Here To Make A Payment</a></p></font>";
 		}
 
+		//Display Last Login info for user (Time and if from same address)
+		echo"<p align='center'><font size='-2'>(Last Login was at " . $LastLogin;
+		/*if ($ip==$LastLoginLocation) {	
+			echo "&nbsp;(This Computer)";	
+		}
+		else {
+			echo "Not This COmputer";
+		}	
+		*/
+		echo ")</font></p>";
 		?>
 		</td>
 	</tr>

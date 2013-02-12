@@ -48,7 +48,7 @@ function validateForm()
 			<p align="center"><font size="+1"><strong>Total # of Dealerships <?php echo $num_rows; ?></strong>&nbsp;&dash;&nbsp;View Dealers added in last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
 			</font></p>
 		</form>
-		<table width="750" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
+		<table width="850" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
 				<?php include 'includes/Dealer_feed.php'?>
@@ -58,7 +58,7 @@ function validateForm()
 		</table>
 		<div id="export">
 		<?php if (isset($_SESSION[admin])) {
-			echo"<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'><tr><td align='center'><form action='/ExportCSV_Dealers.php'><input class='Button' type='submit' value='Export All $num_rows Dealers to .csv' /></form></td></tr></table>
+			echo"<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'><tr><td align='center'><form action='/includes/ExportCSV_Dealers.php'><input class='Button' type='submit' value='Export All $num_rows Dealers to .csv' /></form></td></tr></table>
 		</div>	";	
 			}
 		?>

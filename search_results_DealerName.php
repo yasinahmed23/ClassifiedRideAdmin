@@ -39,7 +39,7 @@
 
 <div id="container">
 	<div id="main">
-		<?php include 'includes/Employee_main.php'?>
+		<?php include 'includes/main.php'?>
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">

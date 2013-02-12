@@ -1,6 +1,11 @@
 <?php
 	$DealerUser = $_SESSION['DealerUser'];
 
+	date_default_timezone_set('America/Chicago');
+	$date = date('m/d/Y h:i:s a', time());
+
+	$ip=$_SERVER['REMOTE_ADDR'];
+
 	function error_handler($errno, $error, $file, $line, $context) {
 		//Email me if there is an error
 		$to = "ClassifiedRideWebsite@gmail.com";
@@ -37,6 +42,8 @@
 		$RepName = $row['RepName'];
 		$Program = $row['Program'];
 		$MemberStatus = $row['MemberStatus'];
+		$LastLogin = $row['LastLogin'];
+		$LastLoginLocation = $row['LastLoginLocation'];
 	}
 
 	//Get Rep Info for Dealer User 

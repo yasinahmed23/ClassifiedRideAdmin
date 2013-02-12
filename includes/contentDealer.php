@@ -28,12 +28,11 @@ require_once 'Functions/DealerFunctions.php';
 		</tr>
 	</table>
 	<table width="480" cellpadding="5" cellspacing="0" border="0" class="table" align="right">
-	<tr valign="top">	
-		<td align="center">
-			<?php include 'Dealer_Profile.php'; ?>
-		</td>
-	</tr>
-</table>
-
+		<tr valign="top">	
+			<td align="center">
+			<?php include 'Dealer_Profile.php'; 
+			?>
+			</td>
+		</tr>
+	</table>
 </div>
-

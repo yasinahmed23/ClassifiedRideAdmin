@@ -25,7 +25,7 @@
 </div>
 <div id="container">
 	<div id="main">
-		<?php include 'includes/Employee_main.php'?>
+		<?php include 'includes/main.php'?>
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
@@ -80,14 +80,14 @@
 						$TransactionID = $row['TransactionID'];
 						$eID = $row['eID'];
 						$employee = ($row['employee']);
-						$DealerID = $row['DealerID'];
+						$DealerID = $row['DealerID']; 
 						$DealerName = $row['DealerName'];
 						$member = $row['member'];
-						$registered = $row['registered'];
+						$registered = number_format($row['registered'],2);
 						$EmplReferral = $row['EmplReferral'];
-						$Renewed = $row['Renewed'];
-						$Commission = $row['Commission'];
-						$ReferralAmount = $row['ReferralAmount'];
+						$Renewed = number_format($row['Renewed'], 2);
+						$Commission = number_format($row['Commission'], 2);
+						$ReferralAmount = number_format($row['ReferralAmount'], 2);
 						?>
 
 						<!--Disply data from database into a table -->

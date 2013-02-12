@@ -2,6 +2,11 @@
 	$user = $_SESSION['user'];
 	$admin = $_SESSION['admin'];
 
+	date_default_timezone_set('America/Chicago');
+	$date = date('m/d/Y h:i:s a', time());
+
+	$ip=$_SERVER['REMOTE_ADDR'];
+
 	function error_handler($errno, $error, $file, $line, $context) {
 		//Email me if there is an error
 		$to = "ClassifiedRideWebsite@gmail.com";

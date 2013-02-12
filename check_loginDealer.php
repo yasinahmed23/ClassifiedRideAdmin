@@ -4,6 +4,7 @@
 	
 	//Connect to Database	
 	include 'includes/db_config.php';
+	require_once'Functions/Functions.php';
 	
 	// create variables out of user input
 	$DealerUserName=$_POST['DealerUName']; 
@@ -27,8 +28,23 @@
 	//If only one row was returned...
 	if ($count==1) {
 	
-	//Create session variable from data and redirect page
-	$_SESSION['DealerUser']=$DealerUserName;	
+	//Create session variable from data 
+	$_SESSION['DealerUser']=$DealerUserName;
+
+	//Update Database with User's IP address and timestamp
+	$ip=$_SERVER['REMOTE_ADDR'];
+	$setIP = mysql_query("
+		UPDATE dealers 
+		SET LastLoginLocation='".$ip."'
+		WHERE DealerUserName='".$DealerUserName."'");
+
+	//Update Database with TimeStamp of last login
+	$setLoginTime = mysql_query("
+		UPDATE dealers
+		SET LastLogin='".$date."'
+		WHERE DealerUserName='".$DealerUserName."'");
+
+	//Redirect Page	
 	header( 'Location: Dealers.php' ) ;
 	}
 	else {

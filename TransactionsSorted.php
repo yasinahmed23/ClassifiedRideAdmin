@@ -47,9 +47,7 @@
 		if (isset($_SESSION[admin])) {
 			echo " 
 			<p align='center'><font size='+1'><strong>You are viewing the transactions from the past  " . $numdays . " Days</strong>
-			</font></p>
-		
-		";	
+			</font></p>";	
 		}
 		?>
 		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
@@ -57,8 +55,13 @@
 				<td>
 				<div id="referral">
 					<?php 
-					include 'includes/transactionFeedSorted.php';
-					?>
+					if ($num_rows!=0) {
+						include 'includes/transactionFeedSorted.php';
+					}
+					else {
+						echo "<p align='center'>No employees were added from the past  " . $numdays . " days</p>";	
+					}
+				?>
 				</div>
 				</td>
 			</tr>

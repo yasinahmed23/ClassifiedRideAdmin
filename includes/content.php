@@ -17,7 +17,10 @@ if(!($ConfidentialityAgreement == NULL)&& !($IndependentContractorAgreement == N
 ?>
 <div id="DownloadFiles">
 	<p><font size="+1"><strong>MY PROFILE: </strong></font></p>	
-	<?php include 'profile.php';?>	
+	<?php 
+		include 'profile.php';
+	?>	
+	
 </div>
 
 	

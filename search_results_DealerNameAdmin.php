@@ -33,7 +33,7 @@
 
 <div id="container">
 	<div id="main">
-		<?php include 'includes/Employee_main.php'?>
+		<?php include 'includes/main.php'?>
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
@@ -109,7 +109,7 @@
 								if (empty($registered)) {
 					    				echo "----";
 								} else {
-					    				echo "$" . $registered;
+					    				echo "$" . number_format($registered, 2);
 								}
 
 								?></p></td>		
@@ -118,7 +118,7 @@
 							if (empty($Renewed)) {
 				    				echo "----";
 							} else {
-				    				echo "$" . $Renewed;
+				    				echo "$" . number_format($Renewed, 2);
 							}
 
 							?></p></td>
@@ -140,7 +140,7 @@
 								if (empty($Commission)) {
 					    				echo "";
 								} else {
-					    				echo "$" . $Commission;
+					    				echo "$" . number_format($Commission, 2);
 								}
 								?>
 								</p>
@@ -168,7 +168,7 @@
 							if (empty($ReferralAmount)) {
 				    				echo "----" ;
 							} else {
-								echo "<p>$" . $ReferralAmount . "</p>";
+								echo "<p>$" . number_format($ReferralAmount, 2) . "</p>";
 							}
 							?>
 						</td>

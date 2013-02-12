@@ -1,4 +1,7 @@
-CLASSIFIED RIDE ADMIN WEBSITE - - Created By Stephanie McGlathery
+   THis application is still in process, but it will give you a starting place and an idea of what it is supposed to do in the end.  Feel free to log in in the different modules and look around.  :)
+
+
+CLASSIFIED RIDE ADMIN SITE - - Created By Stephanie McGlathery
 
 (https://github.com/stephmcglathery/ClassifiedRideAdmin.git)
 (stephmcglathery.com => once completed this will move to ClassifiedRide.com/admin)
@@ -20,6 +23,7 @@ There are 4 Main Log-in Systems.
   (profile), reset password, etc
 - If not logged in you will see register and login form
 - If logged in, you will see your profile page
+- For Security, on profile page it will show time, ip address, & City of last login
 - Once they make a sale (Sign a Dealership) that Dealer
   will appear in their list.  
 - They will have basic cust info available 
@@ -48,6 +52,7 @@ There are 4 Main Log-in Systems.
   also make changes to their profile)
 - If not logged in you will see register and login form
 - If logged in, you will see your dashboard and profile
+- For Security, on profile page it will show time, ip address, & City of last login
 - The Dealer Dashboard shows which features are turned on and which 
   are turned off.  If a feature is turned on, it will show you the
   results (What we are actually doing for you so you can track)
@@ -121,3 +126,4 @@ Technologies Used
 - Cron database backup
 - Integrated Gateway for Merchant Services (Still in process) to accept monthly payments 
   from Dealerships
+- Geo IP
