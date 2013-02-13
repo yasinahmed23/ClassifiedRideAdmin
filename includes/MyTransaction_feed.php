@@ -2,7 +2,7 @@
 <?php 
 	//Check to see if any transactions exist by employeeID if so, proceed
 	if ( mysql_num_rows( $GetTrans ) == 0 ){
-		echo "<p align='center'><em>Once you start signing dealerships, you can view here</em></p>"; 
+		echo "<p align='center'><em>Once you start signing dealerships, you can view them here</em></p>"; 
 	}
 	else {
 	?>

@@ -8,6 +8,7 @@
 	
 	//Connect to Database	
 	require_once '../includes/db_config.php';
+	require_once '../Functions/ARFunctions.php';
 
 	$user = $_SESSION['user'];
 	$admin = $_SESSION['admin'];
@@ -17,49 +18,10 @@
 	$DealerName=$_POST['DealerName'] ;
 
 	if ($Cabidrequest=="Turn On") {
-	$UpdateCabid=mysql_query("
-		UPDATE dealers 
-		SET CaBID='CaBIDON	'
-		WHERE DealerName='$DealerName'");
-
-	$GetPmt=mysql_query("
-		SELECT MthlyPmt 
-		FROM  dealers
-		WHERE DealerName='$DealerName'");
-	
-		while ($row = mysql_fetch_array($GetPmt)) {
-			$MthlyPmt = $row['MthlyPmt'];
-		}
-	
-		$MthlyPmt=$MthlyPmt+399;
-
-		$UpdatePmt=mysql_query("
-			UPDATE dealers 
-			SET MthlyPmt=$MthlyPmt
-			WHERE DealerName='$DealerName'");
+		TurnCabidOn();
 	}
 	else if ($Cabidrequest=="Turn Off") {
-		$UpdateCabid=mysql_query("
-			UPDATE dealers 
-			SET CaBID='CaBIDDeclined'	
-			WHERE DealerName='$DealerName'");
-
-		$GetPmt=mysql_query("
-			SELECT MthlyPmt 
-			FROM  dealers
-			WHERE DealerName='$DealerName'");
-	
-		while ($row = mysql_fetch_array($GetPmt)) {
-			$MthlyPmt = $row['MthlyPmt'];
-		}
-	
-		//UPDATE MONTHLY PAYMENT
-		$MthlyPmt=$MthlyPmt-399;
-
-		$UpdatePmt=mysql_query("
-			UPDATE dealers 
-			SET MthlyPmt=$MthlyPmt
-			WHERE DealerName='$DealerName'");
+		TurnCabidOff();
 	}	
 	$GetDealerID = mysql_query("
 	SELECT DealerID

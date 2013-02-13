@@ -161,7 +161,7 @@
 							if ($CaBID=="" ||$CaBID=="CaBIDDeclined") {
 								echo "Off";
 							}
-							else if ($CaBID=="CaBIDON") {
+							else {
 							echo "On";
 							}
 							?>

@@ -1,10 +1,10 @@
 <?php
 	//Enable Session Variables	
 	session_start();
-	$user = $_SESSION['user'];
 
 	//Connect to Database	
-	require_once 'includes/db_config2.php';
+	require_once '../includes/db_config2.php';
+	require_once '../Functions/Functions.php';
 
 
 	//Get Employee ID from Username
@@ -26,7 +26,7 @@
 	// 1) force the type to be CSV
 	header("Content-type: application/csv");
 	// 2) force the link to send something for download
-	header("Content-Disposition: attachment; filename=Referrals.csv");
+	header("Content-Disposition: attachment; filename=AllReferrals.csv");
 	// 3) attempt to prevent caching
 	header("Pragma: no-cache");
 	header("Expires: 0"); 

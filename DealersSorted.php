@@ -56,10 +56,9 @@
 			</font></p>";	
 		?>
 		
-		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
+		<table width="850" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
-				<div id="referral">
 					<?php 
 					if ($num_rows!=0) {
 						include 'includes/DealerFeedSorted.php';
@@ -68,7 +67,6 @@
 						echo "<p align='center'>No employees were added from the past  " . $numdays . " days</p>";	
 					}
 				?>
-				</div>
 				</td>
 			</tr>
 		</table>

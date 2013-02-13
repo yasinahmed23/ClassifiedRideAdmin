@@ -36,9 +36,9 @@
 		SET Cancelled='$date'
 		WHERE DealerName='$DealerName'");
 
-	//Turn All Features Of
+	//Turn off Cabid
 
-
+	
 
 
 		

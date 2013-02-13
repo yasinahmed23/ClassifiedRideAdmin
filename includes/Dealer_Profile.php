@@ -122,17 +122,7 @@ $pic = ($row['pic']);
 		if ($MemberStatus="INACTIVE") {
 			echo "<p><font size='-2'><font color='red'><strong>Account Status: INACTIVE.&nbsp;&nbsp;</strong></font><a href='#'>Please Click Here To Make A Payment</a></p></font>";
 		}
-
-		//Display Last Login info for user (Time and if from same address)
-		echo"<p align='center'><font size='-2'>(Last Login was at " . $LastLogin;
-		/*if ($ip==$LastLoginLocation) {	
-			echo "&nbsp;(This Computer)";	
-		}
-		else {
-			echo "Not This COmputer";
-		}	
-		*/
-		echo ")</font></p>";
+		echo "</font></p>";
 		?>
 		</td>
 	</tr>

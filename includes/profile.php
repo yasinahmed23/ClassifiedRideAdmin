@@ -23,13 +23,12 @@
 			
 		echo "<br /><br />";
 		echo "<strong>Address:&nbsp;</strong>" . $row ['EmplStreet1'] . " " . $row ['EmplStreet2'] . "<br />" . $row ['EmplCity'] . ", " . $row ['EmplState'] . " " . $row ['EmplZip'] . "<br /><br />" . "<strong>Phone:&nbsp;</strong>" .  $row ['EmplCellPhone1'] . "-" . $row ['EmplCellPhone2'] . "-" . $row ['EmplCellPhone3'];
-		echo "<br /><br /><br />";
-						
+		echo "<br /><br /><br />";			
 	} 
 		
 
-		echo "<font size='-2'><em>Last Login:  " . $date;
-		//echo "<br />IP Address:  " . $ip . "</em></font>";
+		/*echo "<font size='-2'><em>Last Login:  " . $date;
+		echo "<br />IP Address:  " . $ip . "</em></font>";*/
 ?>
 
 <!--<form action="/edit_profile.php"><input class="textfield, nav, fsSubmitButton" type="submit" value="Edit Profile"  /></form>-->
