@@ -2,34 +2,18 @@
 	
 	//Enable Session Variables	
 	session_start();
-	
-	if (!isset($_SESSION[ARadmin])) {
-	header("location: ../login_error_AR.php");
-	}
-		
+
 	//Connect to Database	
-	require_once '../includes/db_config2.php';
-
-	$GetDealers = mysql_query("
-	SELECT DealerID, Program
-	FROM dealers");
-	$num_rows = mysql_num_rows($GetDealers);
-
-	//Count Monthly Revenue from Dealer Registrations
-	$CountDealers = mysql_query(" 
-		SELECT SUM(Program) 
-		AS total FROM dealers ");
-	$DealerTotal = mysql_fetch_assoc($CountDealers);
-
-	include '../Functions/Functions.php';
+	require_once '../includes/db_config.php';
+	require_once '../Functions/ARFunctions.php';
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCtype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<SCRIPT TYPE="text/javascript" SRC="../js/verifynotify.js"></SCRIPT>
-<SCRIPT TYPE="text/javascript" SRC="../js/jquery-1.8.2.js"></SCRIPT>
+<script type="text/javascript" src="../js/verifynotify.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.2.js"></script>
 <script src="../autocomplete/searchFullName.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
 <title>ClassifiedRide Database AR</title>
 <link href="../styles/style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -61,7 +45,7 @@
 								?>
 								</td>
 							</tr>
-						</table>
+			#		</table>
 					</td>
 				</tr>
 			</table>			
@@ -70,7 +54,7 @@
 		else {
 		echo "
 			<form id='SortTrans' name='SortTrans' method='post' action='/DealersSortedAR.php'>
-				<p align='center'><font size='+1'><strong>Total # of Dealerships : " .  $num_rows . "</strong>&nbsp;&dash;&nbsp;View Dealers added in last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
+				<p align='center'><font size='+1'><strong>Total # of Dealerships : " .  $numDealers . "</strong>&nbsp;&dash;&nbsp;View Dealers added in last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
 				</font></p>
 			</form>
 			<table width='900' cellpadding='0' cellspacing='0' align='center' class='table' border='0'>

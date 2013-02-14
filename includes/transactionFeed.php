@@ -1,18 +1,4 @@
 <table cellpadding="0" cellspacing="0" border="0" width="900" align="center" >
-	<tr>
-		<td align="center" width="100"><strong>Date/Time</strong></td>		
-		<td align="center" width="75"><strong>Trans ID</strong></td>				
-		<td align="center" width="120"><strong>Dealership</td>
-		<td align="center" width="75"><strong>Registered</td>
-		<td align="center" width="75"><strong>Renewed</td>
-		<td align="center" width="150"><strong>Employee</strong></td>
-		<td align="center" width="75"><strong>Commission</td>
-		<td align="center" width="150"><strong>Manager</td>
-		<td align="center" width="75"><strong>Referral</td>
-	</tr>
-</table>
-<div id="referral">
-<table cellpadding="0" cellspacing="0" border="0" width="900" align="center" >
 	<?php
 	while ($row = mysql_fetch_array($GetTransactions)) {
 		$TransactionDate = $row['TransactionDate'];
@@ -118,4 +104,3 @@
 	<?php } 
 	?>
 </table>
-</div>

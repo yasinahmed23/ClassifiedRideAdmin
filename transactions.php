@@ -57,9 +57,24 @@ function validateForm()
 		<table width="925" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
+					<table cellpadding="0" cellspacing="0" border="0" width="900" align="center" >
+						<tr>
+							<td align="center" width="100"><strong>Date/Time</strong></td>		
+							<td align="center" width="75"><strong>Trans ID</strong></td>				
+							<td align="center" width="120"><strong>Dealership</td>
+							<td align="center" width="75"><strong>Registered</td>
+							<td align="center" width="75"><strong>Renewed</td>
+							<td align="center" width="150"><strong>Employee</strong></td>
+							<td align="center" width="75"><strong>Commission</td>
+							<td align="center" width="150"><strong>Manager</td>
+							<td align="center" width="75"><strong>Referral</td>
+						</tr>
+					</table>
+					<div id="referral">
 					<?php 
 						include 'includes/transactionFeed.php';
 					?>
+					</div>
 				</td>
 			</tr>
 		</table>

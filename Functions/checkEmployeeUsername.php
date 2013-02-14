@@ -1,5 +1,5 @@
 <?php
-include("../dbConnector.php");
+include("../Functions/dbConnector.php");
 $connector = new DbConnector();
 
 $EmplUserName = trim(strtolower($_POST['EmplUserName']));

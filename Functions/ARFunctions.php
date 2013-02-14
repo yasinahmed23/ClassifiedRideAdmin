@@ -1,6 +1,4 @@
 <?php
-	require_once '../includes/db_config2.php';
-	
 	$user = $_SESSION['user'];
 	$admin = $_SESSION['admin'];
 	$ARadmin = $_SESSION['ARadmin'];
@@ -22,14 +20,21 @@
 		return true;
 	} 
 
-	//Get data from database and assign to a variable
+	//Get All Dealer info for employee view
+	$GetAllDealerInfo = mysql_query("
+		SELECT *
+		FROM dealers ");
+
+	$numDealers = mysql_num_rows($GetAllDealerInfo);
+
+	//Get Dealer by Name
 	$DealerName= $_POST['search_string'];
 
 	$GetDealerInfo = mysql_query("
 		SELECT *
 		FROM dealers
-		WHERE DealerName='".$DealerName."'");
-
+		WHERE DealerName='".$DealerName."'");			
+		
 		while ($row = mysql_fetch_array($GetDealerInfo)) 
 			{
 				$DealerID = $row['DealerID'];
@@ -64,55 +69,238 @@
 				}
 				$AccountPayableCell= $AccountPayableCell1 . "-" . $AccountPayableCell2 . "-" .  $AccountPayableCell3;
 				$Contact=$AccountPayFirstName . " " . $AccountPayLastName;
-			}
+}
 
-//TURN CABID OFF
-function TurnCabidOn() {
-		$UpdateCabid=mysql_query("
-		UPDATE dealers 
-		SET CaBID='CaBIDON	'
-		WHERE DealerName='$DealerName'");
-
-	$GetPmt=mysql_query("
-		SELECT MthlyPmt 
-		FROM  dealers
-		WHERE DealerName='$DealerName'");
+//Turn Directory ON
+function Directory($connector) {
+	$connector = new DbConnector();
+	$DealerName=$_POST['DealerName'] ;
+	$SetOn = "UPDATE dealers SET directory='directoryON' WHERE DealerName='$DealerName'";
 	
-		while ($row = mysql_fetch_array($GetPmt)) {
-			$MthlyPmt = $row['MthlyPmt'];
-		}
-	
-		$MthlyPmt=$MthlyPmt+399;
+	$result = $connector->query($SetOn);
 
-		$UpdatePmt=mysql_query("
-			UPDATE dealers 
-			SET MthlyPmt=$MthlyPmt
-			WHERE DealerName='$DealerName'");
+	$GetPmt = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";
+	
+	$Pmt = $connector->query($GetPmt);
+
+	while ($row = mysql_fetch_array($Pmt)) {
+  		$MthlyPmt = $row[0];
 	}
-
-function TurnCabidOff() {
-		$DealerName = "My Dealership";
-		
-		$UpdateCabid=mysql_query("
-			UPDATE dealers 
-			SET CaBID='CaBIDDeclined'	
-			WHERE DealerName='$DealerName'");
-
-		$GetPmt=mysql_query("
-			SELECT MthlyPmt 
-			FROM  dealers
-			WHERE DealerName='$DealerName'");
 	
-		while ($row = mysql_fetch_array($GetPmt)) {
-			$MthlyPmt = $row['MthlyPmt'];
-		}
-	
-		//UPDATE MONTHLY PAYMENT
-		$MthlyPmt=$MthlyPmt-399;
+	$MthlyPmt=$MthlyPmt+99;
 
-		$UpdatePmt=mysql_query("
-			UPDATE dealers 
-			SET MthlyPmt=$MthlyPmt
-			WHERE DealerName='$DealerName'");
+	$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+	
+	$SetPmt = $connector->query($UpdatePmt);
+}
+
+//Turn Directory OFF
+function DirectoryOFF($connector) {
+	$connector = new DbConnector();
+	$DealerName=$_POST['DealerName'] ;
+	$SetDeclined = "UPDATE dealers SET directory='DirectoryDeclined' WHERE DealerName='$DealerName'";
+	
+	$result = $connector->query($SetDeclined);
+
+	$GetPmt = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";
+	
+	$Pmt = $connector->query($GetPmt);
+
+	while ($row = mysql_fetch_array($Pmt)) {
+  		$MthlyPmt = $row[0];
 	}
+	
+	$MthlyPmt=$MthlyPmt-99;
+
+	$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+	
+	$SetPmt = $connector->query($UpdatePmt);
+}
+
+//Turn Facebook OFF
+function FaceBookOFF($connector) {
+	$connector = new DbConnector();
+	$DealerName=$_POST['DealerName'] ;
+	$SetDeclined = "UPDATE dealers SET facebook='FacebookDeclined' WHERE DealerName='$DealerName'";
+	
+	$result = $connector->query($SetDeclined);
+
+	$GetPmt = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";
+	
+	$Pmt = $connector->query($GetPmt);
+
+	while ($row = mysql_fetch_array($Pmt)) {
+  		$MthlyPmt = $row[0];
+	}
+	
+	$MthlyPmt=$MthlyPmt-1490;
+
+	$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+	
+	$SetPmt = $connector->query($UpdatePmt);
+}
+
+//Turn Facebook ON
+function FaceBook($connector) {
+	$connector = new DbConnector();
+	$DealerName=$_POST['DealerName'] ;
+	$SetOn = "UPDATE dealers SET facebook='facebookON' WHERE DealerName='$DealerName'";
+	
+	$result = $connector->query($SetOn);
+
+	$GetPmt = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";
+	
+	$Pmt = $connector->query($GetPmt);
+
+	while ($row = mysql_fetch_array($Pmt)) {
+  		$MthlyPmt = $row[0];
+	}
+	
+	$MthlyPmt=$MthlyPmt+1490;
+
+	$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+	
+	$SetPmt = $connector->query($UpdatePmt);
+}
+
+
+//Turn YouTube OFF
+function YouTubeOFF($connector) {
+	$connector = new DbConnector();
+	$DealerName=$_POST['DealerName'] ;
+	$SetDeclined = "UPDATE dealers SET YouTube='YouTubeDeclined' WHERE DealerName='$DealerName'";
+	
+	$result = $connector->query($SetDeclined);
+
+	$GetPmt = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";
+	
+	$Pmt = $connector->query($GetPmt);
+
+	while ($row = mysql_fetch_array($Pmt)) {
+  		$MthlyPmt = $row[0];
+	}
+	
+	$MthlyPmt=$MthlyPmt-199;
+
+	$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+	
+	$SetPmt = $connector->query($UpdatePmt);
+}
+
+//Turn YouTube ON
+function YouTubeOn($connector) {
+	$connector = new DbConnector();
+	$DealerName=$_POST['DealerName'] ;
+	$SetOn = "UPDATE dealers SET YouTube='YouTubeON' WHERE DealerName='$DealerName'";
+	
+	$result = $connector->query($SetOn);
+
+	$GetPmt = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";
+	
+	$Pmt = $connector->query($GetPmt);
+
+	while ($row = mysql_fetch_array($Pmt)) {
+  		$MthlyPmt = $row[0];
+	}
+	
+	$MthlyPmt=$MthlyPmt+199;
+
+	$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+	
+	$SetPmt = $connector->query($UpdatePmt);
+}
+			
+//Turn SMS ON
+function SMSOn($connector) {
+	$connector = new DbConnector();
+	$DealerName=$_POST['DealerName'] ;
+	$SetOn = "UPDATE dealers SET SMS='SMSON' WHERE DealerName='$DealerName'";
+	
+	$result = $connector->query($SetOn);
+
+	$GetPmt = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";
+	
+	$Pmt = $connector->query($GetPmt);
+
+	while ($row = mysql_fetch_array($Pmt)) {
+  		$MthlyPmt = $row[0];
+	}
+	
+	$MthlyPmt=$MthlyPmt+990;
+
+	$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+	
+	$SetPmt = $connector->query($UpdatePmt);
+}
+
+
+//Turn SMS OFF
+function SMSOff($connector) {
+	$connector = new DbConnector();
+	$DealerName=$_POST['DealerName'] ;
+	$SetDeclined = "UPDATE dealers SET SMS='SMSDeclined' WHERE DealerName='$DealerName'";
+	
+	$result = $connector->query($SetDeclined);
+
+	$GetPmt = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";
+	
+	$Pmt = $connector->query($GetPmt);
+
+	while ($row = mysql_fetch_array($Pmt)) {
+  		$MthlyPmt = $row[0];
+	}
+	
+	$MthlyPmt=$MthlyPmt-990;
+
+	$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+	
+	$SetPmt = $connector->query($UpdatePmt);
+}
+
+
+//Turn Cabid OFF
+function CabidOff($connector) {
+	$connector = new DbConnector();
+	$DealerName=$_POST['DealerName'] ;
+	$SetDeclined = "UPDATE dealers SET CaBID='CaBIDDeclined'WHERE DealerName='$DealerName'";
+	
+	$result = $connector->query($SetDeclined);
+
+	$GetPmt = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";
+	
+	$Pmt = $connector->query($GetPmt);
+
+	while ($row = mysql_fetch_array($Pmt)) {
+  		$MthlyPmt = $row[0];
+	}
+	
+	$MthlyPmt=$MthlyPmt-399;
+
+	$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+	
+	$SetPmt = $connector->query($UpdatePmt);
+}
+
+//Turn Cabid ON
+function CabidOn($connector) {
+	$connector = new DbConnector();
+	$DealerName=$_POST['DealerName'] ;
+	$SetOn = "UPDATE dealers SET CaBID='CaBIDON' WHERE DealerName='$DealerName'";
+	
+	$result = $connector->query($SetOn);
+
+	$GetPmt = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";	
+	
+	$Pmt = $connector->query($GetPmt);
+
+	while ($row = mysql_fetch_array($Pmt)) {
+  		$MthlyPmt = $row[0];
+	}
+	
+	$MthlyPmt=$MthlyPmt+399;
+
+	$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+	
+	$SetPmt = $connector->query($UpdatePmt);
+}
 ?>

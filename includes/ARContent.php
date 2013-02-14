@@ -16,12 +16,8 @@
 <table cellpadding="5" cellspacing="0" border="0" align="center" width="950">
 <?php
 //Get data from database and assign to a variable
-$sql = mysql_query("
-	SELECT *
-	FROM dealers
-	ORDER BY DealerName");
 $CountDealers=0;
-while ($row = mysql_fetch_array($sql)) {
+while ($row = mysql_fetch_array($GetAllDealerInfo)) {
 	$DealerID = $row['DealerID'];
 	$AccountPayFirstName = $row['AccountPayFirstName'];
 	$AccountPayLastName = $row['AccountPayLastName'];
@@ -36,7 +32,7 @@ while ($row = mysql_fetch_array($sql)) {
 	$AccountPayableCell3 = $row['AccountPayableCell3'];
 	$AccountPayableEmail = $row['AccountPayableEmail'];
 	$RepName = $row['RepName'];
-	$MthlyPmt = $row['MthlyPmt'];
+	$MthlyPmt = number_format($row['MthlyPmt'], 2);
 	$Notes = $row['Notes'];
 	$MemberStatus = $row['MemberStatus'];
 

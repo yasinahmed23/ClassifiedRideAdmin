@@ -5,7 +5,7 @@
 	//Connect to Database	
 	include 'includes/db_config.php';
 	require_once'Functions/Functions.php';
-	
+
 	// create variables out of user input
 	$EmplUserName=$_POST['EmplUName']; 
 	$EmplPassword=$_POST['EmplPassword'];
@@ -49,5 +49,4 @@
 	else {
 		header( 'Location: login_error.php' ) ;
 	}
-
 ?>

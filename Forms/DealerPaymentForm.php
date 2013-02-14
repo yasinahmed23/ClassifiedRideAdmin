@@ -1,23 +1,3 @@
-
-<?php
-$name = $AccountPayFirstName . " " . $AccountPayLastName;
-$address1 = $DealerStreet1;
-$address2 = $DealerStreet2;
-$city = $DealerCity;
-$state = $DealerState;
-$zip = $DealerZip;
-$phoneNumber = $AccountPayableCell1 . $AccountPayableCell2 . $AccountPayableCell3;
-$email = $AccountPayableEmail;
-
-$amount = $MthlyPmt . ".00";
-
-$var1 = $DateSigned;
-$month = substr($var1, 0, 2);
-$day = substr($var1, 3, 2);
-$year = substr($var1, 6, 4);
-$sep = "-";
-$startDate = $year . $sep . $month . $sep . $day;
-?>
 <script type="text/javascript">function cs() {document.cookie = "fam=barn"}</script>
 <form action="02txpmid.php" method="post" name="z_form"  onsubmit="cs()">
 	<input type='hidden' name='EmailRequired' id='EmailRequired' value='Y' />

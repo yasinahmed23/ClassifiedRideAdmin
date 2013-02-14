@@ -1,7 +1,7 @@
 <center><font size="+2"><strong><?php echo "Dealer Search Results"?></strong></font></center>
 			<?php 
-			$count=mysql_num_rows($GetDealerInfo);
-			if ($count==1) {
+			$numDealers=mysql_num_rows($GetDealerInfo);
+			if ($numDealers==1) {
 			?>
 			<table cellpadding="2" cellspacing="0" border="0" align="center" class="table" width="100%">
 				<tr valign="top">
@@ -27,7 +27,7 @@
 								<td colspan='12' align='center'><hr /></td>
 							</tr>
 							<tr>
-								<td align="center"><?php echo $CountDealers;?></td>		
+								<td align="center"><?php echo $numDealersDealers;?></td>		
 								<td align="center"><?php echo $DealerName;?></td>
 								<td align="center"><?php echo $Contact;?></td>		
 								<td align="center"><?php echo $DealerAddress;?></td>
@@ -366,7 +366,7 @@
 		<table align="center">
 			<tr>
 				<td align="center">
-				<form action="#" onSubmit="if(!confirm('Are you sure that you want to terminate ALL services for this Dealer?')){return false;}">
+				<form action="CancelServices.php" onSubmit="if(!confirm('Are you sure that you want to terminate ALL services for this Dealer?')){return false;}">
 					<input type="hidden" name="DealerName" id="DealerName" value="<?php echo $DealerName; ?>" />
 					<input name="cancel" class="fsSubmitButton" type="submit" value="Cancel All Services"/>
 				</form>

@@ -9,19 +9,16 @@
 	//Connect to Database	
 	require_once '../includes/db_config.php';
 	require_once '../Functions/ARFunctions.php';
-
-	$user = $_SESSION['user'];
-	$admin = $_SESSION['admin'];
-	$ARadmin = $_SESSION['ARadmin'];
-
+	require_once '../Functions/dbConnector.php';
+	
 	$Cabidrequest=$_POST['CaBID'];
 	$DealerName=$_POST['DealerName'] ;
 
 	if ($Cabidrequest=="Turn On") {
-		TurnCabidOn();
+		CabidOn($connector);
 	}
 	else if ($Cabidrequest=="Turn Off") {
-		TurnCabidOff();
+		CabidOff($connector);								
 	}	
 	$GetDealerID = mysql_query("
 	SELECT DealerID
@@ -30,7 +27,7 @@
 
 	while ($row = mysql_fetch_array($GetDealerID)) 
 	{
-	$DealerID = $row['DealerID'];
+		$DealerID = $row['DealerID'];
 	}
 	header("location: ViewDealer.php?id=$DealerID");
 ?>

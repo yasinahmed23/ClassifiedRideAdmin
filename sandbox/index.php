@@ -1,14 +1,33 @@
-<?php
+<?php 
+//require_once 'functions.php';
+require_once 'dbConnector.php';
 
-include '../Functions/ARFunctions.php';
-require_once '../includes/db_config2.php';
+ini_set(‘display_errors’,1);
+error_reporting(E_ALL|E_STRICT);
 
-$Cabidrequest="Turn On";
-if ($Cabidrequest=="Turn On") {
-TurnCabidOn();
+function GetPmt() {
+$connector = new DbConnector();
+if (!$connector) {
+	die('Could not connect: ' . mysql_error());
 }
-else if ($Cabidrequest=="Turn Off") {
-TurnCabidOff();
+$DealerName = "My Dealership";
+
+$sql = "SELECT MthlyPmt FROM  dealers WHERE DealerName='$DealerName'";
+
+$result = $connector->query($sql);
+if (!$result) {
+      die('Invalid query: ' . mysql_error());
+      }
+
+while ($row = mysql_fetch_array($result)) {
+  echo $row[0];
 }
 
+$num = mysql_num_rows($result);
+mysql_close();
+}
+
+GetPmt();
 ?>
+
+
