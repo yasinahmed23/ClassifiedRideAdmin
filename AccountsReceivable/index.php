@@ -39,17 +39,15 @@
 						<table width='400' cellpadding='0' cellspacing='0' align='center'>
 							<tr valign='top'>
 								<td align='center'>
-								<strong>Please Log in to gain access to Accounts Receivable</strong>
-								<?php
-								include '../includes/login_form_AR.php' 
-								?>
-								</td>
+								<strong>Please Log in to gain access to Accounts Receivable</strong>";
+								include '../includes/login_form_AR.php';
+								
+							echo "</td>
 							</tr>
-			#		</table>
+						</table>
 					</td>
 				</tr>
-			</table>			
-			";
+			</table>";
 			}
 		else {
 		echo "
