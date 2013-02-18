@@ -15,19 +15,12 @@
 	$DealerName=$_POST['DealerName'] ;
 
 	if ($directoryrequest=="Turn On") {
-		Directory($connector);
+		DirectoryOn($connector);
 	}
 	else if ($directoryrequest=="Turn Off") {
 		DirectoryOFF($connector);
 	}	
-		$GetDealerID = mysql_query("
-		SELECT DealerID
-		FROM dealers
-		WHERE DealerName='$DealerName'");
 
-	while ($row = mysql_fetch_array($GetDealerID)) 
-	{
-	$DealerID = $row['DealerID'];
-	}
-	header("location: ViewDealer.php?id=$DealerID");	
+	//Reload Page For User
+	getDealerPage($connector);	
 ?>

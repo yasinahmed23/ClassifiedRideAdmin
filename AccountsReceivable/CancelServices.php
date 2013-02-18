@@ -26,7 +26,7 @@
 		FaceBookOFF($connector);
 		DirectoryOFF($connector);		
 
-		//Reload Page
+		//Reload Page For User
 		getDealerPage($connector);
 	}
 	

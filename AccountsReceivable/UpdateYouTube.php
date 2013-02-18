@@ -21,15 +21,6 @@
 		YouTubeOFF($connector);
 	}
 	
-	//Go back to View Dealer
-	$GetDealerID = mysql_query("
-	SELECT DealerID
-	FROM dealers
-	WHERE DealerName='$DealerName'");
-
-	while ($row = mysql_fetch_array($GetDealerID)) 
-	{
-	$DealerID = $row['DealerID'];
-	}
-	header("location: ViewDealer.php?id=$DealerID");
+	//Reload Page For User
+	getDealerPage($connector);
 ?>

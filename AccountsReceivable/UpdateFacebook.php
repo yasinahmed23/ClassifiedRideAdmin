@@ -15,19 +15,12 @@
 	$DealerName=$_POST['DealerName'] ;
 
 	if ($facebookrequest=="Turn On") {
-		FaceBook($connector);
+		FaceBookOn($connector);
 	}
 	else if ($facebookrequest=="Turn Off") {
 		FaceBookOFF($connector);
 	}	
-		$GetDealerID = mysql_query("
-		SELECT DealerID
-		FROM dealers
-		WHERE DealerName='$DealerName'");
-
-	while ($row = mysql_fetch_array($GetDealerID)) 
-	{
-	$DealerID = $row['DealerID'];
-	}
-	header("location: ViewDealer.php?id=$DealerID");
+	
+	//Reload Page For User
+	getDealerPage($connector);
 ?>

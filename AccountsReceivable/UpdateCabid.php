@@ -20,14 +20,7 @@
 	else if ($Cabidrequest=="Turn Off") {
 		CabidOff($connector);								
 	}	
-	$GetDealerID = mysql_query("
-	SELECT DealerID
-	FROM dealers
-	WHERE DealerName='$DealerName'");
-
-	while ($row = mysql_fetch_array($GetDealerID)) 
-	{
-		$DealerID = $row['DealerID'];
-	}
-	header("location: ViewDealer.php?id=$DealerID");
+	
+	//Reload Page For User
+	getDealerPage($connector);
 ?>
