@@ -8,13 +8,15 @@
 	
 	//Connect to Database	
 	require_once '../includes/db_config.php';
+	
+	$DealerName= $_POST['search_string'];
 
 	$id = $_GET['id'];
 
 	$GetDealerInfo = mysql_query("
 		SELECT *
 		FROM dealers
-		WHERE DealerID='".$id."'");
+		WHERE DealerID='".$id."' ||DealerName='".$DealerName."'");
 
 		while ($row = mysql_fetch_array($GetDealerInfo)) 
 			{
@@ -93,16 +95,16 @@ function validateForm2()
 </head>
 <body>
 <div id="top">
-	<?php include '../includes/header_AR.php'; ?>
+	<?php require_once '../includes/header_AR.php'; ?>
 </div>
 
 <div id="container">
 	<div id="main">
-		<?php include '../includes/AR_main.php'; ?>
+		<?php require_once '../includes/AR_main.php'; ?>
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
-		<?php include 'ARdealerFeed.php'; ?>
+		<?php require_once 'ARdealerFeed.php'; ?>
 	</div>
 </div>
 </body>

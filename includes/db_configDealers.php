@@ -3,10 +3,10 @@
 	//Enable Session Variables	
 	session_start();
 	
-	$dbhost= "ClassifiedRideAd.db.10325553.hostedresource.com";
-    	$dbuser= "ClassifiedRideAd";
-    	$dbpass="Fernando1!";
-    	$db_name="ClassifiedRideAd";
+	$dbhost= "";
+    	$dbuser= "";
+    	$dbpass="";
+    	$db_name="";
 
 	//Connect to server
 	$connectDB = mysql_connect($dbhost, $dbuser, $dbpass);

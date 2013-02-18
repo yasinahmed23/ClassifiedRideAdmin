@@ -809,7 +809,7 @@ p a:active{
 
 .fsSubmitButton
 {
-	border: 1px solid #CCCCCC;
+	border: 		1px solid #CCCCCC;
 	padding:		5px 10px !important;
 	font-size:		14px !important;
 	background-color:	#F7F7F7;
@@ -824,7 +824,6 @@ p a:active{
 {
 	border: 1px solid #000000;	
 	background-color:	#BDBDBD;
-	color:			#000000;
 	box-shadow:inset 0px 0px 5px rgba(0,0,0,.3);
 	-webkit-box-shadow:inset 0px 0px 5px rgba(0,0,0,.3);
 }
@@ -832,25 +831,22 @@ p a:active{
 
 .Button
 {
-	border: 1px solid #CCCCCC;
 	padding:		2px 5px !important;
 	font-size:		11px !important;
 	background-color:	#F0F0F0  ;
 	font-weight:		bold;
 	color:			#000000;
-	box-shadow: 1px 1px 1px #666666;
 	cursor:pointer;
-	border-radius: 4px;
 	margin: 3px;
-	border: .5px solid #000000;
+	border: 		1px solid #CCCCCC;
+	border-radius: 4px;
+	box-shadow: 1px 1px 1px #666666;
 }
 
 .Button:hover
 {	
-	color:	#F0F0F0;
-	font-weight: bold;
 	background-color: #BDBDBD  ;
-	border: .5px solid #000000;
+	border: 1px solid #000000;	
 	box-shadow:inset 0px 0px 5px rgba(0,0,0,.3);
 	-webkit-box-shadow:inset 0px 0px 5px rgba(0,0,0,.3);
 

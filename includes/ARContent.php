@@ -1,23 +1,24 @@
-<table cellpadding="5" cellspacing="0" border="0" align="center" width="950">
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="860">
 	<tr>
-		<td align="center">&nbsp;</td>		
-		<td align="center" width="100"><strong>Dealership</strong></td>				
+		<td align="center" width="10">&nbsp;</td>		
+		<td align="center" width="130"><strong>Dealership</strong></td>				
 		<td align="center" width="100"><strong>Contact</strong></td>	
-		<td align="center" width="180"><strong>Billing Address</strong></td>
-		<td align="center" width="100"><strong>Phone</strong></td>		
-		<td align="center" width="100"><strong>Email</td>
-		<td align="center" width="100"><strong>Representative</td>
-		<td align="center" width="50"><strong>Monthly Bill</td>
-		<td align="center" width="150"><strong>Notes</td>
-		<td align="center" width="50"><strong>Status</td>
+		<td align="center" width="120"><strong>Billing Address</strong></td>
+		<td align="center" width="120"><strong>Phone</strong></td>		
+		<td align="center" width="100"><strong>Rep</td>
+		<td align="center" width="80"><strong>Monthly Bill</td>
+		<td align="center" width="200"><strong>Notes</td>
 	</tr>
 </table>
-<div id='referral'>
-<table cellpadding="5" cellspacing="0" border="0" align="center" width="950">
+<div id="referral">
 <?php
 //Get data from database and assign to a variable
+$sql = mysql_query("
+	SELECT *
+	FROM dealers
+	ORDER BY DealerID DESC");
 $CountDealers=0;
-while ($row = mysql_fetch_array($GetAllDealerInfo)) {
+while ($row = mysql_fetch_array($sql)) {
 	$DealerID = $row['DealerID'];
 	$AccountPayFirstName = $row['AccountPayFirstName'];
 	$AccountPayLastName = $row['AccountPayLastName'];
@@ -35,7 +36,6 @@ while ($row = mysql_fetch_array($GetAllDealerInfo)) {
 	$MthlyPmt = number_format($row['MthlyPmt'], 2);
 	$Notes = $row['Notes'];
 	$MemberStatus = $row['MemberStatus'];
-
 	$CountDealers++;
 
 	if (isset($DealerStreet2)) {
@@ -50,26 +50,26 @@ while ($row = mysql_fetch_array($GetAllDealerInfo)) {
 	$Contact=$AccountPayFirstName . " " . $AccountPayLastName;
 
 	if ($MemberStatus=="INACTIVE") {
-				$fontColor="#C8C8C8";			
-				
-			} 
-			else {
-				$fontColor="#000000";
-			}
+		$fontColor="#C8C8C8";			
+		
+	} 
+	else {
+		$fontColor="#000000";
+	}
 ?>
 	
 <!--Disply Dealers from database into a table -->
+<table cellpadding="0" cellspacing="0" border="0" align="center" width="860">
 	<tr valign='top'>
-		<td colspan='10' align='center'><hr /></td>
+		<td colspan='9' align='center'><hr /></td>
 	</tr>
 	<tr>
-		<td align="center"><?php echo $CountDealers;?></a></td>		
-		<td align="center"><p><a href="/AccountsReceivable/ViewDealer.php?id=<?php echo $DealerID; ?>"><font color="<?php echo $fontColor; ?>"><?php echo $DealerName;?></font></a></p></td>
-		<td align="center"><font color="<?php echo $fontColor; ?>"><?php echo $Contact;?></font></td>		
-		<td align="center"><font color="<?php echo $fontColor; ?>"><?php echo $DealerAddress;?></font></td>
-		<td align="center"><font color="<?php echo $fontColor; ?>"><?php echo $AccountPayableCell;?></font></td>
-		<td align="center"><?php echo "<p><a href='mailto:$AccountPayableEmail'><font color='" . $fontColor . "'>" . $AccountPayableEmail . "</font></font></a></p>";?></td>
-		<td align="center">
+		<td align="center" width="10"><font color="<?php echo $fontColor; ?>"><?php echo $CountDealers;?></font></td>		
+		<td align="center" width="130"><p><a href="/AccountsReceivable/ViewDealer.php?id=<?php echo $DealerID; ?>"><font color="<?php echo $fontColor; ?>"><?php echo $DealerName;?></font></a></p></td>
+		<td align="center" width="100"><?php echo "<p><a href='mailto:$AccountPayableEmail'><font color='" . $fontColor . "'>" . $Contact . "</font></a></p>";?></font></td>
+		<td align="center" width="120"><font color="<?php echo $fontColor; ?>"><?php echo $DealerAddress;?></font></td>
+		<td align="center" width="120"><font color="<?php echo $fontColor; ?>"><?php echo $AccountPayableCell;?></font></td>
+		<td align="center" width="100"><font color="<?php echo $fontColor; ?>">
 			<?php 
 				//Get Dealer Rep's Email
 				$GetRepsEmail = mysql_query("
@@ -83,16 +83,12 @@ while ($row = mysql_fetch_array($GetAllDealerInfo)) {
 				echo "<p><a href='mailto:$EmplEmail'><font color='" . $fontColor . "'>" . $RepName . "</font></a></p>";
 				
 			?>
-		</td>
-		<td align="center"><font color="<?php echo $fontColor; ?>"><?php echo "$" . $MthlyPmt;?></a></td>
-		<td align="center"><font color="<?php echo $fontColor; ?>"><?php echo $Notes; ?></a></td>
-		<td align="center">
-		<?php 
-			echo "<font color='".$fontColor . "'>" . $MemberStatus . "</font>";
-		?>
-		</td>
+		</font></td>
+		<td align="center" width="80"><font color="<?php echo $fontColor; ?>"><?php echo "$" . $MthlyPmt;?></font></td>
+		<td align="center" width="200"><font color="<?php echo $fontColor; ?>"><?php echo $Notes; ?></font></td>
 	</tr>
 <?php } 
 ?>
 </table>
-			
+</div>	
+<p align='center'><font color="#C8C8C8"><em>*Grey indicated the Dealership status is Inactive</em></font></p>	

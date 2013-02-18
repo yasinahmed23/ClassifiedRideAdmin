@@ -52,7 +52,7 @@
 			</font></p>";	
 		}
 		?>
-		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
+		<table width="905" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
 				<?php 

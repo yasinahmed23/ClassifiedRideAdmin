@@ -8,6 +8,7 @@
 	
 	//Connect to Database	
 	require_once 'includes/db_config.php';
+	require_once 'Functions/ARFunctions.php';
 
 	$user = $_SESSION['user'];
 ?>
@@ -35,7 +36,7 @@
 	<div id="profile">
 		<center><font size="-1"><br />Start typing the Dealership's name...Select From drop-down menu</font>
 		<div>&nbsp;</div>	
-		<form action="search_results_DealerNameAR.php" method="post">
+		<form action="AccountsReceivable/ViewDealer.php" method="post">
 			<div class="dropdown">
 				<input type="text" name="search_string" class="autocomplete">
 			</div>

@@ -148,7 +148,7 @@ function GetReferrals() {
 			WHERE EmployeeName='".$EmployeeName."'
 			ORDER BY EmployeeName ASC");
 
-		include '../includes/ReferralListByEmployee.php';
+		include 'includes/ReferralListByEmployee.php';
 		echo "<hr>";
 		} 
 }

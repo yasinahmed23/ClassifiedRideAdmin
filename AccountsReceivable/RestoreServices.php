@@ -1,5 +1,5 @@
 <?php
-	function CancelAllFeatures($connector) {
+	function RestoreAllFeatures($connector) {
 
 		//Enable Session Variables	
 		session_start();
@@ -13,22 +13,19 @@
 		require_once '../Functions/ARFunctions.php';
 		require_once '../Functions/dbConnector.php';
 
-		//Set Dealer Status to Inactive
-		dealerInactive($connector);
-
-		//Set Cancelled Date
-		dealerCancelDate($connector);
-	
+		//Set Restore Date
+		dealerRestoreDate($connector);
+			
 		//Turn Features Off
-		SMSOff($connector);
-		CabidOff($connector);
-		YouTubeOFF($connector);
-		FaceBookOFF($connector);
-		DirectoryOFF($connector);		
+		SMSOn($connector);
+		CabidOn($connector);
+		YouTubeOn($connector);
+		FaceBookOn($connector);
+		DirectoryOn($connector);		
 
 		//Reload Page
 		getDealerPage($connector);
 	}
 	
-	CancelAllFeatures($connector);
+	RestoreAllFeatures($connector);
 ?>
