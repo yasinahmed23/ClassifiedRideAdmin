@@ -8,10 +8,7 @@ var $link;
 function DbConnector(){
 
         // Get the main settings from the array we just loaded
-        $host = '';
-        $db = '';
-        $user = '';
-        $pass = '';
+        
 
         // Connect to the database
         $this->link = mysql_connect($host, $user, $pass);

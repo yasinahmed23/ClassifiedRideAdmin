@@ -23,7 +23,6 @@
 		FROM dealers
 		WHERE DealerUserName='$DealerUser'");
 
-
 	while ($row = mysql_fetch_array($GetDealerInfo)) {
 	$directory = $row['directory'];
 		$facebook = $row['facebook'];
