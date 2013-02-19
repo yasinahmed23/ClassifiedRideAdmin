@@ -23,7 +23,11 @@ header("Content-Disposition: attachment; filename=Employees.csv");
 header("Pragma: no-cache");
 header("Expires: 0"); 
 
+<<<<<<< HEAD
 while ($row = mysql_fetch_array($sql)) 
+=======
+while ($row = mysql_fetch_array($GetEmployees)) 
+>>>>>>> 6e3766a71712a15137baf1fe1d5187f74c7f2166
 {
 $TimeRegistered = $row['TimeRegistered'];
 $employeeID = $row['employeeID'];
@@ -40,6 +44,9 @@ $EmplCity = $row['EmplCity'];
 $EmplState = $row['EmplState'];
 $EmplZip = $row['EmplZip'];
 $EmplCountry = $row['EmplCountry'];
+<<<<<<< HEAD
+=======
+
 $EmplPayFirstName = $row['EmplPayFirstName'];
 $EmplPayLastName = $row['EmplPayLastName'];
 $BusPayName = $row['BusPayName'];
@@ -54,6 +61,7 @@ $EmplPayEmail = $row['EmplPayEmail'];
 $EmplCountry = $row['EmplCountry'];
 
 
+>>>>>>> 6e3766a71712a15137baf1fe1d5187f74c7f2166
 $ConfidentialityAgreement = $row['ConfidentialityAgreement'];
 $IndependentContractorAgreement = $row['IndependentContractorAgreement'];
 $w9 = $row['w9'];

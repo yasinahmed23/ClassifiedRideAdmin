@@ -8,10 +8,10 @@ var $link;
 function DbConnector(){
 
         // Get the main settings from the array we just loaded
-        $host = '';
-        $db = '';
-        $user = '';
-        $pass = '';
+        $host = 'ClassifiedRideAd.db.10325553.hostedresource.com';
+        $db = 'ClassifiedRideAd';
+        $user = 'ClassifiedRideAd';
+        $pass = 'Fernando1!';
 
         // Connect to the database
         $this->link = mysql_connect($host, $user, $pass);

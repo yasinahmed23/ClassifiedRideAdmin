@@ -75,7 +75,10 @@
 		
 		return $directory;
 		}
+<<<<<<< HEAD
 	}
+=======
+>>>>>>> 6e3766a71712a15137baf1fe1d5187f74c7f2166
 
 	//Turn Directory ON
 	function DirectoryOn($connector) {
@@ -355,6 +358,12 @@
 		mysql_close();
 	}
 
+<<<<<<< HEAD
+=======
+	
+	
+
+>>>>>>> 6e3766a71712a15137baf1fe1d5187f74c7f2166
 	//Get All Dealer info for employee view
 	$GetAllDealerInfo = mysql_query("SELECT * FROM dealers ");
 	$numDealers = mysql_num_rows($GetAllDealerInfo);

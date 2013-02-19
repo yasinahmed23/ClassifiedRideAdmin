@@ -23,8 +23,12 @@
 		FROM dealers
 		WHERE DealerUserName='$DealerUser'");
 
-
+<<<<<<< HEAD
 	while ($row = mysql_fetch_array($GetDealerInfo)) {
+=======
+	while ($row = mysql_fetch_array($GetDealerInfo)) 
+	{
+>>>>>>> 6e3766a71712a15137baf1fe1d5187f74c7f2166
 	$directory = $row['directory'];
 		$facebook = $row['facebook'];
 		$YouTube = $row['YouTube'];
