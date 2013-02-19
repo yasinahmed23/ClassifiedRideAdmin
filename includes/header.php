@@ -2,11 +2,11 @@
 <div id="logo">
 	<table cellpadding="0" cellspacing="0" border="0">
 		<tr valign="top">
-			<td><h1>Welcome to the <img src="/images/logo2.png" width="200"> Employee Database</h1>
+			<td><h1>Welcome to the<img src="/images/logo3.png" width="200" height="50" alt="Classified Ride Admin" />Employee Database</h1>
 			<div id="ClickDealer">
           	 	<?php
 		   		if (!isset($_SESSION[user])) {
-				echo "<font color='#FFFFFF'><a href='Dealers.php'><font color='#FFFFFF'>Click Here if you are a Dealer</font></a>";}
+				echo "<font color='#FFFFFF'><a href='Dealers.php'><font color='#FFFFFF'>Click Here if you are a Dealer</font></a></font>";}
 				else {}
 		   	?>
 			</div>

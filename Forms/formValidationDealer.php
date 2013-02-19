@@ -100,18 +100,17 @@ function validateDealerForm()
 	var DataFeedMainPhone3=document.forms["DealerRegisterForm"]["DataFeedMainPhone3"].value;
 	var DataFeedMainEmail=document.forms["DealerRegisterForm"]["DataFeedMainEmail"].value;
 	var UsedCarsInStock=document.forms["DealerRegisterForm"]["UsedCarsInStock"].value;
-	var Rep=document.forms["DealerRegisterForm"]["Rep"].value;
+	var Rep=document.forms["DealerRegisterForm"]["search_string"].value;
 	var searchEmployees=document.forms["DealerRegisterForm"]["Program"].value;
 	var Program=document.forms["DealerRegisterForm"]["Program"].value;
 	var Authorization=document.forms["DealerRegisterForm"]["Authorization"].value;
 	var AgentFirstName=document.forms["DealerRegisterForm"]["AgentFirstName"].value;	
 	var AgentLastName=document.forms["DealerRegisterForm"]["AgentLastName"].value;
-	var DateSigned1=document.forms["DealerRegisterForm"]["DateSigned1"].value;
-	var DateSigned2=document.forms["DealerRegisterForm"]["DateSigned2"].value;
-	var DateSigned3=document.forms["DealerRegisterForm"]["DateSigned3"].value;	
+	var DateSigned=document.forms["DealerRegisterForm"]["date"].value;	
+		
 	
 	if (username==null || username=="")
-	{alert("UserName must be filled out");
+	{alert("DealerUserName must be filled out");
 	return false;}
 	
 	if (password==null || password=="")
@@ -315,37 +314,28 @@ function validateDealerForm()
 	if (DataFeedMainEmail==null || DataFeedMainEmail=="")
 	{alert("Please enter the emailfor the Data Feed Provider Main Contact");
 	return false;}
+	
+	if (Rep==null || Rep=="")
+	{alert("Please tell us who your Rep is.");
+	return false;}
 
 	if (UsedCarsInStock==null || UsedCarsInStock=="")
 	{alert("Please enter the used cars in stock that you would be wanting to list");
 	return false;}
-
-	
-	
 	
 	if (AgentFirstName==null || AgentFirstName=="")
 	{alert("Please enter the agent's firstname.");
 	return false;}
 
-
 	if (AgentLastName==null || AgentLastName=="")
 	{alert("Please enter the agent's lastname.");
 	return false;}
 
-	if (DateSigned1==null || DateSigned1=="")
-	{alert("Please enter the agent's lastname.");
-	return false;}
-
-	if (DateSigned2==null || DateSigned2=="")
-	{alert("Please enter the agent's lastname.");
-	return false;}
-		
-	if (DateSigned3==null || DateSigned3=="")
-	{alert("Please enter the agent's lastname.");
+	if (DateSigned==null || DateSigned=="")
+	{alert("Please Select Today's Date.");
 	return false;}
 	
 	if(!DealerRegisterForm.Authorization.checked){alert('You must Authorize first.');return false}
-
 }
 </script>
 
@@ -374,3 +364,105 @@ function lengthRestriction(elem, min, max){
 }
 </script>
 
+<!-- VALIDATE Dealer Username is Unique-->
+<script type='text/javascript'>
+$(document).ready(function(){
+$('#DealerUserName').keyup(DealerUserName_check);
+});
+	
+function DealerUserName_check(){	
+var DealerUserName = $('#DealerUserName').val();
+if(DealerUserName == "" || DealerUserName.length < 4){
+$('#DealerUserName').css('border', '3px #CCC solid');
+$('#tick').hide();
+}else{
+
+jQuery.ajax({
+   type: "POST",
+   url: "Functions/checkDealerUsername.php",
+   data: 'DealerUserName='+ DealerUserName,
+   cache: false,
+   success: function(response){
+if(response == 1){
+	$('#DealerUserName').css('border', '3px #C33 solid');	
+	$('#tick').hide();
+	$('#cross').fadeIn();
+	return false;
+	}else{
+	$('#DealerUserName').css('border', '1px #CCC solid');
+	$('#cross').hide();
+	$('#tick').fadeIn();
+	     }
+}
+});
+}
+}
+</script>
+
+<!-- VALIDATE Dealer Name is Unique-->
+<script type='text/javascript'>
+$(document).ready(function(){
+$('#DealerName').keyup(DealerName_check);
+});
+	
+function DealerName_check(){	
+var DealerName = $('#DealerName').val();
+if(DealerName == "" || DealerName.length < 3){
+$('#DealerName').css('border', '3px #CCC solid');
+$('#tick2').hide();
+}else{
+
+jQuery.ajax({
+   type: "POST",
+   url: "Functions/CheckDealerName.php",
+   data: 'DealerName='+ DealerName,
+   cache: false,
+   success: function(response){
+if(response == 1){
+	$('#DealerName').css('border', '3px #C33 solid');	
+	$('#tick2').hide();
+	$('#cross2').fadeIn();
+	}else{
+	$('#DealerName').css('border', '1px #CCC solid');
+	$('#cross2').hide();
+	$('#tick2').fadeIn();
+	     }
+}
+});
+}
+}
+</script>
+
+<!-- VALIDATE PayEmail is Unique-->
+<script type='text/javascript'>
+$(document).ready(function(){
+$('#AccountPayableEmail').keyup(AccountPayableEmail_check);
+});
+	
+function AccountPayableEmail_check(){	
+var AccountPayableEmail = $('#AccountPayableEmail').val();
+if(AccountPayableEmail == "" || AccountPayableEmail.length < 3){
+$('#AccountPayableEmail').css('border', '3px #CCC solid');
+$('#tick3').hide();
+}else{
+
+jQuery.ajax({
+   type: "POST",
+   url: "Functions/CheckAccountPayableEmail.php",
+   data: 'AccountPayableEmail='+ AccountPayableEmail,
+   cache: false,
+   success: function(response){
+if(response == 1){
+	$('#AccountPayableEmail').css('border', '3px #C33 solid');	
+	$('#tick3').hide();
+	$('#cross3').fadeIn();
+	}else{
+	$('#AccountPayableEmail').css('border', '1px #CCC solid');
+	$('#cross3').hide();
+	$('#tick3').fadeIn();
+	     }
+}
+});
+}
+}
+</script>

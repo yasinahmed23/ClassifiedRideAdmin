@@ -21,21 +21,9 @@
 </head>
 <body>
 <div id="top">
-	<div id="logo">
-		<h1>Welcome to the ClassifiedRide Employee/Dealer Database</a></h1>
-	</div>
-		
-	<div id="login">
-	<?php	
-		if (!isset($_SESSION[user])) {
-			include 'includes/login_form.php';
-			}
-		else {echo $user . " you are logged in.";
-		echo "<br />";
-		echo "<center><form action='logout.php' onSubmit='alert('You are now logged out');' name='logout' id='logout'><input class='textfield' type='submit' value='Log Out' id='logout' name='logout' /></form></center>";}
-			
+	<?php 
+	include 'includes/header_Admin.php'; 
 	?>
-	</div>
 </div>
 <br />
 <div id="container">

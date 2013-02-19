@@ -1,11 +1,31 @@
-<table width=330" cellpadding="0" cellspacing="0" border="0" align="center">
+<?php
+//Get Transaction Info for Dealer Usere 
+	$GetTransInfo = mysql_query("
+		SELECT *
+		FROM transactions
+		WHERE DealerID='$DealerID'");
+
+	while ($row = mysql_fetch_array($GetTransInfo)) 
+	{
+		$TransactionDate = $row['TransactionDate'];
+		$registered = $row['registered'];
+		$Renewed = $row['Renewed'];
+	}
+	
+	$sep="/";
+	$month=substr($TransactionDate, 5, 2);
+	$date=substr($TransactionDate, 8, 2);
+	$year=substr($TransactionDate, 0, 4);
+	$newDate=$month . $sep . $date . $sep . $year;
+?>
+<table width=100% cellpadding="0" cellspacing="0" border="0" align="center">
 	<tr valign="top">
-		<td width="105"><strong>NAME</strong></td>
-		<td width="130"><strong>PAYMENT METHOD</td>	
-		<td width="95"><strong>MONTHLY PMT</strong></td>
+		<td width="150"><strong>PAYMENT METHOD</td>	
+		<td width="150"><strong>MONTHLY PAYMENT</strong></td>
+		<td width="150"><strong>Last PAYMENT</strong></td>
 	</tr>
 	<tr valign="top">
-		<td colspan="3"><hr /></td>
+		<td colspan="4"><hr /></td>
 	</tr>
 
 <?php
@@ -29,7 +49,7 @@ $RepName = $row['RepName'];
 $Program = $row['Program'];
 $MemberStatus = $row['MemberStatus'];
 $MthlyPmt = $row['MthlyPmt'];
-
+$MthlyPmt = number_format($MthlyPmt, 2);
 
 //Get Rep Info for Dealer Usere 
 $GetRepInfo = mysql_query("
@@ -47,14 +67,12 @@ $pic = ($row['pic']);
 
 <!--Disply data from database into a table -->
 	<tr valign="top">
-		<td width="105"><?php echo $DealerName;?></td>
-		<td width="130" align="center">&nbsp;</td>
-		<td align="95">$ <?php echo $MthlyPmt;?></td>	
-
-
+		<td width="150"><font size="-2">************</font>1234</td>
+		<td align="150">$ <?php echo $MthlyPmt;?></td>
+		<td align="150" align="center"><?php echo $newDate; ?></td>	
 	</tr>
 	<tr valign="top">
-		<td colspan="3"><hr /></td>
+		<td colspan="4"><hr /></td>
 	</tr>
 <?php } 
 ?>
@@ -62,10 +80,17 @@ $pic = ($row['pic']);
 <table width=330" cellpadding="0" cellspacing="0" border="0" align="center">
 	<tr valign="top">
 		<td align="center">
-			<p><font size="+1"><strong>
-			Program:  $<?php echo $Program; ?>
-			<br /><br />
-			My Rep: </strong>
+			<p><font size="+1">
+			<strong>Program:  <?php 
+				if ($Program=="399"){
+					echo "$" . $Program . "</strong>"; 
+				}
+				else {
+					echo "$" . $Program . "</strong><br />(Competition Killer Package)"; 
+				}
+			?>
+			<br />
+			<strong>My Rep: </strong>
 			<br />
 			<?php
 				if ($pic == null || $pic == "") {
@@ -81,21 +106,23 @@ $pic = ($row['pic']);
 					printf("<img src='../uploads/$pic' width='100'>");
 					echo "</a>";
 				}				
-				echo "<br />" . $RepName . "<br /><strong>" . $EmplCellPhone . "</strong>"; 			
+				echo "<br /><a href='mailto:" .  
+						$EmplEmail . 
+						"?subject=" . 
+						$DealerName . 
+						"'>" . $RepName . "</a><br /><strong>" . $EmplCellPhone . "</strong>"; 			
 			?>
-			<br />
-			<a href="mailto:<?php echo $EmplEmail; ?>?subject=<?php echo 'Question about ' . $DealerName; ?>"><?php echo $EmplEmail; ?></a></font></p>
 		</td>
 	</tr>
 </table>
 <table width=330" cellpadding="0" cellspacing="0" border="0" align="center">
 	<tr valign="top">
-		<td>
+		<td align="center">
 		<?php
 		if ($MemberStatus="INACTIVE") {
-			echo "<p align='center'><font color='red'><strong>Account Status: INACTIVE.</strong></font><br /><a href='#'>Please Click Here To Make A Payment</a></p>";
+			echo "<p><font size='-2'><font color='red'><strong>Account Status: INACTIVE.&nbsp;&nbsp;</strong></font><a href='#'>Please Click Here To Make A Payment</a></p></font>";
 		}
-
+		echo "</font></p>";
 		?>
 		</td>
 	</tr>

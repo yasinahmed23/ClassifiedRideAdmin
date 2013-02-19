@@ -14,9 +14,10 @@
 										<font size="-2">
 										Create Username & Password
 										</font></td>		
-										<td width="155"><input name="DealerUserName" type="text" class="textfield" id="DealerUserName" size="20" maxlength="20" />
+										<td width="155"><input name="DealerUserName" type="text" class="textfield" id="DealerUserName" size="20" maxlength="20" /><img id="tick" src="/images/tick.png" width="16" height="16"/>
+<img id="cross" src="/images/cross.png" width="16" height="16"/>
 										<br />
-										<font size="-2">Username<strong>*</strong><font>
+										<font size="-2">Username (must be unique) <strong>*</strong><font>
 										<br />
 										<input name="DealerPassword" type="password" class="textfield" id="DealerPassword" size="20" maxlength="20" onKeyUp="verify.check()" /><input name="DealerPassword2" type="password" class="textfield" id="DealerPassword2" size="20" maxlength="20" onKeyUp="verify.check()" />
 										<br />
@@ -35,14 +36,18 @@
 									</tr>
 									<tr><td><br /></td></tr>			
 									<tr>
-								      		<td width="155">Dealership Name</td>		
-										<td width="155"><input name="DealerName" type="text" class="textfield" id="DealerName" size="30" maxlength="30" />
+								      		<td width="155">Dealership</td>		
+										<td width="155"><input name="DealerName" type="text" class="textfield" id="DealerName" size="30" maxlength="30" /><img id="tick2" src="/images/tick.png" width="16" height="16"/>
+<img id="cross2" src="/images/cross.png" width="16" height="16"/>
+										
+										<br />
+										<font size="-2">Dealership Name (must be unique) <strong>*</strong><font>
 										<br />
 										</td>
 									</tr>
 									<tr><td>&nbsp;</td></tr>
 									<tr>
-										<td width="155"> Dealership Address:</td>
+										<td width="155"> Billing Address:</td>
 										<td width="155"><input name="DealerStreet1" type="text" class="textfield" id="DealerStreet1" size="30" /><input name="DealerStreet2" type="text" class="textfield" id="DealerStreet2" size="30" /><br /><font size="-2"><div id="FormLableLeft">Street Address<strong>*</strong></div><div id="FormLableStreetRight">Street Address Line 2</div></font></td>
 								    	</tr>
 									<tr><td>&nbsp;</td></tr>
@@ -59,7 +64,7 @@
 									     	<td width="155">&nbsp;</td>
 										<td width="155">
 										<input name="DealerZip" type="text" class="textfield" id="DealerZip" size="5" maxlength="5" onblur="validateNumericValues(DealerZip);lengthRestriction(DealerZip, 5, 5)" />
-										<select id="DealerCountry" name="DealerCountry" clas="textfield">
+										<select id="DealerCountry" name="DealerCountry" class="textfield">
 											<option value=''>
 											  &nbsp;
 											</option>
@@ -784,7 +789,8 @@
 									<tr>
 									     	<td width="155">Account Payable Email:</td>
 										<td width="155">
-											<input name="AccountPayableEmail" type="text" class="textfield" id="AccountPayableEmail" size="30" onKeyUp="verify3.check()" /><input name="AccountPayableEmail2" type="text" class="textfield" id="AccountPayableEmail2" size="30" onKeyUp="verify3.check()" />			<br />
+											<input name="AccountPayableEmail" type="text" class="textfield" id="AccountPayableEmail" size="30" onKeyUp="verify3.check()" /><input name="AccountPayableEmail2" type="text" class="textfield" id="AccountPayableEmail2" size="30" onKeyUp="verify3.check()" /><img id="tick3" src="/images/tick.png" width="16" height="16"/>
+<img id="cross3" src="/images/cross.png" width="16" height="16"/>			<br />
 											<font size="-2"><div id="FormLableLeft">Enter Email Address<strong>*</strong></div><div id="FormLableEmailRight">Re-Enter Email Address<strong>*</strong></div><br /><div id="Payemail_result">&nbsp;</div><font>
 										</td>
 								    	</tr>
@@ -1385,11 +1391,8 @@
 									<tr valign="top">
 										<td>Date</td>
 										<td>
-											<input name="DateSigned1" type="text" class="textfield" id="DateSigned1" size="2" maxlength="2" onblur="validateNumericValues(DateSigned1);lengthRestriction(DateSigned1, 2, 2)" />
-											<input name="DateSigned2" type="text" class="textfield" id="DateSigned2" size="2" maxlength="2" onblur="validateNumericValues(DateSigned2);lengthRestriction(DateSigned2, 2, 2)" />
-											<input name="DateSigned3" type="text" class="textfield" id="DateSigned3" size="4" maxlength="4" onblur="validateNumericValues(DateSigned3);lengthRestriction(DateSigned3, 4, 4)" />
+											<input type='text' name='date' id='date' class='textfield' onclick='fPopCalendar("date")'/>
 											<br />
-											<font size="-2">MM&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;YYYY</font>
 											</td>
 									</tr>
 									<tr><td><br /></td></tr>								
@@ -1402,9 +1405,9 @@
 									<tr><td><br /></td></tr>
 									<!--DEALER AUTHORIZATION -->				
 									
-									<!--SUBMIT -->				
+									<!--SUBMIT -->					
 									<tr>
-									      	<td colspan="2" width="155" align="center"><input name="Submit" type="submit" value="Submit Dealer Registration" class="fsSubmitButton" /></td>
+									      	<td colspan="2" width="155" align="center"><input name="Submit" type="submit" value="Make Payment" class="fsSubmitButton" /></td>
 									</tr>	
 									<!--SUBMIT -->	
 				

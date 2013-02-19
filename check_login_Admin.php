@@ -4,6 +4,7 @@
 	
 	//Connect to Database	
 	include 'includes/db_config.php';
+	require_once'Functions/AdminFunctions.php';
 	
 	// create variables out of user input
 	$UserName=$_POST['UserName']; 
@@ -27,10 +28,23 @@
 	//If only one row was returned...
 	if ($count==1) {
 	
-	//Create session variable from data and redirect page
+	//Create session variable from data 
 	$_SESSION['admin']=$UserName;
 
-	header( 'Location: Referrals.php' ) ;
+	//Update Database with User's IP address and timestamp
+	$setIP = mysql_query("
+		UPDATE members 
+		SET LastLoginLocation='".$ip."'
+		WHERE username='".$UserName."'");
+
+	//Update Database with TimeStamp of last login
+	$setLoginTime = mysql_query("
+		UPDATE members 
+		SET LastLogin='".$date."'
+		WHERE username='".$UserName."'");
+
+	//Redirect Page
+	header( 'Location: /AdminDashboard.php' ) ;
 	}
 	else {
 		header( 'Location: index.php' ) ;

@@ -1,10 +1,10 @@
 <?php
 	//Enable Session Variables	
 	session_start();
-	$DealerUser = $_SESSION['DealerUser'];
 	
 	//Connect to Database	
 	require_once 'includes/db_config2.php';
+	require_once 'Functions/DealerFunctions.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,13 +12,34 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Dealers | ClassifiedRide</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
-<script src="js/jquery-1.8.2.js"></script>
-<script src="autocomplete/searchFullName.js"></script>
-<SCRIPT TYPE="text/javascript" SRC="js/verifynotify.js"></SCRIPT>
+<link rel="stylesheet" title="Style CSS" href="styles/calendar.css" type="text/css" media="all" />
+<script type="text/javascript">
+  var formatSplitter = "/";
+  var monthFormat = "mm";
+  var yearFormat = "yyyy";
+</script>
+<script type="text/javascript" src="js/calendar.js"></script>
+<script type="text/javascript" src="js/jquery-1.8.2.js"></script>
+<script type="text/javascript" src="autocomplete/searchFullName.js"></script>
+<script type="text/javascript" src="js/verifynotify.js"></script>
+
+<style>
+#DealerUserName{
+}
+
+#tick{display:none}
+#cross{display:none}
+
+#tick2{display:none}
+#cross2{display:none}
+
+#tick3{display:none}
+#cross3{display:none}
+</style>
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/headerDealer.php'; ?>
+	<?php include 'includes/headerDealer.php'?>
 </div>
 <div id="container">
 	<div id="Dealermain">
@@ -36,9 +57,8 @@
 		};
 		?>
 	</div>
-</div>	
+</div>
 <?php require_once 'includes/footer.php'; ?>
 </body>
-</html>	
-
+</html>
 

@@ -10,7 +10,8 @@
 	require_once 'includes/db_config.php';
 
 	$user = $_SESSION['user'];
-	//echo $user;
+	$admin = $_SESSION['admin'];
+	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24,11 +25,18 @@
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>
+	<?php 
+	if (isset($_SESSION[admin])) {
+		include 'includes/header_Admin.php'; 
+	}
+	else {
+		include 'includes/header.php'; 
+	}
+	?>
 </div>
 <div id="container">
 	<div id="main">
-		<?php include 'includes/Employee_main.php'?>
+		<?php include 'includes/main.php'?>
 	</div>	
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">

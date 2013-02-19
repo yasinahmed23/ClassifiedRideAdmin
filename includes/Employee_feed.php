@@ -1,3 +1,6 @@
+<?php 
+require_once '/Functions/Functions.php';
+?>
 <div class="employeeFeed">
 <table cellpadding="10" width="700" cellspacing="0" border="1" align="center"><tr><td>
 <table cellpadding="5" cellspacing="0" border="0" align="center">
@@ -12,13 +15,8 @@
 	</tr>
 
 <?php
-//Get data from database and assign to a variable
-$sql = mysql_query("
-	SELECT *
-	FROM employees 
-	ORDER BY employeeID DESC");
 
-while ($row = mysql_fetch_array($sql)) {
+while ($row = mysql_fetch_array($GetEmployees)) {
 	$TimeRegistered = $row['TimeRegistered'];
 	$employeeID = $row['employeeID'];
 	$EmplFirstName = $row['EmplFirstName'];

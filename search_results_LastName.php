@@ -11,6 +11,14 @@
 
 	$user = $_SESSION['user'];
 
+	require_once 'Functions/Functions.php';
+	
+	$GetEmployeeInfo = mysql_query("
+		SELECT *
+		FROM employees 
+		WHERE EmplLastName='".$EmplLast_name."'
+	");
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48,57 +56,46 @@
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
 		<center><font size="+2"><strong><?php echo "Employee Search Results"?></strong></font></center>
-			<table cellpadding="5" cellspacing="0" border="0" align="center" class="table" width="550">
+			<?php 
+			$count=mysql_num_rows($GetEmployeeInfo);
+			if ($count>=1) {
+			?>
+			<table cellpadding="5" cellspacing="0" border="0" align="center" class="table" width="750">
 				<tr valign="top">
 					<td>
 					<div id="dealerlist">
-					<table cellpadding="10" cellspacing="0" border="0" align="center" width="530">
-						<tr>
-							<td align="center" width="30"><strong>ID</strong></td>				
-							<td align="center" width="30"><strong>First Name</strong></td>	
-							<td align="center" width="30"><strong>MI</strong></td>		
-							<td align="center" width="30"><strong>Last Name</strong></td>
-							<td align="center" width="75"><strong>Manager</td>
-							<td align="center" width="150"><strong>Email</strong></td>
-							<td align="center" width="75"><strong>Cell Phone</td>
-							<td align="center" width="100"><strong>Profile Pic</td>
+					<table cellpadding="0" cellspacing="0" border="0" align="center" width=100%>
+						<tr valign="top">
+							<td align="center"><strong>Name</strong></td>
+							<td align="center"><strong>Location</td>
+							<td align="center"><strong>Profile Pic</td>
 						</tr>
-
 						<?php
 						//Get data from database and assign to a variable
 
 						$EmplLast_name = $_POST['search_string'];
-						$sql = mysql_query("
-							SELECT *
-							FROM employees 
-							WHERE EmplLastName='".$EmplLast_name."'
-						");
 
-						while ($row = mysql_fetch_array($sql)) 
+						while ($row = mysql_fetch_array($GetEmployeeInfo)) 
 						{
 						$employeeID = $row['employeeID'];
 						$EmplFirstName = $row['EmplFirstName'];
 						$EmplMiddleInitial = $row['EmplMiddleInitial'];
 						$ReferredBy = $row['ReferredBy'];
 						$EmplEmail = $row['EmplEmail'];
+						$EmplCity = $row['EmplCity'];
+						$EmplState = $row['EmplState'];
 						$EmplPhone = ($row['EmplCellPhone1']) . "-" . ($row['EmplCellPhone2']) . "-" . ($row['EmplCellPhone3']);
 						$pic= $row ['pic'];
 						?>
-
 						<!--Disply data from database into a table -->
 						<tr valign='top'>
-								<td colspan='8' align='center'><hr /></td>
+								<td colspan='3' align='center'><hr /></td>
 							</tr>
-						<tr>
-							<td align="center" width="30"><?php echo $employeeID?></td>
-							<td align="center" width="30"><?php echo $EmplFirstName;?></td>		
-							<td align="center" width="30"><?php echo $EmplMiddleInitial;?></td>		
-							<td align="center" width="30"><?php echo $EmplLast_name;?></td>
-							<td align="center" width="75"><?php echo $ReferredBy;?></td>
-							<td align="center" width="150"><p><?php echo "<a href='mailto:'" . $EmplEmail . ">" . $EmplEmail . "</a>";?></p></td>
+						<tr valign="top">
+							<td align="center"><p><?php echo "<a href='mailto:'" . $EmplEmail . ">" . $EmplFirstName . " " . $EmplLast_name . "</a>";?></p></td>
+							<td align="center"><p><?php echo $EmplCity . ", " . $EmplState;?></p></td>
 							</td>
-							<td align="center" width="75"><?php echo $EmplPhone;?></td>
-							<td align="center"><?php printf("<img src='/uploads/$pic' width='100'>"); ?></td>
+							<td align="center"><p><?php printf("<img src='/uploads/$pic' width='100'>"); ?></p></td>
 						</tr>
 						<?php } 
 						?>
@@ -122,7 +119,13 @@
 			?>
 			</td>
 		</tr>
-	</table>	
+	</table>
+	<?php }
+
+	else {
+	echo "<p align='center'><font color='red'>No Results Found.  Please Select from the Drop-Down to ensure accuracy</font></p>";
+	}
+	?>	
 </div>
 </div>
 </body>

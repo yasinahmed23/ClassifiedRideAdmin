@@ -5,12 +5,7 @@
 
 	//Connect to Database	
 	require_once 'includes/db_config.php';
-
-$GetEmployees = mysql_query("
-	SELECT employeeID
-	FROM employees
-	");
-$num_rows = mysql_num_rows($GetEmployees);
+	require_once 'Functions/Functions.php';
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -37,7 +32,7 @@ $(document).ready(function(){
 		}, 		
 
 		continueWhile : function( resp ) {
-			if( $(this).children('li').length <= <?php echo $num_rows ?> ) {
+			if( $(this).children('li').length <= <?php echo $numEmployees ?> ) {
 				return false;
 			}
 			return true; 
@@ -46,6 +41,15 @@ $(document).ready(function(){
 
 });
 </script>
+<script type="text/javascript">
+function validateForm()
+{
+	var numdays=document.forms["SortEmployees"]["numdays"].value;
+	if (numdays==null || numdays=="")
+	{alert("You must enter the # of Days that you want to search");
+	return false;}
+}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>ClassifiedRide Database Home</title>
 <link href="/styles/InfiniteScrollStyle.css" rel="stylesheet" type="text/css" />
@@ -53,7 +57,14 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>
+	<?php 
+	if (isset($_SESSION[admin])) {
+		include 'includes/header_Admin.php'; 
+	}
+	else {
+		include 'includes/header.php'; 
+	}
+	?>
 </div>	
 <div id="container">
 	<div id="main">
@@ -61,19 +72,10 @@ $(document).ready(function(){
 	</div>	
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
-		<?php 
-		if (isset($_SESSION[admin])) {
-			echo " 
-		<form id='SortEmployees' name='SortEmployees' method='post' action='EmployeesSorted.php'>
-			<p align='center'><font size='+1'><strong>Total # of Employees : " .  $num_rows . "</strong>&nbsp;&dash;&nbsp;View Employees Added in the last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
-			</font></p>
+		<form id="SortEmployees" name="SortEmployees" method="post" action="EmployeesSorted.php" onsubmit="return validateForm()">
+			<p align='center'><font size='+1'><strong>Total # of Employees : <?php echo $numEmployees; ?></strong>&nbsp;&dash;&nbsp;View Employees Added in the last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength="3"/> Days. <input name="submit" type="submit" class="Button" id="submit" value="GO" /></font></p>
 		</form>
-		";	
-		}
-		else {
-			echo "<p align='center'><strong>" . $num_rows . " Employees Found </strong></p>";
-		}
-		?>
+		
 		<table width="770" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
@@ -89,7 +91,7 @@ $(document).ready(function(){
 			?>
 			<table width="300" border="0" cellpadding="0" cellspacing="0" align="center">
 				<tr>
-					<td><center><form action='/ExportCSV_Employees.php'><input class='Button' type='submit' value='Export All  <?php echo $num_rows; ?> Employees' /></form></center></td>
+					<td><center><form action='/includes/ExportCSV_Employees.php'><input class='Button' type='submit' value='Export All  <?php echo $numEmployees; ?> Employees' /></form></center></td>
 				</tr>
 			</table>
 			<?php } ?>

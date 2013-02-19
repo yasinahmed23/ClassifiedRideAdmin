@@ -7,10 +7,8 @@
 	}
 	
 	//Connect to Database	
-	require_once 'includes/db_config.php';
-
-	$user = $_SESSION['user'];
-	$admin = $_SESSION['admin'];	
+	require_once 'includes/db_config.php';	
+	require_once 'Functions/ARFunctions.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -24,7 +22,7 @@
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>           
+	<?php include 'includes/header_AR.php'; ?>           
 </div>
 <div id="container">
 	<div id="main">

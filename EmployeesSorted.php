@@ -57,8 +57,15 @@ $(document).ready(function(){
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>
-</div>	
+	<?php 
+	if (isset($_SESSION[admin])) {
+		include 'includes/header_Admin.php'; 
+	}
+	else {
+		include 'includes/header.php'; 
+	}
+	?>
+</div>
 <div id="container">
 	<div id="main">
 		<?php include 'includes/main.php'?>
@@ -66,19 +73,20 @@ $(document).ready(function(){
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
 		<?php 
-		if (isset($_SESSION[admin])) {
-			echo " 
-			<p align='center'><font size='+1'><strong>You are viewing the Employees Added from the past  " . $numdays . " Days</strong>
-			</font></p>
-		
-		";	
-		}
+		echo "<p align='center'><font size='+1'><strong>You are viewing the Employees Added from the past  " . $numdays . " Days</strong></font></p>";	
 		?>
 		<table width="770" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
 				<div id="empllist">
-				<?php include 'includes/Employee_feed_Table_Sorted.php';?>
+				<?php 
+					if ($num_rows!=0) {
+						include 'includes/Employee_feed_Table_Sorted.php';
+					}
+					else {
+						echo "<p align='center'>No employees were added from the past  " . $numdays . " days</p>";	
+					}
+				?>
 				</div>
 				</td>
 			</tr>
@@ -88,7 +96,7 @@ $(document).ready(function(){
 			echo "
 			<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'>
 				<tr>
-					<td align='center'><form name='SortEmployees' method='post' action='/ExportCSV_EmployeesVIEW.php'>
+					<td align='center'><form name='SortEmployees' method='post' action='/includes/ExportCSV_EmployeesVIEW.php'>
 					<input type='hidden' id='days' name='days' value='$numdays' />
 					<input class='Button' type='submit' value='Export View of $num_rows Employees to .csv' /></form></td>
 				</tr>

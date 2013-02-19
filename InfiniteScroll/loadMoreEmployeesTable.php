@@ -17,11 +17,10 @@
 		SELECT * 
 		FROM employees 
 		WHERE employeeID > "'.mysql_real_escape_string($_GET['lastEmployee']).'" 
-		AND employeeID <= "'.$num_rows.'" 
 		ORDER BY employeeID ASC');
 
 		$val = $_GET['lastEmployee'];
-
+		$rowNumber=$val;
 		while($data = mysql_fetch_object($LoadMoreEmployees)) 
 		{
 			$TimeRegistered = $data->TimeRegistered;
@@ -32,24 +31,25 @@
 			$EmplCity = $data->EmplCity ;
 			$EmplState = $data->EmplState ;
 			$pic = $data->pic ;
-	
+			$location = $EmplCity . ",&nbsp;" . $EmplState;
+			$rowNumber++;
 			echo "
 			<div class='postedEmployee' employeeID=\"$data->employeeID \">
-				<table cellpadding='0' cellspacing='0' border='0' width='770'>
+				<table cellpadding='0' cellspacing='0' border='0' width='750' align='center'>
 					<tr valign='top'>
 					<td colspan='7' align='center'><hr /></td>
 				</tr>
-				<tr>					
-					<td align='center'><li>"."$employeeID </li></td>
-						<td align='center'><li><p><a href='mailto:$EmplEmail'>" . "$EmplFirstName $EmplLastName</a></p></li></td>
-						<td align='center'><li>" . "$EmplCity $EmplState </li></td>			
-						<td align='center'><li>";if ($pic == null || $pic == "") {
-								printf("<img src='/images/No_Image_Available.gif' width='100'>");
-							}
-							else {
-								printf("<img src='/uploads/$pic' width='100'>");
-							};echo "</li></td>
-					</tr>
+				<tr valign='top'>				
+					<td align='center' width='22'><li>"."$rowNumber </li></td>
+					<td align='center' width='256'><li><p><a href='mailto:$EmplEmail'>" . "$EmplFirstName $EmplLastName</a></p></li></td>
+					<td align='center' width='236'><li>" . "$location </li></td>		
+					<td align='center' width='236'><li>";if ($pic == null || $pic == "") {
+							printf("<img src='/images/No_Image_Available.gif' width='100'>");
+						}
+						else {
+							printf("<img src='/uploads/$pic' width='100'>");
+						};echo "</li></td>
+				</tr>
 				</table>
 			</div>";			
 		} 

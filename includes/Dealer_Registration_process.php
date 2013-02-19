@@ -5,8 +5,9 @@
 
 	//Connect to Database	
 	include 'db_config2.php';
-
+	require_once '../Functions/DealerFunctions.php';
 	
+	set_error_handler('error_handler');
 
 	//Save user input as variable
 	$DealerName = stripslashes($_POST['DealerName']);$DealerStreet1 = stripslashes($_POST['DealerStreet1']);
@@ -99,9 +100,7 @@
 	$AgentFirstName = stripslashes($_POST['AgentFirstName']);
 	$AgentLastName = stripslashes($_POST['AgentLastName']);
 	$Signature = stripslashes($_POST['Signature']);
-	$DateSigned1 = stripslashes($_POST['DateSigned1']);
-	$DateSigned2 = stripslashes($_POST['DateSigned2']);
-	$DateSigned3 = stripslashes($_POST['DateSigned3']);
+	$DateSigned = stripslashes($_POST['date']);
 	$DealerUserName = stripslashes($_POST['DealerUserName']);
 	$DealerPassword = stripslashes($_POST['DealerPassword']);
  
@@ -153,9 +152,7 @@
 	$AgentFirstName = mysql_real_escape_string($AgentFirstName);
 	$AgentLastName = mysql_real_escape_string($AgentLastName);
 	$Signature = mysql_real_escape_string($Signature);
-	$DateSigned1 = mysql_real_escape_string($DateSigned1);
-	$DateSigned2 = mysql_real_escape_string($DateSigned2);
-	$DateSigned3 = mysql_real_escape_string($DateSigned3);
+	$DateSigned = mysql_real_escape_string($DateSigned);
 	$DealerUserName = mysql_real_escape_string($DealerUserName);
 	$DealerPassword = mysql_real_escape_string($DealerPassword);
 
@@ -166,118 +163,37 @@
 
 	//Run query to Add Dealership to database	
 	$add_dealer = "
-	INSERT INTO dealers (DealerUserName, DealerPassword, RepName, DealerName, DealerStreet1, DealerStreet2, DealerCity, DealerState, DealerZip, DealerCountry, DealerWebsite, Franchise, DealerMainContactFirst, DealerMainContactLast, DealerCellPhone1, DealerCellPhone2, DealerCellPhone3, DealerOfficePhone1, DealerOfficePhone2, DealerOfficePhone3, OfficePhoneExt, DealerEmail, ContactPosition, AccountPayFirstName, AccountPayLastName, AccountPayableEmail, AccountPayableCell1, AccountPayableCell2, AccountPayableCell3, LeadCell1, LeadCell2, LeadCell3, LeadEmail, DataFeedProvider, OtherDataFeedProvider, DataFeedMainContactFirst, DataFeedMainContactLast, DataFeedMainPhone1, DataFeedMainPhone2, DataFeedMainPhone3, DataFeedMainEmail, UsedCarsInStock, Rep, Program, Authorization, AgentFirstName, AgentLastName, Signature, DateSigned1, DateSigned2, DateSigned3, directory, facebook, YouTube, CaBID, SMS, MthlyPmt)
-	VALUES ('$DealerUserName', '$DealerPassword','$RepName', '$DealerName', '$DealerStreet1', '$DealerStreet2', '$DealerCity', '$DealerState', '$DealerZip', '$DealerCountry', '$DealerWebsite', '$Franchise', '$DealerMainContactFirst', '$DealerMainContactLast', '$DealerCellPhone1', '$DealerCellPhone2', '$DealerCellPhone3', '$OfficePhoneExt', '$DealerOfficePhone1', '$DealerOfficePhone2', '$DealerOfficePhone3', '$DealerEmail', '$ContactPosition', '$AccountPayFirstName', '$AccountPayLastName', '$AccountPayableEmail', '$AccountPayableCell1', '$AccountPayableCell2', '$AccountPayableCell3', '$LeadCell1', '$LeadCell2', '$LeadCell3', '$LeadEmail', '$DataFeedProvider', '$OtherDataFeedProvider', '$DataFeedMainContactFirst', '$DataFeedMainContactLast', '$DataFeedMainPhone1', '$DataFeedMainPhone2', '$DataFeedMainPhone3', '$DataFeedMainEmail', '$UsedCarsInStock', '$Rep', '$Program', '$Authorization', '$AgentFirstName', '$AgentLastName', '$Signature', '$DateSigned1', '$DateSigned2', '$DateSigned3', '$directory', '$facebook', '$YouTube', '$CaBID', '$SMS', '$MthlyPmt')
-	";
+	INSERT INTO dealers (DealerUserName, DealerPassword, RepName, DealerName, DealerStreet1, DealerStreet2, DealerCity, DealerState, DealerZip, DealerCountry, DealerWebsite, Franchise, DealerMainContactFirst, DealerMainContactLast, DealerCellPhone1, DealerCellPhone2, DealerCellPhone3, DealerOfficePhone1, DealerOfficePhone2, DealerOfficePhone3, OfficePhoneExt, DealerEmail, ContactPosition, AccountPayFirstName, AccountPayLastName, AccountPayableEmail, AccountPayableCell1, AccountPayableCell2, AccountPayableCell3, LeadCell1, LeadCell2, LeadCell3, LeadEmail, DataFeedProvider, OtherDataFeedProvider, DataFeedMainContactFirst, DataFeedMainContactLast, DataFeedMainPhone1, DataFeedMainPhone2, DataFeedMainPhone3, DataFeedMainEmail, UsedCarsInStock, Rep, Program, Authorization, AgentFirstName, AgentLastName, Signature, DateSigned, directory, facebook, YouTube, CaBID, SMS, MthlyPmt)
+	VALUES ('$DealerUserName', '$DealerPassword','$RepName', '$DealerName', '$DealerStreet1', '$DealerStreet2', '$DealerCity', '$DealerState', '$DealerZip', '$DealerCountry', '$DealerWebsite', '$Franchise', '$DealerMainContactFirst', '$DealerMainContactLast', '$DealerCellPhone1', '$DealerCellPhone2', '$DealerCellPhone3', '$OfficePhoneExt', '$DealerOfficePhone1', '$DealerOfficePhone2', '$DealerOfficePhone3', '$DealerEmail', '$ContactPosition', '$AccountPayFirstName', '$AccountPayLastName', '$AccountPayableEmail', '$AccountPayableCell1', '$AccountPayableCell2', '$AccountPayableCell3', '$LeadCell1', '$LeadCell2', '$LeadCell3', '$LeadEmail', '$DataFeedProvider', '$OtherDataFeedProvider', '$DataFeedMainContactFirst', '$DataFeedMainContactLast', '$DataFeedMainPhone1', '$DataFeedMainPhone2', '$DataFeedMainPhone3', '$DataFeedMainEmail', '$UsedCarsInStock', '$Rep', '$Program', '$Authorization', '$AgentFirstName', '$AgentLastName', '$Signature', '$DateSigned', '$directory', '$facebook', '$YouTube', '$CaBID', '$SMS', '$MthlyPmt')
+	";	
 
 	$result= mysql_query($add_dealer);
+	
+	restore_error_handler();
+	
 	if (!$result) {
-    		die('Invalid query: ' . mysql_error());
-		}		
+    		die('There was an error- Please go back and try again.  We have been notified of this error.');
+		}	
 
-	//retrieve employee ID info from Employee Table	
-	$SelEmpl = mysql_query("
-	SELECT employeeID FROM employees
-	WHERE employee='".$RepName."'
-	");
+	$name = $AccountPayFirstName . " " . $AccountPayLastName;
+	$address1 = $DealerStreet1;
+	$address2 = $DealerStreet2;
+	$city = $DealerCity;
+	$state = $DealerState;
+	$zip = $DealerZip;
+	$phoneNumber = $AccountPayableCell1 . $AccountPayableCell2 . $AccountPayableCell3;
+	$email = $AccountPayableEmail;
 
-	while ($row = mysql_fetch_array($SelEmpl))
-	{
-		$employeeID= $row ['employeeID'];			
-	}
+	$amount = $MthlyPmt . ".00";
 
-	//Get employee name from Referral Table (to receive bonus for their empl signing a dealership
-	
-	$SelEmplReferral = mysql_query("
-	SELECT EmployeeName  
-	FROM  Referrals
-	WHERE NewEmplName ='".$RepName."'
-	");
-
-	while ($row = mysql_fetch_array($SelEmplReferral))
-	{
-		$EmplReferral= $row ['EmployeeName'];			
-	}
-
-	//Get email address of EmplReferral
-	
-	$SelEmplReferralEmail = mysql_query("
-	SELECT EmplEmail
-	FROM  employees
-	WHERE employee ='".$EmplReferral."'
-	");
-
-	while ($row = mysql_fetch_array($SelEmplReferralEmail))
-	{
-		$EmplReferralEmail= $row ['EmplEmail'];			
-	}
-
-	
-	//Calculate Commission & Referral Fee
-	if ($Program == "798") {
-		$Commission = "300";
-		$ReferralAmount="60";
-	}
-	else {
-		$Commission = "150";
-		$ReferralAmount="30";
-	}
-	
-
-	//retrieve Dealer ID info from Dealer Table
-
-	$SelDealer = mysql_query("
-	SELECT DealerID FROM dealers
-	WHERE DealerName='".$DealerName."'
-	");
-	while ($row = mysql_fetch_array($SelDealer))
-
-	{
-		$DealerID= $row ['DealerID'];			
-	}
-
-
-
-	//Run query to Add Transaction to database	
-
-	$add_transaction = "
-	INSERT INTO transactions (eID, employee, registered, Commission, DealerName, DealerID, member, EmplReferral, ReferralAmount)
-	VALUES ('$employeeID', '$RepName', '$Program', '$Commission', '$DealerName', '$DealerID', '$member', '$EmplReferral', '$ReferralAmount')
-	";
-
-	$result2= mysql_query($add_transaction);
-	if (!$result2) {
-    		die('Invalid query: ' . mysql_error());
-		}
-
-	//Create session variable from data and redirect page
-	$_SESSION['DealerUser']=$DealerUserName;
-
-	//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO SYSTEM
-		$to = "classifiedridewebsite@gmail.com";
-		$subject = $DealerName . " registered for the $" .  $Program . "program." ;
-		$message = $DealerName . " registered for the $" .  $Program . " program.  Their rep is: " . $RepName . ".  Their email is: " . $DealerEmail . ".  " . $EmplReferral . "(" . $EmplReferralEmail . ") should receive a referral bonus.";
-		$from = $DealerEmail;
-		$headers = "From:" . $from;
-		mail($to,$subject,$message,$headers);
-
-		//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO DEALER
-		$to = $DealerEmail;
-		$subject = "Thank you for registering with us" ;
-		$message = " Thanks for registering for the $" .  $Program . " program.  Your rep is: " . $RepName;
-		$from = "classifiedridewebsite@gmail.com";
-		$headers = "From:" . $from;
-		mail($to,$subject,$message,$headers);
-
-		//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO REFERRAL
-		$to = $EmplReferralEmail;
-		$subject = $RepName . " Signed " . $DealerName . ".";
-		$message = $RepName . " Signed " . $DealerName . ".";
-		$from = "classifiedridewebsite@gmail.com";
-		$headers = "From:" . $from;
-		mail($to,$subject,$message,$headers);
+	$var1 = $DateSigned;
+	$month = substr($var1, 0, 2);
+	$day = substr($var1, 3, 2);
+	$year = substr($var1, 6, 4);
+	$sep = "-";
+	$startDate = $year . $sep . $month . $sep . $day;
 			
-		header( 'Location: /Dealers.php' ) ;
+	require_once '../Forms/DealerPaymentForm.php';
 ?>
 
 

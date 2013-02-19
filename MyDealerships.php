@@ -8,26 +8,12 @@
 	
 	//Connect to Database	
 	require_once 'includes/db_config.php';
+	require_once 'Functions/Functions.php';
 
-	$user = $_SESSION['user'];
 
-
-//Get Employee ID from Username
-$GetEmployee = mysql_query("
-	SELECT employee
-	FROM employees
-	WHERE EmplUserName='$user' ");
-
-while ($row = mysql_fetch_array($GetEmployee)) {
+while ($row = mysql_fetch_array($GetEmployeeName)) {
 	$employee = $row['employee'];
 }
-
-//Count Dealerships for User
-$CountDeal = mysql_query("
-	SELECT DealerID
-	FROM dealers
-	WHERE RepName='$employee' ");
-$num_rows = mysql_num_rows($CountDeal);
 ?>
 
 
@@ -35,12 +21,19 @@ $num_rows = mysql_num_rows($CountDeal);
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Dealer Profile | ClassifiedRide</title>
+<title>My Dealerships | ClassifiedRide</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>           
+	<?php 
+	if (isset($_SESSION[admin])) {
+		include 'includes/header_Admin.php'; 
+	}
+	else {
+		include 'includes/header.php'; 
+	}
+	?>
 </div>
 <div id="container">
 	<div id="main">
@@ -58,13 +51,13 @@ $num_rows = mysql_num_rows($CountDeal);
 			WHERE RepName='$employee'
 			ORDER BY DealerName ASC");
 
-		if ( $num_rows == 0 ){
+		if ( $numDealersUser == 0 ){
 		echo "<center><font color='red'>You have not signed any dealerships!</font></center>"; 
 		}
 		else {
 		?>
 
-		<?php echo "<p align='center'><strong>Showing " . $num_rows . " Dealerships for " . $employee . "</p></strong>"; ?>
+		<?php echo "<p align='center'><strong>Showing " . $numDealersUser . " Dealerships for " . $employee . "</p></strong>"; ?>
 
 		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
@@ -79,7 +72,7 @@ $num_rows = mysql_num_rows($CountDeal);
 		<div id="export">
 			<table width="300" border="0" cellpadding="0" cellspacing="0" align="center">
 				<tr>
-					<td><p align="center"><a href="ExportCSV_MY-Dealers.php">Export all <?php echo $num_rows; ?> of  my Dealers to .csv</a></p></td>
+					<td><p align="center"><a href="ExportCSV_MY-Dealers.php">Export all <?php echo $numDealersUser; ?> of  my Dealers to .csv</a></p></td>
 				</tr>
 			</table>
 		</div>	

@@ -7,16 +7,8 @@
 	}
 	
 	//Connect to Database	
-	$user = $_SESSION['user'];
-	$admin = $_SESSION['admin'];
-	
 	require_once 'includes/db_config2.php';
-
-	$NumTotalReferrals = mysql_query("
-	SELECT RefID
-	FROM Referrals");
-	$num_rows = mysql_num_rows($NumTotalReferrals);
-	
+	require_once 'Functions/AdminFunctions.php';	
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -28,7 +20,14 @@
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>
+	<?php 
+	if (isset($_SESSION[admin])) {
+		include 'includes/header_Admin.php'; 
+	}
+	else {
+		include 'includes/header.php'; 
+	}
+	?>
 </div>
 <div id="container">
 	<div id="main">
@@ -39,31 +38,38 @@
 	<div id="profile">
 		<?php 
 		if (isset($_SESSION[admin])) {
-			echo "<p align='center'><strong>Total # of Referral Relationships Found:" .  $num_rows . "</strong></p>";	
+			echo "<p align='center'><strong>Total # of Referral Relationships Found:" .  $num_Referrals . "</strong></p>";	
 		}
 		?>
 		
-		<table align="center" cellpadding="10" cellspacing="0" border="0" width="550" class="table">
+		<table align="center" cellpadding="10" cellspacing="0" border="0" width="600" class="table">
 			<tr valign="top">
 				<td>
 					<div id="referral">
-						<?php include 'includes/referralFeed.php';?>
+						<table cellpadding="0" cellspacing="0" border="0" align="center">
+							<tr valign="top">
+								<td>
+								<?php
+								GetReferrals();
+								?>
+								</td>
+							</tr>
+						</table>						
 					</div>
 				</td>
 			</tr>	
 		</table>
-		<div id="export">
-			<?php if (isset($_SESSION[admin])) {
-			echo "
-			<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'>
-				<tr><td>&nbsp;</td></tr>				
-				<tr>
-					<td align='center'><form action='/ExportCSV_Referrals.php'><input class='Button' type='submit' value='Export All Referral Data to .csv' /></form></td>
-				</tr>
-			</table>";
-			}
+		<div id="export">	
+			<?php
+			if (isset($_SESSION[admin])) {
 			?>
-		</div>	
+			<table width="300" border="0" cellpadding="0" cellspacing="0" align="center">
+				<tr>
+					<td><center><form action='/ExportCSV_Referrals.php'><input class='Button' type='submit' value='Export All  <?php echo $num_Referrals; ?> Referrals' /></form></center></td>
+				</tr>
+			</table>
+			<?php } ?>
+		</div>
 	</div>
 </div>
 <?php require_once 'includes/footer.php'; ?>

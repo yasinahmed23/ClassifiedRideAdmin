@@ -1,22 +1,5 @@
-<table cellpadding="5" cellspacing="0" border="0" align="center" width="850">
-	<tr>
-		<td align="center"><strong>Date/Time</strong></td>		
-		<td align="center"><strong>Trans ID</strong></td>				
-		<td align="center"><strong>Dealership</td>
-		<td align="center"><strong>Registered</td>
-		<td align="center"><strong>Renewed</td>
-		<td align="center"><strong>Employee</strong></td>
-		<td align="center"><strong>Commission</td>
-		<td align="center"><strong>Manager</td>
-		<td align="center"><strong>Referral</td>
-	</tr>
+<table cellpadding="0" cellspacing="0" border="0" width="900" align="center" >
 	<?php
-	//Display 10 newest posts
-	$GetTransactions = mysql_query("
-		SELECT *
-		FROM transactions 
-		ORDER BY TransactionID DESC");
-
 	while ($row = mysql_fetch_array($GetTransactions)) {
 		$TransactionDate = $row['TransactionDate'];
 		$TransactionID = $row['TransactionID'];
@@ -26,18 +9,21 @@
 		$DealerName = $row['DealerName'];
 		$member = $row['member'];
 		$registered = $row['registered'];
+		$registered = number_format($registered, 2);
 		$EmplReferral = $row['EmplReferral'];
 		$Renewed = $row['Renewed'];
+		$Renewed = number_format($Renewed, 2);
 		$Commission = $row['Commission'];
+		$Commission = number_format($Commission, 2);
 		$ReferralAmount = $row['ReferralAmount'];
 	?>
 	<tr valign='top'>
 		<td colspan='11' align='center'><hr /></td>
 	</tr>
 	<tr>
-		<td align="center"><p><?php echo $TransactionDate;?></p></td>		
-		<td align="center"><p><?php echo $TransactionID;?></p></td>
-		<td align="center"><p>
+		<td align="center" width="100"><p><?php echo $TransactionDate;?></p></td>		
+		<td align="center" width="75"><p><?php echo $TransactionID;?></p></td>
+		<td align="center" width="120"><p>
 		<?php 
 		//Get Employee Referal's Email
 			$GetDealerEmail = mysql_query("
@@ -50,7 +36,7 @@
 		echo "<p><a href='mailto:$DealerEmail'>" . $DealerName . "</a></p>";
 		?>
 		</p></td>
-		<td align="center"><p>
+		<td align="center" width="75"><p>
 			<?php			
 			if (empty($registered)) {
     				echo "----";
@@ -59,7 +45,7 @@
 			}
 
 			?></p></td>		
-		<td align="center"><p>
+		<td align="center" width="75"><p>
 		<?php			
 		if (empty($Renewed)) {
 			echo "----";
@@ -69,7 +55,7 @@
 
 		?></p></td>
 		
-		<td align="center" width="75">
+		<td align="center" width="150">
 		<?php 
 		//Get Dealer Rep's Email
 			$GetRepsEmail = mysql_query("
@@ -82,7 +68,7 @@
 		echo "<p><a href='mailto:$EmplEmail'>" . $employee . "</a></p>";
 		?>
 		</td>
-		<td align="center"><p>
+		<td align="center" width="75"><p>
 			<?php			
 			if (empty($Commission)) {
     				echo "";
@@ -92,7 +78,7 @@
 			?>
 			</p>
 		</td>
-		<td align="center" width="75">
+		<td align="center" width="150">
 		<?php 
 		//Get Employee Referal's Email
 			$GetRefEmail = mysql_query("
@@ -105,7 +91,7 @@
 		echo "<p><a href='mailto:$EmplEmail'>" . $EmplReferral . "</a></p>";
 		?>
 		</td>
-		<td align="center">
+		<td align="center" width="75">
 		<?php			
 		if (empty($ReferralAmount)) {
 			echo "----" ;
@@ -118,4 +104,3 @@
 	<?php } 
 	?>
 </table>
-

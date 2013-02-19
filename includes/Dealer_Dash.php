@@ -24,40 +24,39 @@ while ($row = mysql_fetch_array($GetDealerInfo))
 	$DealerContactPhone = ($row['DealerCellPhone1']) . "-" . ($row['DealerCellPhone2']) . "-" . ($row['DealerCellPhone3']);
 	$RepName = $row['RepName'];
 	$Program = $row['Program'];
-	$MemberStatus = $row['MemberStatus'];
-					
+	$MemberStatus = $row['MemberStatus'];		
 }
 
 
-if ($SMS=="SMSDeclined") {
+if ($SMS=="SMSDeclined"|| $SMS=="") {
 	$SMSclass="FeatureDisabled";
 }
 else if ($SMS=="SMSON") {
 	$SMSclass="FeatureEnabled";
 }
 
-if ($CaBID=="CaBIDDeclined") {
+if ($CaBID=="CaBIDDeclined" || $CaBID=="") {
 	$CaBIDclass="FeatureDisabled";
 }
 else if ($CaBID=="CaBIDON") {
 	$CaBIDclass="FeatureEnabled";
 }
 
-if ($YouTube=="YouTubeDeclined") {
+if ($YouTube=="YouTubeDeclined" || $YouTube=="") {
 	$YouTubeclass="FeatureDisabled";
 }
 else if ($YouTube=="CaBIDON") {
 	$YouTubeclass="FeatureEnabled";
 }
 
-if ($facebook=="FacebookDeclined") {
+if ($facebook=="FacebookDeclined" || $facebook=="") {
 	$Facebookclass="FeatureDisabled";
 }
 else if ($facebook=="FacebookON") {
 	$Facebookclass="FeatureEnabled";
 }
 
-if ($directory=="DirectoryDeclined") {
+if ($directory=="DirectoryDeclined" || $directory=="") {
 	$Directoryclass="FeatureDisabled";
 }
 else if ($directory=="directoryON") {
@@ -67,9 +66,9 @@ else if ($directory=="directoryON") {
 ?>
 <div id="DashboardContent">
 <br />
-<table>
+<table width=100% border="0" cellspacing="0" cellpadding="0">
 	<tr valign="top">
-		<td colspan="2"><strong>Add-On Features</strong></td>
+		<td colspan="2">Add-On Features</td>
 	</tr>
 	<tr valign="top">
 	
@@ -80,7 +79,7 @@ else if ($directory=="directoryON") {
 					Email Leads
 					</td>
 					<td width="10" align="center">
-					&nbsp;
+					On
 					</td>
 				</tr>
 	
@@ -90,7 +89,7 @@ else if ($directory=="directoryON") {
 					</td>
 					<td width="10" align="center" class="<?php echo $SMSclass; ?>">
 					<?php
-					if ($SMS=="SMSDeclined") {
+					if ($SMS=="SMSDeclined" || $SMS=="") {
 						echo "Off";
 					}
 					else {
@@ -106,7 +105,7 @@ else if ($directory=="directoryON") {
 					</td>
 					<td width="10" align="center" class="<?php echo $CaBIDclass; ?>">
 					<?php
-					if ($CaBID=="CaBIDDeclined") {
+					if ($CaBID=="" || $CaBID=="CaBIDDeclined" ) {
 						echo "Off";
 					}
 					else if ($CaBID=="CaBIDON") {
@@ -125,7 +124,7 @@ else if ($directory=="directoryON") {
 					if ($YouTube=="YouTubeON") {			
 						echo "On";
 					}
-					else {
+					else if ($YouTube=="" || $YouTube=="YouTubeDeclined") {	
 						echo "<br />Off";
 					}
 					?>
@@ -141,7 +140,7 @@ else if ($directory=="directoryON") {
 					if ($facebook=="facebookON") {			
 						echo "On";
 					}
-					else if ($facebook=="FacebookDeclined") {
+					else if ($facebook=="" ||$facebook=="FacebookDeclined") {
 						echo "<br />Off";
 					}
 					?>
@@ -152,12 +151,12 @@ else if ($directory=="directoryON") {
 					<td width="90" align="center" class="<?php echo $Directoryclass; ?>">
 					Dealer Directory 
 					</td>
-					<td width="10" class="<?php echo $Facebookclass; ?>">
+					<td width="10" class="<?php echo $Directoryclass; ?>">
 					<?php
 					if ($directory=="directoryON") {			
 						echo "On";
 					}
-					else if ($directory=="DirectoryDeclined") {
+					else if ($directory=="" || $directory=="DirectoryDeclined" ) {
 						echo "<br />Off";
 					}
 					?>
@@ -171,14 +170,15 @@ else if ($directory=="directoryON") {
 				</tr>
 			</table>
 		</td>
-		<td>
-			<table width="430" cellpadding="0" cellspacing="0" border="0">
+		<td width="10">&nbsp;</td>
+		<td width="330">
+			<table width="330" cellpadding="0" cellspacing="0" border="0">
 				<tr valign="top">		
-					<td>
-						<table align="center">
+					<td width="150">
+						<table align="center" width=100%>
 							
 							<tr valign="top">
-								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
+								<td align="center"><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
 										<strong>Email Leads</strong>	
@@ -207,12 +207,13 @@ else if ($directory=="directoryON") {
 								<td>&nbsp;</td>
 							</tr>
 							<tr valign="top">
-								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
+								<td align="center"><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
-										<img src="/images/Cabid.jpg" width="86" alt="Cabid: Bid-Offer Negotiation Leads">
-										<!--RETURN SCRIPT FOR CABID HERE -->
-										<p><font size="-2">(This will come from Josh)<font><p>
+										<strong>Dealer Directory</strong>
+										<!--RETURN SCRIPT FOR DEALER DIRECTORY HERE -->
+										<p><font size="-2">(This will come from Tommy)<font><p>
+													
 										</td>
 									</tr>
 								</table>
@@ -220,11 +221,12 @@ else if ($directory=="directoryON") {
 							</tr>
 						</table>
 					</td>
-					<td>
+					<td width="10">&nbsp;</td>
+					<td width="150">
 						<table align="center">
 							
 							<tr valign="top">
-								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
+								<td align="center"><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
 										<img src="/images/youtube.jpg" width="75" alt="YOU TUBE: Inventory Videos" border="0">
@@ -234,12 +236,12 @@ else if ($directory=="directoryON") {
 									</tr>
 								</table>
 								</td>
-							</tr
+							</tr>
 							<tr valign="top">
 								<td>&nbsp;</td>
 							</tr>
 							<tr valign="top">
-								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
+								<td align="center"><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
 										<img src="/images/Facebook2.jpg" width="75" alt="FACEBOOK: 25,000 'LIKES' Fan Page">
@@ -254,13 +256,12 @@ else if ($directory=="directoryON") {
 								<td>&nbsp;</td>
 							</tr>
 							<tr valign="top">
-								<td><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
+								<td align="center"><table width="150" cellpadding="5" cellspacing="0" border="0" class="table2">
 									<tr valign="top">
 										<td align="center">
-										<strong>Dealer Directory</strong>
-										<!--RETURN SCRIPT FOR DEALER DIRECTORY HERE -->
-										<p><font size="-2">(This will come from Tommy)<font><p>
-													
+										<img src="/images/Cabid.jpg" width="86" alt="Cabid: Bid-Offer Negotiation Leads">
+										<!--RETURN SCRIPT FOR CABID HERE -->
+										<p><font size="-2">(This will come from Josh)<font><p>
 										</td>
 									</tr>
 								</table>

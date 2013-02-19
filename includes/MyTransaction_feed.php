@@ -1,10 +1,8 @@
 <div id="MyTrans">
 <?php 
-	$user = $_SESSION['user'];
-
 	//Check to see if any transactions exist by employeeID if so, proceed
 	if ( mysql_num_rows( $GetTrans ) == 0 ){
-		echo ""; 
+		echo "<p align='center'><em>Once you start signing dealerships, you can view them here</em></p>"; 
 	}
 	else {
 	?>
@@ -12,7 +10,6 @@
 	<table cellpadding="5" cellspacing="0" border="0" width="530" class="table">
 		<tr valign="top">
 			<td>
-				<div id="MyTransFeed">
 				<table cellpadding="0" cellspacing="0" border="0" align="center" width="440">
 					<tr valign="top">
 						<td width="10" align="right">&nbsp;</td>
@@ -21,6 +18,9 @@
 						<td align="center" width="130"><strong>Type</strong></td>
 						<td align="center" width="100"><strong>Commission</strong></td>
 					</tr>
+				</table>
+				<div id="MyTransFeed">
+				<table cellpadding="0" cellspacing="0" border="0" align="center" width="440">
 					<?php
 					$CountTrans=0;
 					while ($row = mysql_fetch_array($GetTrans)) 
@@ -49,7 +49,7 @@
 							if (empty($Commission)) {
 				    				echo "";
 							} else {
-				    				echo "$" . $Commission;
+				    				echo "$" . number_format($Commission, 2);
 							}
 
 							?>
@@ -67,7 +67,7 @@
 	<tr>
 		<td>
 		<?php 
-		echo "<p align='center'><font size='-2'>Total from Registration (" . $num_Regs . "):  $" . $RegCommissionTotal['total'] . "<br />Total From Renewals (" . $num_Renewals . "):  $" . $RenewCommissionTotal['total'] . "<br /><strong>TOTAL COMMISSION EARNED FROM MY DEALERSHIPS  : $" . $CommTOTAL . "</strong></font></p>";
+		echo "<p align='center'><font size='-2'>Total from Registration (" . $num_Regs . "):  $" . number_format($RegCommissionTotal['total'], 2) . "<br />Total From Renewals (" . $num_Renewals . "):  $" . number_format($RenewCommissionTotal['total'], 2) . "<br /><strong>TOTAL COMMISSION EARNED FROM MY DEALERSHIPS  : $" . number_format($CommTOTAL, 2) . "</strong></font></p>";
 		?></strong></font></p>
 		</td>
 	</tr>
@@ -78,7 +78,7 @@
 	<?php 
 	//Check to see if rep has hired any employees and if so, check if they have signed any dealerships
 	if ( mysql_num_rows( $GetMyReferrals ) == 0 ){
-		echo ""; 
+		echo "<p align='center'><em>Once you hire someone, you can view them here</em></p>"; 
 	}
 	else {
 	?>
@@ -86,13 +86,15 @@
 	<table border="0" cellspacing="0" cellpadding="5" class="table" width="380" align="right">
 		<tr valign="top">
 			<td>
-				<div id="MyTransFeed">
 				<table border="0" cellpadding="0" cellspacing="0" align="center" width="350">
 					<tr valign="top">
-						<td width="10" align="left">&nbsp;</td>
-						<td align="center"><strong>Name</strong></td>
-						<td align="center"><strong>Total Residuals</strong></td>
+						<td width="20" align="left">&nbsp;</td>
+						<td align="center" width="220"><strong>Name</strong></td>
+						<td align="center" width="110"><strong>Total Residuals</strong></td>
 					</tr>
+				</table>
+				<div id="MyTransFeed">
+				<table border="0" cellpadding="0" cellspacing="0" align="center" width="350">
 					<?php
 					$GetMyReferrals = mysql_query("
 					SELECT *
@@ -111,8 +113,8 @@
 						<td colspan="3" align="center"><hr /></td>
 					</tr>
 					<tr valign="top">
-						<td width="10" align="right"><p><?php echo $CountNumManaged . ")&nbsp;"; ?></p></td>
-						<td>
+						<td width="20" align="right"><p><?php echo $CountNumManaged . ")&nbsp;"; ?></p></td>
+						<td width="220">
 							<?php
 							$GetNumDealers = mysql_query("
 							SELECT RepName
@@ -129,9 +131,9 @@
 
 							$num_HiredByReferral = mysql_num_rows($GetNumHired);
 							?>
-							<p><a href="mailto:<?php echo $NewEmpEmail; ?>"><?php echo $NewEmplName;?></a> <br />(signed <?php echo $num_DealersReferred . " Dealers and hired " . $num_HiredByReferral . " people)";?></p>
+							<p><a href="mailto:<?php echo $NewEmpEmail; ?>"><?php echo $NewEmplName;?></a> <br />(signed <?php echo $num_DealersReferred . " Dealers and hired " . $num_HiredByReferral . " ppl)";?></p>
 						</td>
-						<td align="center">
+						<td align="center" width="110">
 							<?php
 							$GetRefComm = mysql_query("
 							SELECT SUM(ReferralAmount) 
@@ -143,7 +145,7 @@
 								echo "----";
 							}
 							else {
-							echo "<p>$" . $RefCommissionTotal['total'] . " </p>";
+							echo "<p>$" . number_format($RefCommissionTotal['total'], 2) . " </p>";
 							}
 							?>
 						</td>
@@ -159,7 +161,7 @@
 	<tr>
 		<td>
 		<?php
-		echo "<p align='center'><font size='-2'><strong>TOTAL RESIDUALS EARNED FROM BEING A MANAGER: $" . $RefCommTotal['total'] . "</strong></font></p>";
+		echo "<p align='center'><font size='-2'><strong>TOTAL RESIDUALS EARNED FROM BEING A MANAGER: $" . number_format($RefCommTotal['total'], 2) . "</strong></font></p>";
 		?>
 		</td>
 	</tr>

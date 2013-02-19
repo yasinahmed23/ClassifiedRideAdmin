@@ -6,7 +6,7 @@
 		<td align="center"><strong>Location</strong></td>		
 		<td align="center"><strong>Main Contact</td>
 		<td align="center"><strong>Phone Number</td>
-		<td align="center"><strong>Program</td>
+		<td align="center"><strong>Payment</td>
 		<td align="center" width="100"><strong>Status</strong></td>
 	</tr>
 	<?php
@@ -23,6 +23,7 @@
 	$RepName = $row['RepName'];
 	$Program = $row['Program'];
 	$MemberStatus = $row['MemberStatus'];
+	$MthlyPmt= $row['MthlyPmt'];
 	?>
 
 	<!--Disply data from database into a table -->
@@ -40,7 +41,7 @@
 			<p><a href="mailto:<?php echo $DealerEmail; ?>"><?php echo $DealerContact . ", " . $ContactPosition;?></a></p>
 		</td>
 		<td align="center"><?php echo $DealerContactPhone;?></td>
-		<td align="center"><?php echo "$" . $Program;?></td>
+		<td align="center"><?php echo "$" . number_format($MthlyPmt, 2);?></td>
 		<td align="center" width="100">
 		<?php
 		if ($MemberStatus="INACTIVE") {

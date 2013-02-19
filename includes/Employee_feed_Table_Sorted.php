@@ -1,11 +1,11 @@
 <ul id="infinite_scroll">
 	<div id="postedEmployees">
-		<table cellpadding="0" cellspacing="0" border="0" width="770">
-			<tr>
-				<td align="center"><strong>Employee ID</strong></td>
-				<td align="center"><strong>Name</strong></td>
-				<td align="center"><strong>Location</strong></td>
-				<td align="center"><strong>Pic</strong></td>
+		<table cellpadding="0" cellspacing="0" border="0" width="750" align="center">
+			<tr valign="top">
+				<td align="center" width="22">&nbsp;</td>
+				<td align="center" width="256"><strong>Name</strong></td>
+				<td align="center" width="236"><strong>Location</strong></td>
+				<td align="center" width="236"><strong>Pic</strong></td>
 			</tr>			
 			<?php 
 			$SQLquery = mysql_query("
@@ -14,7 +14,7 @@
 				where TimeRegistered between date_sub(now(),INTERVAL '$numdays' DAY) and now()
 				ORDER BY employeeID ASC
 				LIMIT 5");
-
+			$rownumber=0;
 			while($data = mysql_fetch_object($SQLquery)){
 				$TimeRegistered = $data->TimeRegistered;
 				$employeeID = $data->employeeID ;
@@ -24,24 +24,25 @@
 				$EmplCity = $data->EmplCity ;
 				$EmplState = $data->EmplState ;
 				$pic = $data->pic ;
+				$rowNumber++;
 			?>
 			<!--Disply data from database into a table -->
 
 			<?php echo "
 			<div class='postedEmployee' employeeID=\"$data->employeeID \">
 				<tr valign='top'>
-					<td colspan='7' align='center'><hr /></td>
+					<td colspan='4' align='center'><hr /></td>
 				</tr>
-				<tr>					
-					<td align='center'><li>"."$employeeID </li></td>
-						<td align='center'><li><p><a href='mailto:$EmplEmail'>" . "$EmplFirstName $EmplLastName</a></p></li></td>
-						<td align='center'><li>" . "$EmplCity $EmplState </li></td>		
-						<td align='center'><li>";if ($pic == null || $pic == "") {
-								printf("<img src='/images/No_Image_Available.gif' width='100'>");
-							}
-							else {
-								printf("<img src='/uploads/$pic' width='100'>");
-							};echo "</li></td>
+				<tr valign='top'>				
+					<td align='center' width='22'><li>"."$rowNumber </li></td>
+					<td align='center' width='256'><li><p><a href='mailto:$EmplEmail'>" . "$EmplFirstName $EmplLastName</a></p></li></td>
+					<td align='center' width='256'><li>" . "$EmplCity $EmplState </li></td>		
+					<td align='center' width='236'><li>";if ($pic == null || $pic == "") {
+							printf("<img src='/images/No_Image_Available.gif' width='100'>");
+						}
+						else {
+							printf("<img src='/uploads/$pic' width='100'>");
+						};echo "</li></td>
 				</tr>
 			</div>";
 			 } 

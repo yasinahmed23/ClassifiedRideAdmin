@@ -10,26 +10,37 @@
 	require_once 'includes/db_config.php';
 
 	$user = $_SESSION['user'];
-	$admin = $_SESSION['admin'];
-
-	$GetTrans = mysql_query("
-	SELECT TransactionID
-	FROM transactions");
-	$num_rows = mysql_num_rows($GetTrans);
-
+	$admin = $_SESSION['admin'];	
 	
+	require_once 'Functions/AdminFunctions.php';
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<script type="text/javascript">
+function validateForm()
+{
+	var numdays=document.forms["SortTrans"]["numdays"].value;
+	if (numdays==null || numdays=="")
+	{alert("You must enter the # of Days that you want to search");
+	return false;}
+}
+</script>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Transactions | ClassifiedRide</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top">
-	<?php include 'includes/header.php'; ?>
+	<?php 
+	if (isset($_SESSION[admin])) {
+		include 'includes/header_Admin.php'; 
+	}
+	else {
+		include 'includes/header.php'; 
+	}
+	?>
 </div>
 <div id="container">
 	<div id="main">
@@ -39,24 +50,31 @@
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
 		
-		<?php 
-		if (isset($_SESSION[admin])) {
-			echo " 
-		<form id='SortTrans' name='SortTrans' method='post' action='TransactionsSorted.php'>
-			<p align='center'><font size='+1'><strong>Total # of Transactions : " .  $num_rows . "</strong>&nbsp;&dash;&nbsp;View Transactions from last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
+		<form id="SortTrans" name="SortTrans" method="post" action="TransactionsSorted.php" onsubmit="return validateForm()">
+			<p align="center"><font size="+1"><strong>Total # of Transactions: <?php echo $NumTransactions; ?></strong>&nbsp;&dash;&nbsp;View Transactions from last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength="3"/> Days. <input name="submit" type="submit" class="Button" id="submit" value="GO" />
 			</font></p>
 		</form>
-		";	
-		}
-		?>
-		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
+		<table width="925" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
-				<div id="referral">
+					<table cellpadding="0" cellspacing="0" border="0" width="900" align="center" >
+						<tr>
+							<td align="center" width="100"><strong>Date/Time</strong></td>		
+							<td align="center" width="75"><strong>Trans ID</strong></td>				
+							<td align="center" width="120"><strong>Dealership</td>
+							<td align="center" width="75"><strong>Registered</td>
+							<td align="center" width="75"><strong>Renewed</td>
+							<td align="center" width="150"><strong>Employee</strong></td>
+							<td align="center" width="75"><strong>Commission</td>
+							<td align="center" width="150"><strong>Manager</td>
+							<td align="center" width="75"><strong>Referral</td>
+						</tr>
+					</table>
+					<div id="referral">
 					<?php 
-					include 'includes/transactionFeed.php';
+						include 'includes/transactionFeed.php';
 					?>
-				</div>
+					</div>
 				</td>
 			</tr>
 		</table>
@@ -65,7 +83,7 @@
 			echo "
 			<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'>
 				<tr>
-					<td align='center'><form action='/ExportCSV_Transactions.php'><input class='Button' type='submit' value='Export All $num_rows Transactions to .csv' /></form></td>
+					<td align='center'><form action='/ExportCSV_Transactions.php'><input class='Button' type='submit' value='Export All $NumTransactions Transactions to .csv' /></form></td>
 				</tr>
 			</table>";
 			}

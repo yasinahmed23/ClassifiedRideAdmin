@@ -1,22 +1,20 @@
-<table cellpadding="5" cellspacing="0" border="0" align="center" width="750">
+<table cellpadding="5" cellspacing="0" border="0" align="center" width="100%">
 	<tr>
-		<td align="center">&nbsp;</td>		
-		<td align="center"><strong>Time Registered</strong></td>				
-		<td align="center"><strong>Name</strong></td>	
-		<td align="center"><strong>City</strong></td>		
-		<td align="center"><strong>State</strong></td>
-		<td align="center"><strong>Main Contact</td>
-		<td align="center"><strong>Representative</td>
-		<td align="center"><strong>Program</td>
+		<td align="center" width="20">&nbsp;</td>		
+		<td align="center" width="80"><strong>Start Date</strong></td>				
+		<td align="center" width="170"><strong>Name</strong></td>	
+		<td align="center" width="150"><strong>Location</strong></td>		
+		<td align="center" width="170"><strong>Representative</td>
+		<td align="center" width="60"><strong>Program</td>
+		<td align="center" width="190"><strong>Monthly Payment</td>
 	</tr>
-
+</table>
+<div id="referral">
+<table cellpadding="5" cellspacing="0" border="0" align="center" width="100%">
 <?php
 //Get data from database and assign to a variable
-$sql = mysql_query("
-	SELECT *
-	FROM dealers");
 $CountDealers=0;
-while ($row = mysql_fetch_array($sql)) {
+while ($row = mysql_fetch_array($GetDealerInfo)) {
 	$DealerID = $row['DealerID'];
 	$TimeRegistered = $row['TimeRegistered'];
 	$DealerName = $row['DealerName'];
@@ -27,21 +25,32 @@ while ($row = mysql_fetch_array($sql)) {
 	$DealerContactPhone = ($row['DealerCellPhone1']) . "-" . ($row['DealerCellPhone2']) . "-" . ($row['DealerCellPhone3']);
 	$RepName = $row['RepName'];
 	$Program = $row['Program'];
+	$MthlyPmt = $row['MthlyPmt'];
+	$MthlyPmt = number_format($MthlyPmt, 2);
+	$StartDate = $row['StartDate'];
+	
 	$CountDealers++;
 ?>
 	
 <!--Disply Dealers from database into a table -->
 	<tr valign='top'>
-		<td colspan='8' align='center'><hr /></td>
+		<td colspan='9' align='center'><hr /></td>
 	</tr>
 	<tr>
-		<td align="center"><?php echo $CountDealers;?></td>		
-		<td align="center"><?php echo $TimeRegistered;?></td>
-		<td align="center"><?php echo $DealerName;?></td>		
-		<td align="center"><?php echo $DealerCity;?></td>
-		<td align="center"><?php echo $DealerState;?></td>
-		<td align="center"><?php echo "<p><a href='mailto:$DealerEmail'>" . $DealerContact . "</a></p>";?></td>
-		<td align="center" width="70">
+		<td align="center" width="20"><?php echo $CountDealers;?></td>		
+		<td align="center" width="80"><?php 
+					if ($StartDate!="") {
+					echo $StartDate;
+					}
+					else {
+						echo "<font color='red' size='-2'>Start Date Not Set Yet</font>";
+					}
+				?>
+		</td>
+		<td align="center" width="170"><?php echo $DealerName;?></td>		
+		<td align="center" width="150"><?php echo $DealerCity . ", " . $DealerState;?></td>
+		<!--<td align="center"><?php echo "<p><a href='mailto:$DealerEmail'>" . $DealerContact . "</a></p>";?></td>-->
+		<td align="center" width="170">
 			<?php 
 				//Get Dealer Rep's Email
 				$GetRepsEmail = mysql_query("
@@ -56,8 +65,10 @@ while ($row = mysql_fetch_array($sql)) {
 				
 			?>
 		</td>
-		<td align="center"><?php echo "$" . $Program;?></td>
+		<td align="center" width="60"><?php echo "$" . $Program;?></td>
+		<td width="190" align="center"><?php echo "$" . $MthlyPmt;?></td>
 	</tr>
 <?php } 
 ?>
 </table>
+</div>

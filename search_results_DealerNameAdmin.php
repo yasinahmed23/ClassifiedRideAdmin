@@ -11,6 +11,13 @@
 
 	$user = $_SESSION['user'];
 
+	$DealerName= $_POST['search_string'];
+	
+	$GetDealerInfo = mysql_query("
+		SELECT *
+		FROM  transactions
+		WHERE DealerName='".$DealerName."'");
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -26,7 +33,7 @@
 
 <div id="container">
 	<div id="main">
-		<?php include 'includes/Employee_main.php'?>
+		<?php include 'includes/main.php'?>
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
@@ -34,11 +41,15 @@
 			<font size="+2"><strong>
 			<?php echo "Dealer Transaction Search Results"?></strong></font>
 		</div>
-		<table width="700" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
+		<?php 
+			$count=mysql_num_rows($GetDealerInfo);
+			if ($count==1) {
+			?>
+		<table width="850" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
 				<div id="referral">
-					<table cellpadding="5" cellspacing="0" border="0" align="center">
+					<table cellpadding="5" cellspacing="0" border="0" align="center" width=100%>
 						<tr valign="top">
 							<td align="center"><strong>Date/Time</strong></td>		
 							<td align="center"><strong>Trans ID</strong></td>				
@@ -55,14 +66,7 @@
 
 					//Get data from database and assign to a variable
 
-					$DealerName= $_POST['search_string'];
-
-					$sql = mysql_query("
-						SELECT *
-						FROM  transactions
-						WHERE DealerName='".$DealerName."'");
-
-					while ($row = mysql_fetch_array($sql)) 
+					while ($row = mysql_fetch_array($GetDealerInfo)) 
 					{
 					$TransactionDate = $row['TransactionDate'];
 					$TransactionID = $row['TransactionID'];
@@ -76,6 +80,8 @@
 					$Renewed = $row['Renewed'];
 					$Commission = $row['Commission'];
 					$ReferralAmount = $row['ReferralAmount'];
+					$MthlyPmt = $row['MthlyPmt'];					
+						
 					?>
 	
 					<!--Disply data from database into a table -->
@@ -103,7 +109,7 @@
 								if (empty($registered)) {
 					    				echo "----";
 								} else {
-					    				echo "$" . $registered;
+					    				echo "$" . number_format($registered, 2);
 								}
 
 								?></p></td>		
@@ -112,7 +118,7 @@
 							if (empty($Renewed)) {
 				    				echo "----";
 							} else {
-				    				echo "$" . $Renewed;
+				    				echo "$" . number_format($Renewed, 2);
 							}
 
 							?></p></td>
@@ -134,7 +140,7 @@
 								if (empty($Commission)) {
 					    				echo "";
 								} else {
-					    				echo "$" . $Commission;
+					    				echo "$" . number_format($Commission, 2);
 								}
 								?>
 								</p>
@@ -149,7 +155,12 @@
 								while ($row = mysql_fetch_array($GetRefEmail)) {
 									$EmplEmail = $row['EmplEmail'];
 									}
-							echo "<p><a href='mailto:$EmplEmail'>" . $EmplReferral . "</a></p>";
+							if (empty($EmplReferral)) {
+								echo "No Referral Listed";
+							}
+							else {
+								echo "<p><a href='mailto:$EmplEmail'>" . $EmplReferral . "</a></p>";
+							}
 							?>
 							</td>
 							<td align="center">
@@ -157,14 +168,20 @@
 							if (empty($ReferralAmount)) {
 				    				echo "----" ;
 							} else {
-								echo "<p>$" . $ReferralAmount . "</p>";
+								echo "<p>$" . number_format($ReferralAmount, 2) . "</p>";
 							}
 							?>
 						</td>
 						</tr>
 					<?php } 
 					?>
-					</table>		
+					</table>
+					<?php }
+
+					else {
+					echo "<p align='center'><font color='red'>No Results Found.  Please Select from the Drop-Down to ensure accuracy</font></p>";
+					}
+					?>		
 				</div>
 			</td>
 		</tr>
