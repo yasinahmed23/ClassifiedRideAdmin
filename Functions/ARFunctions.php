@@ -67,40 +67,34 @@
 		}
 	}
 
-	//Get Status of Feature
-	function GetDirectoryStatus($connector) {
-		$SelectStatus = "SELECT directory FROM dealers WHERE DealerName='".$DealerName."'";
-		$GetStatus = $connector->query($SelectStatus);
-
-		while ($row = mysql_fetch_array($GetStatus)) {
-	  		$directory = $row[0];
-		
-		return $directory;
-		mysql_close();
-		}
-	}
-
 	//Turn Directory ON
 	function DirectoryOn($connector) {
 		$connector = new DbConnector();
 		$DealerName=$_POST['DealerName'] ;
 
-		$SetOn = "UPDATE dealers SET directory='directoryON' WHERE DealerName='$DealerName'";
+		//Get Directory Status
+		$SelectStatus = "SELECT directory FROM dealers WHERE DealerName='".$DealerName."'";
+		$GetStatus = $connector->query($SelectStatus);
+
+		while ($row = mysql_fetch_array($GetStatus)) {
+  			$directory = $row[0];
+		}
+			//Proceed if directory is off
+			if ($directory!="directoryON") {
+				$SetOn = "UPDATE dealers SET directory='directoryON' WHERE DealerName='$DealerName'";
 	
-		$result = $connector->query($SetOn);
+				$result = $connector->query($SetOn);
 		
-		//Get Monthly Payment
-		$MthlyPmt = GetPmt($connector);
+				//Get Monthly Payment
+				$MthlyPmt = GetPmt($connector);		
 
-		//Get Status of Feature
-		
+				//Calculate Payment
+				$MthlyPmt=$MthlyPmt+99;
 
-		//Calculate Payment only if currently turned off
-		$MthlyPmt=$MthlyPmt+99;
-
-		//Update Monthly Payment
-		$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
-		$SetPmt = $connector->query($UpdatePmt);
+				//Update Monthly Payment
+				$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+				$SetPmt = $connector->query($UpdatePmt);
+			}
 
 		mysql_close();
 	}
@@ -109,20 +103,28 @@
 	function DirectoryOFF($connector) {
 		$connector = new DbConnector();
 		$DealerName=$_POST['DealerName'] ;
-		$SetDeclined = "UPDATE dealers SET directory='DirectoryDeclined' WHERE DealerName='$DealerName'";
-	
-		$result = $connector->query($SetDeclined);
+		
+		//Get Directory Status
+		$SelectStatus = "SELECT directory FROM dealers WHERE DealerName='".$DealerName."'";
+		$GetStatus = $connector->query($SelectStatus);
 
-		//Get Status of Feature
+		while ($row = mysql_fetch_array($GetStatus)) {
+  			$directory = $row[0];
+		}
+		
+		//Proceed if directory is on
+		if ($directory=="directoryON") {
+			$SetDeclined = "UPDATE dealers SET directory='DirectoryDeclined' WHERE DealerName='$DealerName'";
+			$result = $connector->query($SetDeclined);
 
-		//Calculate Payment only if currently turned on
-		$MthlyPmt = GetPmt($connector);
-		$MthlyPmt=$MthlyPmt-99;
+			//Calculate Payment 
+			$MthlyPmt = GetPmt($connector);
+			$MthlyPmt=$MthlyPmt-99;
 
-		//Update Monthly Payment
-		$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
-		$SetPmt = $connector->query($UpdatePmt);
-
+			//Update Monthly Payment
+			$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+			$SetPmt = $connector->query($UpdatePmt);
+		}
 		mysql_close();
 	}
 
@@ -130,19 +132,29 @@
 	function FaceBookOFF($connector) {
 		$connector = new DbConnector();
 		$DealerName=$_POST['DealerName'] ;
-		$SetDeclined = "UPDATE dealers SET facebook='FacebookDeclined' WHERE DealerName='$DealerName'";
+
+		//Get facebook Status
+		$SelectStatus = "SELECT facebook FROM dealers WHERE DealerName='".$DealerName."'";
+		$GetStatus = $connector->query($SelectStatus);
+
+		while ($row = mysql_fetch_array($GetStatus)) {
+  			$facebook = $row[0];
+		}
+		
+		//Proceed if facebook is on
+		if ($facebook=="facebookON") {
+			$SetDeclined = "UPDATE dealers SET facebook='FacebookDeclined' WHERE DealerName='$DealerName'";
 	
-		$result = $connector->query($SetDeclined);
+			$result = $connector->query($SetDeclined);
 
-		//Get Status of Feature
+			//Calculate Payment 
+			$MthlyPmt = GetPmt($connector);
+			$MthlyPmt=$MthlyPmt-1490;
 
-		//Calculate Payment only if currently turned off
-		$MthlyPmt = GetPmt($connector);
-		$MthlyPmt=$MthlyPmt-1490;
-
-		//Update Monthly Payment
-		$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
-		$SetPmt = $connector->query($UpdatePmt);
+			//Update Monthly Payment
+			$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
+			$SetPmt = $connector->query($UpdatePmt);		
+		}
 
 		mysql_close();
 	}
@@ -151,20 +163,29 @@
 	function FaceBookOn($connector) {
 		$connector = new DbConnector();
 		$DealerName=$_POST['DealerName'] ;
+
+		//Get facebook Status
+		$SelectStatus = "SELECT facebook FROM dealers WHERE DealerName='".$DealerName."'";
+		$GetStatus = $connector->query($SelectStatus);
+
+		while ($row = mysql_fetch_array($GetStatus)) {
+  			$facebook = $row[0];
+		}
+		
+		//Proceed if facebook is off
+		if ($facebook!="facebookON") {
 		$SetOn = "UPDATE dealers SET facebook='facebookON' WHERE DealerName='$DealerName'";
 	
 		$result = $connector->query($SetOn);
 
-		//Get Status of Feature
-
-		//Calculate Payment only if currently turned on
+		//Calculate Payment 
 		$MthlyPmt = GetPmt($connector);
 		$MthlyPmt=$MthlyPmt+1490;
 
 		//Update Monthly Payment
 		$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
 		$SetPmt = $connector->query($UpdatePmt);
-
+		}
 		mysql_close();
 	}
 
@@ -173,20 +194,29 @@
 	function YouTubeOFF($connector) {
 		$connector = new DbConnector();
 		$DealerName=$_POST['DealerName'] ;
+
+		//Get YouTube Status 
+		$SelectStatus = "SELECT YouTube FROM dealers WHERE DealerName='".$DealerName."'";
+		$GetStatus = $connector->query($SelectStatus);
+
+		while ($row = mysql_fetch_array($GetStatus)) {
+  			$YouTube = $row[0];
+		}
+		
+		//Proceed if YouTube is on
+		if ($YouTube=="YouTubeON") {
 		$SetDeclined = "UPDATE dealers SET YouTube='YouTubeDeclined' WHERE DealerName='$DealerName'";
 	
 		$result = $connector->query($SetDeclined);
 
-		//Get Status of Feature
-
-		//Calculate Payment only if currently turned on
+		//Calculate Payment 
 		$MthlyPmt = GetPmt($connector);		
 		$MthlyPmt=$MthlyPmt-199;
 
 		//Update Monthly Payment
 		$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
 		$SetPmt = $connector->query($UpdatePmt);
-
+		}
 		mysql_close();
 	}
 
@@ -194,20 +224,29 @@
 	function YouTubeOn($connector) {
 		$connector = new DbConnector();
 		$DealerName=$_POST['DealerName'] ;
+
+		//Get YouTube Status
+		$SelectStatus = "SELECT YouTube FROM dealers WHERE DealerName='".$DealerName."'";
+		$GetStatus = $connector->query($SelectStatus);
+
+		while ($row = mysql_fetch_array($GetStatus)) {
+  			$YouTube = $row[0];
+		}
+		
+		//Proceed if YouTube is off
+		if ($YouTube!="YouTubeON") {
 		$SetOn = "UPDATE dealers SET YouTube='YouTubeON' WHERE DealerName='$DealerName'";
 	
 		$result = $connector->query($SetOn);
 
-		//Get Status of Feature
-
-		//Calculate Payment only if currently turned off
+		//Calculate Payment 
 		$MthlyPmt = GetPmt($connector);
 		$MthlyPmt=$MthlyPmt+199;
 
 		//Update Monthly Payment
 		$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
 		$SetPmt = $connector->query($UpdatePmt);
-
+		}
 		mysql_close();
 	}
 			
@@ -215,20 +254,29 @@
 	function SMSOn($connector) {
 		$connector = new DbConnector();
 		$DealerName=$_POST['DealerName'] ;
+		
+		//Get SMS Status
+		$SelectStatus = "SELECT SMS FROM dealers WHERE DealerName='".$DealerName."'";
+		$GetStatus = $connector->query($SelectStatus);
+
+		while ($row = mysql_fetch_array($GetStatus)) {
+  			$SMS = $row[0];
+		}
+		
+		//Proceed if SMS is off
+		if ($SMS!="SMSON") {
 		$SetOn = "UPDATE dealers SET SMS='SMSON' WHERE DealerName='$DealerName'";
 	
 		$result = $connector->query($SetOn);
 
-		//Get Status of Feature
-
-		//Calculate Payment only if currently turned off
+		//Calculate Payment 
 		$MthlyPmt = GetPmt($connector);
 		$MthlyPmt=$MthlyPmt+990;
 
 		//Update Monthly Payment
 		$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
 		$SetPmt = $connector->query($UpdatePmt);
-
+		}
 		mysql_close();
 	}
 
@@ -237,20 +285,29 @@
 	function SMSOff($connector) {
 		$connector = new DbConnector();
 		$DealerName=$_POST['DealerName'] ;
+
+		//Get SMS Status
+		$SelectStatus = "SELECT SMS FROM dealers WHERE DealerName='".$DealerName."'";
+		$GetStatus = $connector->query($SelectStatus);
+
+		while ($row = mysql_fetch_array($GetStatus)) {
+  			$SMS = $row[0];
+		}
+			
+		//Proceed if SMS is off
+		if ($SMS=="SMSON") {
 		$SetDeclined = "UPDATE dealers SET SMS='SMSDeclined' WHERE DealerName='$DealerName'";
 	
 		$result = $connector->query($SetDeclined);
 
-		//Get Status of Feature
-
-		//Calculate Payment only if currently turned on
+		//Calculate Payment 
 		$MthlyPmt = GetPmt($connector);
 		$MthlyPmt=$MthlyPmt-990;
 
 		//Update Monthly Payment
 		$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
 		$SetPmt = $connector->query($UpdatePmt);
-	
+		}
 		mysql_close();
 	}
 
@@ -259,20 +316,29 @@
 	function CabidOff($connector) {
 		$connector = new DbConnector();
 		$DealerName=$_POST['DealerName'] ;
+
+		//Get Cabid Status
+		$SelectStatus = "SELECT CaBID FROM dealers WHERE DealerName='".$DealerName."'";
+		$GetStatus = $connector->query($SelectStatus);
+
+		while ($row = mysql_fetch_array($GetStatus)) {
+  			$CaBID = $row[0];
+		}
+		
+		//Proceed if Cabid is on
+		if ($CaBID=="CaBIDON") {
 		$SetDeclined = "UPDATE dealers SET CaBID='CaBIDDeclined'WHERE DealerName='$DealerName'";
 	
 		$result = $connector->query($SetDeclined);
 
-		//Get Status of Feature
-
-		//Calculate Payment only if currently turned on
+		//Calculate Payment
 		$MthlyPmt = GetPmt($connector);
 		$MthlyPmt=$MthlyPmt-399;
 
 		//Update Monthly Payment
 		$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
 		$SetPmt = $connector->query($UpdatePmt);
-
+		}
 		mysql_close();
 	}
 
@@ -280,20 +346,29 @@
 	function CabidOn($connector) {
 		$connector = new DbConnector();
 		$DealerName=$_POST['DealerName'] ;
+
+		//Get Cabid Status
+		$SelectStatus = "SELECT CaBID FROM dealers WHERE DealerName='".$DealerName."'";
+		$GetStatus = $connector->query($SelectStatus);
+
+		while ($row = mysql_fetch_array($GetStatus)) {
+  			$CaBID = $row[0];
+		}
+		
+		//Proceed if Cabid is off
+		if ($CaBID!="CaBIDON") {
 		$SetOn = "UPDATE dealers SET CaBID='CaBIDON' WHERE DealerName='$DealerName'";
 	
 		$result = $connector->query($SetOn);
 
-		//Get Status of Feature
-
-		//Calculate Payment only if currently turned off
+		//Calculate Payment 
 		$MthlyPmt = GetPmt($connector);
 		$MthlyPmt=$MthlyPmt+399;
 
 		//Update Monthly Payment
 		$UpdatePmt = "UPDATE dealers SET MthlyPmt=$MthlyPmt WHERE DealerName='$DealerName'";
 		$SetPmt = $connector->query($UpdatePmt);
-	
+		}
 		mysql_close();
 	}
 
@@ -364,8 +439,6 @@
 
 	//Get Dealer by Name
 	$DealerName= $_POST['search_string'];
-
-	
 
 	$GetDealerInfo = mysql_query("
 		SELECT *

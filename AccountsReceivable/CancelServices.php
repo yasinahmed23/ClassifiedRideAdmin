@@ -14,16 +14,17 @@
 		require_once '../Functions/dbConnector.php';
 
 		//Set Dealer Status to Inactive
-		dealerInactive($connector);
+		//dealerInactive($connector);
 
 		//Set Cancelled Date
-		dealerCancelDate($connector);
+		//dealerCancelDate($connector);
 	
 		//Turn Features Off
 		SMSOff($connector);
 		CabidOff($connector);
 		YouTubeOFF($connector);
 		FaceBookOFF($connector);
+
 		DirectoryOFF($connector);		
 
 		//Reload Page For User

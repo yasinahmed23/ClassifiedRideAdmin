@@ -1,5 +1,6 @@
 
 <?php
+//Used By /Dealer_List.php
 function getDealers($connector) {
 	include("dbConnector2.php");
 	

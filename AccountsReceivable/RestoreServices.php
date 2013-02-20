@@ -14,7 +14,7 @@
 		require_once '../Functions/dbConnector.php';
 
 		//Set Restore Date
-		dealerRestoreDate($connector);
+		//dealerRestoreDate($connector);
 			
 		//Turn Features Off
 		SMSOn($connector);
