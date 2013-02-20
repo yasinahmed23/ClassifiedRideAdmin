@@ -17,7 +17,25 @@
 		mail($to,$subject,$message,$headers);
 		//printf("The error handler got the error! The error says %s", $error);
 		return true;
+		mysql_close();
 	} 
+	
+	function CountTotalDealers($connector) {
+		include("dbConnector2.php");
+	
+		$sql = "SELECT DealerID FROM dealers";
+
+		//Prepare
+		$stmt = $db_conn->prepare($sql);
+
+		//Execute= 
+		$stmt->execute();
+
+		//Count # found and print results
+		$result = $stmt->fetchAll();
+		$num_rows = count($result);
+		print_r($num_rows);
+	}
 
 	//Count All Employees
 	$GetEmployees = mysql_query("
@@ -159,12 +177,13 @@
 	$RenewCommissionTotal = mysql_fetch_assoc($RenewCountComm);
 
 	$CommTOTAL = ($RegCommissionTotal['total']) + ($RenewCommissionTotal['total']);	
+
 	
 	//Count All Dealers
 	$GetDealers = mysql_query("
 	SELECT DealerID, Program
 	FROM dealers");
-	$num_rows = mysql_num_rows($GetDealers);
+	//$num_rows = mysql_num_rows($GetDealers);
 
 	//Count Monthly Revenue from Dealer Registrations
 	$CountDealers = mysql_query(" 

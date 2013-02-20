@@ -1,7 +1,5 @@
 
 <?php
-include("dbConnector.php");
-
 function getDealers($connector) {
 	include("dbConnector2.php");
 	
@@ -74,24 +72,57 @@ function getDealers($connector) {
 	$stmt->bindColumn(59, $Cancelled);
 	$stmt->bindColumn(60, $LastLogin);
 	$stmt->bindColumn(61, $LastLoginLocation);
-	
+
+	echo "<table cellpadding='5' cellspacing='0' border='0' align='center' width='100%'>
+	<tr>
+		<td align='center' width='20'>&nbsp;</td>		
+		<td align='center' width='80'><strong>Start Date</strong></td>				
+		<td align='center' width='170'><strong>Name</strong></td>	
+		<td align='center' width='150'><strong>Location</strong></td>		
+		<td align='center' width='170'><strong>Representative</td>
+		<td align='center' width='110'><strong>Program</td>
+		<td align='center' width='150'><strong>Monthly Payment</td>
+	</tr>
+</table>
+		<div id='referral'>
+		<table cellpadding='5' cellspacing='0' border='0' align='center' width='100%'>";
+	$Count=1;
 	while($stmt->fetch()) {
-		echo "$DealerName, $Program, $MthlyPmt <br/>";
+		$Location = $DealerCity . ",&nbsp;" . $DealerState;
+	echo "<tr valign='top'>
+		<td colspan='7' align='center'><hr /></td>
+	</tr>
+	<tr>
+		<td align='center' width='20'>" . $Count . "</td>	
+		<td align='center' width='80'>";
+			if ($StartDate!="") {
+				echo $StartDate;
+			}
+			else {
+				echo "<font color='red' size='-2'>Start Date Not Set Yet</font>";
+			}
+		echo "</td>
+		<td align='center' width='170'>" . $DealerName . "</td>	
+		<td align='center' width='150'>" . $Location . "	</td>		
+		<td align='center' width='170'>";
+
+		//Get Dealer Rep's Email
+		$GetRepsEmail = mysql_query("
+			SELECT EmplEmail 	
+			FROM employees 
+			WHERE employee ='".$RepName."' ");
+
+		while ($row = mysql_fetch_array($GetRepsEmail)) {
+			$EmplEmail = $row['EmplEmail'];
+			}		
+		echo "<p><a href='mailto:$EmplEmail'>" . $RepName . "</a></p>";
+		echo "</td>
+		<td align='center' width='110'>$" . number_format($Program) . "</td>
+		<td align='center' width='150'>$" . number_format($MthlyPmt, 2) . "</td>
+	
+	</tr>";
+	$Count++;
 	}
-
-	/*$result = $stmt->fetchAll();
-
-	//Count # found and print results
-	$num_rows = count($result);
-	print_r($num_rows);
-	echo "&nbsp; dealer found<br /><br />";
-
-	//Print Results of query
-	print_r($result);*/
-	
+	echo "</div></table>";
 }
-getDealers($connector);
 ?>
-
-
-	

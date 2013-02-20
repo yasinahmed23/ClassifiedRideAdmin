@@ -12,6 +12,7 @@
 		}
 	date_default_timezone_set('America/Chicago');
 	$date = date('m/d/Y h:i:s a', time());
+	mysql_close();
 	}
 
 
@@ -25,6 +26,7 @@
 		mail($to,$subject,$message,$headers);
 		//printf("The error handler got the error! The error says %s", $error);
 		return true;
+		mysql_close();
 	} 
 	
 	function getDealerID($connector) {
@@ -74,6 +76,7 @@
 	  		$directory = $row[0];
 		
 		return $directory;
+		mysql_close();
 		}
 	}
 

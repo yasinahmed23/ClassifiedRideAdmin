@@ -9,6 +9,7 @@
 	//Connect to Database	
 	require_once 'includes/db_config.php';
  	require_once 'Functions/Functions.php';
+	require_once 'Functions/getalldealersfunction.php';
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -45,13 +46,13 @@ function validateForm()
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
 		<form id="SortDealers" name="SortDealers" method="post" action="/DealersSorted.php" onsubmit="return validateForm()">
-			<p align="center"><font size="+1"><strong>Total # of Dealerships <?php echo $num_rows; ?></strong>&nbsp;&dash;&nbsp;View Dealers added in last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
+			<p align="center"><font size="+1"><strong>Total # of Dealerships <?php CountTotalDealers($connector); ?></strong>&nbsp;&dash;&nbsp;View Dealers added in last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
 			</font></p>
 		</form>
 		<table width="850" cellpadding="5" cellspacing="0" border="0" class="table" align="center">
 			<tr>
 				<td>
-				<?php include 'includes/Dealer_feed.php'?>
+				<?php getDealers($connector);?>
 				
 				</td>
 			</tr>
