@@ -13,6 +13,8 @@
 		require_once '../Functions/ARFunctions.php';
 		require_once '../Functions/dbConnector.php';
 
+		$DealerName=$_POST['DealerName'] ;
+
 		//Set Restore Date
 		//dealerRestoreDate($connector);
 			

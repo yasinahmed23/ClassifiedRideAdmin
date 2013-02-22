@@ -416,7 +416,7 @@
 			die('Could not connect');
 		}
 	
-		$DealerName= "My Dealership";
+		$DealerName=$_POST['DealerName'] ;
 	
 		$GetDealerID = "SELECT DealerID FROM dealers WHERE DealerName='".$DealerName."'";
 	

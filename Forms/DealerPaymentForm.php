@@ -19,9 +19,6 @@
 
 	<input type="hidden" name="CustRefID" size="20" value = "PCNoAVS" class="textfield">
 	<input type="hidden" name="PONumber" size="20" value = "123" class="textfield">
-<table width="300" cellpadding="0" cellspacing="0" border="0" align="center">
-		<tr valign="top">
-			<td width="150">AMOUNT:<input type="text" name="Amount" size="5" value = "" class="textfield">
 	<input type="hidden" name="WalletDescription" size="10" value = "test">
 
 	<!--00 = Daily 10 = Weekly 20 = Bi-Monthly 30 = Every 4 weeks 40 = Every 8 Weeks 51 = Specified Day of the Month 70 = Quarterly 80 = Yearly 90 = Single-->

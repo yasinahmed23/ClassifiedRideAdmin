@@ -19,6 +19,7 @@
 		<div id="login-contents"><br />
 		<?php	
 			if (!isset($_SESSION[DealerUser])) {
+				echo "<center><strong>Dealer Login:</strong></center>";
 				include 'Dealer_login_form.php';
 				echo "<center><a href='dealers/ResetDealerPass.php'>Reset Password</a></center>";
 			}

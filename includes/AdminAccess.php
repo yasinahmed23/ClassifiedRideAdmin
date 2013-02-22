@@ -10,13 +10,18 @@
 
 <!--View Dealers-->
 <div>
-	<a href="/Dealer_List.php"><strong>DEALERS</strong></a>
+	<a href="/AccountsReceivable/index.php"><strong>DEALERS</strong></a>
 	<form action="/searchDealerName.php" name="search_Dealer" id="search_Dealer">
 		<input class="Button" type="submit" id="search_DealerName" name="search_DealerName" value="Search Dealers"  />
 </form>	
 	<br />
 
 </div>	
+
+<form action="/AccountsReceivable/index.php" name="receivable" id="receivable">
+		<input class="Button" type="submit" id="Actsreceivable" name="Actsreceivable" value="ACCOUNTS RECEIVABLE"  />
+</form>
+
 
 <form action="/Referrals.php" name="REFERRAL LIST" id="REFERRAL LIST">
 		<input class="Button" type="submit" id="REFERRAL_LIST" name="REFERRAL_LIST" value="Referral List"  />

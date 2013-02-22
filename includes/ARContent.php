@@ -5,9 +5,9 @@
 		<td align="center" width="100"><strong>Contact</strong></td>	
 		<td align="center" width="120"><strong>Billing Address</strong></td>
 		<td align="center" width="120"><strong>Phone</strong></td>		
-		<td align="center" width="100"><strong>Rep</td>
-		<td align="center" width="80"><strong>Monthly Bill</td>
-		<td align="center" width="200"><strong>Notes</td>
+		<td align="center" width="100"><strong>Rep</strong></td>
+		<td align="center" width="80"><strong>Monthly Bill</strong></td>
+		<td align="center" width="200"><strong>Notes</strong></td>
 	</tr>
 </table>
 <div id="referral">
@@ -50,7 +50,7 @@ while ($row = mysql_fetch_array($sql)) {
 	$Contact=$AccountPayFirstName . " " . $AccountPayLastName;
 
 	if ($MemberStatus=="INACTIVE") {
-		$fontColor="#C8C8C8";			
+		$fontColor="#666666";			
 		
 	} 
 	else {
@@ -91,4 +91,4 @@ while ($row = mysql_fetch_array($sql)) {
 ?>
 </table>
 </div>	
-<p align='center'><font color="#C8C8C8"><em>*Grey indicated the Dealership status is Inactive</em></font></p>	
+<p align='center'><font color="<?php echo $fontColor; ?>"><em>*Grey indicated the Dealership status is Inactive</em></font></p>	

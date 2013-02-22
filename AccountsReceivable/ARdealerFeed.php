@@ -366,15 +366,15 @@
 		<td width="220">&nbsp;</td>
 		<td align="center" onSubmit="if(!confirm('Are you sure that you want to terminate ALL features for this Dealer?')){return false;}">
 		<form id="cancel" name="cancel" method="post" action="CancelServices.php" onSubmit="if(!confirm('Are you sure that you want to terminate ALL services for this Dealer?')){return false;}">
-			<input name="DealerName" type="hidden" class="textfield" id="DealerName" value="My Dealership" />
+			<input name="DealerName" type="hidden" class="textfield" id="DealerName" value="<?php echo $DealerName; ?>" />
 			<input name="submit" type="submit" class="fsSubmitButton" id="submit" value="Turn Off All Features" />
 		</form>
 		
 		</td>
 		<td align="center">
 		<form id="restore" name="restore" method="post" action="RestoreServices.php" onSubmit="if(!confirm('Are you sure that you want to restore ALL features for this Dealer?')){return false;}">
-			<input name="DealerName" type="hidden" class="textfield" id="DealerName" value="My Dealership" />
-			<input name="submit" type="submit" class="fsSubmitButton" id="submit" value="Turn On ALl Features" />
+			<input name="DealerName" type="hidden" class="textfield" id="DealerName" value="<?php echo $DealerName; ?>" />
+			<input name="submit" type="submit" class="fsSubmitButton" id="submit" value="Turn On All Features" />
 		</form>
 		</td>
 	</tr>

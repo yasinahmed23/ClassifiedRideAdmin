@@ -8,10 +8,10 @@ var $link;
 function DbConnector(){
 
         // Get the main settings from the array we just loaded
-        $host = 'ClassifiedRideAd.db.10325553.hostedresource.com';
-        $db = 'ClassifiedRideAd';
-        $user = 'ClassifiedRideAd';
-        $pass = 'Fernando1!';
+        $host = '';
+        $db = '';
+        $user = '';
+        $pass = '';
 
         // Connect to the database
         $this->link = mysql_connect($host, $user, $pass);
@@ -22,7 +22,6 @@ function DbConnector(){
 	
   //*** Function: query, Purpose: Execute a database query ***
     function query($query) {
-
         $this->theQuery = $query;
         return mysql_query($query, $this->link);
 
@@ -30,19 +29,13 @@ function DbConnector(){
 
     //*** Function: fetchArray, Purpose: Get array of query results ***
     function fetchArray($result) {
-
         return mysql_fetch_array($result);
 
     }
 
     //*** Function: close, Purpose: Close the connection ***
     function close() {
-
         mysql_close($this->link);
-
-    }
-	
+    }	
 }
-
 ?>
-
