@@ -1,4 +1,6 @@
-<?php include_once("GoogleAnalyticsTracking.php") ?>
+<?php 
+	include_once("GoogleAnalyticsTracking.php");
+?>
 <div id="logo">
 	<table cellpadding="0" cellspacing="0" border="0">
 		<tr valign="top">
@@ -15,20 +17,15 @@
 	</table>
 </div>	
 <div id="login">
-	<table align="right"><tr valign="bottom"><td align="right">
-		<div id="login-contents"><br />
-		<?php	
-			if (!isset($_SESSION[DealerUser])) {
-				echo "<center><strong>Dealer Login:</strong></center>";
-				include 'Dealer_login_form.php';
-				echo "<center><a href='dealers/ResetDealerPass.php'>Reset Password</a></center>";
-			}
-			else {
-				echo $DealerUser . " you are logged in.";
-				echo "<br />";
-				echo "<form action='logoutDealer.php' onSubmit='alert('You are now logged out');' name='logout' id='logout'><input type='submit' value='Log Out' id='logout' name='logout' class='Button' /></form>";
-			}
-		?>
-		</div>
-	</td></tr></table>
+	<table align="right">
+		<tr valign="bottom">
+			<td align="right">
+			<div id="login-contents"><br />
+			<?php	
+				loginDealer($connector);
+			?>
+			</div>
+			</td>
+		</tr>
+	</table>
 </div>

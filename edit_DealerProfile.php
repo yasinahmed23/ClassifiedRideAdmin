@@ -2,14 +2,10 @@
 	//Enable Session Variables	
 	session_start();
 	
-	if (!isset($_SESSION[DealerUser])) {
-	header("location: login_errorDealer2.php ");
-	}
-	
 	//Connect to Database	
 	require_once 'includes/db_configDealers.php';
-
-	$DealerUser = $_SESSION['DealerUser'];
+	require_once 'Functions/DealerFunctions.php';
+	require_once'Functions/dbConnector.php';
 
 ?>
 

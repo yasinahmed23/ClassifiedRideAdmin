@@ -9,6 +9,7 @@
 	//Connect to Database	
 	require_once 'includes/db_configDealers.php';
 	require_once'Functions/DealerFunctions.php';
+	require_once'Functions/dbConnector.php';
 
 ?>
 

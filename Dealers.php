@@ -5,6 +5,7 @@
 	//Connect to Database	
 	require_once 'includes/db_config2.php';
 	require_once 'Functions/DealerFunctions.php';
+	require_once'Functions/dbConnector.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48,13 +49,38 @@
 	<div id="spacer2">&nbsp;</div>
 	<div id="profile">
 		<?php	
-		if (!isset($_SESSION[DealerUser])) {
-		include 'Forms/DealerSignupForm.php';
-		include 'Forms/formValidationDealer.php';
-		}
-		else {
-		include 'includes/contentDealer.php';
-		};
+			if (!isset($_SESSION[DealerUser])) {?>
+				<table width="700" cellpadding="10" cellspacing="0" border="0" class="table" align="center">
+					<tr>
+						<td>
+						<div id="RegistrationForm">
+							<table border="0" align="center" cellpadding="0" cellspacing="0" width="700">
+								<tr valign="top">
+									<td colspan="2"><font size="+1"><strong>Dealer Registration Form</strong></font></td>
+								</tr>
+								<tr>
+									<td colspan="2"><hr /></td>
+								</tr>
+							</table>
+							<?php if (!ae_detect_ie()) {  
+								echo "<p align='center'>Please use Internet Explorer to register.  <br /><br /><em>(Currently our Merchant Services Company is in transition<br /> & doesn't provice support for other browsers at the moment.  They tell us it will be enabled soon!)</em><br /><br />We apologize for any inconvenience.  If you are already registered, you may login in any browser.<br /><br />";
+								echo "<table align='center'><tr><td align='center'";
+								include 'includes/Dealer_login_form.php';
+								echo "</td></tr></table></p>";
+							}
+							else {
+								include 'Forms/DealerSignupForm.php';
+								include 'Forms/formValidationDealer.php';
+							}
+							?>			
+						</div>
+						</td>
+					</tr>
+				</table>
+				<?php }							
+			else {
+				include 'includes/contentDealer.php';
+			}
 		?>
 	</div>
 </div>

@@ -3,8 +3,8 @@ extract ($_POST);
 
 $cp="cert";              //values are "cert" or "prod"
 //$PaymentType = "CC";   //uncomment to limit to credit cards.
-$Gateway_ID = "7777777865";
-$HostedKey = "9cd9aab0-6785-451f-b4a0-9f90436d2c05";
+$Gateway_ID = "";
+$HostedKey = "";
 $RURL = "http://stephmcglathery.com/dealers/response.php";  
 $CURL = "http://stephmcglathery.com/dealers/DealerPmt_Cancel.php";    
 

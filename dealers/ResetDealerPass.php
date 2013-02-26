@@ -1,11 +1,11 @@
 <?php
 	//Enable Session Variables	
 	session_start();
-	$DealerUser = $_SESSION['DealerUser'];
 	
 	//Connect to Database	
-	require_once '../includes/db_config2.php';
-
+	require_once 'includes/db_config2.php';
+	require_once 'Functions/DealerFunctions.php';
+	require_once'Functions/dbConnector.php';
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -18,11 +18,11 @@
 </head>
 <body>
 <div id="top">
-	<?php include '../includes/headerDealer.php'; ?>
+	<?php include 'includes/headerDealer.php'; ?>
 </div>
 <div id="container">
 	<div id="main">
-		<?php include '../includes/Dealer_main.php'?>
+		<?php include 'includes/Dealer_main.php'?>
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">

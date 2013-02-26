@@ -2,8 +2,7 @@
 	//retrieve user info from database
 	$result = mysql_query("
 	SELECT * FROM employees
-	WHERE EmplUserName='".$user."'
-	");
+	WHERE EmplUserName='".$user."'");
 	while ($row = mysql_fetch_array($result))
 	{
 		$employeeID= $row ['employeeID'];	
