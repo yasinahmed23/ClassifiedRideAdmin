@@ -16,19 +16,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<title>Login Error</title>
+<title>Admin Login Error</title>
 <link href="styles/style.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id="top">
 	<?php 
-	include 'includes/header_Admin.php'; 
+	if (isset($_SESSION[admin])) {
+		include 'includes/header_Admin.php'; 
+	}
+	else {
+		include 'includes/header.php'; 
+	}
 	?>
 </div>
 <br />
 <div id="container">
 	<div id="main">
-		<?php include 'includes/main.php';
+		<?php include 'includes/nav.php';
 		?>
 	</div>
 	<div id="employees">

@@ -39,8 +39,15 @@
 </head>
 <body>
 <div id="top">
-	<?php 
+	<?php if (isset($_SESSION[admin])) {
+		include '../includes/header_Admin.php';
+	}
+	else if (!isset($_SESSION[ARadmin])) {
+		include '../includes/header.php';
+	}
+	else {
 	include '../includes/header_AR.php'; 
+	}
 	?>
 </div>
 <div id="container">	

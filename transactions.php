@@ -60,14 +60,13 @@ function validateForm()
 					<table cellpadding="0" cellspacing="0" border="0" width="900" align="center" >
 						<tr>
 							<td align="center" width="100"><strong>Date/Time</strong></td>		
-							<td align="center" width="75"><strong>Trans ID</strong></td>				
-							<td align="center" width="120"><strong>Dealership</td>
-							<td align="center" width="75"><strong>Registered</td>
-							<td align="center" width="75"><strong>Renewed</td>
+							<td align="center" width="120"><strong>Dealership</strong></td>
+							<td align="center" width="150"><strong>Type</strong></td>
+							<td align="center" width="75"><strong>Amount</strong></td>
 							<td align="center" width="150"><strong>Employee</strong></td>
-							<td align="center" width="75"><strong>Commission</td>
-							<td align="center" width="150"><strong>Manager</td>
-							<td align="center" width="75"><strong>Referral</td>
+							<td align="center" width="75"><strong>Commission</strong></td>
+							<td align="center" width="150"><strong>Manager</strong></td>
+							<td align="center" width="75"><strong>Referral</strong></td>
 						</tr>
 					</table>
 					<div id="referral">

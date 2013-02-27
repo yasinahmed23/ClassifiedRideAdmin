@@ -1,13 +1,4 @@
 <?php
-
-//Enable Session Variables	
-	session_start();
-
-//Connect to Database	
-	include '../includes/db_config2.php';
-	require_once '../Functions/DealerFunctions.php';
-
-
 $rspCode = $_GET['rspCode'];
 $TranNr = $_GET['TranNr'];
 $Date =$_GET['Date'];
@@ -41,21 +32,7 @@ $Description = $_GET['Description'];
 $mapCAID = $_GET['mapCAID'];
 $IndCode = $_GET['IndCode'];
 
-$Email = $_SESSION['email'];
-
-if ($rspCode == "00") {
-	echo "Transaction was Successful.  <br /><br />Your email address is :  " . $Email . "<br /><br />Amount: " . $amount . "<br /><br />Date: " . $Date;
-}
-else if ($rspCode=="null" || $rspCode=="") {
-	echo "No Response Code was Received, Transaction was Cancelled";
-}
-else {
-	echo "Transaction was declined";
-}
-
-
-/*
-//retrieve Dealer Name from Dealer Table
+	//retrieve Dealer Name from Dealer Table
 	$SelDealerName = mysql_query("
 	SELECT DealerName FROM dealers
 	WHERE AccountPayableEmail='".$Email."'
@@ -66,10 +43,10 @@ else {
 		$DealerName= $row ['DealerName'];			
 	}
 
-if ($rspCode!="00") {
+if ($Auth=="Declined") {
 	echo "Trans ID: " . $TransID . " was declined.  Reason:  " . $Notes;
 }
-else if ($rspCode=="00") {
+else {
 	//Set Dealer Status to Active
 	mysql_query("UPDATE dealers SET MemberStatus='Active'
 	WHERE AccountPayableEmail='".$Email."'");
@@ -195,6 +172,6 @@ else if ($rspCode=="00") {
 		$from = "classifiedridewebsite@gmail.com";
 		$headers = "From:" . $from;
 		mail($to,$subject,$message,$headers);
-*/
+}
 ?>
 

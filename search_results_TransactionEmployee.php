@@ -53,17 +53,16 @@
 			<tr>
 				<td>
 				<div id="referral">
-					<table cellpadding="7" cellspacing="0" border="0" align="center" width="850">
+					<table cellpadding="0" cellspacing="0" border="0" width="900" align="center" >
 						<tr>
-							<td align="center"><strong>Date/Time</strong></td>		
-							<td align="center"><strong>Trans ID</strong></td>				
-							<td align="center"><strong>Dealership</td>
-							<td align="center"><strong>Registered</td>
-							<td align="center"><strong>Renewed</td>
-							<td align="center"><strong>Representative</strong></td>
-							<td align="center"><strong>Commission</td>
-							<td align="center"><strong>Manager</td>
-							<td align="center"><strong>Referral</td>
+							<td align="center" width="100"><strong>Date/Time</strong></td>		
+							<td align="center" width="120"><strong>Dealership</strong></td>
+							<td align="center" width="150"><strong>Type</strong></td>
+							<td align="center" width="75"><strong>Amount</strong></td>
+							<td align="center" width="150"><strong>Employee</strong></td>
+							<td align="center" width="75"><strong>Commission</strong></td>
+							<td align="center" width="150"><strong>Manager</strong></td>
+							<td align="center" width="75"><strong>Referral</strong></td>
 						</tr>
 						<?php
 						//Get data from database and assign to a variable
@@ -94,8 +93,6 @@
 						<tr><td colspan="10" align="center"><hr></td></tr>
 						<tr>
 							<td align="center"><?php echo $TransactionDate; ?></td>		
-							<td align="center"><?php echo $TransactionID;?></td>	
-							
 							<td align="center">
 							<?php 
 							//Get Employee Referal's Email
@@ -109,26 +106,20 @@
 							echo "<p><a href='mailto:$DealerEmail'>" . $DealerName . "</a></p>";
 							?>
 							</td>
-							<td align="center">
+							<td align="center"><p>
 								<?php			
-								if (empty($registered)) {
-					    				echo "----";
-								} else {
-					    				echo "$" . $registered;
-								}
-
-								?>
-							</td>
-							<td align="center">
-								<?php			
-								if (empty($Renewed)) {
-					    				echo "----";
-								} else {
-					    				echo "$" . $Renewed;
-								}
-
-								?>
-							</td>
+									if ($registered>0) {
+						    				echo "Registration";
+										$amount = "$" . $registered;
+									} else if ($Renewed>0) {
+						    				echo "Renewal";
+										$amount = "$" . $Renewed;
+									}
+									?></p></td>		
+							<td align="center"><p>
+							<?php			
+								echo $amount;
+							?></p></td>
 							<td align="center">
 							<?php 
 							//Get Dealer Rep's Email

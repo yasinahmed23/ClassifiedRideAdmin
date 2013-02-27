@@ -49,17 +49,16 @@
 			<tr>
 				<td>
 				<div id="referral">
-					<table cellpadding="5" cellspacing="0" border="0" align="center" width=100%>
-						<tr valign="top">
-							<td align="center"><strong>Date/Time</strong></td>		
-							<td align="center"><strong>Trans ID</strong></td>				
-							<td align="center"><strong>Dealership</td>
-							<td align="center"><strong>Registered</td>
-							<td align="center"><strong>Renewed</td>
-							<td align="center"><strong>Representative</strong></td>
-							<td align="center"><strong>Commission</td>
-							<td align="center"><strong>Manager</td>
-							<td align="center"><strong>Referral</td>
+					<table cellpadding="0" cellspacing="0" border="0" width="900" align="center" >
+						<tr>
+							<td align="center" width="100"><strong>Date/Time</strong></td>		
+							<td align="center" width="120"><strong>Dealership</strong></td>
+							<td align="center" width="150"><strong>Type</strong></td>
+							<td align="center" width="75"><strong>Amount</strong></td>
+							<td align="center" width="150"><strong>Employee</strong></td>
+							<td align="center" width="75"><strong>Commission</strong></td>
+							<td align="center" width="150"><strong>Manager</strong></td>
+							<td align="center" width="75"><strong>Referral</strong></td>
 						</tr>
 
 					<?php
@@ -90,7 +89,6 @@
 						</tr>
 						<tr valign="top">
 							<td align="center"><p><?php echo $TransactionDate;?></p></td>		
-							<td align="center"><p><?php echo $TransactionID;?></p></td>
 							<td align="center"><p>
 							<?php 
 							//Get Employee Referal's Email
@@ -106,21 +104,17 @@
 							</p></td>
 							<td align="center"><p>
 								<?php			
-								if (empty($registered)) {
-					    				echo "----";
-								} else {
-					    				echo "$" . number_format($registered, 2);
-								}
-
-								?></p></td>		
+									if ($registered>0) {
+						    				echo "Registration";
+										$amount = "$" . number_format($registered, 2);
+									} else if ($Renewed>0) {
+						    				echo "Renewal";
+										$amount = "$" . number_format($Renewed, 2);
+									}
+									?></p></td>		
 							<td align="center"><p>
 							<?php			
-							if (empty($Renewed)) {
-				    				echo "----";
-							} else {
-				    				echo "$" . number_format($Renewed, 2);
-							}
-
+								echo $amount;
 							?></p></td>
 							<td align="center" width="75">
 							<?php 

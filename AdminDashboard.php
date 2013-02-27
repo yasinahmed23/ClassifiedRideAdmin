@@ -27,7 +27,7 @@
 </div>
 <div id="container">
 	<div id="main">
-		<?php require_once 'includes/main.php';
+		<?php require_once 'includes/nav.php';
 		?>
 	</div>	
 	<div id="spacer">&nbsp;</div>

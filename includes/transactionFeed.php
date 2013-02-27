@@ -22,7 +22,6 @@
 	</tr>
 	<tr>
 		<td align="center" width="100"><p><?php echo $TransactionDate;?></p></td>		
-		<td align="center" width="75"><p><?php echo $TransactionID;?></p></td>
 		<td align="center" width="120"><p>
 		<?php 
 		//Get Employee Referal's Email
@@ -36,23 +35,19 @@
 		echo "<p><a href='mailto:$DealerEmail'>" . $DealerName . "</a></p>";
 		?>
 		</p></td>
-		<td align="center" width="75"><p>
+		<td align="center" width="150"><p>
 			<?php			
-			if (empty($registered)) {
-    				echo "----";
-			} else {
-    				echo "$" . $registered;
+			if ($registered>0) {
+    				echo "Registration";
+				$amount = "$" . $registered;
+			} else if ($Renewed>0) {
+    				echo "Renewal";
+				$amount = "$" . $Renewed;
 			}
-
 			?></p></td>		
 		<td align="center" width="75"><p>
 		<?php			
-		if (empty($Renewed)) {
-			echo "----";
-		} else {
-			echo "$" . $Renewed;
-		}
-
+			echo $amount;
 		?></p></td>
 		
 		<td align="center" width="150">
