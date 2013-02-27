@@ -68,12 +68,12 @@ function validateForm()
 </div>	
 <div id="container">
 	<div id="main">
-		<?php include 'includes/main.php'?>
+		<?php include 'includes/nav.php'?>
 	</div>	
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
 		<form id="SortEmployees" name="SortEmployees" method="post" action="EmployeesSorted.php" onsubmit="return validateForm()">
-			<p align='center'><font size='+1'><strong>Total # of Employees : <?php echo $numEmployees; ?></strong>&nbsp;&dash;&nbsp;View Employees Added in the last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength="3"/> Days. <input name="submit" type="submit" class="Button" id="submit" value="GO" /></font></p>
+			<p align='center'><font size='+1'><strong>Total # of Employees : <?php echo $numEmployees; ?></strong>&nbsp;-&nbsp;View Employees Added in the last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength="3"/> Days. <input name="submit" type="submit" class="Button" id="submit" value="GO" /></font></p>
 		</form>
 		
 		<table width="770" cellpadding="5" cellspacing="0" border="0" class="table" align="center">

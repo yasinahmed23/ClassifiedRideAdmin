@@ -2,15 +2,10 @@
 	//Enable Session Variables	
 	session_start();
 	
-	if (!isset($_SESSION[DealerUser])) {
-	header("location: login_errorDealer2.php");
-	}
-	
 	//Connect to Database	
-	require_once 'includes/db_configDealers.php';
-	require_once'Functions/DealerFunctions.php';
-	require_once'Functions/dbConnector.php';
-
+	require_once 'includes/db_config_Dealer.php';
+	require_once 'Functions/DealerFunctions.php';
+	require_once 'Functions/dbConnector.php';
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -31,7 +26,8 @@
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">	
-		<?php include 'includes/MyDealerTransaction_feed.php';	
+		<?php
+			include 'includes/MyDealerTransaction_feed.php';	
 		?>
 		
 	</div>

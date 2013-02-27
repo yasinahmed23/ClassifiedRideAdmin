@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 50.63.106.13
--- Generation Time: Feb 01, 2013 at 03:04 PM
+-- Generation Time: Feb 26, 2013 at 02:58 PM
 -- Server version: 5.0.96
 -- PHP Version: 5.1.6
 
@@ -40,14 +40,13 @@ CREATE TABLE `transactions` (
   `ReferralAmount` text NOT NULL,
   PRIMARY KEY  (`TransactionID`),
   KEY `employeeID` (`eID`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=101 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=113 ;
 
 --
 -- Dumping data for table `transactions`
 --
 
 INSERT INTO `transactions` VALUES('2012-12-26 09:38:27', 80, 1, 'Stephanie l McGlathery', 1, 'My Dealership', 'Online Registration', '2487', 'Troy M Martoccia', '', '637.8', '60');
-INSERT INTO `transactions` VALUES('2012-12-26 10:39:28', 82, 2, 'Troy M Martoccia', 3, 'A New Dealership', 'Online Registration', '798', '', '', '389.4', '30');
 INSERT INTO `transactions` VALUES('2012-12-26 12:08:03', 83, 4, 'Angela R Longaberger', 4, 'ABC Dealership', 'Online Registration', '997', 'Stephanie l McGlathery', '', '339.8', '60');
 INSERT INTO `transactions` VALUES('2012-12-27 13:37:52', 84, 1, 'Stephanie l McGlathery', 5, 'ZYXDealer', 'Online Registration', '498', 'Troy M Martoccia', '', '169.8', '30');
 INSERT INTO `transactions` VALUES('2013-01-04 12:15:49', 85, 1, 'Stephanie l McGlathery', 6, 'This Dealership', 'Online Registration', '798', 'Troy M Martoccia', '', '300', '60');
@@ -58,3 +57,4 @@ INSERT INTO `transactions` VALUES('2013-01-21 15:53:40', 97, 4, 'Angela R Longab
 INSERT INTO `transactions` VALUES('2013-01-29 10:51:23', 98, 23, 'Glenn H Andersen', 14, 'Used Dealership #2', 'Online Registration', '3975', 'Troy M Martoccia', '', '935.4', '60');
 INSERT INTO `transactions` VALUES('2013-01-29 11:34:34', 99, 1, 'Stephanie l McGlathery', 15, 'New Dealership', 'Online Registration', '3975', 'Troy M Martoccia', '', '935.4', '60');
 INSERT INTO `transactions` VALUES('2013-01-30 15:08:46', 100, 23, 'Glenn H Andersen', 16, 'Old Dealership #2', 'Online Registration', '1988', 'Troy M Martoccia', '', '467.8', '30');
+INSERT INTO `transactions` VALUES('2013-02-04 14:13:21', 112, 1, 'Stephanie l McGlathery', 20, 'Old Dealership #3', 'Online Registration', '1988', 'Troy M Martoccia', '', '467.8', '30');

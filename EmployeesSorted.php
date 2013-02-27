@@ -68,7 +68,7 @@ $(document).ready(function(){
 </div>
 <div id="container">
 	<div id="main">
-		<?php include 'includes/main.php'?>
+		<?php include 'includes/nav.php'?>
 	</div>	
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">

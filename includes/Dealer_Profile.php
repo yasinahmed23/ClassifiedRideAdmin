@@ -1,5 +1,5 @@
 <?php
-//Get Transaction Info for Dealer Usere 
+	//Get Transaction Info for Dealer Usere 
 	$GetTransInfo = mysql_query("
 		SELECT *
 		FROM transactions
@@ -37,6 +37,11 @@ $GetDealerInfo = mysql_query("
 
 while ($row = mysql_fetch_array($GetDealerInfo)) 
 {
+$directory = $row['directory'];
+$facebook = $row['facebook'];
+$YouTube = $row['YouTube'];
+$CaBID = $row['CaBID'];
+$SMS = $row['SMS'];
 $DealerID = $row['DealerID'];
 $TimeRegistered = $row['TimeRegistered'];
 $DealerName = $row['DealerName'];
@@ -50,6 +55,8 @@ $Program = $row['Program'];
 $MemberStatus = $row['MemberStatus'];
 $MthlyPmt = $row['MthlyPmt'];
 $MthlyPmt = number_format($MthlyPmt, 2);
+$LastLogin = $row['LastLogin'];
+$LastLoginLocation = $row['LastLoginLocation'];
 
 //Get Rep Info for Dealer Usere 
 $GetRepInfo = mysql_query("

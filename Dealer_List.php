@@ -41,12 +41,12 @@ function validateForm()
 </div>
 <div id="container">
 	<div id="main">
-		<?php include 'includes/main.php'?>
+		<?php include 'includes/nav.php'?>
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
 		<form id="SortDealers" name="SortDealers" method="post" action="/DealersSorted.php" onsubmit="return validateForm()">
-			<p align="center"><font size="+1"><strong>Total # of Dealerships <?php CountTotalDealers($connector); ?></strong>&nbsp;&dash;&nbsp;View Dealers added in last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
+			<p align="center"><font size="+1"><strong>Total # of Dealerships <?php CountTotalDealers($connector); ?></strong>&nbsp;-&nbsp;View Dealers added in last  <input name="numdays" type="text" class="textfield" id="numdays" size="3" maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
 			</font></p>
 		</form>
 		<table width="850" cellpadding="5" cellspacing="0" border="0" class="table" align="center">

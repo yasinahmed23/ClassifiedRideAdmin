@@ -4,9 +4,9 @@
 	$DealerUser = $_SESSION['DealerUser'];
 	
 	//Connect to Database	
-	require_once '../includes/db_config2.php';
-	require_once '../Functions/DealerFunctions.php';
-	require_once'../Functions/dbConnector.php';
+	require_once 'includes/db_config2.php';
+	require_once 'Functions/DealerFunctions.php';
+	require_once 'Functions/dbConnector.php';
 
 ?>
 
@@ -15,16 +15,16 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Search | ClassifiedRide</title>
-<link href="../styles/style.css" rel="stylesheet" type="text/css" />
+<link href="styles/style.css" rel="stylesheet" type="text/css" />
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 </head>
 <body>
 <div id="top">
-	<?php include '../includes/headerDealer.php'; ?>
+	<?php include 'includes/headerDealer.php'; ?>
 </div>
 <div id="container">
 	<div id="main">
-		<?php include '../includes/Dealer_main.php'?>
+		<?php include 'includes/Dealer_main.php'?>
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">

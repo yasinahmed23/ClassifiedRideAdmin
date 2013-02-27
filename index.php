@@ -36,7 +36,7 @@
 <div id="container">
 	<div id="main">
 		<?php 
-		include 'includes/main.php';
+		include 'includes/nav.php';
 		?>
 	</div>
 	<div id="spacer">&nbsp;</div>

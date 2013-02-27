@@ -32,7 +32,7 @@
 <div id="container">	
 	<div id="main">
 		<?php 
-		include '../includes/AR_main.php';
+		include '../includes/nav.php';
 		?>
 	</div>
 	<div id="spacer">&nbsp;</div>
@@ -58,7 +58,7 @@
 		else {
 		echo "
 			<form id='SortTrans' name='SortTrans' method='post' action='/DealersSortedAR.php'>
-				<p align='center'><font size='+1'><strong>Total # of Dealerships : " .  $numDealers . "</strong>&nbsp;&dash;&nbsp;View Dealers added in last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
+				<p align='center'><font size='+1'><strong>Total # of Dealerships : " .  $numDealers . "</strong>&nbsp;-&nbsp;View Dealers added in last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
 				</font></p>
 			</form>
 			<table width='900' cellpadding='0' cellspacing='0' align='center' class='table' border='0'>
