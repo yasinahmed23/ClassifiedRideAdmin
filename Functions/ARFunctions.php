@@ -433,6 +433,33 @@
 		mysql_close();
 	}
 
+	function getOverDueDealers($connector) {
+	//$connector = new DbConnector();
+	$connector = new mysqli("ClassifiedRideAd.db.10325553.hostedresource.com", "ClassifiedRideAd", "Fernando1!", "ClassifiedRideAd");
+
+	/* prepare statement */
+	if ($stmt = $connector->prepare("SELECT transactions.TransactionDate, dealers.DealerName, dealers.RepName, dealers.MthlyPmt 
+		FROM transactions
+		INNER JOIN dealers
+		ON dealers.DealerID=transactions.DealerID
+		WHERE transactions.TransactionDate between date_sub(now(),INTERVAL 30 DAY) and now()")) {
+	    $stmt->execute();
+
+	    /* bind variables to prepared statement */
+	    $stmt->bind_result($TransactionDate, $DealerName, $RepName, $MthlyPmt);
+
+	    /* fetch values */
+	    while ($stmt->fetch()) {
+	       echo $TransactionDate . $DealerName . $RepName . $MthlyPmt . "<br /><br />";
+	    }
+
+	    /* close statement */
+	    $stmt->close();
+	}
+	/* close connection */
+	$connector->close();
+}
+
 	//Get All Dealer info for employee view
 	$GetAllDealerInfo = mysql_query("SELECT * FROM dealers ");
 	$numDealers = mysql_num_rows($GetAllDealerInfo);
