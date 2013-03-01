@@ -1,8 +1,4 @@
 <center><font size="+2"><strong><?php echo "Dealer Search Results"?></strong></font></center>
-<?php 
-	$numDealers=mysql_num_rows($GetDealerInfo);
-	if ($numDealers==1) {
-?>
 		<table cellpadding="2" cellspacing="0" border="0" align="center" class="table" width="100%">
 			<tr valign="top">
 				<td>
@@ -259,7 +255,7 @@
 									echo "<input type='submit' class='Button' name='directory' id='directory' value='Turn On'>";
 								}
 								else {
-								echo "<input type='submit' class='Button' name='directory' id='directory' value='Turn Off'>";
+									echo "<input type='submit' class='Button' name='directory' id='directory' value='Turn Off'>";
 								}
 								?>
 							</form>
@@ -354,28 +350,21 @@
 				</td>
 			</tr>
 		</table>
-<?php 
-	}
-
-	else {
-	echo "<p align='center'><font color='red'>No Results Found.  Please Select from the Drop-Down to ensure accuracy</font></p>";
-	}
-?>
-<table align="center">  
-	<tr valign="top">
-		<td width="220">&nbsp;</td>
-		<td align="center" onSubmit="if(!confirm('Are you sure that you want to terminate ALL features for this Dealer?')){return false;}">
-		<form id="cancel" name="cancel" method="post" action="CancelServices.php" onSubmit="if(!confirm('Are you sure that you want to terminate ALL services for this Dealer?')){return false;}">
-			<input name="DealerName" type="hidden" class="textfield" id="DealerName" value="<?php echo $DealerName; ?>" />
-			<input name="submit" type="submit" class="fsSubmitButton" id="submit" value="Turn Off All Features" />
-		</form>
+		<table align="center">  
+			<tr valign="top">
+				<td width="220">&nbsp;</td>
+				<td align="center" onSubmit="if(!confirm('Are you sure that you want to terminate ALL features for this Dealer?')){return false;}">
+				<form id="cancel" name="cancel" method="post" action="CancelServices.php" onSubmit="if(!confirm('Are you sure that you want to terminate ALL services for this Dealer?')){return false;}">
+					<input name="DealerName" type="hidden" class="textfield" id="DealerName" value="<?php echo $DealerName; ?>" />
+					<input name="submit" type="submit" class="fsSubmitButton" id="submit" value="Turn Off All Features" />
+				</form>
 		
-		</td>
-		<td align="center">
-		<form id="restore" name="restore" method="post" action="RestoreServices.php" onSubmit="if(!confirm('Are you sure that you want to restore ALL features for this Dealer?')){return false;}">
-			<input name="DealerName" type="hidden" class="textfield" id="DealerName" value="<?php echo $DealerName; ?>" />
-			<input name="submit" type="submit" class="fsSubmitButton" id="submit" value="Turn On All Features" />
-		</form>
-		</td>
-	</tr>
-</table>
+				</td>
+				<td align="center">
+				<form id="restore" name="restore" method="post" action="RestoreServices.php" onSubmit="if(!confirm('Are you sure that you want to restore ALL features for this Dealer?')){return false;}">
+					<input name="DealerName" type="hidden" class="textfield" id="DealerName" value="<?php echo $DealerName; ?>" />
+					<input name="submit" type="submit" class="fsSubmitButton" id="submit" value="Turn On All Features" />
+				</form>
+				</td>
+			</tr>
+		</table>

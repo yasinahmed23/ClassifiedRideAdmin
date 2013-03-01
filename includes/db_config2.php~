@@ -2,10 +2,10 @@
 
 	session_start();
 
-	$dbhost= "";
-    	$dbuser= "";
-    	$dbpass="";
-    	$db_name="";
+	$dbhost= "ClassifiedRideAd.db.10325553.hostedresource.com";
+    	$dbuser= "ClassifiedRideAd";
+    	$dbpass="Fernando1!";
+    	$db_name="ClassifiedRideAd";
 
 	//Connect to server
 	$connectDB = mysql_connect($dbhost, $dbuser, $dbpass);

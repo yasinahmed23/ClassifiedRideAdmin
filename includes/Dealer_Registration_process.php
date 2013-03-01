@@ -6,6 +6,7 @@
 	//Connect to Database	
 	include 'db_config2.php';
 	require_once '../Functions/DealerFunctions.php';
+	include '../Functions/dbConnector.php';
 	
 	set_error_handler('error_handler');
 
@@ -96,6 +97,8 @@
 
 	$MthlyPmt = $Program+$DirPrice+$FBPrice+$SMSPrice+$YouTubePrice+$CaBIDPrice;
 
+	$Amount = $MthlyPmt;
+
 	$Authorization = stripslashes($_POST['Authorization']);
 	$AgentFirstName = stripslashes($_POST['AgentFirstName']);
 	$AgentLastName = stripslashes($_POST['AgentLastName']);
@@ -181,10 +184,10 @@
 	$city = $DealerCity;
 	$state = $DealerState;
 	$zip = $DealerZip;
-	$phoneNumber = $AccountPayableCell1 . $AccountPayableCell2 . $AccountPayableCell3;
+	$phoneNumber = $AccountPayableCell1 . "-" . $AccountPayableCell2 . "-" . $AccountPayableCell3;
 	$email = $AccountPayableEmail;
 
-	$amount = $MthlyPmt . ".00";
+	$Amount = $MthlyPmt . ".00";
 
 	$var1 = $DateSigned;
 	$month = substr($var1, 0, 2);
@@ -192,6 +195,13 @@
 	$year = substr($var1, 6, 4);
 	$sep = "-";
 	$startDate = $year . $sep . $month . $sep . $day;
+
+	//Create Session 
+	$_SESSION['name']=$name;
+	$_SESSION['email']=$Email;
+	$_SESSION['Amount']=$Amount;
+	$_SESSION['startDate']=$startDate;
+	$_SESSION['DealerUser']=$$DealerUserName;
 			
 	require_once '../Forms/DealerPaymentForm.php';
 ?>

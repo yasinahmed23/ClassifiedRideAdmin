@@ -3,16 +3,16 @@ extract ($_POST);
 
 $cp="cert";              //values are "cert" or "prod"
 //$PaymentType = "CC";   //uncomment to limit to credit cards.
+
+//Test Account Info
 $Gateway_ID = "7777777865";
 $HostedKey = "9cd9aab0-6785-451f-b4a0-9f90436d2c05";
-$RURL = "http://stephmcglathery.com/dealers/response.php";  
-$CURL = "http://stephmcglathery.com/dealers/DealerPmt_Cancel.php";    
+$RURL = "http://stephmcglathery.com/dealers/response.php";  //Replace this with your response page
+$CURL = "http://stephmcglathery.com/dealers/DealerPmt_Cancel.php";    //Replace this with your cancel page
 
 //$AVSRequired = "Y";        //uncomment to require address/zip
 //$CVV2Required = "Y";       //uncomment to require CVV2
-//$EmailRequired = "y";      //uncomment to require email address
-//$Amount = "50.00";         //uncomment if you want a set dollar amount passed
-
+$EmailRequired = "y";      //uncomment to require email address
 
 //===============================================================
 switch ($cp) {

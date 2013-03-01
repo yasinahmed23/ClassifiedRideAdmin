@@ -25,8 +25,8 @@
 		<form action='/searchDealerNameAR.php' name='searchDealers' id='searchDealers'>
 					<input class='Button' type='submit' id='searchDealers' name='searchDealers' value='Search Dealers'  />
 		</form>
-		<form action="/AccountsReceivable/Invoices.php" name="Invoices" id="Invoices">
-			<input class="Button" type="submit" id="Invoices" name="Invoices" value="Invoices"  />
+		<!--<form action="/AccountsReceivable/Invoices.php" name="Invoices" id="Invoices">
+			<input class="Button" type="submit" id="Invoices" name="Invoices" value="Invoices"  />-->
 		</form>	
 		<form action="/AccountsReceivable/OverDueInvoices.php" name="OverDueInvoices" id="OverDueInvoices">
 			<input class="Button" type="submit" id="OverDueInvoices" name="OverDueInvoices" value="Over Due"  />

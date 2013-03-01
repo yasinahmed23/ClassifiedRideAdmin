@@ -12,9 +12,6 @@ $CURL = "http://stephmcglathery.com/dealers/DealerPmt_Cancel.php";    //Replace 
 //$CVV2Required = "Y";       //uncomment to require CVV2
 $EmailRequired = "y";      //uncomment to require email address
 
-//Create Session 
-$_SESSION['email']=$Email;
-
 //===============================================================
 switch ($cp) {
 	case "cert":

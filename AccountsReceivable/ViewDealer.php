@@ -2,58 +2,10 @@
 	//Enable Session Variables	
 	session_start();
 	
-	if (!isset($_SESSION[user])) {
-	header("location: index.php");
-	}
-	
 	//Connect to Database	
 	require_once '../includes/db_config.php';
-	
-	$DealerName= $_POST['search_string'];
-
-	$id = $_GET['id'];
-
-	$GetDealerInfo = mysql_query("
-		SELECT *
-		FROM dealers
-		WHERE DealerID='".$id."' ||DealerName='".$DealerName."'");
-
-		while ($row = mysql_fetch_array($GetDealerInfo)) 
-			{
-				$DealerID = $row['DealerID'];
-				$AccountPayFirstName = $row['AccountPayFirstName'];
-				$AccountPayLastName = $row['AccountPayLastName'];
-				$DealerName = $row['DealerName'];
-				$DealerStreet1 = ($row['DealerStreet1']);
-				$DealerStreet2 = ($row['DealerStreet2']);
-				$DealerCity = ($row['DealerCity']);
-				$DealerState = $row['DealerState'];
-				$DealerZip = $row['DealerZip'];
-				$AccountPayableCell1 = $row['AccountPayableCell1'];
-				$AccountPayableCell2 = $row['AccountPayableCell2'];
-				$AccountPayableCell3 = $row['AccountPayableCell3'];
-				$AccountPayableEmail = $row['AccountPayableEmail'];
-				$RepName = $row['RepName'];
-				$Program = $row['Program'];
-				$MthlyPmt = $row['MthlyPmt'];
-				$StartDate = $row['StartDate'];
-				$Notes = $row['Notes'];
-				$directory = $row['directory'];
-				$facebook = $row['facebook'];
-				$YouTube = $row['YouTube'];
-				$CaBID = $row['CaBID'];
-				$SMS = $row['SMS'];	
-
-				if (isset($DealerStreet2)) {
-					$DealerAddress = $DealerStreet1 . " " .  $DealerStreet2 . "<br />" . $DealerCity . ", "  . $DealerState . " " . $DealerZip;
-				}
-				else {
-					$DealerAddress = $DealerStreet1 . "<br />" . $DealerCity . ", "  . $DealerState . " " . $DealerZip;
-				}
-				$AccountPayableCell= $AccountPayableCell1 . "-" . $AccountPayableCell2 . "-" .  $AccountPayableCell3;
-				$Contact=$AccountPayFirstName . " " . $AccountPayLastName;
-			}
-
+	require_once '../Functions/ARFunctions.php';
+	require_once '../Functions/dbConnector.php';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -104,7 +56,16 @@ function validateForm2()
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
-		<?php require_once 'ARdealerFeed.php'; ?>
+		<?php 	
+			$numDealers = countResults($connector);
+			if ($numDealers==1) {
+				//require_once 'ARdealerFeed.php'; 
+				getDealer($connector);
+			}
+			else {
+			echo "<p align='center'><font color='red'>No Results Found.  Please Select from the Drop-Down to ensure accuracy</font></p>";
+			}
+		?>
 	</div>
 </div>
 </body>

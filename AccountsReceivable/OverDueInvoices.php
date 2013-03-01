@@ -1,39 +1,18 @@
 <?php
-	
 	//Enable Session Variables	
 	session_start();
-	
-	if (!isset($_SESSION[ARadmin])) {
-	header("location: ../login_error_AR.php");
-	}
-		
+
 	//Connect to Database	
-	require_once '../includes/db_config2.php';
-
-	$user = $_SESSION['user'];
-	$admin = $_SESSION['admin'];
-	$ARadmin = $_SESSION['ARadmin'];
-
-	$GetDealers = mysql_query("
-	SELECT DealerID, Program
-	FROM dealers");
-	$num_rows = mysql_num_rows($GetDealers);
-
-	//Count Monthly Revenue from Dealer Registrations
-	$CountDealers = mysql_query(" 
-		SELECT SUM(Program) 
-		AS total FROM dealers ");
-	$DealerTotal = mysql_fetch_assoc($CountDealers);
-
-	include '../Functions/Functions.php';
+	require_once '../includes/db_config.php';
+	require_once '../Functions/ARFunctions.php';
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCtype html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<SCRIPT TYPE="text/javascript" SRC="../js/verifynotify.js"></SCRIPT>
-<SCRIPT TYPE="text/javascript" SRC="../js/jquery-1.8.2.js"></SCRIPT>
+<script type="text/javascript" src="../js/verifynotify.js"></script>
+<script type="text/javascript" src="../js/jquery-1.8.2.js"></script>
 <script src="../autocomplete/searchFullName.js"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta http-equiv="Content-type" content="text/html; charset=iso-8859-1" />
 <title>ClassifiedRide Database AR</title>
 <link href="../styles/style.css" rel="stylesheet" type="text/css" />
 </head>
@@ -58,9 +37,59 @@
 	</div>
 	<div id="spacer">&nbsp;</div>
 	<div id="profile">
-		Sort by Week, Month, & Year
-
-Show Due Date, Status, How much past Due, Pmt Method
+		<?php if (!isset($_SESSION[ARadmin])) {
+			echo "
+			<table width='400' cellpadding='0' cellspacing='0' align='center' class='table'>
+				<tr valign='top'>
+					<td>
+						<table width='400' cellpadding='0' cellspacing='0' align='center'>
+							<tr valign='top'>
+								<td align='center'>
+								<strong>Please Log in to gain access to Accounts Receivable</strong>";
+								include '../includes/login_form_AR.php';
+								
+							echo "</td>
+							</tr>
+						</table>
+					</td>
+				</tr>
+			</table>";
+			}
+		else {
+		echo 
+			"<p align='center'><font size='+1'><strong>Dealers who have not made a payment in over 30 days</strong></font></p>
+			<table width='900' cellpadding='5' cellspacing='0' align='center' class='table' border='0'>
+				<tr valign='top'>
+					<td>"; ?>
+					<table cellspacing="0" cellpadding="0" border="0" align="center" width="730">
+						<tr valign="top">
+							<td width="30">&nbsp;</td>
+							<td width="200"><strong>Last Payment</strong></td>
+							<td width="200"><strong>Dealership</strong></td>
+							<td width="200"><strong>Rep</strong></td>
+							<td width="100"><strong>Monthly Pmt</strong></td>
+						</tr>
+					</table>
+					<div id="referral">
+					<table cellspacing="0" cellpadding="0" border="0" align="center" width="750">
+					<?php
+					getOverDueDealers($connector);
+					?>
+					</table>
+					</div>
+					</table>
+					<?php echo "</td>
+				</tr>
+			</table>";
+		}
+		?>
+		<div id="export">
+		<?php if (isset($_SESSION[ARadmin])) {
+			echo"<table width='300' border='0' cellpadding='0' cellspacing='0' align='center'><tr><td align='center'><form action=''><input class='Button' type='submit' value='Export All OverDue Dealers to .csv' /></form></td></tr></table>
+		</div>	";	
+			}
+		?>
+		</div>
 	</div>
 </div>	
 <?php require_once '../includes/footer.php'; ?>

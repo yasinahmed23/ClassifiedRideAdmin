@@ -489,7 +489,7 @@
 
 	function countAllDealers($connector) {
 		/* Open a connection */
-		$connector = new mysqli("", "", "", "");
+		$connector = new mysqli("ClassifiedRideAd.db.10325553.hostedresource.com", "ClassifiedRideAd", "Fernando1!", "ClassifiedRideAd");
 		
 		if (!$connector) {
 			die('Could not connect');
@@ -517,7 +517,7 @@
 	/*=========================== BEGIN GET ALL DEALERS ========================= */
 	function getAllDealers($connector) {
 		//$connector = new DbConnector();
-		$connector = new mysqli("", "", "", "");
+		$connector = new mysqli("ClassifiedRideAd.db.10325553.hostedresource.com", "ClassifiedRideAd", "Fernando1!", "ClassifiedRideAd");
 	
 		if (!$connector) {
 			die('Could not connect');
@@ -615,7 +615,7 @@
 
 	function getOverDueDealers($connector) {
 		//$connector = new DbConnector();
-		$connector = new mysqli("", "", "", "");
+		$connector = new mysqli("ClassifiedRideAd.db.10325553.hostedresource.com", "ClassifiedRideAd", "Fernando1!", "ClassifiedRideAd");
 
 		if (!$connector) {
 			die('Could not connect');
@@ -670,7 +670,7 @@
 
 	function getDealer($connector) {
 		//$connector = new DbConnector();
-		$connector = new mysqli("", "", "", "");
+		$connector = new mysqli("ClassifiedRideAd.db.10325553.hostedresource.com", "ClassifiedRideAd", "Fernando1!", "ClassifiedRideAd");
 
 		if (!$connector) {
 			die('Could not connect');
@@ -711,7 +711,7 @@
 
 	function countResults($connector) {
 		/* Open a connection */
-		$connector = new mysqli("", "", "", "");
+		$connector = new mysqli("ClassifiedRideAd.db.10325553.hostedresource.com", "ClassifiedRideAd", "Fernando1!", "ClassifiedRideAd");
 
 		if (!$connector) {
 			die('Could not connect');
@@ -743,7 +743,7 @@
 
 	function addNote($connector) {
 		//$connector = new DbConnector();
-		$connector = new mysqli("", "", "", "");
+		$connector = new mysqli("ClassifiedRideAd.db.10325553.hostedresource.com", "ClassifiedRideAd", "Fernando1!", "ClassifiedRideAd");
 
 		if (!$connector) {
 			die('Could not connect');
@@ -772,7 +772,7 @@
 
 	function setStartDate($connector) {
 		//$connector = new DbConnector();
-		$connector = new mysqli("", "", "", "");
+		$connector = new mysqli("ClassifiedRideAd.db.10325553.hostedresource.com", "ClassifiedRideAd", "Fernando1!", "ClassifiedRideAd");
 
 		if (!$connector) {
 			die('Could not connect');

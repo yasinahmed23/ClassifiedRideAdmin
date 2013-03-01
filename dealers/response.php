@@ -47,10 +47,10 @@ if ($rspCode == "00") {
 	echo "Transaction was Successful.  <br /><br />Your email address is :  " . $Email . "<br /><br />Amount: " . $amount . "<br /><br />Date: " . $Date;
 }
 else if ($rspCode=="null" || $rspCode=="") {
-	echo "No Response Code was Received, Transaction was Cancelled";
+	echo "No Response Code was Received, Transaction was Cancelled.  You will still be able to log into your account.  Please call your rep to actually start your services.";
 }
 else {
-	echo "Transaction was declined";
+	echo "Transaction was declined.  You will still be able to log into your account.  Please call your rep to actually start your services.";
 }
 
 
@@ -161,9 +161,6 @@ else if ($rspCode=="00") {
     		die('Invalid query: ' . mysql_error());
 		}
 
-	//Create session variable from data and redirect page
-	$_SESSION['DealerUser']=$DealerUserName;
-
 	//SEND DEALER REGISTRATION NOTIFICATION VIA EMAIL TO SYSTEM
 		$to = "classifiedridewebsite@gmail.com";
 		$subject = $DealerName . " registered for the $" .  $Program . "program." ;
@@ -195,6 +192,8 @@ else if ($rspCode=="00") {
 		$from = "classifiedridewebsite@gmail.com";
 		$headers = "From:" . $from;
 		mail($to,$subject,$message,$headers);
+
+		header( 'Location: /Dealers.php' ) ;
 */
 ?>
 

@@ -1,16 +1,21 @@
 <?php
-
+	
+	//Enable Session Variables	
 	session_start();
+	
+	if (!isset($_SESSION['DealerUser'])) {
+	header("location: /login_error_Dealer.php");
+	}	
 
+	//Connect to server
 	$dbhost= "";
     	$dbuser= "";
     	$dbpass="";
     	$db_name="";
 
-	//Connect to server
 	$connectDB = mysql_connect($dbhost, $dbuser, $dbpass);
 	if(!$connectDB) {
-		die('Failed to connect to server');
+		die('Failed to connect to server ');
 	}
 
 	//Select Database
@@ -18,5 +23,4 @@
 	if(!$dbselect) {
 		die('Failed to connect to server');
 	}
-
 ?>

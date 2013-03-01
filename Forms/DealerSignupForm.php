@@ -765,7 +765,7 @@
 	<strong>Accounts Payable</strong>
 	<br />
 	<font size="-2">
-	Please provide the name, phone, and email for Accounts Payable.
+	Please provide the information as it will appear on your credit card or check.
 	</font>
 	</td>
 </tr>
@@ -1385,6 +1385,8 @@
 	<td>
 		<input type='text' name='date' id='date' class='textfield' onclick='fPopCalendar("date")'/>
 		<br />
+		<font size="-2">
+		Click to Show Calendar</font>
 		</td>
 </tr>
 <tr><td><br /></td></tr>								
@@ -1399,7 +1401,7 @@
 
 <!--SUBMIT -->					
 <tr>
-      	<td colspan="2" width="155" align="center"><input name="Submit" type="submit" value="Make Payment" class="fsSubmitButton" /></td>
+      	<td colspan="2" width="155" align="center"><input name="Submit" type="submit" value="Sign Up" class="fsSubmitButton" /></td>
 </tr>	
 <!--SUBMIT -->	
 

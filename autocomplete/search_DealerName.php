@@ -19,7 +19,7 @@ if (isset($_POST['search_term']) == TRUE && empty($_POST['search_term']) == fals
 {
 
 	$search_term = (mysql_real_escape_string($_POST['search_term']));
-	$query= (mysql_query("SELECT DISTINCT `DealerName` FROM `dealers` WHERE `DealerName` LIKE '$search_term%'"));
+	$query= (mysql_query("SELECT DISTINCT `DealerName` FROM `transactions` WHERE `DealerName` LIKE '$search_term%'"));
 
 	while (($row=mysql_fetch_assoc($query)) !== false) 
 		{

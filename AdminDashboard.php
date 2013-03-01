@@ -175,7 +175,7 @@
 		<table width="1000" cellpadding="5" cellspacing="0" align="center" border="0" class="table">
 			<tr valign="top">
 				<td align="center"><br />
-				<br /><br /><em>WHAT WOULD YOU LIKE TO SEE HERE?</em><br /><br /><br /><br /></td>
+				<br /><br /><em>&nbsp;</em><br /><br /><br /><br /></td>
 			</tr>
 		</table>
 	</div>

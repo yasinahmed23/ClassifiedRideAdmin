@@ -58,14 +58,31 @@
 		else {
 		echo "
 			<form id='SortTrans' name='SortTrans' method='post' action='/DealersSortedAR.php'>
-				<p align='center'><font size='+1'><strong>Total # of Dealerships : " .  $numDealers . "</strong>&nbsp;-&nbsp;View Dealers added in last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
+				<p align='center'><font size='+1'><strong>Total # of Dealerships : "; 
+				countAllDealers($connector); 
+				echo "</strong>&nbsp;-&nbsp;View Dealers added in last  <input name='numdays' type='text' class='textfield' id='numdays' size='3' maxlength='3'/> Days. <input name='submit' type='submit' class='Button' id='submit' value='GO' />
 				</font></p>
 			</form>
-			<table width='900' cellpadding='0' cellspacing='0' align='center' class='table' border='0'>
+			<table width='900' cellpadding='5' cellspacing='0' align='center' class='table' border='0'>
 				<tr valign='top'>
-					<td>";
-					include '../includes/ARContent.php';
-					echo "</td>
+					<td>
+					<table cellpadding='0' cellspacing='0' border='0' align='center' width='860'>
+						<tr>
+							<td align='center' width='10'>&nbsp;</td>		
+							<td align='center' width='130'><strong>Dealership</strong></td>				
+							<td align='center' width='100'><strong>Rep</strong></td>
+							<td align='center' width='80'><strong>Monthly Bill</strong></td>
+							<td align='center' width='150'><strong>Due Date</strong></td>
+							<td align='center' width='120'><strong>Last Payment</strong></td>
+							<td align='center' width='270'><strong>Notes</strong></td>
+						</tr>
+					</table>
+					<div id='referral'>
+					<table cellpadding='0' cellspacing='0' border='0' align='center' width='860'>";
+					getAllDealers($connector);
+					echo "</table></div>
+					<p align='center'><font color=" . $fontColor . "><em>*Grey indicated the Dealership status is Inactive</em></font></p>					
+					</td>
 				</tr>
 			</table>";
 		}

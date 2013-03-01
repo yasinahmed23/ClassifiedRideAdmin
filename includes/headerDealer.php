@@ -1,6 +1,4 @@
-<?php 
-	include_once("GoogleAnalyticsTracking.php");
-?>
+<?php include_once("GoogleAnalyticsTracking.php");?>
 <div id="logo">
 	<table cellpadding="0" cellspacing="0" border="0">
 		<tr valign="top">
@@ -18,9 +16,9 @@
 </div>	
 <div id="login">
 	<table align="right">
-		<tr valign="bottom">
+		<tr valign="top">
 			<td align="right">
-			<div id="login-contents"><br />
+				<div id="login-contents"><br />
 			<?php	
 				loginDealer($connector);
 			?>
